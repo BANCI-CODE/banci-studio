@@ -8,27 +8,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<link rel="icon" type="image/svg+xml" href="./BANCI.svg">
+<!-- Favicon -->
+
+<link rel="icon" 
+type="image/svg+xml" 
+href="./BANCI.svg">
 
 
 <title>BANCI — Design Thinking Studio</title>
 
 
-<!-- Anton Font -->
-
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-
-
-
 <style>
+
+
+/* =========================
+   Reset
+========================= */
 
 
 *{
 
 margin:0;
-
 padding:0;
-
 box-sizing:border-box;
 
 }
@@ -39,26 +40,34 @@ html,
 body{
 
 width:100%;
-
 height:100%;
 
 }
 
 
 
+/* =========================
+   Background
+========================= */
+
+
 body{
 
 background:#090909;
 
-color:#fff;
+color:#ffffff;
 
 display:flex;
 
-justify-content:center;
-
 align-items:center;
 
+justify-content:center;
+
+overflow:hidden;
+
 font-family:
+
+"Arial Black",
 "Helvetica Neue",
 Arial,
 sans-serif;
@@ -67,17 +76,25 @@ sans-serif;
 
 
 
+/* =========================
+   Container
+========================= */
+
+
 .container{
 
 text-align:center;
 
-animation:show 1.2s ease;
+animation:fadeIn 1.4s ease;
 
 }
 
 
 
-/* Logo */
+/* =========================
+   Logo
+========================= */
+
 
 .logo{
 
@@ -87,45 +104,211 @@ height:160px;
 
 object-fit:contain;
 
-margin-bottom:50px;
+margin-bottom:30px;
+
+
+/* 黑色Logo转白色 */
 
 filter:brightness(0) invert(1);
 
+
 }
 
 
 
-/* BANCI */
+/* =========================
+   Brand Name
+========================= */
+
 
 h1{
 
-font-family:"Anton", sans-serif;
+font-family:
+
+"Arial Black",
+"Helvetica Neue",
+Arial,
+sans-serif;
+
 
 font-size:96px;
 
-font-weight:400;
+
+font-weight:900;
+
 
 letter-spacing:12px;
 
+
 line-height:1;
 
+
 color:#ffffff;
+
 
 }
 
 
 
-/* 描述 */
+/* =========================
+   Subtitle
+========================= */
+
 
 .subtitle{
 
-margin-top:45px;
+
+margin-top:42px;
+
 
 font-size:18px;
 
-letter-spacing:6px;
 
-color:#BEBEBE;
+font-weight:400;
+
+
+letter-spacing:5px;
+
+
+color:#b5b5b5;
+
+
+}
+
+
+
+/* =========================
+   Tagline
+========================= */
+
+
+.tagline{
+
+
+margin-top:25px;
+
+
+font-size:16px;
+
+
+letter-spacing:5px;
+
+
+color:#777;
+
+
+}
+
+
+
+/* =========================
+   Status
+========================= */
+
+
+.status{
+
+
+margin-top:60px;
+
+
+font-size:12px;
+
+
+letter-spacing:8px;
+
+
+color:#555;
+
+
+}
+
+
+
+
+/* =========================
+   Animation
+========================= */
+
+
+@keyframes fadeIn{
+
+
+from{
+
+
+opacity:0;
+
+transform:translateY(25px);
+
+
+}
+
+
+to{
+
+
+opacity:1;
+
+transform:translateY(0);
+
+
+}
+
+
+
+}
+
+
+
+
+/* =========================
+   Mobile
+========================= */
+
+
+@media(max-width:768px){
+
+
+
+.logo{
+
+
+width:100px;
+
+height:100px;
+
+margin-bottom:25px;
+
+
+}
+
+
+
+h1{
+
+
+font-size:52px;
+
+
+letter-spacing:8px;
+
+
+}
+
+
+
+.subtitle{
+
+
+margin-top:30px;
+
+
+font-size:13px;
+
+
+letter-spacing:3px;
+
 
 }
 
@@ -133,13 +316,12 @@ color:#BEBEBE;
 
 .tagline{
 
-margin-top:24px;
 
-font-size:16px;
+font-size:12px;
 
-letter-spacing:5px;
 
-color:#777;
+letter-spacing:3px;
+
 
 }
 
@@ -147,78 +329,22 @@ color:#777;
 
 .status{
 
-margin-top:65px;
 
-font-size:12px;
-
-letter-spacing:10px;
-
-color:#555;
-
-}
+margin-top:45px;
 
 
+font-size:10px;
 
 
-@keyframes show{
-
-
-from{
-
-opacity:0;
-
-transform:translateY(30px);
-
-}
-
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
+letter-spacing:6px;
 
 
 }
 
 
 
-/* 手机 */
-
-@media(max-width:768px){
-
-
-.logo{
-
-width:100px;
-
-height:100px;
-
 }
 
-
-
-h1{
-
-font-size:55px;
-
-letter-spacing:8px;
-
-}
-
-
-
-.subtitle{
-
-font-size:13px;
-
-}
-
-
-
-}
 
 
 </style>
@@ -231,13 +357,22 @@ font-size:13px;
 <body>
 
 
+
 <div class="container">
 
 
-<img 
+
+<img
+
 src="./BANCI.svg"
+
+alt="BANCI Logo"
+
 class="logo"
-alt="BANCI Logo">
+
+
+
+>
 
 
 
@@ -256,11 +391,13 @@ Design Thinking Studio
 </div>
 
 
+
 <div class="tagline">
 
 Brand × Product × AI
 
 </div>
+
 
 
 <div class="status">
