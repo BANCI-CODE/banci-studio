@@ -1,346 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>BANCI Studio — Design Thinking Studio</title>
 
-<!-- Favicon -->
-
-<link rel="icon" 
-type="image/svg+xml" 
-href="./BANCI.svg">
-
-
-<title>BANCI — Design Thinking Studio</title>
-
+<meta name="description" content="BANCI Studio | Brand × Product × AI">
 
 <style>
 
-
-/* =========================
-   Reset
-========================= */
-
-
 *{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-
-
-html,
-body{
-
-width:100%;
-height:100%;
-
+html,body{
+    width:100%;
+    height:100%;
+    background:#050505;
+    color:#fff;
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 }
-
-
-
-/* =========================
-   Background
-========================= */
 
 
 body{
-
-background:#090909;
-
-color:#ffffff;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-overflow:hidden;
-
-font-family:
-
-"Arial Black",
-"Helvetica Neue",
-Arial,
-sans-serif;
-
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 
-
-/* =========================
-   Container
-========================= */
-
+/* 主容器 */
 
 .container{
 
-text-align:center;
+    width:100%;
+    height:100vh;
 
-animation:fadeIn 1.4s ease;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
 
 }
 
 
 
-/* =========================
-   Logo
-========================= */
-
+/* LOGO */
 
 .logo{
 
-width:160px;
+    width:160px;
+    height:160px;
 
-height:160px;
+    margin-bottom:40px;
 
-object-fit:contain;
-
-margin-bottom:30px;
+}
 
 
-/* 黑色Logo转白色 */
+.logo img{
 
-filter:brightness(0) invert(1);
+    width:100%;
+    height:100%;
 
+    object-fit:contain;
 
 }
 
 
 
-/* =========================
-   Brand Name
-========================= */
+/* 品牌名 */
 
 
-h1{
+.brand{
 
-font-family:
+    font-size:72px;
 
-"Arial Black",
-"Helvetica Neue",
-Arial,
-sans-serif;
+    font-weight:800;
 
+    letter-spacing:18px;
 
-font-size:150px;
-
-
-font-weight:900;
-
-
-letter-spacing:12px;
-
-
-line-height:1;
-
-
-color:#ffffff;
-
+    margin-left:18px;
 
 }
 
-
-
-/* =========================
-   Subtitle
-========================= */
 
 
 .subtitle{
 
+    margin-top:24px;
 
-margin-top:20px;
+    font-size:18px;
 
+    letter-spacing:8px;
 
-font-size:24px;
-
-
-font-weight:400;
-
-
-letter-spacing:5px;
-
-
-color:#b5b5b5;
-
+    color:#bdbdbd;
 
 }
 
 
 
-/* =========================
-   Tagline
-========================= */
+.tag{
 
+    margin-top:22px;
 
-.tagline{
+    font-size:16px;
 
+    letter-spacing:7px;
 
-margin-top:100px;
-
-
-font-size:12px;
-
-
-letter-spacing:5px;
-
-
-color:#777;
-
+    color:#666;
 
 }
 
 
 
-/* =========================
-   Status
-========================= */
+.line{
 
+    width:40px;
 
-.status{
+    height:1px;
 
+    background:#444;
 
-margin-top:100px;
-
-
-font-size:30px;
-
-
-letter-spacing:8px;
-
-
-color:#555;
-
+    margin:45px auto;
 
 }
 
 
 
+.contact{
 
-/* =========================
-   Animation
-========================= */
+    font-size:14px;
 
+    letter-spacing:3px;
 
-@keyframes fadeIn{
-
-
-from{
-
-
-opacity:0;
-
-transform:translateY(25px);
-
-
-}
-
-
-to{
-
-
-opacity:1;
-
-transform:translateY(0);
-
+    color:#888;
 
 }
 
 
 
+.contact a{
+
+    color:#fff;
+
+    text-decoration:none;
+
 }
 
 
 
-
-/* =========================
-   Mobile
-========================= */
-
+/* 手机适配 */
 
 @media(max-width:768px){
 
 
-
 .logo{
 
+    width:110px;
 
-width:100px;
+    height:110px;
 
-height:100px;
-
-margin-bottom:25px;
-
+    margin-bottom:30px;
 
 }
 
 
+.brand{
 
-h1{
+    font-size:42px;
 
-
-font-size:52px;
-
-
-letter-spacing:8px;
-
+    letter-spacing:10px;
 
 }
-
 
 
 .subtitle{
 
+    font-size:13px;
 
-margin-top:30px;
-
-
-font-size:13px;
-
-
-letter-spacing:3px;
-
+    letter-spacing:4px;
 
 }
 
 
+.tag{
 
-.tagline{
+    font-size:12px;
 
-
-font-size:12px;
-
-
-letter-spacing:3px;
-
+    letter-spacing:3px;
 
 }
 
 
+.contact{
 
-.status{
-
-
-margin-top:45px;
-
-
-font-size:10px;
-
-
-letter-spacing:6px;
-
+    font-size:12px;
 
 }
-
 
 
 }
@@ -349,70 +213,59 @@ letter-spacing:6px;
 
 </style>
 
-
 </head>
-
 
 
 <body>
 
 
-
 <div class="container">
 
 
+    <!-- 替换你的SVG LOGO -->
 
-<img
+    <div class="logo">
 
-src="./BANCI.svg"
+        <img src="logo.svg" alt="BANCI Logo">
 
-alt="BANCI Logo"
-
-class="logo"
-
-
-
->
+    </div>
 
 
 
-<h1>
-
-BANCI
-
-</h1>
+    <div class="brand">
+        BANCI
+    </div>
 
 
 
-<div class="subtitle">
-
-Design Thinking Studio
-
-</div>
+    <div class="subtitle">
+        Design Thinking Studio
+    </div>
 
 
 
-<div class="tagline">
-
-Brand × Product × AI
-
-</div>
+    <div class="tag">
+        Brand × Product × AI
+    </div>
 
 
 
-<div class="status">
+    <div class="line"></div>
 
-COMING SOON
 
-</div>
 
+    <div class="contact">
+
+        <a href="mailto:hello@banci.studio">
+        hello@banci.studio
+        </a>
+
+    </div>
 
 
 </div>
-
 
 
 </body>
-
 
 </html>
