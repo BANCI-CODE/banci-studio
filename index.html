@@ -1,53 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>BANCI Studio — Design Thinking Studio</title>
 
-<meta name="description" content="BANCI Studio | Brand × Product × AI">
+
+<link rel="icon" 
+type="image/svg+xml"
+href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='white'/%3E%3C/svg%3E">
+
+
 
 <style>
 
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
 }
 
-html,body{
-    width:100%;
-    height:100%;
-    background:#050505;
-    color:#fff;
-    font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+
+
+html,
+body{
+
+width:100%;
+
+height:100%;
+
+background:#050505;
+
+color:#fff;
+
+font-family:
+
+Arial,
+Helvetica,
+sans-serif;
+
 }
+
 
 
 body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+overflow:hidden;
+
 }
 
 
-/* 主容器 */
+
+/* 主体 */
 
 .container{
 
-    width:100%;
-    height:100vh;
+text-align:center;
 
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
+animation:fadeIn 1.5s ease;
 
 }
 
@@ -57,91 +83,91 @@ body{
 
 .logo{
 
-    width:160px;
-    height:160px;
+width:160px;
 
-    margin-bottom:40px;
+height:160px;
 
-}
-
-
-.logo img{
-
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
+margin-bottom:35px;
 
 }
 
 
 
-/* 品牌名 */
-
+/* 品牌名称 */
 
 .brand{
 
-    font-size:72px;
 
-    font-weight:800;
+font-size:80px;
 
-    letter-spacing:18px;
+font-weight:900;
 
-    margin-left:18px;
+letter-spacing:14px;
+
+margin-left:14px;
+
+line-height:1;
+
 
 }
 
 
+
+/* 副标题 */
 
 .subtitle{
 
-    margin-top:24px;
+margin-top:35px;
 
-    font-size:18px;
+font-size:18px;
 
-    letter-spacing:8px;
+letter-spacing:6px;
 
-    color:#bdbdbd;
+color:#b5b5b5;
 
 }
 
 
+
+/* 品牌方向 */
 
 .tag{
 
-    margin-top:22px;
+margin-top:22px;
 
-    font-size:16px;
+font-size:15px;
 
-    letter-spacing:7px;
+letter-spacing:6px;
 
-    color:#666;
+color:#777;
 
 }
 
 
+
+/* 分割线 */
 
 .line{
 
-    width:40px;
+width:45px;
 
-    height:1px;
+height:1px;
 
-    background:#444;
+background:#555;
 
-    margin:45px auto;
+margin:45px auto;
 
 }
 
 
 
+/* 邮箱 */
+
 .contact{
 
-    font-size:14px;
+font-size:14px;
 
-    letter-spacing:3px;
-
-    color:#888;
+letter-spacing:3px;
 
 }
 
@@ -149,60 +175,94 @@ body{
 
 .contact a{
 
-    color:#fff;
+color:#aaa;
 
-    text-decoration:none;
+text-decoration:none;
 
 }
 
 
 
-/* 手机适配 */
+/* 动画 */
+
+
+@keyframes fadeIn{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+/* 手机 */
 
 @media(max-width:768px){
 
 
 .logo{
 
-    width:110px;
+width:110px;
 
-    height:110px;
+height:110px;
 
-    margin-bottom:30px;
+margin-bottom:25px;
 
 }
+
 
 
 .brand{
 
-    font-size:42px;
+font-size:45px;
 
-    letter-spacing:10px;
+letter-spacing:9px;
+
+margin-left:9px;
 
 }
+
 
 
 .subtitle{
 
-    font-size:13px;
+font-size:13px;
 
-    letter-spacing:4px;
+letter-spacing:3px;
 
 }
+
 
 
 .tag{
 
-    font-size:12px;
+font-size:12px;
 
-    letter-spacing:3px;
+letter-spacing:3px;
 
 }
 
 
+
 .contact{
 
-    font-size:12px;
+font-size:12px;
 
 }
 
@@ -213,59 +273,132 @@ body{
 
 </style>
 
+
 </head>
+
 
 
 <body>
 
 
+
 <div class="container">
 
 
-    <!-- 替换你的SVG LOGO -->
 
-    <div class="logo">
+<!-- 内嵌 BANCI LOGO -->
 
-        <img src="logo.svg" alt="BANCI Logo">
-
-    </div>
+<div class="logo">
 
 
+<svg
 
-    <div class="brand">
-        BANCI
-    </div>
+width="160"
 
+height="160"
 
+viewBox="0 0 160 160"
 
-    <div class="subtitle">
-        Design Thinking Studio
-    </div>
+xmlns="http://www.w3.org/2000/svg">
 
 
 
-    <div class="tag">
-        Brand × Product × AI
-    </div>
+<!-- 外圆 -->
+
+<circle
+
+cx="80"
+
+cy="80"
+
+r="65"
+
+fill="none"
+
+stroke="#ffffff"
+
+stroke-width="4"/>
 
 
 
-    <div class="line"></div>
+<!-- 内部符号 -->
+
+<path
+
+d="M45 80
+
+C55 45 105 45 115 80
+
+C105 115 55 115 45 80Z"
+
+fill="none"
+
+stroke="#ffffff"
+
+stroke-width="6"
+
+stroke-linecap="round"/>
 
 
+</svg>
 
-    <div class="contact">
-
-        <a href="mailto:hello@banci.studio">
-        hello@banci.studio
-        </a>
-
-    </div>
 
 
 </div>
 
 
+
+
+
+<div class="brand">
+
+BANCI
+
+</div>
+
+
+
+
+<div class="subtitle">
+
+Design Thinking Studio
+
+</div>
+
+
+
+
+<div class="tag">
+
+Brand × Product × AI
+
+</div>
+
+
+
+
+<div class="line"></div>
+
+
+
+
+<div class="contact">
+
+<a href="mailto:hello@banci.studio">
+
+hello@banci.studio
+
+</a>
+
+</div>
+
+
+
+</div>
+
+
+
 </body>
+
 
 </html>
