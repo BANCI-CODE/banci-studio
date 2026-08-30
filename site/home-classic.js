@@ -18,11 +18,18 @@ const prepareReveal = (element, direction = 'up') => {
   else revealObserver.observe(element);
 };
 
-document.querySelectorAll('.hero-label,.hero h1,.hero-bottom,.practice-heading > *,.practice-grid article,.selected-head,.proof-strip article,.home-about > *,.contact-strip > *').forEach(element => prepareReveal(element));
+document.querySelectorAll('.hero-label,.hero h1,.hero-bottom,.practice-heading > *,.practice-grid article,.selected-head,.proof-strip article,.home-about > *,.personal-practice__header > *,.practice-item__media,.practice-item__content > *,.contact-strip > *').forEach(element => prepareReveal(element));
+
+const evidence = document.querySelector('#homepage-evidence');
+if (evidence) {
+  const prepareEvidence = () => evidence.querySelectorAll('.feature-proof').forEach(element => prepareReveal(element));
+  prepareEvidence();
+  new MutationObserver(prepareEvidence).observe(evidence, { childList: true });
+}
 
 const featured = document.querySelector('#featured');
 if (featured) {
-  const prepareFeatured = () => featured.querySelectorAll('a').forEach(element => prepareReveal(element));
+  const prepareFeatured = () => featured.querySelectorAll('.featured-case').forEach(element => prepareReveal(element));
   prepareFeatured();
   new MutationObserver(prepareFeatured).observe(featured, { childList: true });
 }

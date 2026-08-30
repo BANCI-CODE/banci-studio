@@ -11,8 +11,8 @@ const navIcons = {
 
 const navItems = [
   { number: '00', label: '首页', href: '/', icon: 'home', active: ({ path }) => path === '/' },
-  { number: '01', label: '品牌设计', href: '/work/?category=brand', icon: 'brand', active: ({ path, category }) => category === 'brand' || /\/(forktech|shanbenqing|kamingo|fantawild)\//.test(path) },
-  { number: '02', label: '产品设计', href: '/work/?category=product', icon: 'product', active: ({ path, category }) => category === 'product' || /\/(airseekers|mova)\//.test(path) },
+  { number: '01', label: '品牌设计', href: '/work/?category=brand', icon: 'brand', active: ({ path, category }) => category === 'brand' || /\/(forktech|shanbenqing|kamingo|fantawild)(?:\/|\.html)/.test(path) },
+  { number: '02', label: '产品设计', href: '/work/?category=product', icon: 'product', active: ({ path, category }) => category === 'product' || /\/(airseekers|mova|interface)(?:\/|\.html)/.test(path) },
   { number: '03', label: 'AI工作流', href: '/work/?category=ai', icon: 'ai', active: ({ path, category }) => category === 'ai' || path.includes('/ai-workflow/') },
   { number: '04', label: 'AKU日记', href: '/projects/aku.html', icon: 'journal', active: ({ path }) => path.includes('/projects/aku') },
   { number: '05', label: '个人创作', href: '/lab/', icon: 'lab', active: ({ path }) => path.startsWith('/lab/') },
@@ -20,16 +20,49 @@ const navItems = [
   { number: '07', label: '多多联系', href: '/contact/', icon: 'contact', active: ({ path }) => path.startsWith('/contact/') }
 ];
 
+const primaryNavItems = [
+  {
+    number: '01',
+    label: 'WORK',
+    href: '/work/',
+    active: ({ path }) => path.startsWith('/work/') || path.startsWith('/project/') || (path.startsWith('/projects/') && !path.includes('/projects/aku'))
+  },
+  { number: '02', label: 'ABOUT', href: '/about/', active: ({ path }) => path.startsWith('/about/') },
+  { number: '03', label: 'AKU JOURNAL', href: '/projects/aku.html', active: ({ path }) => path.includes('/projects/aku') },
+  { number: '04', label: 'CONTACT', href: '/contact/', active: ({ path }) => path.startsWith('/contact/') }
+];
+
+const disciplineNavItems = [
+  { label: 'BRAND DESIGN', href: '/work/?category=brand', category: 'brand' },
+  { label: 'PRODUCT EXPERIENCE', href: '/work/?category=product', category: 'product' },
+  { label: 'UI / INTERACTION', href: '/work/?category=ui', category: 'ui' },
+  { label: 'AI WORKFLOW', href: '/work/?category=ai', category: 'ai' }
+];
+
 const navContext = {
   path: location.pathname.toLowerCase(),
   category: new URLSearchParams(location.search).get('category')
 };
 
-document.querySelectorAll('.site-header, .aku-nav').forEach(header => {
+const navigationHeaders = [...document.querySelectorAll('.site-header, .aku-nav, .project-nav')];
+
+navigationHeaders.forEach(header => {
   if (header.classList.contains('aku-nav')) {
     header.classList.add('site-header');
     const akuBrand = header.querySelector('.aku-brand');
     if (akuBrand) akuBrand.classList.add('logo');
+  }
+  if (header.classList.contains('project-nav')) {
+    header.classList.add('site-header');
+    const projectBrand = header.querySelector(':scope > a:first-child');
+    if (projectBrand) {
+      projectBrand.classList.add('logo');
+      const projectLogo = projectBrand.querySelector('img');
+      projectBrand.replaceChildren(projectLogo || document.createTextNode(''), Object.assign(document.createElement('b'), { textContent: 'BANCI' }));
+    }
+    [...header.children].forEach(child => {
+      if (child !== projectBrand) child.remove();
+    });
   }
   header.classList.add('nav-system-shell');
   const nav = header.querySelector('nav') || document.createElement('nav');
@@ -43,7 +76,161 @@ document.querySelectorAll('.site-header, .aku-nav').forEach(header => {
     const utility = header.querySelector('.view-switch');
     utility ? header.insertBefore(nav, utility) : header.appendChild(nav);
   }
+
+  const logo = header.querySelector('.logo');
+  if (logo) {
+    logo.setAttribute('href', '/');
+    if (!logo.getAttribute('aria-label')) logo.setAttribute('aria-label', 'BANCI home');
+  }
 });
+
+function renderPrimaryNavigation() {
+  return primaryNavItems.map((item, index) => {
+    const current = item.active(navContext);
+    return `
+      <a class="mobile-navigation__primary-item" href="${item.href}"${current ? ' aria-current="page"' : ''} style="--mobile-nav-index:${index}">
+        <span class="mobile-navigation__number">${item.number}</span>
+        <span class="mobile-navigation__title">${item.label}</span>
+        ${current ? '<span class="mobile-navigation__active-dot" aria-hidden="true"></span>' : '<span aria-hidden="true"></span>'}
+      </a>`;
+  }).join('');
+}
+
+function renderDisciplines() {
+  return disciplineNavItems.map((item, index) => {
+    const current = navContext.path.startsWith('/work/') && navContext.category === item.category;
+    return `
+      <a class="mobile-navigation__discipline-item" href="${item.href}"${current ? ' aria-current="page"' : ''} style="--mobile-nav-index:${index + primaryNavItems.length}">
+        <span>${item.label}</span><span aria-hidden="true">↗</span>
+        ${current ? '<span class="mobile-navigation__active-dot" aria-hidden="true"></span>' : ''}
+      </a>`;
+  }).join('');
+}
+
+function setupMobileNavigation() {
+  const header = navigationHeaders[0];
+  if (!header || document.getElementById('mobile-navigation')) return;
+
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'mobile-nav-toggle';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', 'mobile-navigation');
+  toggle.setAttribute('aria-label', 'Open mobile navigation');
+  toggle.textContent = 'MENU';
+  header.appendChild(toggle);
+
+  const overlay = document.createElement('nav');
+  overlay.id = 'mobile-navigation';
+  overlay.className = 'mobile-navigation';
+  overlay.setAttribute('aria-label', 'Mobile navigation');
+  overlay.setAttribute('aria-hidden', 'true');
+  overlay.inert = true;
+  overlay.innerHTML = `
+    <div class="mobile-navigation__inner">
+      <section class="mobile-navigation__section" aria-labelledby="mobile-primary-title">
+        <p class="mobile-navigation__eyebrow" id="mobile-primary-title">PRIMARY NAVIGATION</p>
+        <div class="mobile-navigation__primary">${renderPrimaryNavigation()}</div>
+      </section>
+      <section class="mobile-navigation__section mobile-navigation__section--disciplines" aria-labelledby="mobile-disciplines-title">
+        <p class="mobile-navigation__eyebrow" id="mobile-disciplines-title">SELECTED DISCIPLINES</p>
+        <div class="mobile-navigation__disciplines">${renderDisciplines()}</div>
+      </section>
+      <footer class="mobile-navigation__footer">
+        <strong>BANCI / ZHANG SHIWEI</strong>
+        <span>BRAND × PRODUCT × AI</span>
+        <span>2026</span>
+      </footer>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  const mobileQuery = window.matchMedia('(max-width: 860px)');
+  const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  let previousTone = null;
+  let isOpen = false;
+
+  function setHeaderForMenu(open) {
+    navigationHeaders.forEach(item => {
+      if (open) {
+        if (item.hasAttribute('data-tone')) item.dataset.navPreviousTone = item.dataset.tone;
+        item.dataset.tone = 'light';
+      } else {
+        const savedTone = item.dataset.navPreviousTone;
+        if (savedTone) item.dataset.tone = savedTone;
+        else if (previousTone === null) item.removeAttribute('data-tone');
+        delete item.dataset.navPreviousTone;
+      }
+    });
+  }
+
+  function openMenu() {
+    if (isOpen || !mobileQuery.matches) return;
+    isOpen = true;
+    previousTone = header.getAttribute('data-tone');
+    overlay.inert = false;
+    overlay.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('is-open');
+    document.body.classList.add('nav-open');
+    toggle.textContent = 'CLOSE';
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close mobile navigation');
+    setHeaderForMenu(true);
+    requestAnimationFrame(() => overlay.querySelector('a[href]')?.focus());
+  }
+
+  function closeMenu({ restoreFocus = true } = {}) {
+    if (!isOpen) {
+      document.body.classList.remove('nav-open');
+      return;
+    }
+    isOpen = false;
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.inert = true;
+    document.body.classList.remove('nav-open');
+    toggle.textContent = 'MENU';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open mobile navigation');
+    setHeaderForMenu(false);
+    if (restoreFocus && document.contains(toggle)) toggle.focus();
+  }
+
+  toggle.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+  overlay.addEventListener('click', event => {
+    if (event.target.closest('a[href]')) closeMenu({ restoreFocus: false });
+  });
+
+  document.addEventListener('keydown', event => {
+    if (!isOpen) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeMenu();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const focusable = [toggle, ...overlay.querySelectorAll(focusableSelector)].filter(element => !element.inert);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  const resetForDesktop = event => {
+    if (!event.matches) closeMenu({ restoreFocus: false });
+  };
+  mobileQuery.addEventListener?.('change', resetForDesktop);
+  window.addEventListener('pageshow', () => {
+    if (!mobileQuery.matches) closeMenu({ restoreFocus: false });
+  });
+}
+
+setupMobileNavigation();
 
 document.querySelectorAll('.nav-system__item').forEach(item => {
   item.addEventListener('pointermove', event => {

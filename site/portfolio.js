@@ -10,12 +10,79 @@ const escapeAttribute = value => String(value ?? "").replace(/&/g, "&amp;").repl
 
 dataPromise.then(data => {
   if ($("#featured")) {
-    $("#featured").innerHTML = data.projects.slice(0, 4).map((project, index) => `<a data-project="${project.slug}" href="${projectUrl(project)}">
-      <span>${String(index + 1).padStart(2, "0")}</span>
-      <strong>${project.title}</strong>
-      <small>${project.category.join(" / ").toUpperCase()} · ${project.year}</small>
-      <span aria-hidden="true">↗</span>
-    </a>`).join("");
+    const featuredProjects = data.projects
+      .filter(project => project.featured === true)
+      .sort((a, b) => (a.featuredOrder ?? Number.MAX_SAFE_INTEGER) - (b.featuredOrder ?? Number.MAX_SAFE_INTEGER))
+      .slice(0, 4);
+    $("#featured").innerHTML = featuredProjects.map((project, index) => {
+      const href = projectUrl(project);
+      const number = String(index + 1).padStart(2, "0");
+      const category = project.featuredCategoryLabel || project.category.join(" × ").toUpperCase();
+      const displayYear = String(project.year).replace(/(\d{4})[–-](\d{4})/g, "$1—$2");
+      const statementZh = project.featuredStatement || project.description;
+      const statementEn = project.featuredStatementEn || project.descriptionEn || project.description;
+      const scope = (project.featuredScope || project.tools || []).join(" / ");
+      const titleHtml = (project.featuredTitleLines || [project.title])
+        .map((line) => `<span>${escapeAttribute(line)}</span>`)
+        .join("");
+      const imageLoading = index === 0
+        ? 'loading="eager" fetchpriority="high" decoding="async"'
+        : 'loading="lazy" decoding="async"';
+
+      return `<article class="featured-case${index === 0 ? " featured-case--primary" : ""}" data-project="${escapeAttribute(project.slug)}">
+        <div class="featured-case__meta">
+          <span>${number} / ${escapeAttribute(category)}</span>
+          <span>${escapeAttribute(displayYear)}</span>
+        </div>
+        <div class="featured-case__intro">
+          <h3 class="featured-case__title">${titleHtml}</h3>
+          <p class="featured-case__statement" data-zh="${escapeAttribute(statementZh)}" data-en="${escapeAttribute(statementEn)}">${escapeAttribute(statementZh)}</p>
+        </div>
+        <a class="featured-case__media" href="${escapeAttribute(href)}" aria-label="查看 ${escapeAttribute(project.title)} 完整案例" style="--featured-object-position:${escapeAttribute(project.featuredObjectPosition || "50% 50%")}">
+          <img src="${escapeAttribute(project.cover)}" alt="${escapeAttribute(project.title)} 项目封面" ${imageLoading}>
+        </a>
+        <div class="featured-case__evidence">
+          <div><span>ROLE</span><p>${escapeAttribute(project.role)}</p></div>
+          <div><span>SCOPE</span><p>${escapeAttribute(scope)}</p></div>
+          <div><span>RESULT</span><p>${escapeAttribute(project.result || "In development")}</p></div>
+        </div>
+        <a class="featured-case__cta" href="${escapeAttribute(href)}" aria-label="查看 ${escapeAttribute(project.title)} 完整案例">
+          <span>VIEW FULL CASE</span><span aria-hidden="true">↗</span>
+        </a>
+      </article>`;
+    }).join("");
+  }
+  if ($("#homepage-evidence")) {
+    $("#homepage-evidence").innerHTML = (data.evidence || []).map(item => {
+      const metricClass = item.longMetric ? " feature-proof__metric--long" : "";
+      const secondary = item.secondary
+        ? `<p class="feature-proof__secondary" data-zh="${escapeAttribute(item.secondaryZh)}" data-en="${escapeAttribute(item.secondary)}">${escapeAttribute(item.secondaryZh)}</p>`
+        : "";
+      return `<article class="feature-proof">
+        <div class="feature-proof__project"><span>${escapeAttribute(item.project)}</span><span>${escapeAttribute(item.number)}</span></div>
+        <div class="feature-proof__measure">
+          <strong class="feature-proof__metric${metricClass}">${escapeAttribute(item.metric)}</strong>
+          <p class="feature-proof__label" data-zh="${escapeAttribute(item.metricLabelZh)}" data-en="${escapeAttribute(item.metricLabel)}">${escapeAttribute(item.metricLabelZh)}</p>
+        </div>
+        <div class="feature-proof__context">
+          <p class="feature-proof__support" data-zh="${escapeAttribute(item.supportZh)}" data-en="${escapeAttribute(item.support)}">${escapeAttribute(item.supportZh)}</p>
+          ${secondary}
+        </div>
+      </article>`;
+    }).join("");
+  }
+  const akuPractice = $("#practice-aku");
+  if (akuPractice) {
+    const project = data.projects.find(item => item.slug === akuPractice.dataset.projectSlug);
+    if (project) {
+      const href = projectUrl(project);
+      const titleLines = project.title.replace(/\s+365$/i, "").trim();
+      akuPractice.querySelectorAll("a").forEach(link => { link.href = href; });
+      const image = $(".practice-item__media img", akuPractice);
+      if (image && project.homepagePracticeCover) image.src = project.homepagePracticeCover;
+      const title = $("h3", akuPractice);
+      if (title) title.innerHTML = `<span>${escapeAttribute(titleLines)}</span><span>365</span>`;
+    }
   }
   if ($("#category-list")) {
     $("#category-list").innerHTML = data.categories.map(category => `<a class="category" href="/work/?category=${category.id}"><span>${category.number}</span><h2>${category.title}<small>${category.cn}</small></h2><p>${category.description}</p><span class="category-arrow">↗</span></a>`).join("");
@@ -65,4 +132,5 @@ dataPromise.then(data => {
     $("#project-tools").textContent = project.tools.join(" · ");
     document.title = `${project.title} — BANCI`;
   }
+  window.BanciI18n?.applyLanguage();
 }).then(() => import("/card-effects.js"));

@@ -24,7 +24,7 @@
       ['.selected-intro p', '<small>策略成为可见的体验</small>从品牌识别到智能硬件体验，用清晰的设计系统连接商业、技术与用户。', '<small>STRATEGY BECOMES VISIBLE EXPERIENCE</small>From brand identity to intelligent hardware, clear design systems connect business, technology and people.', true],
       ['.selected > .glass-button', '查看全部项目 <span>→</span>', 'VIEW ALL PROJECTS <span>→</span>', true],
       ['.home-about .section-kicker span:last-child', '关于我 / 系统思考', 'ABOUT / SYSTEM THINKING'],
-      ['.home-about h2', '从视觉执行，<br>到产品定义。', 'From visual execution<br>to product definition.', true],
+      ['.home-about h2', '<span>从视觉表达，</span><span>到产品体验。</span>', '<span>From visual expression</span><span>to product experience.</span>', true],
       ['.home-about .about-copy p', '<small>从视觉执行到产品定义</small>我的设计经历从内容视觉开始，逐渐扩展到品牌体系、产品体验与智能硬件。我擅长把复杂的信息、技术与商业目标，转化为用户能够理解的体验。', '<small>FROM VISUAL EXECUTION TO PRODUCT DEFINITION</small>My practice grew from content and visual design into brand systems, product experience and intelligent hardware. I turn complex information, technology and business goals into experiences people can understand.', true],
       ['.home-about .glass-button', '了解张仕伟 <span>→</span>', 'ABOUT ZHANG SHIWEI <span>→</span>', true],
       ['.contact-strip .section-kicker span:last-child', '多多联系 / 一起合作', "CONTACT / LET'S COLLABORATE"],
