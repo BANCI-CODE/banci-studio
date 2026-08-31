@@ -159,7 +159,7 @@
         control.setAttribute('aria-label', 'Language / 语言');
         const chinaFlag = '<span class="language-switch__flag" aria-hidden="true"><svg viewBox="0 0 14 10"><rect width="14" height="10" fill="#ee1c25"/><path fill="#ffde00" d="m3 1 .45 1.2 1.28.06-.99.8.34 1.24L3 3.58 1.92 4.3l.34-1.24-.99-.8 1.28-.06z"/><circle cx="5.7" cy="1.45" r=".32" fill="#ffde00"/><circle cx="6.55" cy="2.35" r=".3" fill="#ffde00"/><circle cx="6.45" cy="3.55" r=".3" fill="#ffde00"/><circle cx="5.55" cy="4.35" r=".3" fill="#ffde00"/></svg></span>';
         const ukFlag = '<span class="language-switch__flag" aria-hidden="true"><svg viewBox="0 0 14 10"><rect width="14" height="10" fill="#012169"/><path d="M0 0 14 10M14 0 0 10" stroke="#fff" stroke-width="2.8"/><path d="M0 0 14 10M14 0 0 10" stroke="#c8102e" stroke-width="1"/><path d="M6 0h2v4h6v2H8v4H6V6H0V4h6z" fill="#fff"/><path d="M6.55 0h.9v4.45H14v1.1H7.45V10h-.9V5.55H0v-1.1h6.55z" fill="#c8102e"/></svg></span>';
-        control.innerHTML = `<button type="button" data-language="zh">${chinaFlag}中文</button><span class="language-switch__divider" aria-hidden="true"></span><button type="button" data-language="en">${ukFlag}English</button>`;
+        control.innerHTML = `<button type="button" data-language="zh">${chinaFlag}ZH</button><span class="language-switch__divider" aria-hidden="true">/</span><button type="button" data-language="en">${ukFlag}EN</button>`;
         utility.appendChild(control);
         control.querySelectorAll('button').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language)));
       }
@@ -168,6 +168,7 @@
 
   function applyNav() {
     document.querySelectorAll('.nav-system__item').forEach(link => {
+      if (link.hasAttribute('data-primary-nav')) return;
       const href = link.getAttribute('href') || '';
       let pair = navCopy[href];
       if (href.includes('category=brand')) pair = navCopy.brand;
@@ -229,6 +230,13 @@
     });
   }
 
+  function markChineseCopy() {
+    const containsCjk = /[\u3400-\u9fff\uf900-\ufaff]/;
+    document.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,blockquote,figcaption,dt,dd').forEach(element => {
+      element.classList.toggle('is-cjk-copy', language === 'zh' && containsCjk.test(element.textContent || ''));
+    });
+  }
+
   function applyLanguage() {
     ensureSwitch();
     document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
@@ -240,6 +248,7 @@
     if (page === 'work') applyWorkDynamic();
     if (page === 'lab') applyLabDynamic();
     if (titles[page]) document.title = titles[page][language === 'zh' ? 0 : 1];
+    markChineseCopy();
     updateControls();
   }
 

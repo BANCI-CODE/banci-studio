@@ -39,7 +39,7 @@ dataPromise.then(data => {
           <p class="featured-case__statement" data-zh="${escapeAttribute(statementZh)}" data-en="${escapeAttribute(statementEn)}">${escapeAttribute(statementZh)}</p>
         </div>
         <a class="featured-case__media" href="${escapeAttribute(href)}" aria-label="查看 ${escapeAttribute(project.title)} 完整案例" style="--featured-object-position:${escapeAttribute(project.featuredObjectPosition || "50% 50%")}">
-          <img src="${escapeAttribute(project.cover)}" alt="${escapeAttribute(project.title)} 项目封面" ${imageLoading}>
+          <img src="${escapeAttribute(project.featuredCover || project.cover)}" alt="${escapeAttribute(project.title)} 项目封面" ${imageLoading}>
         </a>
         <div class="featured-case__evidence">
           <div><span>ROLE</span><p>${escapeAttribute(project.role)}</p></div>
