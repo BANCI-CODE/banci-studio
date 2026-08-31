@@ -1,0 +1,111 @@
+.nav-utility {
+  position: relative;
+  z-index: 2;
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  min-width: max-content;
+}
+
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: inherit;
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+
+.language-switch__divider {
+  color: currentColor;
+  font-size: 10px;
+  opacity: .24;
+}
+
+.language-switch button {
+  min-height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
+  box-shadow: none;
+  font: inherit;
+  letter-spacing: inherit;
+  text-shadow: none;
+  cursor: pointer;
+  opacity: .42;
+  transform: none;
+  transition: opacity .24s ease;
+}
+
+.language-switch button:hover,
+.language-switch button:focus-visible,
+.language-switch button[aria-pressed="true"] {
+  opacity: 1;
+  text-shadow: none;
+  transform: none;
+}
+
+.language-switch button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.language-switch__flag {
+  width: 14px;
+  height: 10px;
+  margin-right: 5px;
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .12);
+}
+
+.language-switch__flag svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+body[data-language="en"] .hero-statement__en,
+body[data-language="en"] .aku-intro .intro-en {
+  display: none;
+}
+
+/* CJK copy needs more air than the condensed Latin display system. */
+html[lang^="zh"] :is(h1, h2, h3, h4, h5, h6).is-cjk-copy {
+  line-height: 1.16 !important;
+  letter-spacing: .065em !important;
+}
+
+html[lang^="zh"] :is(p, li, blockquote, figcaption, dt, dd).is-cjk-copy {
+  line-height: 1.76 !important;
+  letter-spacing: .045em !important;
+}
+
+@media (max-width: 680px) {
+  html[lang^="zh"] :is(h1, h2, h3, h4, h5, h6).is-cjk-copy {
+    line-height: 1.18 !important;
+    letter-spacing: .05em !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .site-header.nav-system-shell .nav-utility {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .language-switch button {
+    transition: none;
+  }
+}
