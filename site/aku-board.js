@@ -235,12 +235,6 @@
         totalDays: Number(archiveConfig.totalDays) || defaults.totalDays,
         currentDay: Number(archiveConfig.currentDay) || defaults.currentDay
       };
-      const progress = document.querySelector('#aku-board-progress');
-      const current = document.querySelector('#aku-current-day');
-      const total = document.querySelector('#aku-total-days');
-      if (progress) progress.setAttribute('aria-label', `创作进度 ${settings.currentDay} / ${settings.totalDays}`);
-      if (current) current.textContent = settings.currentDay;
-      if (total) total.textContent = settings.totalDays;
       activeDay = settings.currentDay;
       itemsByDay = new Map((dailyItems || []).map(item => [Number(item.day), item]));
     } catch (error) {

@@ -117,11 +117,7 @@
   const titles = {
     home: ['BANCI — 品牌、产品与 AI', 'BANCI — Brand, Product & AI'], work: ['作品 — BANCI', 'Work — BANCI'],
     about: ['关于 — BANCI', 'About — BANCI'], lab: ['个人创作 — BANCI', 'Creative Lab — BANCI'], notes: ['随手记录 — BANCI', 'Daily Notes — BANCI'],
-    contact: ['联系 — BANCI', 'Contact — BANCI'], aku: ['AKU World — BANCI', 'AKU World — BANCI'],
-    akuEvolution: ['成长看板 — AKU World', 'Evolution Board — AKU World'],
-    akuDaily: ['AKU 日常 — AKU World', 'AKU Daily — AKU World'],
-    akuCalendar: ['年度月历 — AKU World', 'Year Calendar — AKU World'],
-    akuPins: ['物件档案 — AKU World', 'PIN Archive — AKU World']
+    contact: ['联系 — BANCI', 'Contact — BANCI'], aku: ['AKU Days 365 — BANCI', 'AKU Days 365 — BANCI']
   };
 
   function pageName() {
@@ -132,10 +128,6 @@
     if (path.startsWith('/lab/')) return 'lab';
     if (path.startsWith('/notes/')) return 'notes';
     if (path.startsWith('/contact/')) return 'contact';
-    if (path.endsWith('/projects/aku-evolution.html')) return 'akuEvolution';
-    if (path.endsWith('/projects/aku-daily.html')) return 'akuDaily';
-    if (path.endsWith('/projects/aku-calendar.html')) return 'akuCalendar';
-    if (path.endsWith('/projects/aku-pins.html')) return 'akuPins';
     if (path.includes('/projects/aku')) return 'aku';
     return 'project';
   }
