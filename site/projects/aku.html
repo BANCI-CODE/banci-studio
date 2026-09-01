@@ -3,67 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="AKU Evolution Board — 365 天视觉创作计划，每个点对应一天的作品。">
-  <title>AKU Evolution Board — BANCI</title>
+  <meta name="description" content="AKU World — 一个持续成长的角色世界。">
+  <title>AKU World — BANCI</title>
   <link rel="icon" href="/banci.svg">
-  <link rel="stylesheet" href="/aku-board.css">
+  <link rel="stylesheet" href="/aku-world.css">
 </head>
-<body class="aku-board-page">
-  <header class="site-header" data-tone="dark">
-    <a class="logo" href="/" aria-label="BANCI home"><img src="/banci.svg" alt=""><b>BANCI</b></a>
-  </header>
-
-  <main class="aku-board-main">
-    <section class="evolution-board" id="aku-evolution-board" aria-labelledby="aku-board-title">
-      <div class="evolution-board__heading">
-        <p class="evolution-board__eyebrow">DAILY VISUAL PRACTICE / 365 DAYS</p>
-        <h1 id="aku-board-title"><span>AKU EVOLUTION</span> <span>BOARD</span></h1>
-        <div class="evolution-board__progress" aria-label="创作进度 206 / 365">
-          <span>创作进度</span>
-          <strong><b>206</b><i>/</i>365</strong>
-        </div>
+<body class="aku-world-page" data-aku-view="world">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header" data-tone="dark"><a class="logo" href="/" aria-label="BANCI home"><img src="/banci.svg" alt=""><b>BANCI</b></a></header>
+  <main class="aku-world-main" id="main">
+    <section class="aku-world-hero" aria-labelledby="aku-world-title">
+      <div class="aku-world-hero__meta"><span>AN EVOLVING CHARACTER UNIVERSE</span><span id="aku-world-progress">206 / 365</span></div>
+      <h1 id="aku-world-title"><span>AKU</span><span>WORLD</span></h1>
+      <div class="aku-world-hero__statement">
+        <p>AKU 不是一组插画，<br>而是一个持续生长的角色世界。</p>
+        <p>时间留下成长，日常形成故事，<br>物件与节奏扩展它的边界。</p>
       </div>
-
-      <div class="evolution-board__stage" id="aku-board-stage">
-        <article class="aku-preview" id="aku-preview" aria-live="polite" aria-atomic="true">
-          <div class="aku-preview__image-wrap">
-            <img id="aku-preview-image" alt="" decoding="async" loading="lazy" hidden>
-            <div class="aku-preview__placeholder" id="aku-preview-placeholder">
-              <span>AKU DAILY</span><strong>载入中</strong>
-            </div>
-          </div>
-          <div class="aku-preview__content">
-            <div>
-              <span class="aku-preview__day" id="aku-preview-day">DAY 206</span>
-              <h2 id="aku-preview-title">绩优生</h2>
-              <p id="aku-preview-meta">WEEK 30 / CURRENT WORK</p>
-            </div>
-            <span class="aku-preview__lock" id="aku-preview-lock">CURRENT</span>
-          </div>
-          <div class="aku-preview__controls" aria-label="切换作品">
-            <button type="button" data-step="-1" aria-label="上一张作品">← <span>PREV</span></button>
-            <button type="button" data-step="1" aria-label="下一张作品"><span>NEXT</span> →</button>
-          </div>
-        </article>
-
-        <div class="aku-matrix-wrap">
-          <div class="aku-matrix" id="aku-matrix" role="grid" aria-label="AKU 365 天作品点阵"></div>
-        </div>
-      </div>
-
-      <footer class="evolution-board__footer">
-        <div class="aku-legend" aria-label="点阵图例">
-          <span><i class="is-done"></i>已完成</span>
-          <span><i class="is-current"></i>当前</span>
-          <span><i class="is-upcoming"></i>未开始</span>
-        </div>
-        <p><span class="desktop-instruction">HOVER TO PREVIEW · CLICK TO LOCK · ESC TO RESET</span><span class="mobile-instruction">TAP A DOT OR USE PREV / NEXT</span></p>
-      </footer>
     </section>
+    <nav class="aku-world-index" aria-label="AKU World modules">
+      <a class="aku-world-entry" href="/projects/aku-evolution.html"><span class="aku-world-entry__number">01</span><span class="aku-world-entry__title">EVOLUTION BOARD</span><span class="aku-world-entry__role"><b>TIME / GROWTH</b><em>从 Day 1 到 Day 365 的成长轨迹</em></span><span class="aku-world-entry__arrow" aria-hidden="true">↗</span></a>
+      <a class="aku-world-entry" href="/projects/aku-daily.html"><span class="aku-world-entry__number">02</span><span class="aku-world-entry__title">AKU DAILY</span><span class="aku-world-entry__role"><b>STORY / CHARACTER</b><em>一天、一张图、一个故事</em></span><span class="aku-world-entry__arrow" aria-hidden="true">↗</span></a>
+      <a class="aku-world-entry" href="/projects/aku-calendar.html"><span class="aku-world-entry__number">03</span><span class="aku-world-entry__title">YEAR CALENDAR</span><span class="aku-world-entry__role"><b>YEAR / RHYTHM</b><em>十二个月的主题视觉</em></span><span class="aku-world-entry__arrow" aria-hidden="true">↗</span></a>
+      <a class="aku-world-entry" href="/projects/aku-pins.html"><span class="aku-world-entry__number">04</span><span class="aku-world-entry__title">PIN ARCHIVE</span><span class="aku-world-entry__role"><b>WORLD / OBJECT</b><em>贴纸、海报、物件与包装</em></span><span class="aku-world-entry__arrow" aria-hidden="true">↗</span></a>
+      <div class="aku-world-entry is-future" aria-disabled="true"><span class="aku-world-entry__number">05</span><span class="aku-world-entry__title">TEAR CALENDAR</span><span class="aku-world-entry__role"><b>INTERACTION</b><em>未来互动模块</em></span><span class="aku-world-entry__status">IN DEVELOPMENT</span></div>
+    </nav>
+    <footer class="aku-world-footer"><span>AKU WORLD / ONGOING</span><span>CREATED BY BANCI</span></footer>
   </main>
-
-  <noscript><p class="aku-noscript">请启用 JavaScript 以浏览 AKU 365 天作品点阵。</p></noscript>
   <script src="/aku-data.js"></script>
-  <script src="/aku-board.js"></script>
+  <script src="/aku-world.js"></script>
 </body>
 </html>

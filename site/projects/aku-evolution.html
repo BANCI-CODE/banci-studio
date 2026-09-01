@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="AKU Evolution Board — 365 天视觉创作计划，每个点对应一天的作品。">
+  <title>Evolution Board — AKU World</title>
+  <link rel="icon" href="/banci.svg">
+  <link rel="stylesheet" href="/aku-board.css">
+</head>
+<body class="aku-board-page">
+  <header class="site-header" data-tone="dark">
+    <a class="logo" href="/" aria-label="BANCI home"><img src="/banci.svg" alt=""><b>BANCI</b></a>
+  </header>
+  <main class="aku-board-main">
+    <nav class="aku-module-breadcrumb" aria-label="AKU World navigation">
+      <a href="/projects/aku.html">AKU WORLD</a><span aria-hidden="true">/</span><span>EVOLUTION BOARD</span>
+    </nav>
+    <section class="evolution-board" id="aku-evolution-board" aria-labelledby="aku-board-title">
+      <div class="evolution-board__heading">
+        <p class="evolution-board__eyebrow">TIME / GROWTH · DAILY VISUAL PRACTICE</p>
+        <h1 id="aku-board-title"><span>AKU EVOLUTION</span> <span>BOARD</span></h1>
+        <div class="evolution-board__progress" id="aku-board-progress" aria-label="创作进度 206 / 365"><span>创作进度</span><strong><b id="aku-current-day">206</b><i>/</i><span id="aku-total-days">365</span></strong></div>
+      </div>
+      <div class="evolution-board__stage" id="aku-board-stage">
+        <article class="aku-preview" id="aku-preview" aria-live="polite" aria-atomic="true">
+          <div class="aku-preview__image-wrap">
+            <img id="aku-preview-image" alt="" decoding="async" loading="lazy" hidden>
+            <div class="aku-preview__placeholder" id="aku-preview-placeholder"><span>AKU DAILY</span><strong>载入中</strong></div>
+          </div>
+          <div class="aku-preview__content">
+            <div><span class="aku-preview__day" id="aku-preview-day">DAY 206</span><h2 id="aku-preview-title">绩优生</h2><p id="aku-preview-meta">WEEK 30 / CURRENT WORK</p></div>
+            <span class="aku-preview__lock" id="aku-preview-lock">CURRENT</span>
+          </div>
+          <div class="aku-preview__controls" aria-label="切换作品">
+            <button type="button" data-step="-1" aria-label="上一张作品">← <span>PREV</span></button>
+            <button type="button" data-step="1" aria-label="下一张作品"><span>NEXT</span> →</button>
+          </div>
+        </article>
+        <div class="aku-matrix-wrap"><div class="aku-matrix" id="aku-matrix" role="grid" aria-label="AKU 365 天作品点阵"></div></div>
+      </div>
+      <footer class="evolution-board__footer">
+        <div class="aku-legend" aria-label="点阵图例"><span><i class="is-done"></i>已完成</span><span><i class="is-current"></i>当前</span><span><i class="is-upcoming"></i>未开始</span></div>
+        <p><span class="desktop-instruction">HOVER TO PREVIEW · CLICK TO LOCK · ESC TO RESET</span><span class="mobile-instruction">TAP A DOT OR USE PREV / NEXT</span></p>
+      </footer>
+    </section>
+  </main>
+  <noscript><p class="aku-noscript">请启用 JavaScript 以浏览 AKU 365 天作品点阵。</p></noscript>
+  <script src="/aku-data.js"></script>
+  <script src="/aku-board.js"></script>
+</body>
+</html>

@@ -31,6 +31,21 @@ button { font: inherit; }
   padding: 88px clamp(14px, 2.5vw, 40px) clamp(18px, 3vw, 44px);
 }
 
+.aku-module-breadcrumb {
+  display: flex;
+  width: min(1500px, 100%);
+  gap: 10px;
+  margin: 0 auto 14px;
+  color: var(--aku-muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.aku-module-breadcrumb a { color: inherit; text-decoration: none; }
+.aku-module-breadcrumb a:hover,
+.aku-module-breadcrumb a:focus-visible { color: var(--aku-green); }
+
 .evolution-board {
   position: relative;
   width: min(1500px, 100%);

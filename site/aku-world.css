@@ -1,0 +1,128 @@
+:root {
+  --world-bg: #090b09;
+  --world-panel: #101310;
+  --world-ink: #f3f4ee;
+  --world-muted: #858b83;
+  --world-line: rgba(243, 244, 238, .16);
+  --world-green: #54e66e;
+  --world-paper: #e9ebe4;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--world-bg); scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: var(--world-bg); color: var(--world-ink); font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+a { color: inherit; }
+.skip-link { position: fixed; z-index: 1000; left: 16px; top: -80px; padding: 12px 16px; background: var(--world-green); color: #091009; }
+.skip-link:focus { top: 12px; }
+
+.aku-world-main,
+.aku-module-main { width: min(1500px, calc(100% - clamp(24px, 5vw, 80px))); margin: 0 auto; padding: 106px 0 30px; }
+
+.aku-world-hero { min-height: min(760px, 76svh); padding: clamp(22px, 3vw, 44px) 0 clamp(48px, 7vw, 96px); border-bottom: 1px solid var(--world-line); }
+.aku-world-hero__meta { display: flex; justify-content: space-between; gap: 20px; color: var(--world-muted); font-size: 10px; font-weight: 700; letter-spacing: .15em; }
+.aku-world-hero__meta span:last-child { color: var(--world-green); }
+.aku-world-hero h1 { margin: clamp(70px, 13vh, 150px) 0 0; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; font-size: clamp(100px, 20vw, 340px); line-height: .68; letter-spacing: -.045em; }
+.aku-world-hero h1 span { display: block; }
+.aku-world-hero h1 span:last-child { margin-left: clamp(38px, 13vw, 220px); color: transparent; -webkit-text-stroke: 1px var(--world-ink); }
+.aku-world-hero__statement { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; width: min(840px, 72%); margin: clamp(60px, 9vw, 120px) 0 0 auto; }
+.aku-world-hero__statement p { margin: 0; font-size: clamp(17px, 1.5vw, 25px); line-height: 1.75; letter-spacing: .08em; }
+.aku-world-hero__statement p:last-child { color: var(--world-muted); }
+
+.aku-world-index { display: block; padding-top: 20px; }
+.aku-world-entry { display: grid; grid-template-columns: 70px minmax(280px, 1.4fr) minmax(250px, .8fr) 48px; min-height: 150px; align-items: center; gap: 20px; border-bottom: 1px solid var(--world-line); text-decoration: none; transition: color 240ms ease, background-color 240ms ease; }
+.aku-world-entry__number { align-self: start; padding-top: 28px; color: var(--world-muted); font-size: 10px; font-weight: 800; letter-spacing: .16em; }
+.aku-world-entry__title { font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; font-size: clamp(38px, 5.2vw, 88px); line-height: .9; letter-spacing: -.025em; }
+.aku-world-entry__role { display: grid; gap: 9px; }
+.aku-world-entry__role b { color: var(--world-green); font-size: 10px; letter-spacing: .15em; }
+.aku-world-entry__role em { color: var(--world-muted); font-size: 14px; font-style: normal; line-height: 1.65; letter-spacing: .05em; }
+.aku-world-entry__arrow { font-size: 26px; transition: transform 240ms ease; }
+.aku-world-entry:hover,
+.aku-world-entry:focus-visible { background: var(--world-ink); color: #0c0f0c; outline: none; }
+.aku-world-entry:hover .aku-world-entry__number,
+.aku-world-entry:hover .aku-world-entry__role em,
+.aku-world-entry:focus-visible .aku-world-entry__number,
+.aku-world-entry:focus-visible .aku-world-entry__role em { color: #4f554f; }
+.aku-world-entry:hover .aku-world-entry__arrow,
+.aku-world-entry:focus-visible .aku-world-entry__arrow { transform: translate(5px, -5px); }
+.aku-world-entry.is-future { color: #565b56; }
+.aku-world-entry.is-future .aku-world-entry__role b { color: #565b56; }
+.aku-world-entry__status { justify-self: end; color: var(--world-muted); font-size: 9px; font-weight: 800; letter-spacing: .14em; }
+.aku-world-footer { display: flex; justify-content: space-between; padding: 28px 0 8px; color: var(--world-muted); font-size: 9px; font-weight: 700; letter-spacing: .14em; }
+
+.aku-module-breadcrumb { display: flex; gap: 10px; margin-bottom: 44px; color: var(--world-muted); font-size: 9px; font-weight: 800; letter-spacing: .14em; }
+.aku-module-breadcrumb a { text-decoration: none; }
+.aku-module-breadcrumb a:hover,
+.aku-module-breadcrumb a:focus-visible { color: var(--world-green); }
+.aku-module-heading { display: grid; grid-template-columns: 70px 1fr; gap: 20px; padding: 0 0 clamp(46px, 6vw, 86px); border-bottom: 1px solid var(--world-line); }
+.aku-module-heading > span { color: var(--world-green); font-size: 11px; font-weight: 800; letter-spacing: .16em; }
+.aku-module-heading p { margin: 0 0 16px; color: var(--world-muted); font-size: 10px; font-weight: 700; letter-spacing: .15em; }
+.aku-module-heading h1 { margin: 0; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; font-size: clamp(66px, 12vw, 190px); line-height: .78; letter-spacing: -.035em; }
+.aku-module-heading .aku-module-heading__intro { width: min(600px, 80%); margin: 34px 0 0 auto; color: var(--world-ink); font-size: clamp(15px, 1.35vw, 21px); font-weight: 400; line-height: 1.8; letter-spacing: .08em; }
+
+.aku-daily-focus { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr); min-height: 72svh; border-bottom: 1px solid var(--world-line); }
+.aku-daily-focus__image { position: relative; display: grid; min-height: 700px; place-items: center; background: #111511; }
+.aku-daily-focus__image img { display: block; width: 100%; height: 100%; max-height: 840px; object-fit: contain; }
+.aku-daily-focus__image span { position: absolute; color: var(--world-muted); font-size: 9px; font-weight: 700; letter-spacing: .14em; }
+.aku-daily-focus__image img:not([src]) { display: none; }
+.aku-daily-focus__copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(34px, 5vw, 84px); border-left: 1px solid var(--world-line); }
+.aku-daily-focus__copy > p:first-child { color: var(--world-green); font-size: 10px; font-weight: 800; letter-spacing: .16em; }
+.aku-daily-focus__copy h2 { margin: 28px 0 22px; font-size: clamp(42px, 6vw, 86px); line-height: 1.15; letter-spacing: .08em; }
+.aku-daily-focus__copy > p:nth-of-type(2) { min-height: 4em; margin: 0; color: var(--world-muted); font-size: 16px; line-height: 2; letter-spacing: .08em; }
+.aku-daily-focus__copy > div { display: flex; justify-content: space-between; gap: 18px; margin-top: 80px; padding-top: 16px; border-top: 1px solid var(--world-line); color: var(--world-muted); font-size: 9px; font-weight: 700; letter-spacing: .14em; }
+
+.aku-calendar-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-left: 1px solid var(--world-line); }
+.aku-calendar-card { margin: 0; padding: clamp(18px, 2vw, 30px); border-right: 1px solid var(--world-line); border-bottom: 1px solid var(--world-line); }
+.aku-calendar-card__image { display: grid; overflow: hidden; aspect-ratio: 2 / 3; place-items: center; background: #131713; }
+.aku-calendar-card img { display: block; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 240ms ease; }
+.aku-calendar-card img.is-loaded { opacity: 1; }
+.aku-calendar-card figcaption { display: flex; justify-content: space-between; padding-top: 18px; font-size: 10px; font-weight: 800; letter-spacing: .14em; }
+.aku-calendar-card figcaption span:last-child { color: var(--world-muted); }
+
+.aku-pin-field { position: relative; min-height: 1900px; overflow: hidden; border-bottom: 1px solid var(--world-line); background-image: linear-gradient(var(--world-line) 1px, transparent 1px), linear-gradient(90deg, var(--world-line) 1px, transparent 1px); background-size: 12.5% 180px; }
+.aku-pin-item { position: absolute; left: var(--pin-x); top: var(--pin-y); width: clamp(120px, var(--pin-size), 250px); margin: 0; transform: rotate(var(--pin-r)); }
+.aku-pin-item img { display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.28)); opacity: 0; transition: opacity 220ms ease, transform 220ms ease; }
+.aku-pin-item img.is-loaded { opacity: 1; }
+.aku-pin-item:hover img { transform: translateY(-6px); }
+.aku-pin-item figcaption { display: flex; justify-content: space-between; margin-top: 8px; color: var(--world-muted); font-size: 8px; font-weight: 700; letter-spacing: .12em; }
+
+@media (max-width: 860px) {
+  .aku-world-main, .aku-module-main { width: calc(100% - 24px); padding-top: 86px; }
+  .aku-world-hero { min-height: 640px; }
+  .aku-world-hero h1 { margin-top: 110px; font-size: clamp(82px, 30vw, 150px); }
+  .aku-world-hero h1 span:last-child { margin-left: 0; }
+  .aku-world-hero__statement { grid-template-columns: 1fr; width: 100%; margin-top: 82px; }
+  .aku-world-entry { grid-template-columns: 42px 1fr 36px; min-height: 150px; }
+  .aku-world-entry__role { grid-column: 2 / 3; padding-bottom: 24px; }
+  .aku-world-entry__arrow, .aku-world-entry__status { grid-column: 3; grid-row: 1 / 3; }
+  .aku-world-entry__title { padding-top: 24px; }
+  .aku-module-heading { grid-template-columns: 42px 1fr; }
+  .aku-module-heading .aku-module-heading__intro { width: 100%; margin-left: 0; }
+  .aku-daily-focus { grid-template-columns: 1fr; }
+  .aku-daily-focus__image { min-height: 58svh; }
+  .aku-daily-focus__copy { border-top: 1px solid var(--world-line); border-left: 0; }
+  .aku-calendar-grid { grid-template-columns: repeat(2, 1fr); }
+  .aku-pin-field { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; min-height: 0; padding: 12px 0; background: none; }
+  .aku-pin-item { position: static; width: auto; padding: 12px; border: 1px solid var(--world-line); transform: none; }
+  .aku-pin-item:hover img { transform: none; }
+}
+
+@media (max-width: 520px) {
+  .aku-world-hero__meta { align-items: flex-start; flex-direction: column; }
+  .aku-world-hero h1 { margin-top: 90px; font-size: clamp(76px, 29vw, 120px); }
+  .aku-world-entry { grid-template-columns: 36px 1fr 28px; }
+  .aku-world-entry__title { font-size: clamp(34px, 11vw, 52px); }
+  .aku-world-footer { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .aku-module-heading { grid-template-columns: 1fr; }
+  .aku-module-heading h1 { font-size: clamp(58px, 20vw, 92px); }
+  .aku-daily-focus__image { min-height: 52svh; }
+  .aku-daily-focus__copy { padding: 30px 18px 44px; }
+  .aku-calendar-grid { grid-template-columns: 1fr; }
+  .aku-pin-field { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .aku-pin-item { padding: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .aku-world-entry, .aku-world-entry__arrow, .aku-calendar-card img, .aku-pin-item img { transition: none; }
+}
