@@ -181,7 +181,7 @@
       "type": "featured",
       "workOrder": 2,
       "workGroup": "featured",
-      "discipline": "Product / UI / Interaction",
+      "discipline": "UI / Interaction / Product Form",
       "featured": true,
       "featuredOrder": 2,
       "featuredTitleLines": [
@@ -189,7 +189,7 @@
         "AI CHARGER"
       ],
       "featuredCategoryLabel": "PRODUCT × UI",
-      "featuredStatement": "为小型智能硬件建立可理解的屏幕交互、单键逻辑与情绪化产品体验。",
+      "featuredStatement": "从屏幕里的交互，到手中的产品形态。",
       "featuredStatementEn": "Designing screen interaction and a single-button experience for compact smart hardware.",
       "featuredScope": [
         "Interaction",
@@ -205,7 +205,7 @@
       "objectPositionMobile": "50% 50%",
       "fitMode": "cover",
       "cover": "/work/mova.png",
-      "description": "探索小型智能硬件中更自然的屏幕交互与 AI 产品体验。",
+      "description": "围绕 70W 智能充电头，整合 UI 界面、单键交互与产品外型设计。",
       "descriptionEn": "Exploring natural screen interaction and AI product experience within compact smart hardware.",
       "gallery": [],
       "video": [],
