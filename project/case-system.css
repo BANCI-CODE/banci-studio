@@ -1,0 +1,17 @@
+:root {
+  --case-page-pad: var(--pad);
+  --case-content-max: 1600px;
+  --case-reading-width: 800px;
+  --case-section-space: clamp(90px,8vw,140px);
+  --case-line: rgba(16,16,16,.24);
+}
+
+.case-study [data-case-stage] { position: relative; }
+.case-study .case-reading { max-width: var(--case-reading-width); }
+.case-study .case-media img { display: block; width: 100%; }
+.case-study .next-case { min-height: 44px; }
+.case-study .next-case:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .case-study *, .case-study *::before, .case-study *::after { scroll-behavior: auto !important; }
+}
