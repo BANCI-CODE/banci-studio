@@ -28,16 +28,14 @@
       ['.home-about .about-copy p', '<small>从视觉执行到产品定义</small>我的设计经历从内容视觉开始，逐渐扩展到品牌体系、产品体验与智能硬件。我擅长把复杂的信息、技术与商业目标，转化为用户能够理解的体验。', '<small>FROM VISUAL EXECUTION TO PRODUCT DEFINITION</small>My practice grew from content and visual design into brand systems, product experience and intelligent hardware. I turn complex information, technology and business goals into experiences people can understand.', true],
       ['.home-about .glass-button', '了解张仕伟 <span>→</span>', 'ABOUT ZHANG SHIWEI <span>→</span>', true],
       ['.contact-strip .section-kicker span:last-child', '多多联系 / 一起合作', "CONTACT / LET'S COLLABORATE"],
-      ['.contact-strip h2', '一起创造<br>下一步。', 'Let’s create<br>what comes next.', true],
-      ['.contact-strip .glass-button', '开始交流 <span>→</span>', 'START A CONVERSATION <span>→</span>', true]
+      ['.contact-strip h2', '一起创造<br>下一步。', 'Let’s make<br>what comes next.', true],
+      ['.contact-details-link', '查看联系详情 →', 'VIEW CONTACT DETAILS →']
     ],
     work: [
-      ['.work-intro .eyebrow', '精选实践 / 2015—2026', 'SELECTED PRACTICE / 2015—2026'],
-      ['.work-intro h1', '一种实践。<br><em>多种能力。</em>', 'One practice.<br><em>Multiple disciplines.</em>', true],
-      ['.work-intro-foot p:first-child', '从品牌识别到产品体验，再到 AI 时代的创造流程。这里按照能力与问题类型组织项目，而不是按照公司履历排列。', 'From brand identity and product experience to AI-era creative workflows. Projects are organized by capability and problem type—not by employment history.'],
-      ['.discipline-index .section-kicker span:last-child', '选择一个方向进入', 'CHOOSE A DISCIPLINE'],
-      ['#projects-title', '精选<br>作品', 'Selected<br>Works', true],
-      ['.project-index-head > p', '移动鼠标浏览项目，点击进入完整案例。项目页以设计决策、过程与结果为核心，而不是简单图片陈列。', 'Move through the index and open a complete case study. Each project focuses on decisions, process and impact rather than a simple image gallery.']
+      ['.work-intro .eyebrow', 'BANCI / 精选实践 / 2015—2026', 'BANCI / SELECTED PRACTICE / 2015—2026'],
+      ['.work-intro h1', 'WORK<br>INDEX', 'WORK<br>INDEX', true],
+      ['#projects-title', '项目<br>索引', 'Selected<br>Projects', true],
+      ['.project-index-head > p', '项目以实际角色、设计范围与优先级组织。桌面端移动鼠标可查看预览，点击进入完整案例。', 'Projects are organized by role, scope and priority. Hover to preview on desktop, then open the complete case study.']
     ],
     about: [
       ['.about-intro h1', '连接<br><em>系统、</em><br>产品<br>与人。', 'Connecting<br><em>systems,</em><br>products<br>&amp; people.', true],
@@ -69,14 +67,7 @@
       ['.lab-close p', '更多文章、创作记录与生活观察保存在 BANCI 的长期日志中。', 'More writing, creative records and observations live in BANCI’s long-term journal.'],
       ['.lab-close a', '打开 QIZHUAYU 日志 →', 'OPEN QIZHUAYU JOURNAL →']
     ],
-    contact: [
-      ['.contact-strip .eyebrow', '开放精选合作机会', 'AVAILABLE FOR SELECTED OPPORTUNITIES'],
-      ['.contact-strip h2', '一起创造<br>正在发生的下一步。', 'Let’s create<br>what comes next.', true],
-      ['.contact-strip div p', '张仕伟 / BANCI<br>品牌设计 × 产品体验 × AI 创意<br>中国深圳', 'ZHANG SHIWEI / BANCI<br>Brand Design × Product Experience × AI Creative<br>Shenzhen, China', true],
-      ['.contact-strip .text-link:nth-of-type(1)', '查看完整作品索引 →', 'VIEW COMPLETE WORK INDEX →'],
-      ['.contact-strip .text-link:nth-of-type(2)', '阅读日志 →', 'READ JOURNAL →'],
-      ['.contact-strip .text-link:nth-of-type(3)', '关于我与经历 →', 'ABOUT & EXPERIENCE →']
-    ],
+    contact: [],
     aku: [
       ['.aku-intro .eyebrow', '个人创作研究 / 365 天中的第 206 天', 'PERSONAL CREATIVE RESEARCH / 206 OF 365'],
       ['.aku-intro .intro-copy', '每天创作一张插画，<br>通过视觉记录观察、思考与表达。', 'One illustration every day—<br>a visual record of observation, thought and expression.', true],
@@ -203,7 +194,8 @@
     });
     document.querySelectorAll('#filters button').forEach(button => {
       const id = button.dataset.filter;
-      const value = id === 'all' ? (language === 'zh' ? '全部' : 'ALL') : workCategories[id] ? (language === 'zh' ? workCategories[id][0] : workCategories[id][1].toUpperCase()) : button.textContent;
+      const filterLabels = { all: 'ALL', brand: 'BRAND', product: 'PRODUCT', ui: 'UI', ai: 'AI' };
+      const value = filterLabels[id] || button.textContent;
       if (button.textContent !== value) button.textContent = value;
     });
   }

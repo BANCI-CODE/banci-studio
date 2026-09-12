@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-09-10T12:33:37+08:00",
+  "project": "C:\\Users\\QIZHUAYU\\Documents\\Codex\\2026-07-26\\files-mentioned-by-the-user-part",
+  "phases": [
+    12,
+    13
+  ],
+  "build": {
+    "html": 23,
+    "files": 2032,
+    "missingReferences": 0,
+    "matchingPreviewAndGithubHtml": true,
+    "published": false
+  },
+  "responsive": {
+    "checks": 104,
+    "failures": 0
+  },
+  "runtime": {
+    "normalViews": 48,
+    "reducedViews": 48,
+    "failures": 0,
+    "exceptions": 0,
+    "navigationSurface": "top-level browser page"
+  },
+  "contrast": {
+    "checked": 1152,
+    "skipped": 311,
+    "findings": 0
+  },
+  "seo": {
+    "pages": 23,
+    "errors": 0,
+    "warnings": 24,
+    "referencedStylesheets": 22
+  },
+  "missingContactData": [
+    "email",
+    "linkedin",
+    "resume"
+  ],
+  "changedSourceFiles": [
+    "scripts/build-github.mjs",
+    "scripts/build.mjs",
+    "scripts/seo-accessibility.mjs",
+    "site/aku-world.js",
+    "site/design-system.css",
+    "site/home-classic.css",
+    "site/home-classic.js",
+    "site/lab/lab.css",
+    "site/language-system.css",
+    "site/motion.css",
+    "site/nav-system.css",
+    "site/nav-system.js"
+  ],
+  "warnings": [
+    "Email, LinkedIn and resume are missing from contact.json; corresponding actions remain hidden.",
+    "No dedicated 1200x630 social sharing images supplied: four pages use correct existing project covers, nineteen omit og:image.",
+    "Generic project template, including the Baidu route, contains editorial placeholders and is noindex,follow.",
+    "Contrast results exclude 311 image/gradient/translucent/stroked text cases; this is not a full WCAG certification.",
+    "Prior image art-direction audit still lists optional crop/source improvements; no original image was changed.",
+    "About metadata says 张仕伟 while the original task says 张世伟; identity spelling was not guessed.",
+    "About employment date range and individual project year are not interchangeable; external resume dates were not verified."
+  ]
+}

@@ -28,6 +28,8 @@
 }
 
 .language-switch button {
+  min-width: 44px;
+  justify-content: center;
   min-height: 44px;
   padding: 0;
   display: inline-flex;
@@ -41,7 +43,7 @@
   letter-spacing: inherit;
   text-shadow: none;
   cursor: pointer;
-  opacity: .42;
+  opacity: .75;
   transform: none;
   transition: opacity .24s ease;
 }
@@ -106,6 +108,8 @@ html[lang^="zh"] :is(p, li, blockquote, figcaption, dt, dd).is-cjk-copy {
 
 @media (prefers-reduced-motion: reduce) {
   .language-switch button {
+  min-width: 44px;
+  justify-content: center;
     transition: none;
   }
 }

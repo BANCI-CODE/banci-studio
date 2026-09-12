@@ -490,6 +490,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .site-header.nav-system-shell,
+  .site-header.nav-system-shell .logo img,
   .site-header.nav-system-shell .nav-system__item,
   .site-header.nav-system-shell .nav-system__item::after,
   .site-header.nav-system-shell .mobile-nav-toggle,

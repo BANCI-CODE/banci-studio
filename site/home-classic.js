@@ -1,4 +1,4 @@
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window);
 const revealObserver = reduceMotion ? null : new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
@@ -36,7 +36,7 @@ if (featured) {
 
 const header = document.querySelector('.site-header');
 const toneSections = document.querySelectorAll('[data-header-tone]');
-if (header && toneSections.length) {
+if (header && toneSections.length && 'IntersectionObserver' in window) {
   const toneObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) header.dataset.tone = entry.target.dataset.headerTone || 'light';
@@ -51,42 +51,4 @@ if (backTop) {
   addEventListener('scroll', updateBackTop, { passive: true });
   updateBackTop();
   backTop.addEventListener('click', () => scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
-}
-
-const hero = document.querySelector('.hero');
-const signalCursor = hero?.querySelector('.signal-cursor');
-const probes = signalCursor ? [...signalCursor.querySelectorAll('.signal-probe')] : [];
-const finePointer = matchMedia('(pointer: fine) and (min-width: 761px)').matches;
-if (hero && signalCursor && probes.length && finePointer && !reduceMotion) {
-  const target = { x: innerWidth * .5, y: innerHeight * .5 };
-  const current = probes.map(() => ({ x: target.x, y: target.y }));
-  const offsets = [[18, -120], [210, 32], [-158, 140], [-86, -42], [98, 178]];
-  const speeds = [.24, .15, .11, .19, .09];
-  const updateCodes = () => probes.forEach(probe => {
-    const code = probe.querySelector('b');
-    if (code) code.textContent = String(Math.floor(1000 + Math.random() * 8999));
-  });
-  let frame;
-  const animate = () => {
-    probes.forEach((probe, index) => {
-      current[index].x += (target.x + offsets[index][0] - current[index].x) * speeds[index];
-      current[index].y += (target.y + offsets[index][1] - current[index].y) * speeds[index];
-      probe.style.setProperty('--probe-x', `${current[index].x}px`);
-      probe.style.setProperty('--probe-y', `${current[index].y}px`);
-    });
-    frame = requestAnimationFrame(animate);
-  };
-  hero.addEventListener('pointerenter', event => {
-    target.x = event.clientX;
-    target.y = event.clientY;
-    signalCursor.classList.add('is-active');
-    updateCodes();
-    if (!frame) animate();
-  });
-  hero.addEventListener('pointermove', event => {
-    target.x = event.clientX;
-    target.y = event.clientY;
-  });
-  hero.addEventListener('pointerleave', () => signalCursor.classList.remove('is-active'));
-  setInterval(() => signalCursor.classList.contains('is-active') && updateCodes(), 1400);
 }

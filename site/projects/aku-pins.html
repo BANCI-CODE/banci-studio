@@ -5,14 +5,28 @@
   <meta name="description" content="AKU Pin Archive — 贴纸、海报、物件与包装。"><title>PIN Archive — AKU World</title>
   <link rel="icon" href="/banci.svg"><link rel="stylesheet" href="/aku-world.css">
 </head>
-<body class="aku-world-page aku-module-page" data-aku-view="pins">
+<body class="aku-world-page aku-module-page aku-pins-page" data-aku-view="pins">
   <a class="skip-link" href="#main">跳到主要内容</a>
-  <header class="site-header" data-tone="dark"><a class="logo" href="/" aria-label="BANCI home"><img src="/banci.svg" alt=""><b>BANCI</b></a></header>
+  <header class="site-header" data-tone="light"><a class="logo" href="/" aria-label="BANCI home"><img src="/banci.svg" alt=""><b>BANCI</b></a></header>
   <main class="aku-module-main" id="main">
     <nav class="aku-module-breadcrumb" aria-label="AKU World navigation"><a href="/projects/aku.html">AKU WORLD</a><span>/</span><span>PIN ARCHIVE</span></nav>
-    <header class="aku-module-heading"><span>04</span><div><p>WORLD / OBJECT</p><h1>PIN ARCHIVE</h1><p class="aku-module-heading__intro">角色离开画面，进入贴纸、海报、物件与包装，AKU 的世界因此有了可以触摸的边界。</p></div></header>
+    <header class="aku-module-heading"><span>04</span><div><p>WORLD / OBJECT</p><h1><span class="pin-desktop-title">PIN ARCHIVE</span><span class="pin-mobile-title">AKU POCKET<br>ARCHIVE</span></h1><p class="aku-module-heading__intro">角色离开画面，进入贴纸、海报、物件与包装，AKU 的世界因此有了可以触摸的边界。</p></div></header>
+    <section class="aku-pocket-featured" id="aku-pocket-featured" aria-label="Featured PIN"></section>
+    <nav class="aku-archive-categories" aria-label="AKU archive categories">
+      <a href="/projects/aku-evolution.html">SPIRAL</a><a href="/projects/aku.html">ARCHIVE</a><span aria-disabled="true">TYPE</span><a href="/projects/aku-pins.html" aria-current="page">PINS</a><a href="/projects/aku-calendar.html">MONTHS</a><a href="/projects/aku-calendar.html">YEAR</a>
+    </nav>
     <section class="aku-pin-field" id="aku-pin-field" aria-label="AKU 物件档案"></section>
+    <div class="aku-pin-sentinel" id="aku-pin-sentinel" aria-hidden="true"></div>
   </main>
+  <div class="aku-pin-sheet" id="aku-pin-sheet" role="dialog" aria-modal="true" aria-labelledby="aku-pin-sheet-title" hidden>
+    <button class="aku-pin-sheet__scrim" type="button" data-sheet-close aria-label="关闭PIN详情"></button>
+    <section class="aku-pin-sheet__panel">
+      <div class="aku-pin-sheet__handle" aria-hidden="true"></div>
+      <button class="aku-pin-sheet__close" type="button" data-sheet-close aria-label="关闭PIN详情">CLOSE</button>
+      <div class="aku-pin-sheet__image"><img id="aku-pin-sheet-image" alt="" decoding="async"></div>
+      <div class="aku-pin-sheet__copy"><p id="aku-pin-sheet-day">DAY —</p><h2 id="aku-pin-sheet-title">PIN</h2><p id="aku-pin-sheet-description">AKU WORLD OBJECT ARCHIVE</p></div>
+    </section>
+  </div>
   <script src="/aku-data.js"></script><script src="/aku-world.js"></script>
 </body>
 </html>

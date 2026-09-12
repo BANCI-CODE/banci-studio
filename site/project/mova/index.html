@@ -1,72 +1,113 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="MOVA 智能充电器案例：从品牌表达、产品定义到屏幕界面与交互反馈。BANCI — Brand + Product Experience Designer。">
-  <title>MOVA — Brand + Product Experience | BANCI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MOVA AI Charger：围绕 1.3 英寸屏幕、单键逻辑与 22 个界面状态建立智能充电产品体验。">
+  <title>MOVA AI Charger — BANCI</title>
   <link rel="icon" href="/banci.svg">
   <link rel="stylesheet" href="/portfolio.css">
-  <link rel="stylesheet" href="/nav-system.css">
-  <link rel="stylesheet" href="/language-system.css">
-  <link rel="stylesheet" href="/responsive-system.css">
-  <link rel="stylesheet" href="/project/mova/mova.css">
-  <script src="/project/mova/mova.js" defer></script>
+  <link rel="stylesheet" href="/project/case.css">
+  <link rel="stylesheet" href="/project/case-system.css">
+  <link rel="stylesheet" href="/project/mova/mova-refinement.css">
 </head>
-<body class="mova-page" id="top">
-  <a class="mova-skip" href="#main">跳到案例正文</a>
-  <header class="site-header" data-tone="dark">
+<body class="case-page case-study mova-case">
+  <header class="site-header" data-tone="light">
     <a class="logo" href="/" aria-label="BANCI 首页"><img src="/banci.svg" alt=""><b>BANCI</b></a>
-    <nav aria-label="主导航"><a href="/work/" aria-current="page">WORK</a><a href="/about/">ABOUT</a><a href="/projects/aku.html">AKU JOURNAL</a><a href="/contact/">CONTACT</a></nav>
-    <span class="phase">CASE STUDY / MOVA</span>
+    <nav aria-label="主导航"><a href="/work/" aria-current="page">WORK</a><a href="/about/">ABOUT</a><a href="/projects/aku.html">JOURNAL</a><a href="/contact/">CONTACT</a></nav>
   </header>
-  <main id="main">
-    <section class="mova-hero mova-wrap" data-header-tone="dark" aria-labelledby="mova-title">
-      <div class="mova-hero-copy">
-        <p class="mova-label">MOVA / SMART CHARGING / 2025</p>
-        <h1 id="mova-title">Small object.<br><span>Closer connection.</span></h1>
-        <p class="mova-hero-intro">从一次充电，<br>到人与设备之间的清晰对话。</p>
-        <a class="mova-inline-link" href="#overview">探索设计过程 <span aria-hidden="true">↓</span></a>
+  <main>
+    <section class="case-hero" data-case-stage="hero">
+      <span class="eyebrow">PRODUCT EXPERIENCE × SMART HARDWARE INTERACTION</span>
+      <h1>MOVA<br><em>AI Charger.</em></h1>
+      <div class="case-lead"><p>在 1.3 英寸屏幕和一个物理按键的限制中，把复杂充电状态整理成可理解、可记忆的产品体验。</p><span>2025<br>PRODUCT EXPERIENCE DESIGNER<br>COMPACT SMART HARDWARE</span></div>
+    </section>
+
+    <section class="case-facts case-meta" data-case-stage="role">
+      <div><small>ROLE</small><b>Product Experience Designer</b></div>
+      <div><small>HARDWARE</small><b>1.3-inch Display · Single Button</b></div>
+      <div><small>SYSTEM</small><b>22 UI States</b></div>
+      <div><small>OUTPUT</small><b>Interaction System · Patent Application</b></div>
+    </section>
+
+    <section class="case-text case-context" data-case-stage="context">
+      <span class="eyebrow">01 / CONTEXT</span>
+      <div><h2>A charger became<br>an interface.</h2><p>产品是一款紧凑型智能充电器。屏幕需要在极短时间内解释功率、温度、端口、计时与异常状态，而用户只有一个物理按键可以操作。</p><p>设计任务不是为小屏增加更多功能，而是定义什么信息必须出现、何时出现，以及用户如何在不阅读说明书的情况下完成操作。</p></div>
+    </section>
+
+    <section class="mova-constraint case-challenge" data-case-stage="challenge">
+      <div class="mova-section-head"><span class="eyebrow">02 / CONSTRAINT</span><h2>Small screen.<br>One button.<br>Many states.</h2></div>
+      <div class="mova-constraint-grid">
+        <span>POWER INFORMATION</span><span>TEMPERATURE</span><span>CHARGING STATE</span><span>MULTIPLE PORTS</span><span>TIMING</span><span>RESET</span><span>SCREEN-OFF</span><span>ERROR FEEDBACK</span>
       </div>
-      <figure class="mova-hero-product">
-        <img src="/case-media/mova/mova-02.webp" alt="MOVA 智能充电器，顶部屏幕显示 C1 与 C2 端口信息" width="1046" height="1500" fetchpriority="high">
-        <figcaption>MOVA <span>SMART CHARGER</span></figcaption>
-      </figure>
-      <div class="mova-hero-foot"><span>BRAND + PRODUCT EXPERIENCE DESIGNER</span><span>PRODUCT DEFINITION · INTERACTION · SCREEN UI</span></div>
     </section>
 
-    <nav class="mova-chapters" aria-label="案例章节"><a href="#overview">项目概览</a><a href="#product">产品表达</a><a href="#interaction">交互设计</a><a href="#reflection">项目思考</a></nav>
-
-    <section class="mova-section mova-wrap" id="overview" data-header-tone="dark">
-      <div class="mova-editorial" data-reveal>
-        <p class="mova-label">THE PROJECT</p>
-        <div><h2>不只让产品被看见。<br><span>也让状态被理解。</span></h2><p class="mova-body">当充电器拥有一块屏幕，设计任务便从外观表达延伸到信息与行为。用户需要知道设备正在做什么，却不应该为一次充电学习一套复杂菜单。</p><p class="mova-body">我参与产品早期定义，围绕使用场景、信息优先级和反馈方式展开设计，让品牌的视觉表达与产品的日常体验形成连续的关系。</p></div>
-      </div>
-      <dl class="mova-facts"><div><dt>CLIENT</dt><dd>MOVA</dd></div><div><dt>ROLE</dt><dd>Product Experience Designer</dd></div><div><dt>SCOPE</dt><dd>产品定义 / 交互逻辑 / 屏幕 UI</dd></div><div><dt>EXPLORATION</dt><dd>智能硬件 / AI 交互概念</dd></div></dl>
+    <section class="case-gallery case-gallery--editorial case-media" data-case-stage="application-delivery">
+      <img src="/case-media/mova/mova-01.webp" alt="MOVA 充电产品形态" loading="lazy" decoding="async">
+      <img src="/case-media/mova/mova-02.webp" alt="MOVA 紧凑型硬件方案" loading="lazy" decoding="async">
+      <img src="/case-media/mova/mova-03.webp" alt="MOVA 硬件与屏幕探索" loading="lazy" decoding="async">
+      <img src="/case-media/mova/mova-07.webp" alt="MOVA 小屏交互场景" loading="lazy" decoding="async">
     </section>
 
-    <figure class="mova-landscape" data-reveal><img src="/case-media/mova/mova-06.webp" alt="MOVA 充电器置于层叠绿色苔藓中央，屏幕显示充电信息" width="1800" height="1005" loading="lazy"><figcaption>TECHNOLOGY, IN EVERYDAY LIFE. <span>产品场景视觉</span></figcaption></figure>
-
-    <section class="mova-section mova-wrap" id="product" data-header-tone="dark">
-      <div class="mova-section-heading" data-reveal><p class="mova-label">BRAND MEETS PRODUCT</p><h2>一个物件。<br><span>从视觉，到触觉，再到反馈。</span></h2><p class="mova-body">产品形态建立第一印象，屏幕回应每一次使用。把这两个层面放在一起，才能看见一个完整的产品体验。</p></div>
-      <div class="mova-product-stage">
-        <div class="mova-product-image"><img id="mova-view" src="/case-media/mova/mova-02.webp" alt="MOVA 充电器屏幕显示端口信息的产品渲染" width="1046" height="1500" loading="lazy"></div>
-        <div class="mova-product-detail"><p class="mova-label">A CLOSER LOOK</p><h3>信息，回到产品本身。</h3><p class="mova-body" id="mova-view-caption">端口与连接信息直接呈现在设备上，让用户的视线停留在正在使用的物件上。</p><div class="mova-view-controls" role="group" aria-label="切换产品视图"><button type="button" data-view="screen" aria-pressed="true">屏幕显示</button><button type="button" data-view="body" aria-pressed="false">产品形态</button><button type="button" data-view="detail" aria-pressed="false">材质细节</button></div><p class="mova-image-note">产品渲染 / 点击切换视图</p><span class="mova-announcement" role="status" aria-live="polite"></span></div>
-      </div>
-      <div class="mova-pair"><figure data-reveal><img src="/case-media/mova/mova-22.webp" alt="手持 MOVA 充电器的生活场景，展示产品尺度与挂绳" width="1800" height="1005" loading="lazy"><figcaption>IN HAND <span>尺度与携带</span></figcaption></figure><figure data-reveal><img src="/case-media/mova/mova-12.webp" alt="MOVA 充电器连接桌面设备的工作场景" width="1800" height="1005" loading="lazy"><figcaption>ON THE DESK <span>桌面与连接</span></figcaption></figure></div>
+    <section class="case-text case-decision" data-case-stage="key-decisions">
+      <span class="eyebrow">03 / INFORMATION ARCHITECTURE</span>
+      <div><h2>Priority before<br>interface.</h2><p>信息结构按“即时状态 → 操作反馈 → 系统设置”分层。功率、端口与异常优先出现；计时和工具功能在用户主动操作后进入；低频设置不占据默认界面。</p><div class="mova-priority"><article><b>01</b><h3>NOW</h3><p>当前功率、端口、温度和充电状态，回答“设备此刻是否正常”。</p></article><article><b>02</b><h3>ACTION</h3><p>按键后立即反馈已触发的模式，降低误操作和重复点击。</p></article><article><b>03</b><h3>UTILITY</h3><p>计时、复位、熄屏等低频功能保持可达，但不干扰日常读取。</p></article></div></div>
     </section>
 
-    <section class="mova-section mova-wrap mova-interaction" id="interaction" data-header-tone="dark">
-      <div class="mova-editorial" data-reveal><p class="mova-label">INTERACTION DESIGN</p><div><h2>小屏幕。<br><span>更明确的信息秩序。</span></h2><p class="mova-body">有限的显示空间意味着取舍：先回答“发生了什么”，再解释“有哪些细节”。把复杂状态整理成用户能够快速辨认的信息，是界面设计之前的工作。</p></div></div>
-      <div class="mova-principles"><article><span class="mova-label">INFORMATION</span><h3>先状态，后细节。</h3><p>把连接与充电状态放在前面，让端口与设备信息拥有明确的阅读层级。</p></article><article><span class="mova-label">ATTENTION</span><h3>一眼看懂，适时反馈。</h3><p>用一致的位置与视觉语言表达变化，减少用户反复寻找信息的负担。</p></article><article><span class="mova-label">BEHAVIOR</span><h3>从场景定义交互。</h3><p>从接入、查看到离开，先梳理用户需要确认什么，再决定界面如何回应。</p></article></div>
-      <div class="mova-flow" aria-label="设计过程"><span>使用场景</span><span>用户需求</span><span>功能定义</span><span>交互逻辑</span><span>界面反馈</span></div>
-      <div class="mova-ui-story" data-reveal><div><p class="mova-label">IDENTITY IN MOTION</p><h3>开机，是品牌体验的起点。</h3><p class="mova-body">从标识出现到光效收束，屏幕把静态识别转化为产品使用中的第一段反馈。</p></div><figure><a href="/case-media/mova/mova-ui-startup.webp" target="_blank" rel="noopener" aria-label="在新窗口查看开机画面序列大图"><img src="/case-media/mova/mova-ui-startup.webp" alt="MOVA-AEFD 开机标识与金色光效的六帧设计序列" width="2400" height="793" loading="lazy"></a><figcaption>STARTUP SEQUENCE <span>查看大图 ↗</span></figcaption></figure></div>
-      <div class="mova-ui-story" data-reveal><div><p class="mova-label">A CONSISTENT VISUAL LANGUAGE</p><h3>不同连接，相同的阅读方式。</h3><p class="mova-body">C1、C2 端口标识保持固定的视觉逻辑。单设备与双设备连接画面在同一套信息结构下变化。</p></div><figure><a href="/case-media/mova/mova-ui-connection.webp" target="_blank" rel="noopener" aria-label="在新窗口查看连接状态界面大图"><img src="/case-media/mova/mova-ui-connection.webp" alt="六个连接状态设计画面，分别展示 C1、C2、双端口及设备名称的布局" width="2400" height="793" loading="lazy"></a><figcaption>CONNECTION STATES <span>界面设计稿 / 查看大图 ↗</span></figcaption></figure></div>
+    <section class="mova-button case-system" data-case-stage="design-system">
+      <div class="mova-section-head"><span class="eyebrow">04 / SINGLE BUTTON LOGIC</span><h2>One control.<br>Five intentions.</h2><p>不同手势按使用频率和风险排序：高频操作最短，具有破坏性的操作最难误触，并始终提供即时状态反馈。</p></div>
+      <ol class="mova-button-list">
+        <li><span>01</span><strong>SINGLE CLICK</strong><p>切换主要状态；高频、低风险，保持最低记忆成本。</p></li>
+        <li><span>02</span><strong>DOUBLE CLICK</strong><p>进入次级工具，避免与日常查看冲突。</p></li>
+        <li><span>03</span><strong>TRIPLE CLICK</strong><p>触发低频功能，以更明确的节奏减少误操作。</p></li>
+        <li><span>04</span><strong>LONG PRESS</strong><p>用于需要确认的模式切换，持续按压即成为意图确认。</p></li>
+        <li><span>05</span><strong>RESET</strong><p>与普通操作分离，并通过完整反馈说明系统已恢复。</p></li>
+      </ol>
     </section>
 
-    <section class="mova-section mova-wrap" id="reflection" data-header-tone="dark"><div class="mova-editorial" data-reveal><p class="mova-label">EXPLORATION & REFLECTION</p><div><h2>从设计一个界面，<br><span>到定义一种关系。</span></h2><p class="mova-body">AI 交互探索把问题进一步推向：设备能否理解使用情境，并在合适的时刻提供有用反馈？设计不只处理屏幕上的内容，也需要定义何时出现、为什么出现。</p><p class="mova-body">项目受成本与研发资源限制，AI 能力并未完全实现。这部分以概念探索呈现；产品场景渲染与界面设计稿也分别展示，保留设计设想与实际落地之间的边界。</p><p class="mova-takeaway">把品牌的表达，<br>落实到每一次可理解的产品反馈。</p></div></div></section>
-    <section class="mova-next mova-wrap"><p class="mova-label">CONTINUE EXPLORING</p><a href="/projects/aku.html"><span>AKU WORLD</span><span aria-hidden="true">↗</span></a><p>从智能硬件，到一个持续生长的角色世界。</p></section>
+    <section class="case-gallery case-gallery--wide case-media" data-case-stage="application-delivery">
+      <img src="/case-media/mova/mova-15.webp" alt="MOVA 屏幕 UI 系统" loading="lazy" decoding="async">
+      <img src="/case-media/mova/mova-16.webp" alt="MOVA 信息与操作流程" loading="lazy" decoding="async">
+      <img src="/case-media/mova/mova-17.webp" alt="MOVA 界面细节" loading="lazy" decoding="async">
+    </section>
+
+    <section class="mova-ui case-system" data-case-stage="design-system">
+      <div class="mova-section-head"><span class="eyebrow">05 / UI SYSTEM</span><h2>22 states.<br>One mental model.</h2><p>22 个状态不作为屏幕墙平铺，而是被组织为五组行为：用户先识别状态，再理解变化，最后决定是否操作。</p></div>
+      <div class="mova-state-groups"><article><span>01</span><h3>STATUS</h3><p>待机、连接、温度与设备状态。</p></article><article><span>02</span><h3>CHARGING</h3><p>功率、端口、进度与充电反馈。</p></article><article><span>03</span><h3>SYSTEM</h3><p>模式、熄屏、设置与复位。</p></article><article><span>04</span><h3>UTILITY</h3><p>计时器与辅助功能。</p></article><article><span>05</span><h3>EMOTION / INTERACTION</h3><p>像素化的情绪反馈与轻量陪伴。</p></article></div>
+    </section>
+
+    <section class="case-text mova-motion" data-case-stage="application-delivery">
+      <span class="eyebrow">06 / MOTION AS FEEDBACK</span>
+      <div><h2>Motion explains<br>state change.</h2><p>动效只承担状态反馈：确认输入、连接变化、充电节奏和异常提示。它不装饰屏幕，而是帮助用户判断系统是否已理解自己的操作。</p></div>
+    </section>
+
+    <section class="case-gallery case-gallery--pair case-media" data-case-stage="application-delivery">
+      <img src="/case-media/mova/mova-18.webp" alt="MOVA 状态反馈界面" loading="lazy" decoding="async">
+      <img src="/case-media/mova/mova-19.webp" alt="MOVA 动效与交互反馈" loading="lazy" decoding="async">
+    </section>
+
+    <section class="mova-character case-system" data-case-stage="design-system">
+      <div class="mova-section-head"><span class="eyebrow">07 / PRODUCT CHARACTER</span><h2>Useful can still<br>feel human.</h2><p>复古功率表、快慢模式、番茄计时、Good Luck 与像素视觉都使用低分辨率、短反馈和明确隐喻，适合小屏显示，也不会干扰核心充电信息。</p></div>
+      <div class="mova-character-list"><span>RETRO WATT METER</span><span>FAST / SLOW MODE</span><span>TOMATO TIMER</span><span>GOOD LUCK</span><span>PIXEL VISUAL</span></div>
+    </section>
+
+    <section class="case-text mova-patent" data-case-stage="result">
+      <span class="eyebrow">08 / PATENT APPLICATION</span>
+      <div><h2>Logic became<br>an ownable concept.</h2><p>项目将单键逻辑、状态组织与反馈关系整理为可描述、可验证的交互方案，并推进发明专利申请。这里使用“Patent Application”，不声明已经授权。</p></div>
+    </section>
+
+    <section class="mova-result case-result" data-case-stage="result">
+      <span class="eyebrow">09 / RESULT</span>
+      <div class="mova-result-grid"><article><strong>22</strong><span>UI STATES</span></article><article><strong>01</strong><span>INTERACTION SYSTEM</span></article><article><strong>01</strong><span>PATENT APPLICATION</span></article><article><strong>→</strong><span>PRODUCT DEVELOPMENT</span></article></div>
+    </section>
+
+    <section class="case-reflection" data-case-stage="reflection-next">
+      <span class="eyebrow">10 / REFLECTION</span>
+      <h2>Constraints did not reduce the experience. They defined it.</h2>
+      <p>这个项目改变了我对小型智能硬件的判断：真正的产品体验不是屏幕数量，而是信息、行为与反馈之间是否建立了一致关系。下一步会更早用可运行原型验证按键记忆与异常场景。</p>
+      <a class="text-link next-case" href="/project/fantawild/">NEXT CASE / FANTAWILD →</a>
+    </section>
   </main>
-  <footer class="mova-footer"><span>BANCI / BRAND + PRODUCT EXPERIENCE DESIGNER</span><a href="/work/">全部作品 ↗</a><a href="#top">回到顶部 ↑</a></footer>
+  <footer><span>BANCI / MOVA</span><a href="/work/">ALL WORK →</a><a href="/project/fantawild/">NEXT CASE →</a></footer>
 </body>
 </html>

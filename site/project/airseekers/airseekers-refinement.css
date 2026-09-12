@@ -1,0 +1,31 @@
+.air-decision { padding: 110px var(--air-pad); }
+.air-decision__options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-top: 1px solid var(--air-line); border-bottom: 1px solid var(--air-line); }
+.air-decision__options article { min-height: 360px; padding: 24px 34px 34px 0; display: flex; flex-direction: column; }
+.air-decision__options article + article { padding-left: 34px; border-left: 1px solid var(--air-line); }
+.air-decision__options span,
+.air-decision__result > span,
+.air-reflection__lessons span { font-size: 10px; font-weight: 800; letter-spacing: .15em; }
+.air-decision__options h3 { margin: auto 0 26px; font-size: clamp(42px,5.5vw,88px); line-height: .86; letter-spacing: -.06em; }
+.air-decision__options p { max-width: 620px; margin: 0; font-size: 16px; line-height: 1.7; }
+.air-decision__result { display: grid; grid-template-columns: .6fr 1fr 1.2fr; gap: 4vw; align-items: start; padding-top: 46px; }
+.air-decision__result h3 { margin: 0; font-size: clamp(28px,3.4vw,54px); line-height: .92; letter-spacing: -.055em; }
+.air-decision__result p { max-width: 680px; margin: 0; font-size: 17px; line-height: 1.7; }
+.air-reflection__lessons { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-top: 1px solid var(--air-line); border-bottom: 1px solid var(--air-line); }
+.air-reflection__lessons article { min-height: 260px; padding: 22px 30px 30px 0; display: flex; flex-direction: column; }
+.air-reflection__lessons article + article { padding-left: 30px; border-left: 1px solid var(--air-line); }
+.air-reflection__lessons p { margin: auto 0 0; font-size: 16px; line-height: 1.65; }
+.air-reflection__bottom { display: flex; justify-content: flex-end; padding-top: 56px; }
+
+@media (max-width: 680px) {
+  .air-decision { padding: 85px var(--air-pad); }
+  .air-decision__options,
+  .air-decision__result,
+  .air-reflection__lessons { grid-template-columns: 1fr; }
+  .air-decision__options article { min-height: 260px; padding: 26px 0 30px; }
+  .air-decision__options article + article { padding-left: 0; border-left: 0; border-top: 1px solid var(--air-line); }
+  .air-decision__result { gap: 28px; }
+  .air-reflection__lessons article { min-height: 0; padding: 26px 0 30px; }
+  .air-reflection__lessons article + article { padding-left: 0; border-left: 0; border-top: 1px solid var(--air-line); }
+  .air-reflection__lessons p { margin-top: 42px; }
+  .air-reflection__bottom { justify-content: flex-start; }
+}

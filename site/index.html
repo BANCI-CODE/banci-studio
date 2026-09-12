@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/motion.css">
   <link rel="stylesheet" href="/home-classic.css">
 </head>
-<body class="home-classic">
+<body class="home-classic" id="top">
   <header class="site-header" data-tone="light">
     <a class="logo" href="/" aria-label="BANCI 首页"><img src="/banci.svg" alt=""><b>BANCI</b></a>
     <nav aria-label="主导航">
@@ -28,13 +28,6 @@
 
   <main>
     <section class="hero" data-header-tone="light">
-      <div class="signal-cursor" aria-hidden="true">
-        <span class="signal-probe signal-probe--primary"><b>1059</b><i></i><i></i><i></i><i></i></span>
-        <span class="signal-probe signal-probe--secondary"><b>5302</b></span>
-        <span class="signal-probe signal-probe--outline"><b>4827</b></span>
-        <span class="signal-probe signal-probe--mini"><b>8256</b></span>
-        <span class="signal-probe signal-probe--dark"><b>4256</b><i></i><i></i></span>
-      </div>
       <span class="hero-label">ZHANG SHIWEI / SHENZHEN</span>
       <h1 aria-label="Brand, Product and AI"><span>BRAND</span><br><span>PRODUCT</span><br><i>&amp; AI.</i></h1>
       <div class="hero-bottom">
@@ -100,7 +93,10 @@
       <div class="personal-practice__grid">
         <article class="practice-item" id="practice-aku" data-project-slug="aku">
           <a class="practice-item__media" href="/projects/aku.html" aria-label="进入 AKU World">
-            <img src="/home/aku-practice-2026.jpg" alt="AKU 包装与礼品卡设计样机" loading="lazy" decoding="async">
+            <picture>
+              <source media="(min-width: 761px)" srcset="/home/aku-practice-2026.webp">
+              <img src="/home/aku-practice-2026-mobile.webp" alt="AKU 包装与礼品卡设计样机" loading="lazy" decoding="async">
+            </picture>
           </a>
           <div class="practice-item__content">
             <p class="practice-item__meta">01 / ONGOING</p>
@@ -112,7 +108,10 @@
         </article>
         <article class="practice-item" id="practice-lab">
           <a class="practice-item__media" href="/lab/" aria-label="探索 Creative Lab">
-            <img src="/home/creative-lab-practice-2026.jpg" alt="暴雨下在房间里手写字体便签设计" loading="lazy" decoding="async">
+            <picture>
+              <source media="(min-width: 761px)" srcset="/home/creative-lab-practice-2026.webp">
+              <img src="/home/creative-lab-practice-2026-mobile.webp" alt="暴雨下在房间里手写字体便签设计" loading="lazy" decoding="async">
+            </picture>
           </a>
           <div class="practice-item__content">
             <p class="practice-item__meta">02 / INDEPENDENT RESEARCH</p>
@@ -128,13 +127,19 @@
     <section class="contact-strip" data-header-tone="dark">
       <span class="eyebrow">CONTACT</span>
       <h2 data-zh="一起创造<br>下一步。" data-en="Let’s make<br>what comes next." data-i18n-html>一起创造<br>下一步。</h2>
-      <a class="text-link" href="/contact/" data-zh="开始交流 →" data-en="START A CONVERSATION →">开始交流 →</a>
+      <div class="home-contact-grid" data-home-contact-grid>
+        <article><span>AVAILABLE FOR</span><div data-contact-available></div></article>
+        <article><span>BASED IN</span><strong data-contact-location>中国深圳</strong></article>
+        <article data-contact-field hidden><span>CONTACT</span><a data-contact-email href=""></a></article>
+      </div>
+      <a class="contact-details-link" href="/contact/" data-zh="查看联系详情 →" data-en="VIEW CONTACT DETAILS →">查看联系详情 →</a>
     </section>
   </main>
 
   <button class="back-top" type="button" aria-label="快速回到页面顶部"><span>↑</span><small>TOP</small></button>
-  <footer><span>BANCI / ZHANG SHIWEI</span><span>BRAND × PRODUCT × AI</span><span>SHENZHEN / 2026</span></footer>
+  <footer class="site-footer--compact"><span>BANCI © 2026</span><span>BRAND × PRODUCT × AI</span><a href="#top">BACK TO TOP ↑</a></footer>
   <script src="/portfolio.js"></script>
   <script src="/home-classic.js"></script>
+  <script src="/contact-system.js"></script>
 </body>
 </html>

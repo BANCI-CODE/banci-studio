@@ -1,0 +1,325 @@
+{
+  "generatedAt": "2026-09-07T07:26:35.023Z",
+  "results": [
+    {
+      "page": "Home",
+      "route": "/",
+      "width": 1440,
+      "totalKB": 1603,
+      "imageKB": 1477,
+      "imageRequests": 7,
+      "resources": 25,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        },
+        {
+          "name": "/home/aku-practice-2026.webp",
+          "kb": 61
+        },
+        {
+          "name": "/home/creative-lab-practice-2026.webp",
+          "kb": 559
+        },
+        {
+          "name": "/work/airseekers-featured-2026.webp",
+          "kb": 289
+        },
+        {
+          "name": "/home/mova-featured-2026.webp",
+          "kb": 152
+        },
+        {
+          "name": "/home/ai-workflow-featured-2026.webp",
+          "kb": 157
+        },
+        {
+          "name": "/home/fantawild-featured-2026.webp",
+          "kb": 256
+        }
+      ]
+    },
+    {
+      "page": "Home",
+      "route": "/",
+      "width": 390,
+      "totalKB": 556,
+      "imageKB": 429,
+      "imageRequests": 8,
+      "resources": 26,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        },
+        {
+          "name": "/home/creative-lab-practice-2026-mobile.webp",
+          "kb": 172
+        },
+        {
+          "name": "/home/aku-practice-2026-mobile.webp",
+          "kb": 20
+        },
+        {
+          "name": "/home/aku-practice-2026.webp",
+          "kb": 61
+        },
+        {
+          "name": "/work/airseekers-featured-2026-mobile.webp",
+          "kb": 48
+        },
+        {
+          "name": "/home/ai-workflow-featured-2026-mobile.webp",
+          "kb": 28
+        },
+        {
+          "name": "/home/mova-featured-2026-mobile.webp",
+          "kb": 37
+        },
+        {
+          "name": "/home/fantawild-featured-2026-mobile.webp",
+          "kb": 61
+        }
+      ]
+    },
+    {
+      "page": "Work",
+      "route": "/work/",
+      "width": 1440,
+      "totalKB": 397,
+      "imageKB": 292,
+      "imageRequests": 2,
+      "resources": 17,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        },
+        {
+          "name": "/work/airseekers-featured-2026.webp",
+          "kb": 289
+        }
+      ]
+    },
+    {
+      "page": "Work",
+      "route": "/work/",
+      "width": 390,
+      "totalKB": 156,
+      "imageKB": 51,
+      "imageRequests": 2,
+      "resources": 17,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        },
+        {
+          "name": "/work/airseekers-featured-2026-mobile.webp",
+          "kb": 48
+        }
+      ]
+    },
+    {
+      "page": "AIRSEEKERS",
+      "route": "/project/airseekers/",
+      "width": 1440,
+      "totalKB": 122,
+      "imageKB": 38,
+      "imageRequests": 2,
+      "resources": 17,
+      "imageFiles": [
+        {
+          "name": "/case-media/airseekers-v2/hero.webp",
+          "kb": 35
+        },
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        }
+      ]
+    },
+    {
+      "page": "AIRSEEKERS",
+      "route": "/project/airseekers/",
+      "width": 390,
+      "totalKB": 122,
+      "imageKB": 38,
+      "imageRequests": 2,
+      "resources": 17,
+      "imageFiles": [
+        {
+          "name": "/case-media/airseekers-v2/hero.webp",
+          "kb": 35
+        },
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        }
+      ]
+    },
+    {
+      "page": "AKU World",
+      "route": "/projects/aku.html",
+      "width": 1440,
+      "totalKB": 93,
+      "imageKB": 3,
+      "imageRequests": 1,
+      "resources": 14,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        }
+      ]
+    },
+    {
+      "page": "AKU World",
+      "route": "/projects/aku.html",
+      "width": 390,
+      "totalKB": 93,
+      "imageKB": 3,
+      "imageRequests": 1,
+      "resources": 14,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        }
+      ]
+    },
+    {
+      "page": "Evolution",
+      "route": "/projects/aku-evolution.html",
+      "width": 1440,
+      "totalKB": 120,
+      "imageKB": 3,
+      "imageRequests": 1,
+      "resources": 15,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        }
+      ]
+    },
+    {
+      "page": "Evolution",
+      "route": "/projects/aku-evolution.html",
+      "width": 390,
+      "totalKB": 120,
+      "imageKB": 3,
+      "imageRequests": 1,
+      "resources": 15,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        }
+      ]
+    },
+    {
+      "page": "AKU Daily",
+      "route": "/projects/aku-daily.html",
+      "width": 1440,
+      "totalKB": 156,
+      "imageKB": 31,
+      "imageRequests": 2,
+      "resources": 16,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        },
+        {
+          "name": "/aku-thumbs/daily/day-206.webp",
+          "kb": 28
+        }
+      ]
+    },
+    {
+      "page": "AKU Daily",
+      "route": "/projects/aku-daily.html",
+      "width": 390,
+      "totalKB": 156,
+      "imageKB": 31,
+      "imageRequests": 2,
+      "resources": 16,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        },
+        {
+          "name": "/aku-thumbs/daily/day-206.webp",
+          "kb": 28
+        }
+      ]
+    },
+    {
+      "page": "Year Calendar",
+      "route": "/projects/aku-calendar.html",
+      "width": 1440,
+      "totalKB": 95,
+      "imageKB": 3,
+      "imageRequests": 1,
+      "resources": 15,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        }
+      ]
+    },
+    {
+      "page": "Year Calendar",
+      "route": "/projects/aku-calendar.html",
+      "width": 390,
+      "totalKB": 95,
+      "imageKB": 3,
+      "imageRequests": 1,
+      "resources": 15,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        }
+      ]
+    },
+    {
+      "page": "Pin Archive",
+      "route": "/projects/aku-pins.html",
+      "width": 1440,
+      "totalKB": 102,
+      "imageKB": 3,
+      "imageRequests": 1,
+      "resources": 15,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        }
+      ]
+    },
+    {
+      "page": "Pin Archive",
+      "route": "/projects/aku-pins.html",
+      "width": 390,
+      "totalKB": 108,
+      "imageKB": 9,
+      "imageRequests": 2,
+      "resources": 16,
+      "imageFiles": [
+        {
+          "name": "/banci.svg",
+          "kb": 3
+        },
+        {
+          "name": "/aku-thumbs/pins/pin-001.webp",
+          "kb": 6
+        }
+      ]
+    }
+  ]
+}

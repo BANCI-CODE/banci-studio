@@ -168,7 +168,10 @@ function setupMobileNavigation() {
     toggle.textContent = 'CLOSE';
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Close mobile navigation');
-    requestAnimationFrame(() => overlay.querySelector('a[href]')?.focus());
+    // Wait for the visibility change to commit, including reduced-motion mode.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (isOpen) overlay.querySelector('a[href]')?.focus({ preventScroll: true });
+    }));
   }
 
   function closeMenu({ restoreFocus = true } = {}) {

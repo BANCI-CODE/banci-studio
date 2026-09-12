@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "width": 1319,
+      "overflow": false,
+      "screens": 20,
+      "dialog": true,
+      "imageLoaded": true,
+      "closed": true
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "screens": 20,
+      "dialog": true,
+      "imageLoaded": true,
+      "closed": true
+    }
+  ],
+  "exceptions": []
+}

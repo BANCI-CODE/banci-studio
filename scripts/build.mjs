@@ -1,5 +1,7 @@
+import { enhanceSeoAccessibility } from "./seo-accessibility.mjs";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { enhanceImageMarkup } from "./image-performance.mjs";
 
 await rm("dist", { recursive: true, force: true });
 await mkdir("dist/client", { recursive: true });
@@ -15,17 +17,19 @@ async function injectMotion(dir) {
     if (entry.isDirectory()) await injectMotion(file);
     if (!entry.isFile() || !entry.name.endsWith(".html")) continue;
     let html = await readFile(file, "utf8");
-    if (!html.includes('/card-effects.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/card-effects.css"></head>');
     if (!html.includes('/nav-system.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/nav-system.css"></head>');
   if (!html.includes('/language-system.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/language-system.css"></head>');
   if (!html.includes('/responsive-system.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/responsive-system.css"></head>');
-    if (!html.includes('/card-effects.js')) html = html.replace('</body>', '<script src="/card-effects.js" defer></script></body>');
+  if (!html.includes('/design-system.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/design-system.css"></head>');
     if (!html.includes('/nav-system.js')) html = html.replace('</body>', '<script src="/nav-system.js" defer></script></body>');
     if (!html.includes('/language-system.js')) html = html.replace('</body>', '<script src="/language-system.js" defer></script></body>');
+    if (!html.includes('/image-loader.js')) html = html.replace('</body>', '<script src="/image-loader.js" defer></script></body>');
+    html = enhanceSeoAccessibility(html, file, "dist/client");
+    html = await enhanceImageMarkup(html, "dist/client");
     await writeFile(file, html);
   }
 }
 await injectMotion("dist/client");
 await cp("app/globals.css", "dist/client/immersive.css");
-await cp(".openai", "dist/.openai", { recursive: true });
+// Portable build: no hosting account configuration required.
 await writeFile("dist/server/index.js", `export default { async fetch(request, env) { return env.ASSETS.fetch(request); } };\n`);

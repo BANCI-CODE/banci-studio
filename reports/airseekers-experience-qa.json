@@ -1,0 +1,185 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "broken": [],
+      "h1": 1,
+      "anchors": true,
+      "sections": [
+        {
+          "id": "packaging",
+          "width": 1425
+        },
+        {
+          "id": "exhibition",
+          "width": 1425
+        },
+        {
+          "id": "digital",
+          "width": 1425
+        }
+      ],
+      "textOverflow": []
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "broken": [],
+      "h1": 1,
+      "anchors": true,
+      "sections": [
+        {
+          "id": "packaging",
+          "width": 1009
+        },
+        {
+          "id": "exhibition",
+          "width": 1009
+        },
+        {
+          "id": "digital",
+          "width": 1009
+        }
+      ],
+      "textOverflow": []
+    },
+    {
+      "width": 820,
+      "overflow": false,
+      "broken": [],
+      "h1": 1,
+      "anchors": true,
+      "sections": [
+        {
+          "id": "packaging",
+          "width": 805
+        },
+        {
+          "id": "exhibition",
+          "width": 805
+        },
+        {
+          "id": "digital",
+          "width": 805
+        }
+      ],
+      "textOverflow": []
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "broken": [],
+      "h1": 1,
+      "anchors": true,
+      "sections": [
+        {
+          "id": "packaging",
+          "width": 753
+        },
+        {
+          "id": "exhibition",
+          "width": 753
+        },
+        {
+          "id": "digital",
+          "width": 753
+        }
+      ],
+      "textOverflow": []
+    },
+    {
+      "width": 430,
+      "overflow": false,
+      "broken": [],
+      "h1": 1,
+      "anchors": true,
+      "sections": [
+        {
+          "id": "packaging",
+          "width": 415
+        },
+        {
+          "id": "exhibition",
+          "width": 415
+        },
+        {
+          "id": "digital",
+          "width": 415
+        }
+      ],
+      "textOverflow": []
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "broken": [],
+      "h1": 1,
+      "anchors": true,
+      "sections": [
+        {
+          "id": "packaging",
+          "width": 375
+        },
+        {
+          "id": "exhibition",
+          "width": 375
+        },
+        {
+          "id": "digital",
+          "width": 375
+        }
+      ],
+      "textOverflow": []
+    },
+    {
+      "width": 375,
+      "overflow": false,
+      "broken": [],
+      "h1": 1,
+      "anchors": true,
+      "sections": [
+        {
+          "id": "packaging",
+          "width": 360
+        },
+        {
+          "id": "exhibition",
+          "width": 360
+        },
+        {
+          "id": "digital",
+          "width": 360
+        }
+      ],
+      "textOverflow": []
+    },
+    {
+      "width": 360,
+      "overflow": false,
+      "broken": [],
+      "h1": 1,
+      "anchors": true,
+      "sections": [
+        {
+          "id": "packaging",
+          "width": 345
+        },
+        {
+          "id": "exhibition",
+          "width": 345
+        },
+        {
+          "id": "digital",
+          "width": 345
+        }
+      ],
+      "textOverflow": []
+    }
+  ],
+  "workCopyUpdated": {
+    "text": "\n      01\n      AIRSEEKERS TRON连接包装交付、展会沟通与网站 App 的品牌与产品体验设计。\n      2024–2025\n      Brand & Product Design Lead\n      Brand / Packaging / Exhibition / Digital\n      VIEW CASE ↗\n    ",
+    "updated": true
+  },
+  "exceptions": []
+}

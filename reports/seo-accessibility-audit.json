@@ -1,0 +1,324 @@
+{
+  "buildRoot": "C:\\Users\\QIZHUAYU\\Documents\\Codex\\2026-07-26\\files-mentioned-by-the-user-part\\github-dist",
+  "pages": [
+    {
+      "page": "about/index.html",
+      "title": "About — BANCI",
+      "canonical": "https://banci.studio/about/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "contact/index.html",
+      "title": "Contact — BANCI",
+      "canonical": "https://banci.studio/contact/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "index.html",
+      "title": "BANCI — Brand, Product & AI",
+      "canonical": "https://banci.studio/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "lab/index.html",
+      "title": "Creative Lab — BANCI",
+      "canonical": "https://banci.studio/lab/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "notes/index.html",
+      "title": "Daily Notes — BANCI",
+      "canonical": "https://banci.studio/notes/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "project/ai-workflow/index.html",
+      "title": "AI Creative Workflow — BANCI",
+      "canonical": "https://banci.studio/project/ai-workflow/",
+      "errors": [],
+      "warnings": [
+        "OG uses existing project cover; dedicated 1200x630 image not supplied."
+      ]
+    },
+    {
+      "page": "project/airseekers/index.html",
+      "title": "AIRSEEKERS TRON — BANCI",
+      "canonical": "https://banci.studio/project/airseekers/",
+      "errors": [],
+      "warnings": [
+        "OG uses existing project cover; dedicated 1200x630 image not supplied."
+      ]
+    },
+    {
+      "page": "project/fantawild/index.html",
+      "title": "FANTAWILD Content System — BANCI",
+      "canonical": "https://banci.studio/project/fantawild/",
+      "errors": [],
+      "warnings": [
+        "OG uses existing project cover; dedicated 1200x630 image not supplied."
+      ]
+    },
+    {
+      "page": "project/forktech/index.html",
+      "title": "FORKTECH — BANCI",
+      "canonical": "https://banci.studio/project/forktech/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "project/kamingo/index.html",
+      "title": "KAMINGO 品牌与体验 — BANCI",
+      "canonical": "https://banci.studio/project/kamingo/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "project/mova/index.html",
+      "title": "MOVA AI Charger — BANCI",
+      "canonical": "https://banci.studio/project/mova/",
+      "errors": [],
+      "warnings": [
+        "OG uses existing project cover; dedicated 1200x630 image not supplied."
+      ]
+    },
+    {
+      "page": "project/shanbenqing/index.html",
+      "title": "山冭清品牌系统 — BANCI",
+      "canonical": "https://banci.studio/project/shanbenqing/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "project/template/index.html",
+      "title": "Project — BANCI",
+      "canonical": "https://banci.studio/project/template/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added.",
+        "Editorial placeholder content remains; do not invent replacement case evidence."
+      ]
+    },
+    {
+      "page": "projects/airseekers.html",
+      "title": "AIRSEEKERS — BANCI",
+      "canonical": "https://banci.studio/project/airseekers/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "projects/aku-calendar.html",
+      "title": "Year Calendar — AKU World",
+      "canonical": "https://banci.studio/projects/aku-calendar.html",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "projects/aku-daily.html",
+      "title": "AKU Daily — AKU World",
+      "canonical": "https://banci.studio/projects/aku-daily.html",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "projects/aku-evolution.html",
+      "title": "Evolution Board — AKU World",
+      "canonical": "https://banci.studio/projects/aku-evolution.html",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "projects/aku-pins.html",
+      "title": "PIN Archive — AKU World",
+      "canonical": "https://banci.studio/projects/aku-pins.html",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "projects/aku.html",
+      "title": "AKU World — BANCI",
+      "canonical": "https://banci.studio/projects/aku.html",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "projects/fantawild.html",
+      "title": "Fantawild — BANCI",
+      "canonical": "https://banci.studio/project/fantawild/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "projects/interface.html",
+      "title": "Digital Interfaces — BANCI",
+      "canonical": "https://banci.studio/projects/interface.html",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "projects/mova.html",
+      "title": "MOVA — BANCI",
+      "canonical": "https://banci.studio/project/mova/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    },
+    {
+      "page": "work/index.html",
+      "title": "Work — BANCI",
+      "canonical": "https://banci.studio/work/",
+      "errors": [],
+      "warnings": [
+        "Dedicated OG image not supplied; no unrelated fallback image added."
+      ]
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    {
+      "page": "about/index.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "contact/index.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "index.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "lab/index.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "notes/index.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "project/ai-workflow/index.html",
+      "message": "OG uses existing project cover; dedicated 1200x630 image not supplied."
+    },
+    {
+      "page": "project/airseekers/index.html",
+      "message": "OG uses existing project cover; dedicated 1200x630 image not supplied."
+    },
+    {
+      "page": "project/fantawild/index.html",
+      "message": "OG uses existing project cover; dedicated 1200x630 image not supplied."
+    },
+    {
+      "page": "project/forktech/index.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "project/kamingo/index.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "project/mova/index.html",
+      "message": "OG uses existing project cover; dedicated 1200x630 image not supplied."
+    },
+    {
+      "page": "project/shanbenqing/index.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "project/template/index.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "project/template/index.html",
+      "message": "Editorial placeholder content remains; do not invent replacement case evidence."
+    },
+    {
+      "page": "projects/airseekers.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "projects/aku-calendar.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "projects/aku-daily.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "projects/aku-evolution.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "projects/aku-pins.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "projects/aku.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "projects/fantawild.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "projects/interface.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "projects/mova.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    },
+    {
+      "page": "work/index.html",
+      "message": "Dedicated OG image not supplied; no unrelated fallback image added."
+    }
+  ],
+  "missingContactData": [
+    "email",
+    "linkedin",
+    "resume"
+  ],
+  "duplicateTitles": [],
+  "summary": {
+    "pages": 23,
+    "errors": 0,
+    "warnings": 24,
+    "referencedStylesheets": 22
+  }
+}

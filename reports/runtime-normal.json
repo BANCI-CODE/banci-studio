@@ -1,0 +1,1123 @@
+{
+  "generatedAt": "2026-09-10T04:31:55.627Z",
+  "results": [
+    {
+      "route": "/about/",
+      "width": 1440,
+      "reduced": false,
+      "title": "关于 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/about/",
+      "width": 390,
+      "reduced": false,
+      "title": "关于 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/contact/",
+      "width": 1440,
+      "reduced": false,
+      "title": "联系 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/contact/",
+      "width": 390,
+      "reduced": false,
+      "title": "联系 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "reduced": false,
+      "title": "BANCI — 品牌、产品与 AI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "reduced": false,
+      "title": "BANCI — 品牌、产品与 AI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/lab/",
+      "width": 1440,
+      "reduced": false,
+      "title": "个人创作 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/lab/",
+      "width": 390,
+      "reduced": false,
+      "title": "个人创作 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/notes/",
+      "width": 1440,
+      "reduced": false,
+      "title": "随手记录 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/notes/",
+      "width": 390,
+      "reduced": false,
+      "title": "随手记录 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/project/ai-workflow/",
+      "width": 1440,
+      "reduced": false,
+      "title": "AI Creative Workflow — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/project/ai-workflow/",
+      "width": 390,
+      "reduced": false,
+      "title": "AI Creative Workflow — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/project/airseekers/",
+      "width": 1440,
+      "reduced": false,
+      "title": "AIRSEEKERS TRON — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/project/airseekers/",
+      "width": 390,
+      "reduced": false,
+      "title": "AIRSEEKERS TRON — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/project/fantawild/",
+      "width": 1440,
+      "reduced": false,
+      "title": "FANTAWILD Content System — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/project/fantawild/",
+      "width": 390,
+      "reduced": false,
+      "title": "FANTAWILD Content System — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/project/forktech/",
+      "width": 1440,
+      "reduced": false,
+      "title": "FORKTECH — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/project/forktech/",
+      "width": 390,
+      "reduced": false,
+      "title": "FORKTECH — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/project/kamingo/",
+      "width": 1440,
+      "reduced": false,
+      "title": "KAMINGO 品牌与体验 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/project/kamingo/",
+      "width": 390,
+      "reduced": false,
+      "title": "KAMINGO 品牌与体验 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/project/mova/",
+      "width": 1440,
+      "reduced": false,
+      "title": "MOVA AI Charger — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/project/mova/",
+      "width": 390,
+      "reduced": false,
+      "title": "MOVA AI Charger — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/project/shanbenqing/",
+      "width": 1440,
+      "reduced": false,
+      "title": "山冭清品牌系统 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/project/shanbenqing/",
+      "width": 390,
+      "reduced": false,
+      "title": "山冭清品牌系统 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/project/template/",
+      "width": 1440,
+      "reduced": false,
+      "title": "AIRSEEKERS TRON — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/project/template/",
+      "width": 390,
+      "reduced": false,
+      "title": "AIRSEEKERS TRON — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/projects/airseekers.html",
+      "width": 1440,
+      "reduced": false,
+      "title": "AIRSEEKERS — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/airseekers.html",
+      "width": 390,
+      "reduced": false,
+      "title": "AIRSEEKERS — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/projects/aku-calendar.html",
+      "width": 1440,
+      "reduced": false,
+      "title": "年度月历 — AKU World",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "calendar-twelve-months",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/aku-calendar.html",
+      "width": 390,
+      "reduced": false,
+      "title": "年度月历 — AKU World",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "calendar-twelve-months",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/projects/aku-daily.html",
+      "width": 1440,
+      "reduced": false,
+      "title": "AKU 日常 — AKU World",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "daily-current-content",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/aku-daily.html",
+      "width": 390,
+      "reduced": false,
+      "title": "AKU 日常 — AKU World",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "daily-current-content",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/projects/aku-evolution.html",
+      "width": 1440,
+      "reduced": false,
+      "title": "成长看板 — AKU World",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "evolution-arrow-key",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/aku-evolution.html",
+      "width": 390,
+      "reduced": false,
+      "title": "成长看板 — AKU World",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "evolution-arrow-key",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/projects/aku-pins.html",
+      "width": 1440,
+      "reduced": false,
+      "title": "物件档案 — AKU World",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/aku-pins.html",
+      "width": 390,
+      "reduced": false,
+      "title": "物件档案 — AKU World",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "pin-touch-open",
+          "pass": true
+        },
+        {
+          "test": "pin-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "pin-escape-restore",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/projects/aku.html",
+      "width": 1440,
+      "reduced": false,
+      "title": "AKU World — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/aku.html",
+      "width": 390,
+      "reduced": false,
+      "title": "AKU World — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/projects/fantawild.html",
+      "width": 1440,
+      "reduced": false,
+      "title": "Fantawild — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/fantawild.html",
+      "width": 390,
+      "reduced": false,
+      "title": "Fantawild — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/projects/interface.html",
+      "width": 1440,
+      "reduced": false,
+      "title": "Digital Interfaces — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/interface.html",
+      "width": 390,
+      "reduced": false,
+      "title": "Digital Interfaces — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/projects/mova.html",
+      "width": 1440,
+      "reduced": false,
+      "title": "MOVA — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/mova.html",
+      "width": 390,
+      "reduced": false,
+      "title": "MOVA — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/work/",
+      "width": 1440,
+      "reduced": false,
+      "title": "作品 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/work/",
+      "width": 390,
+      "reduced": false,
+      "title": "作品 — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    },
+    {
+      "route": "/project/template/?slug=baidu",
+      "width": 1440,
+      "reduced": false,
+      "title": "BAIDU — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/project/template/?slug=baidu",
+      "width": 390,
+      "reduced": false,
+      "title": "BAIDU — BANCI",
+      "errors": [],
+      "warnings": [],
+      "checks": [
+        {
+          "test": "skip-link-focus",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-open",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-shift-tab-wrap",
+          "pass": true
+        },
+        {
+          "test": "mobile-menu-escape",
+          "pass": true
+        }
+      ],
+      "navigationTestSurface": "top-level page"
+    }
+  ],
+  "errors": [],
+  "runtimeExceptions": []
+}

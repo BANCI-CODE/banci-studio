@@ -1,0 +1,1285 @@
+[
+  {
+    "route": "/about/",
+    "width": 1319,
+    "height": 6477,
+    "overflow": false,
+    "h1": {
+      "top": 250,
+      "height": 661,
+      "text": "连接\n系统、\n产品\n与人。"
+    },
+    "gaps": [
+      {
+        "from": 1923,
+        "to": 2342,
+        "gap": 420
+      },
+      {
+        "from": 5301,
+        "to": 5736,
+        "gap": 435
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/contact/",
+    "width": 1319,
+    "height": 1956,
+    "overflow": false,
+    "h1": {
+      "top": 237,
+      "height": 306,
+      "text": "一起创造\n下一步。"
+    },
+    "gaps": [
+      {
+        "from": 720,
+        "to": 1080,
+        "gap": 360
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/",
+    "width": 1319,
+    "height": 12157,
+    "overflow": false,
+    "h1": {
+      "top": 254,
+      "height": 329,
+      "text": "BRAND\nPRODUCT\n& AI."
+    },
+    "gaps": [
+      {
+        "from": 2512,
+        "to": 2929,
+        "gap": 417
+      },
+      {
+        "from": 3920,
+        "to": 4317,
+        "gap": 397
+      },
+      {
+        "from": 5237,
+        "to": 5622,
+        "gap": 385
+      },
+      {
+        "from": 6541,
+        "to": 7075,
+        "gap": 534
+      },
+      {
+        "from": 7737,
+        "to": 8103,
+        "gap": 366
+      },
+      {
+        "from": 10673,
+        "to": 11108,
+        "gap": 435
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/lab/",
+    "width": 1319,
+    "height": 3605,
+    "overflow": false,
+    "h1": {
+      "top": 247,
+      "height": 245,
+      "text": "想法需要\n自由生长。"
+    },
+    "gaps": [
+      {
+        "from": 2346,
+        "to": 2803,
+        "gap": 457
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/notes/",
+    "width": 1319,
+    "height": 5426,
+    "overflow": false,
+    "h1": {
+      "top": 247,
+      "height": 245,
+      "text": "留意\n日常。"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/ai-workflow/",
+    "width": 1319,
+    "height": 5456,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 177,
+      "text": "HUMAN ×\nINTELLIGENCE."
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/airseekers/",
+    "width": 1319,
+    "height": 41269,
+    "overflow": false,
+    "h1": {
+      "top": 314,
+      "height": 172,
+      "text": "AIR\nSEEKERS."
+    },
+    "gaps": [
+      {
+        "from": 1764,
+        "to": 2120,
+        "gap": 356
+      },
+      {
+        "from": 2781,
+        "to": 3174,
+        "gap": 393
+      },
+      {
+        "from": 4459,
+        "to": 4907,
+        "gap": 448
+      },
+      {
+        "from": 7621,
+        "to": 8422,
+        "gap": 801
+      },
+      {
+        "from": 17192,
+        "to": 17597,
+        "gap": 405
+      },
+      {
+        "from": 28414,
+        "to": 28820,
+        "gap": 405
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/fantawild/",
+    "width": 1319,
+    "height": 32982,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 177,
+      "text": "FANTAWILD\nCONTENT SYSTEM."
+    },
+    "gaps": [
+      {
+        "from": 31401,
+        "to": 31765,
+        "gap": 364
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/forktech/",
+    "width": 1319,
+    "height": 14717,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 177,
+      "text": "FORK\nTECH."
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/kamingo/",
+    "width": 1319,
+    "height": 15271,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 177,
+      "text": "KAMINGO\nIN MOTION."
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/mova/",
+    "width": 1319,
+    "height": 11601,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 177,
+      "text": "MOVA\nAI Charger."
+    },
+    "gaps": [
+      {
+        "from": 1943,
+        "to": 2419,
+        "gap": 476
+      },
+      {
+        "from": 9226,
+        "to": 9663,
+        "gap": 438
+      },
+      {
+        "from": 10041,
+        "to": 10399,
+        "gap": 358
+      },
+      {
+        "from": 10472,
+        "to": 10875,
+        "gap": 403
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/shanbenqing/",
+    "width": 1319,
+    "height": 14992,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 276,
+      "text": "山冭清\nSHANBENQING."
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/template/",
+    "width": 1319,
+    "height": 6858,
+    "overflow": false,
+    "h1": {
+      "top": 276,
+      "height": 106,
+      "text": "AIRSEEKERS TRON"
+    },
+    "gaps": [
+      {
+        "from": 1759,
+        "to": 2203,
+        "gap": 444
+      },
+      {
+        "from": 2441,
+        "to": 2966,
+        "gap": 526
+      },
+      {
+        "from": 3252,
+        "to": 3730,
+        "gap": 477
+      },
+      {
+        "from": 3967,
+        "to": 4493,
+        "gap": 526
+      },
+      {
+        "from": 4730,
+        "to": 5256,
+        "gap": 526
+      },
+      {
+        "from": 5375,
+        "to": 6019,
+        "gap": 644
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/airseekers.html",
+    "width": 1319,
+    "height": 7564,
+    "overflow": false,
+    "h1": {
+      "top": 222,
+      "height": 123,
+      "text": "AIRSEEKERS"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-calendar.html",
+    "width": 1319,
+    "height": 2994,
+    "overflow": false,
+    "h1": {
+      "top": 196,
+      "height": 123,
+      "text": "YEAR CALENDAR"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-daily.html",
+    "width": 1319,
+    "height": 1411,
+    "overflow": false,
+    "h1": {
+      "top": 196,
+      "height": 123,
+      "text": "AKU DAILY"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-evolution.html",
+    "width": 1319,
+    "height": 1315,
+    "overflow": false,
+    "h1": {
+      "top": 187,
+      "height": 154,
+      "text": "AKU EVOLUTION\nBOARD"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-pins.html",
+    "width": 1319,
+    "height": 2629,
+    "overflow": false,
+    "h1": {
+      "top": 262,
+      "height": 138,
+      "text": "PIN ARCHIVE"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku.html",
+    "width": 1319,
+    "height": 1803,
+    "overflow": false,
+    "h1": {
+      "top": 311,
+      "height": 359,
+      "text": "AKU\nWORLD"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/fantawild.html",
+    "width": 1319,
+    "height": 8786,
+    "overflow": false,
+    "h1": {
+      "top": 222,
+      "height": 123,
+      "text": "FANTAWILD"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/interface.html",
+    "width": 1319,
+    "height": 10430,
+    "overflow": false,
+    "h1": {
+      "top": 222,
+      "height": 123,
+      "text": "INTERFACES"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/mova.html",
+    "width": 1319,
+    "height": 6065,
+    "overflow": false,
+    "h1": {
+      "top": 222,
+      "height": 123,
+      "text": "MOVA"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/work/",
+    "width": 1319,
+    "height": 3538,
+    "overflow": false,
+    "h1": {
+      "top": 248,
+      "height": 285,
+      "text": "WORK\nINDEX"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/about/",
+    "width": 1440,
+    "height": 6287,
+    "overflow": false,
+    "h1": {
+      "top": 224,
+      "height": 722,
+      "text": "连接\n系统、\n产品\n与人。"
+    },
+    "gaps": [
+      {
+        "from": 1894,
+        "to": 2316,
+        "gap": 422
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/contact/",
+    "width": 1440,
+    "height": 2049,
+    "overflow": false,
+    "h1": {
+      "top": 237,
+      "height": 334,
+      "text": "一起创造\n下一步。"
+    },
+    "gaps": [
+      {
+        "from": 763,
+        "to": 1131,
+        "gap": 369
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/",
+    "width": 1440,
+    "height": 12889,
+    "overflow": false,
+    "h1": {
+      "top": 235,
+      "height": 358,
+      "text": "BRAND\nPRODUCT\n& AI."
+    },
+    "gaps": [
+      {
+        "from": 2630,
+        "to": 3073,
+        "gap": 443
+      },
+      {
+        "from": 4130,
+        "to": 4551,
+        "gap": 421
+      },
+      {
+        "from": 5527,
+        "to": 5933,
+        "gap": 406
+      },
+      {
+        "from": 6902,
+        "to": 7447,
+        "gap": 545
+      },
+      {
+        "from": 8141,
+        "to": 8540,
+        "gap": 399
+      },
+      {
+        "from": 9608,
+        "to": 9966,
+        "gap": 358
+      },
+      {
+        "from": 11337,
+        "to": 11798,
+        "gap": 460
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/lab/",
+    "width": 1440,
+    "height": 3637,
+    "overflow": false,
+    "h1": {
+      "top": 247,
+      "height": 268,
+      "text": "想法需要\n自由生长。"
+    },
+    "gaps": [
+      {
+        "from": 2520,
+        "to": 2902,
+        "gap": 382
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/notes/",
+    "width": 1440,
+    "height": 5404,
+    "overflow": false,
+    "h1": {
+      "top": 247,
+      "height": 268,
+      "text": "留意\n日常。"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/ai-workflow/",
+    "width": 1440,
+    "height": 5653,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 193,
+      "text": "HUMAN ×\nINTELLIGENCE."
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/airseekers/",
+    "width": 1440,
+    "height": 43242,
+    "overflow": false,
+    "h1": {
+      "top": 330,
+      "height": 188,
+      "text": "AIR\nSEEKERS."
+    },
+    "gaps": [
+      {
+        "from": 1845,
+        "to": 2201,
+        "gap": 356
+      },
+      {
+        "from": 2896,
+        "to": 3289,
+        "gap": 393
+      },
+      {
+        "from": 4294,
+        "to": 4742,
+        "gap": 448
+      },
+      {
+        "from": 7697,
+        "to": 8541,
+        "gap": 845
+      },
+      {
+        "from": 17870,
+        "to": 18275,
+        "gap": 405
+      },
+      {
+        "from": 29677,
+        "to": 30082,
+        "gap": 405
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/fantawild/",
+    "width": 1440,
+    "height": 35404,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 193,
+      "text": "FANTAWILD\nCONTENT SYSTEM."
+    },
+    "gaps": [
+      {
+        "from": 33753,
+        "to": 34131,
+        "gap": 379
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/forktech/",
+    "width": 1440,
+    "height": 15733,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 193,
+      "text": "FORK\nTECH."
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/kamingo/",
+    "width": 1440,
+    "height": 16137,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 193,
+      "text": "KAMINGO\nIN MOTION."
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/mova/",
+    "width": 1440,
+    "height": 12377,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 193,
+      "text": "MOVA\nAI Charger."
+    },
+    "gaps": [
+      {
+        "from": 2022,
+        "to": 2511,
+        "gap": 489
+      },
+      {
+        "from": 9872,
+        "to": 10319,
+        "gap": 447
+      },
+      {
+        "from": 10726,
+        "to": 11095,
+        "gap": 369
+      },
+      {
+        "from": 11176,
+        "to": 11581,
+        "gap": 406
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/shanbenqing/",
+    "width": 1440,
+    "height": 15584,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 301,
+      "text": "山冭清\nSHANBENQING."
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/template/",
+    "width": 1440,
+    "height": 6137,
+    "overflow": false,
+    "h1": {
+      "top": 246,
+      "height": 115,
+      "text": "AIRSEEKERS TRON"
+    },
+    "gaps": [
+      {
+        "from": 2249,
+        "to": 2770,
+        "gap": 521
+      },
+      {
+        "from": 3569,
+        "to": 4090,
+        "gap": 521
+      },
+      {
+        "from": 4349,
+        "to": 4870,
+        "gap": 521
+      },
+      {
+        "from": 5000,
+        "to": 5521,
+        "gap": 521
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/airseekers.html",
+    "width": 1440,
+    "height": 8176,
+    "overflow": false,
+    "h1": {
+      "top": 231,
+      "height": 135,
+      "text": "AIRSEEKERS"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-calendar.html",
+    "width": 1440,
+    "height": 3269,
+    "overflow": false,
+    "h1": {
+      "top": 196,
+      "height": 135,
+      "text": "YEAR CALENDAR"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-daily.html",
+    "width": 1440,
+    "height": 1357,
+    "overflow": false,
+    "h1": {
+      "top": 196,
+      "height": 135,
+      "text": "AKU DAILY"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-evolution.html",
+    "width": 1440,
+    "height": 1127,
+    "overflow": false,
+    "h1": {
+      "top": 190,
+      "height": 168,
+      "text": "AKU EVOLUTION\nBOARD"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-pins.html",
+    "width": 1440,
+    "height": 2660,
+    "overflow": false,
+    "h1": {
+      "top": 268,
+      "height": 151,
+      "text": "PIN ARCHIVE"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku.html",
+    "width": 1440,
+    "height": 1818,
+    "overflow": false,
+    "h1": {
+      "top": 281,
+      "height": 392,
+      "text": "AKU\nWORLD"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/fantawild.html",
+    "width": 1440,
+    "height": 9589,
+    "overflow": false,
+    "h1": {
+      "top": 231,
+      "height": 135,
+      "text": "FANTAWILD"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/interface.html",
+    "width": 1440,
+    "height": 11398,
+    "overflow": false,
+    "h1": {
+      "top": 231,
+      "height": 135,
+      "text": "INTERFACES"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/mova.html",
+    "width": 1440,
+    "height": 6537,
+    "overflow": false,
+    "h1": {
+      "top": 231,
+      "height": 135,
+      "text": "MOVA"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/work/",
+    "width": 1440,
+    "height": 3536,
+    "overflow": false,
+    "h1": {
+      "top": 248,
+      "height": 311,
+      "text": "WORK\nINDEX"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/about/",
+    "width": 390,
+    "height": 6676,
+    "overflow": false,
+    "h1": {
+      "top": 233,
+      "height": 331,
+      "text": "连接\n系统、\n产品\n与人。"
+    },
+    "gaps": [
+      {
+        "from": 1318,
+        "to": 1842,
+        "gap": 524
+      },
+      {
+        "from": 2972,
+        "to": 3689,
+        "gap": 717
+      },
+      {
+        "from": 5704,
+        "to": 6060,
+        "gap": 356
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/contact/",
+    "width": 390,
+    "height": 1883,
+    "overflow": false,
+    "h1": {
+      "top": 191,
+      "height": 160,
+      "text": "一起创造\n下一步。"
+    },
+    "gaps": [
+      {
+        "from": 471,
+        "to": 966,
+        "gap": 495
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/",
+    "width": 390,
+    "height": 11120,
+    "overflow": false,
+    "h1": {
+      "top": 233,
+      "height": 168,
+      "text": "BRAND\nPRODUCT\n& AI."
+    },
+    "gaps": [
+      {
+        "from": 5036,
+        "to": 5508,
+        "gap": 472
+      },
+      {
+        "from": 9710,
+        "to": 10088,
+        "gap": 378
+      },
+      {
+        "from": 10244,
+        "to": 10619,
+        "gap": 375
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/lab/",
+    "width": 390,
+    "height": 3494,
+    "overflow": false,
+    "h1": {
+      "top": 213,
+      "height": 113,
+      "text": "想法需要\n自由生长。"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/notes/",
+    "width": 390,
+    "height": 2577,
+    "overflow": false,
+    "h1": {
+      "top": 213,
+      "height": 113,
+      "text": "留意\n日常。"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/ai-workflow/",
+    "width": 390,
+    "height": 5330,
+    "overflow": false,
+    "h1": {
+      "top": 195,
+      "height": 74,
+      "text": "HUMAN ×\nINTELLIGENCE."
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/airseekers/",
+    "width": 390,
+    "height": 43052,
+    "overflow": false,
+    "h1": {
+      "top": 172,
+      "height": 105,
+      "text": "AIR\nSEEKERS."
+    },
+    "gaps": [
+      {
+        "from": 4989,
+        "to": 5540,
+        "gap": 551
+      },
+      {
+        "from": 7086,
+        "to": 7650,
+        "gap": 564
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/fantawild/",
+    "width": 390,
+    "height": 50500,
+    "overflow": false,
+    "h1": {
+      "top": 195,
+      "height": 124,
+      "text": "FANTAWILD\nCONTENT SYSTEM."
+    },
+    "gaps": [
+      {
+        "from": 502,
+        "to": 1030,
+        "gap": 528
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/forktech/",
+    "width": 390,
+    "height": 13540,
+    "overflow": false,
+    "h1": {
+      "top": 195,
+      "height": 74,
+      "text": "FORK\nTECH."
+    },
+    "gaps": [
+      {
+        "from": 1099,
+        "to": 1454,
+        "gap": 356
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/kamingo/",
+    "width": 390,
+    "height": 6786,
+    "overflow": false,
+    "h1": {
+      "top": 195,
+      "height": 74,
+      "text": "KAMINGO\nIN MOTION."
+    },
+    "gaps": [
+      {
+        "from": 922,
+        "to": 1301,
+        "gap": 380
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/mova/",
+    "width": 390,
+    "height": 12494,
+    "overflow": false,
+    "h1": {
+      "top": 209,
+      "height": 83,
+      "text": "MOVA\nAI Charger."
+    },
+    "gaps": [
+      {
+        "from": 475,
+        "to": 1003,
+        "gap": 528
+      },
+      {
+        "from": 1690,
+        "to": 2339,
+        "gap": 649
+      },
+      {
+        "from": 9893,
+        "to": 10564,
+        "gap": 671
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/shanbenqing/",
+    "width": 390,
+    "height": 6805,
+    "overflow": false,
+    "h1": {
+      "top": 195,
+      "height": 163,
+      "text": "山冭清\nSHANBENQING."
+    },
+    "gaps": [
+      {
+        "from": 866,
+        "to": 1222,
+        "gap": 356
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/project/template/",
+    "width": 390,
+    "height": 4735,
+    "overflow": false,
+    "h1": {
+      "top": 224,
+      "height": 112,
+      "text": "AIRSEEKERS TRON"
+    },
+    "gaps": [
+      {
+        "from": 1531,
+        "to": 2038,
+        "gap": 508
+      },
+      {
+        "from": 2600,
+        "to": 3107,
+        "gap": 508
+      },
+      {
+        "from": 3233,
+        "to": 3741,
+        "gap": 508
+      },
+      {
+        "from": 3804,
+        "to": 4311,
+        "gap": 508
+      }
+    ],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/airseekers.html",
+    "width": 390,
+    "height": 4837,
+    "overflow": false,
+    "h1": {
+      "top": 216,
+      "height": 112,
+      "text": "AIRSEEKERS"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-calendar.html",
+    "width": 390,
+    "height": 6972,
+    "overflow": false,
+    "h1": {
+      "top": 213,
+      "height": 122,
+      "text": "YEAR CALENDAR"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-daily.html",
+    "width": 390,
+    "height": 1322,
+    "overflow": false,
+    "h1": {
+      "top": 213,
+      "height": 61,
+      "text": "AKU DAILY"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-evolution.html",
+    "width": 390,
+    "height": 1494,
+    "overflow": false,
+    "h1": {
+      "top": 151,
+      "height": 158,
+      "text": "AKU EVOLUTION\nBOARD"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku-pins.html",
+    "width": 390,
+    "height": 3469,
+    "overflow": false,
+    "h1": {
+      "top": 213,
+      "height": 110,
+      "text": "AKU POCKET\nARCHIVE"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/aku.html",
+    "width": 390,
+    "height": 1742,
+    "overflow": false,
+    "h1": {
+      "top": 248,
+      "height": 154,
+      "text": "AKU\nWORLD"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/fantawild.html",
+    "width": 390,
+    "height": 5138,
+    "overflow": false,
+    "h1": {
+      "top": 227,
+      "height": 112,
+      "text": "FANTAWILD"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/interface.html",
+    "width": 390,
+    "height": 5923,
+    "overflow": false,
+    "h1": {
+      "top": 217,
+      "height": 112,
+      "text": "INTERFACES"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/projects/mova.html",
+    "width": 390,
+    "height": 4814,
+    "overflow": false,
+    "h1": {
+      "top": 236,
+      "height": 56,
+      "text": "MOVA"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  },
+  {
+    "route": "/work/",
+    "width": 390,
+    "height": 3534,
+    "overflow": false,
+    "h1": {
+      "top": 235,
+      "height": 112,
+      "text": "WORK\nINDEX"
+    },
+    "gaps": [],
+    "hiddenReveals": 0
+  }
+]
