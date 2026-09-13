@@ -98,7 +98,8 @@
       45
     ],
     "cover": "/case-media/fantawild-stories/mayday-cover.webp",
-    "qr": "/case-media/fantawild-stories/figure-312.webp"
+    "qr": "/case-media/fantawild-stories/figure-312.webp",
+    "articleHeader": "/case-media/fantawild-stories/figure-0.webp"
   },
   {
     "slug": "dragonboat",
@@ -175,7 +176,8 @@
     ],
     "full": "/case-media/fantawild-stories/dragonboat-full.jpg",
     "source": 50,
-    "cover": "/case-media/fantawild-stories/dragonboat-cover.webp"
+    "cover": "/case-media/fantawild-stories/dragonboat-cover.webp",
+    "articleHeader": "/case-media/fantawild-stories/figure-49.webp"
   },
   {
     "slug": "qixi",
@@ -277,7 +279,8 @@
     ],
     "full": "/case-media/fantawild-stories/qixi-full.jpg",
     "source": 87,
-    "cover": "/case-media/fantawild-stories/qixi-cover.webp"
+    "cover": "/case-media/fantawild-stories/qixi-cover.webp",
+    "articleHeader": "/case-media/fantawild-stories/figure-88.webp"
   },
   {
     "slug": "ganzhou",
@@ -355,7 +358,8 @@
     "full": "/case-media/fantawild-stories/ganzhou-full.jpg",
     "source": 90,
     "cover": "/case-media/fantawild-stories/ganzhou-cover.webp",
-    "qr": "/case-media/fantawild-stories/figure-316.webp"
+    "qr": "/case-media/fantawild-stories/figure-316.webp",
+    "articleHeader": "/case-media/fantawild-stories/figure-89.webp"
   },
   {
     "slug": "double11",
@@ -468,7 +472,8 @@
     "full": "/case-media/fantawild-stories/double11-full.jpg",
     "source": 171,
     "cover": "/case-media/fantawild-stories/double11-cover.webp",
-    "qr": "/case-media/fantawild-stories/figure-313.webp"
+    "qr": "/case-media/fantawild-stories/figure-313.webp",
+    "articleHeader": null
   },
   {
     "slug": "newyear",
@@ -648,7 +653,8 @@
         "width": 1850,
         "height": 750
       }
-    ]
+    ],
+    "articleHeader": "/case-media/fantawild-stories/figure-194.webp"
   },
   {
     "slug": "dinosaur",
@@ -720,7 +726,8 @@
     ],
     "full": "/case-media/fantawild-stories/dinosaur-full.jpg",
     "source": 232,
-    "cover": "/case-media/fantawild-stories/dinosaur-cover.webp"
+    "cover": "/case-media/fantawild-stories/dinosaur-cover.webp",
+    "articleHeader": null
   },
   {
     "slug": "crossover",
@@ -757,7 +764,8 @@
     ],
     "full": "/case-media/fantawild-stories/crossover-full.jpg",
     "source": 271,
-    "cover": "/case-media/fantawild-stories/crossover-cover.webp"
+    "cover": "/case-media/fantawild-stories/crossover-cover.webp",
+    "articleHeader": null
   },
   {
     "slug": "nationalday",
@@ -819,6 +827,7 @@
     ],
     "full": "/case-media/fantawild-stories/nationalday-full.jpg",
     "source": 277,
-    "cover": "/case-media/fantawild-stories/nationalday-cover.webp"
+    "cover": "/case-media/fantawild-stories/nationalday-cover.webp",
+    "articleHeader": null
   }
 ]

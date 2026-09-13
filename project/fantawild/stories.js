@@ -1,4 +1,12 @@
 (() => {
+ document.querySelectorAll('.fw-phone-presentation').forEach(phone=>{
+  const screen=phone.querySelector('.fw-phone-screen'),back=phone.querySelector('[data-screen-back]'),next=phone.querySelector('[data-screen-next]'),horizontal=screen.classList.contains('is-horizontal');
+  const update=()=>{const position=horizontal?screen.scrollLeft:screen.scrollTop,size=horizontal?screen.clientWidth:screen.clientHeight,total=horizontal?screen.scrollWidth:screen.scrollHeight;back.disabled=position<2;next.disabled=position+size>=total-2};
+  const move=direction=>screen.scrollBy({left:horizontal?direction*screen.clientWidth:0,top:horizontal?0:direction*screen.clientHeight,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+  back.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));screen.addEventListener('scroll',update,{passive:true});screen.addEventListener('load',update,true);new ResizeObserver(update).observe(screen);
+  const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){const img=entry.target;img.src=img.dataset.phoneSrc;img.removeAttribute('data-phone-src');observer.unobserve(img)}},{root:screen,rootMargin:'600px'});
+  screen.querySelectorAll('[data-phone-src]').forEach(img=>observer.observe(img));update();
+ });
  const dialog=document.createElement('dialog');dialog.className='fw-reader';dialog.setAttribute('aria-labelledby','fw-reader-title');
  dialog.innerHTML='<div class="fw-reader-top"><h2 id="fw-reader-title"></h2><div class="fw-reader-actions"><button data-orientation hidden>切换横版</button><a data-original target="_blank" rel="noopener">原始长图 ↗</a><button data-qr hidden>项目二维码</button><button data-close>关闭 ×</button></div></div><p class="fw-reader-hint"></p><div class="fw-reader-scroll" tabindex="0" aria-label="完整漫画阅读区域"><div class="fw-reader-track"></div></div><aside class="fw-qr" hidden><img alt="项目原二维码"><p>二维码来自原作品集。</p><button data-hide-qr>收起二维码</button></aside>';
  document.body.append(dialog);const area=dialog.querySelector('.fw-reader-scroll'),track=dialog.querySelector('.fw-reader-track'),orientation=dialog.querySelector('[data-orientation]'),qr=dialog.querySelector('.fw-qr');let catalog,story,trigger,overflow='',horizontal=false,token=0;
