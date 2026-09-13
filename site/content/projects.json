@@ -100,11 +100,11 @@
     {
       "project": "FANTAWILD",
       "number": "03",
-      "metric": "50K+",
-      "metricLabel": "SINGLE ARTICLE VIEWS",
-      "metricLabelZh": "单篇内容阅读",
-      "support": "CONTENT PRODUCTION SYSTEM",
-      "supportZh": "内容设计与生产体系"
+      "metric": "9",
+      "metricLabel": "COMIC PROJECTS",
+      "metricLabelZh": "个条漫项目",
+      "support": "STORY × CHARACTER × EXPERIENCE",
+      "supportZh": "故事 × 角色 × 阅读体验"
     },
     {
       "project": "AKU DAYS",
@@ -255,8 +255,8 @@
     },
     {
       "slug": "fantawild",
-      "title": "Fantawild Content System",
-      "year": "2018–2022",
+      "title": "Fantawild Comic & Content Design",
+      "year": "2020–2022",
       "category": [
         "brand",
         "lab"
@@ -265,20 +265,20 @@
       "type": "featured",
       "workOrder": 3,
       "workGroup": "featured",
-      "discipline": "Content / Editorial / System",
+      "discipline": "Storytelling / Illustration / Editorial",
       "featured": true,
       "featuredOrder": 3,
       "featuredTitleLines": [
         "FANTAWILD",
-        "CONTENT SYSTEM"
+        "COMIC & CONTENT"
       ],
-      "featuredCategoryLabel": "CONTENT × SYSTEM",
-      "featuredStatement": "将一次性的内容创作，转化为可以持续协作、生产与传播的内容设计系统。",
-      "featuredStatementEn": "Turning content creation into a scalable storytelling and production system.",
+      "featuredCategoryLabel": "STORY × CHARACTER",
+      "featuredStatement": "以节日条漫、乐园开园故事与公众号视觉，连接角色、场景和阅读体验。",
+      "featuredStatementEn": "Connecting characters, places and reading through seasonal comics, park stories and editorial visuals.",
       "featuredScope": [
         "Storytelling",
         "Illustration",
-        "Workflow"
+        "Editorial"
       ],
       "featuredObjectPosition": "50% 50%",
       "featuredCover": "/home/fantawild-featured-2026.webp",
@@ -288,17 +288,17 @@
       "objectPositionMobile": "50% 50%",
       "fitMode": "cover",
       "cover": "/case-media/fantawild/fantawild-01.webp",
-      "description": "从数字漫画创作延伸到可持续生产的内容设计系统。",
-      "descriptionEn": "Expanding digital comics into a sustainable and repeatable content design system.",
+      "description": "节日条漫、乐园开园故事与公众号传播设计。",
+      "descriptionEn": "Seasonal comics, park opening stories and WeChat editorial design.",
       "gallery": [],
       "video": [],
       "tools": [
-        "Content Strategy",
         "Storyboard",
-        "Workflow"
+        "Illustration",
+        "Editorial Design"
       ],
-      "role": "Content Design Lead",
-      "result": "50K+ Single Article Views",
+      "role": "Comic & Content Designer",
+      "result": "9 Comic Projects",
       "status": "live",
       "url": "/project/fantawild/"
     },
