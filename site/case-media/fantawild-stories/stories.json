@@ -1,0 +1,824 @@
+[
+  {
+    "slug": "mayday",
+    "title": "五一劳动节",
+    "year": "2020",
+    "description": "节日与职业共鸣",
+    "orientation": "vertical",
+    "tiles": [
+      {
+        "src": "/case-media/fantawild-stories/mayday-0.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-1.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-2.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-3.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-4.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-5.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-6.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-7.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-8.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-9.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-10.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-11.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/mayday-12.webp",
+        "width": 750,
+        "height": 800
+      }
+    ],
+    "full": "/case-media/fantawild-stories/mayday-full.jpg",
+    "source": [
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+    ],
+    "cover": "/case-media/fantawild-stories/mayday-cover.webp",
+    "qr": "/case-media/fantawild-stories/figure-312.webp"
+  },
+  {
+    "slug": "dragonboat",
+    "title": "端午奇遇",
+    "year": "2020",
+    "description": "节日叙事与乐园场景",
+    "orientation": "vertical",
+    "tiles": [
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-0.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-1.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-2.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-3.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-4.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-5.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-6.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-7.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-8.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-9.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-10.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-11.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/dragonboat-12.webp",
+        "width": 750,
+        "height": 800
+      }
+    ],
+    "full": "/case-media/fantawild-stories/dragonboat-full.jpg",
+    "source": 50,
+    "cover": "/case-media/fantawild-stories/dragonboat-cover.webp"
+  },
+  {
+    "slug": "qixi",
+    "title": "七夕特别篇",
+    "year": "2020",
+    "description": "日常话题与情绪转折",
+    "orientation": "vertical",
+    "tiles": [
+      {
+        "src": "/case-media/fantawild-stories/qixi-0.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-1.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-2.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-3.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-4.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-5.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-6.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-7.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-8.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-9.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-10.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-11.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-12.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-13.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-14.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-15.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-16.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/qixi-17.webp",
+        "width": 800,
+        "height": 800
+      }
+    ],
+    "full": "/case-media/fantawild-stories/qixi-full.jpg",
+    "source": 87,
+    "cover": "/case-media/fantawild-stories/qixi-cover.webp"
+  },
+  {
+    "slug": "ganzhou",
+    "title": "方特时光机",
+    "year": "2021",
+    "description": "赣州东方欲晓开园",
+    "orientation": "vertical",
+    "tiles": [
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-0.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-1.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-2.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-3.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-4.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-5.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-6.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-7.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-8.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-9.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-10.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-11.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/ganzhou-12.webp",
+        "width": 800,
+        "height": 300
+      }
+    ],
+    "full": "/case-media/fantawild-stories/ganzhou-full.jpg",
+    "source": 90,
+    "cover": "/case-media/fantawild-stories/ganzhou-cover.webp",
+    "qr": "/case-media/fantawild-stories/figure-316.webp"
+  },
+  {
+    "slug": "double11",
+    "title": "方特脱单大作战",
+    "year": "2021",
+    "description": "双十一互动条漫",
+    "orientation": "vertical",
+    "tiles": [
+      {
+        "src": "/case-media/fantawild-stories/double11-0.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-1.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-2.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-3.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-4.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-5.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-6.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-7.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-8.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-9.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-10.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-11.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-12.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-13.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-14.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-15.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-16.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-17.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-18.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/double11-19.webp",
+        "width": 750,
+        "height": 600
+      }
+    ],
+    "full": "/case-media/fantawild-stories/double11-full.jpg",
+    "source": 171,
+    "cover": "/case-media/fantawild-stories/double11-cover.webp",
+    "qr": "/case-media/fantawild-stories/figure-313.webp"
+  },
+  {
+    "slug": "newyear",
+    "title": "方特新年派对",
+    "year": "2022",
+    "description": "横向分镜与竖版阅读",
+    "orientation": "vertical",
+    "tiles": [
+      {
+        "src": "/case-media/fantawild-stories/newyear-0.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-1.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-2.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-3.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-4.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-5.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-6.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-7.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-8.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-9.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-10.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-11.webp",
+        "width": 750,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-12.webp",
+        "width": 750,
+        "height": 800
+      }
+    ],
+    "full": "/case-media/fantawild-stories/newyear-full.jpg",
+    "source": 192,
+    "cover": "/case-media/fantawild-stories/newyear-cover.webp",
+    "qr": "/case-media/fantawild-stories/figure-314.webp",
+    "horizontalTiles": [
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-196.webp",
+        "width": 1300,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-197.webp",
+        "width": 750,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-198.webp",
+        "width": 1300,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-199.webp",
+        "width": 750,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-200.webp",
+        "width": 1300,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-201.webp",
+        "width": 750,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-202.webp",
+        "width": 1300,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-203.webp",
+        "width": 750,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-204.webp",
+        "width": 1300,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-205.webp",
+        "width": 750,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-206.webp",
+        "width": 1300,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-207.webp",
+        "width": 750,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-208.webp",
+        "width": 1300,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-209.webp",
+        "width": 750,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-210.webp",
+        "width": 1300,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-211.webp",
+        "width": 1,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-212.webp",
+        "width": 749,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-213.webp",
+        "width": 1300,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-214.webp",
+        "width": 750,
+        "height": 750
+      },
+      {
+        "src": "/case-media/fantawild-stories/newyear-horizontal-215.webp",
+        "width": 1850,
+        "height": 750
+      }
+    ]
+  },
+  {
+    "slug": "dinosaur",
+    "title": "重返原始时代",
+    "year": "2022",
+    "description": "恐龙主题与横向场景",
+    "orientation": "horizontal",
+    "tiles": [
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-0.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-1.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-2.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-3.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-4.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-5.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-6.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-7.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-8.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-9.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-10.webp",
+        "width": 1600,
+        "height": 800
+      },
+      {
+        "src": "/case-media/fantawild-stories/dinosaur-11.webp",
+        "width": 400,
+        "height": 800
+      }
+    ],
+    "full": "/case-media/fantawild-stories/dinosaur-full.jpg",
+    "source": 232,
+    "cover": "/case-media/fantawild-stories/dinosaur-cover.webp"
+  },
+  {
+    "slug": "crossover",
+    "title": "熊出没 × 开心消消乐",
+    "year": "2022",
+    "description": "IP 合作与亲子活动",
+    "orientation": "vertical",
+    "tiles": [
+      {
+        "src": "/case-media/fantawild-stories/crossover-0.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/crossover-1.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/crossover-2.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/crossover-3.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/crossover-4.webp",
+        "width": 800,
+        "height": 1600
+      }
+    ],
+    "full": "/case-media/fantawild-stories/crossover-full.jpg",
+    "source": 271,
+    "cover": "/case-media/fantawild-stories/crossover-cover.webp"
+  },
+  {
+    "slug": "nationalday",
+    "title": "国庆漫画",
+    "year": "2022",
+    "description": "角色集合与假日内容",
+    "orientation": "vertical",
+    "tiles": [
+      {
+        "src": "/case-media/fantawild-stories/nationalday-0.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/nationalday-1.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/nationalday-2.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/nationalday-3.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/nationalday-4.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/nationalday-5.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/nationalday-6.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/nationalday-7.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/nationalday-8.webp",
+        "width": 800,
+        "height": 1600
+      },
+      {
+        "src": "/case-media/fantawild-stories/nationalday-9.webp",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "full": "/case-media/fantawild-stories/nationalday-full.jpg",
+    "source": 277,
+    "cover": "/case-media/fantawild-stories/nationalday-cover.webp"
+  }
+]
