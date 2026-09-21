@@ -231,16 +231,16 @@
       "type": "additional",
       "workOrder": 5,
       "workGroup": "selected",
-      "discipline": "Brand / Identity / Packaging",
+      "discipline": "Brand Identity / VIS / Applications",
       "featured": false,
-      "cover": "/case-media/forktech-final/forktech-01.webp",
-      "desktopSrc": "/case-media/forktech-final/forktech-01.webp",
+      "cover": "/case-media/forktech-v2/forktech-91.webp",
+      "desktopSrc": "/case-media/forktech-v2/forktech-91.webp",
       "mobileSrc": "",
       "objectPositionDesktop": "50% 50%",
       "objectPositionMobile": "50% 50%",
       "fitMode": "cover",
-      "description": "连接科技、工业能力与市场传播的可扩展品牌识别系统。",
-      "descriptionEn": "A scalable identity system connecting technology, industrial capability and market communication.",
+      "description": "从标志意图、视觉规范到品牌应用，梳理教育科技品牌的识别体系。",
+      "descriptionEn": "An education technology identity, from logo exploration to guidelines and applications.",
       "gallery": [],
       "video": [],
       "tools": [
@@ -370,7 +370,7 @@
     {
       "slug": "kamingo",
       "title": "KAMINGO",
-      "year": "2026",
+      "year": "2025–2026",
       "category": [
         "brand",
         "ui"
@@ -379,26 +379,27 @@
       "type": "additional",
       "workOrder": 4,
       "workGroup": "selected",
-      "discipline": "Brand / Exhibition / UI",
+      "discipline": "Brand / VIS / Exhibition",
       "featured": false,
-      "cover": "/case-media/kamingo/kamingo-01.webp",
-      "desktopSrc": "/case-media/kamingo/kamingo-01.webp",
+      "cover": "/case-media/kamingo-v2/kamingo-156.webp",
+      "desktopSrc": "/case-media/kamingo-v2/kamingo-156.webp",
       "mobileSrc": "",
       "objectPositionDesktop": "50% 50%",
       "objectPositionMobile": "50% 50%",
       "fitMode": "cover",
-      "description": "贯穿品牌、展会与应用体验的整合设计项目。",
+      "description": "从标志与视觉规范，到品牌应用和展会分区画面的完整表达。",
       "gallery": [],
       "video": [],
       "tools": [
-        "Brand",
-        "Exhibition",
-        "APP"
+        "Brand Identity",
+        "Visual Guidelines",
+        "Exhibition Design"
       ],
       "role": "Brand & Experience Designer",
       "result": "Integrated experience",
       "status": "live",
-      "url": "/project/kamingo/"
+      "url": "/project/kamingo/",
+      "descriptionEn": "Brand identity, visual guidelines, applications and exhibition graphics."
     },
     {
       "slug": "aku",
