@@ -11,7 +11,7 @@
       "projects": [
         "airseekers",
         "forktech",
-        "shanbenqing",
+        "shantaiqing",
         "kamingo"
       ]
     },
@@ -167,7 +167,8 @@
       "role": "Brand & Product Design Lead",
       "result": "Global Crowdfunding & Market Launch",
       "status": "live",
-      "url": "/project/airseekers/"
+      "url": "/project/airseekers/",
+      "workPreviewSrc": "/case-media/work-previews/airseekers.webp"
     },
     {
       "slug": "mova",
@@ -218,7 +219,8 @@
       "role": "Product Experience Designer",
       "result": "Patent Concept / Product Development",
       "status": "live",
-      "url": "/project/mova/"
+      "url": "/project/mova/",
+      "workPreviewSrc": "/case-media/work-previews/mova.webp"
     },
     {
       "slug": "forktech",
@@ -251,7 +253,8 @@
       "role": "Brand Designer",
       "result": "Identity system",
       "status": "live",
-      "url": "/project/forktech/"
+      "url": "/project/forktech/",
+      "workPreviewSrc": "/case-media/work-previews/forktech.webp"
     },
     {
       "slug": "fantawild",
@@ -300,7 +303,8 @@
       "role": "Comic & Content Designer",
       "result": "9 Comic Projects",
       "status": "live",
-      "url": "/project/fantawild/"
+      "url": "/project/fantawild/",
+      "workPreviewSrc": "/case-media/work-previews/fantawild.webp"
     },
     {
       "slug": "baidu",
@@ -333,11 +337,12 @@
       "role": "Visual Designer",
       "result": "Commercial communication system",
       "status": "live",
-      "url": "/project/template/?slug=baidu"
+      "url": "/project/template/?slug=baidu",
+      "workPreviewSrc": "/case-media/work-previews/baidu.webp"
     },
     {
-      "slug": "shanbenqing",
-      "title": "SHANBENQING",
+      "slug": "shantaiqing",
+      "title": "SHANTAIQING",
       "year": "2023",
       "category": [
         "brand"
@@ -346,26 +351,29 @@
       "type": "additional",
       "workOrder": 6,
       "workGroup": "selected",
-      "discipline": "Brand / Packaging / E-commerce",
+      "discipline": "Identity / Packaging / Digital / Exhibition",
       "featured": false,
-      "cover": "/case-media/shanbenqing/shanbenqing-01.webp",
-      "desktopSrc": "/case-media/shanbenqing/shanbenqing-01.webp",
+      "cover": "/case-media/shantaiqing/stq-1032.webp",
+      "desktopSrc": "/case-media/shantaiqing/stq-1032.webp",
       "mobileSrc": "",
       "objectPositionDesktop": "50% 50%",
       "objectPositionMobile": "50% 50%",
       "fitMode": "cover",
-      "description": "从品牌识别、包装到电商传播的一体化视觉系统。",
+      "description": "山冭清：从 VIS、品牌主视觉与包装，到小程序和展会物料的完整体验。",
       "gallery": [],
       "video": [],
       "tools": [
-        "Identity",
+        "VIS",
         "Packaging",
-        "Campaign"
+        "Mini Program",
+        "Exhibition"
       ],
       "role": "Brand Designer",
       "result": "Integrated visual system",
       "status": "live",
-      "url": "/project/shanbenqing/"
+      "url": "/project/shantaiqing/",
+      "workPreviewSrc": "/case-media/shantaiqing/work-preview.webp",
+      "descriptionEn": "SHANTAIQING: identity, key visuals, packaging, mini-program commerce and event materials."
     },
     {
       "slug": "kamingo",
@@ -399,7 +407,8 @@
       "result": "Integrated experience",
       "status": "live",
       "url": "/project/kamingo/",
-      "descriptionEn": "Brand identity, visual guidelines, applications and exhibition graphics."
+      "descriptionEn": "Brand identity, visual guidelines, applications and exhibition graphics.",
+      "workPreviewSrc": "/case-media/work-previews/kamingo.webp"
     },
     {
       "slug": "aku",
@@ -433,7 +442,8 @@
       "role": "Creator",
       "result": "206 / 365 days",
       "status": "live",
-      "url": "/projects/aku.html"
+      "url": "/projects/aku.html",
+      "workPreviewSrc": "/case-media/work-previews/aku.webp"
     },
     {
       "slug": "creative-lab",
@@ -466,7 +476,8 @@
       "role": "Independent Creator",
       "result": "Ongoing visual research",
       "status": "live",
-      "url": "/lab/"
+      "url": "/lab/",
+      "workPreviewSrc": "/case-media/work-previews/creative-lab.webp"
     },
     {
       "slug": "ai-workflow",
@@ -514,7 +525,8 @@
       "role": "AI Creative Designer",
       "result": "Reusable Design Workflow",
       "status": "live",
-      "url": "/project/ai-workflow/"
+      "url": "/project/ai-workflow/",
+      "workPreviewSrc": "/case-media/work-previews/ai-workflow.webp"
     }
   ]
 }

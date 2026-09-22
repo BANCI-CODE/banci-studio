@@ -118,20 +118,26 @@ dataPromise.then(data => {
       .filter(project => Number.isFinite(Number(project.workOrder)) && groups.some(group => group.id === project.workGroup))
       .sort((a, b) => Number(a.workOrder) - Number(b.workOrder));
 
+    let previewRequest = 0;
     const setPreview = project => {
+      const request = ++previewRequest;
       const image = $("#work-preview-image");
       if (!image) return;
       image.classList.add("is-changing");
       const nextImage = new Image();
       nextImage.decoding = "async";
       nextImage.onload = () => {
+        if (request !== previewRequest) return;
         image.src = nextImage.src;
         $("#work-preview-number").textContent = String(project.workOrder).padStart(2, "0");
         $("#work-preview-label").textContent = project.title;
         image.classList.remove("is-changing");
       };
       const art = projectArtDirection(project);
-      nextImage.src = window.innerWidth <= 820 && art.mobileSrc ? art.mobileSrc : art.desktopSrc;
+      nextImage.onerror = () => {
+        if (request === previewRequest) image.classList.remove("is-changing");
+      };
+      nextImage.src = project.workPreviewSrc || art.desktopSrc;
     };
 
     const projectRow = project => `<a class="work-index-row" href="${escapeAttribute(projectUrl(project))}" data-project="${escapeAttribute(project.slug)}">
