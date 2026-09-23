@@ -317,28 +317,28 @@
       "type": "additional",
       "workOrder": 7,
       "workGroup": "selected",
-      "discipline": "Brand / Campaign / Visual",
+      "discipline": "IP / Identity / Conference",
       "featured": false,
-      "cover": "/case-media/baidu-preview.webp",
-      "desktopSrc": "/case-media/baidu-preview.webp",
+      "cover": "/case-media/baidu/dudu-hero.webp",
+      "desktopSrc": "/case-media/baidu/dudu-hero.webp",
       "mobileSrc": "",
       "objectPositionDesktop": "50% 50%",
       "objectPositionMobile": "50% 50%",
-      "fitMode": "cover",
-      "description": "面向行业会议与商业传播场景，建立可延展的品牌活动视觉与营销表达。",
-      "descriptionEn": "A scalable campaign and event visual language for industry-facing brand communication.",
+      "fitMode": "contain",
+      "description": "小度熊 IP 规范与节气延展，连接行业团队标识、会议视觉与现场物料。",
+      "descriptionEn": "DUDU character guidelines and seasonal expressions, team identities and industry conference design.",
       "gallery": [],
       "video": [],
       "tools": [
-        "Campaign Visual",
-        "Event Identity",
-        "Marketing"
+        "IP Guidelines",
+        "Illustration",
+        "Event Identity"
       ],
       "role": "Visual Designer",
       "result": "Commercial communication system",
       "status": "live",
-      "url": "/project/template/?slug=baidu",
-      "workPreviewSrc": "/case-media/work-previews/baidu.webp"
+      "url": "/project/baidu/",
+      "workPreviewSrc": "/case-media/baidu/work-preview.webp"
     },
     {
       "slug": "shantaiqing",
@@ -464,7 +464,7 @@
       "objectPositionDesktop": "50% 50%",
       "objectPositionMobile": "50% 50%",
       "fitMode": "cover",
-      "description": "关于图像、字体、物件与文化的持续实验，训练商业项目之外的视觉判断。",
+      "description": "13 项独立创作：OM 动态表情、字体、插画与日常观察。",
       "descriptionEn": "Independent research across image, type, objects and culture.",
       "gallery": [],
       "video": [],
@@ -477,7 +477,61 @@
       "result": "Ongoing visual research",
       "status": "live",
       "url": "/lab/",
-      "workPreviewSrc": "/case-media/work-previews/creative-lab.webp"
+      "workPreviewSrc": "/case-media/om/work-preview.webp",
+      "labItems": [
+        {
+          "title": "OM 动态表情包",
+          "url": "/lab/om/"
+        },
+        {
+          "title": "白 T 计划",
+          "url": "/lab/white-t/"
+        },
+        {
+          "title": "从数字 1 到 100 的难度",
+          "url": "/lab/#study-03"
+        },
+        {
+          "title": "搁浅的人",
+          "url": "/lab/#study-04"
+        },
+        {
+          "title": "古拙体",
+          "url": "/lab/#study-05"
+        },
+        {
+          "title": "关于镜子",
+          "url": "/lab/#study-06"
+        },
+        {
+          "title": "城市明信片",
+          "url": "/lab/#study-07"
+        },
+        {
+          "title": "明信片",
+          "url": "/lab/#study-08"
+        },
+        {
+          "title": "诗的意向",
+          "url": "/lab/#study-09"
+        },
+        {
+          "title": "手写字体",
+          "url": "/lab/#study-10"
+        },
+        {
+          "title": "睡着的人",
+          "url": "/lab/#study-11"
+        },
+        {
+          "title": "小人小物",
+          "url": "/lab/#study-12"
+        },
+        {
+          "title": "艺术家肖像",
+          "url": "/lab/#study-13"
+        }
+      ]
     },
     {
       "slug": "ai-workflow",

@@ -147,7 +147,7 @@ dataPromise.then(data => {
       <span class="work-index-role">${escapeAttribute(project.role)}</span>
       <span class="work-index-discipline">${escapeAttribute(project.discipline || project.category.join(" / "))}</span>
       <span class="work-index-view">VIEW CASE <span aria-hidden="true">↗</span></span>
-    </a>`;
+    </a>${project.labItems ? `<nav class="work-lab-links" aria-label="独立创作项目">${project.labItems.map((item, index) => `<a href="${escapeAttribute(item.url)}"><span>${String(index + 1).padStart(2, "0")}</span>${escapeAttribute(item.title)} <span aria-hidden="true">↗</span></a>`).join("")}</nav>` : ""}`;
 
     const render = () => {
       const projects = orderedProjects.filter(project => active === "all" || project.category.includes(active));
