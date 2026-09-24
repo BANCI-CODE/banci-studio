@@ -464,7 +464,7 @@
       "objectPositionDesktop": "50% 50%",
       "objectPositionMobile": "50% 50%",
       "fitMode": "cover",
-      "description": "13 项独立创作：OM 动态表情、字体、插画与日常观察。",
+      "description": "14 项独立创作：OM 动态表情、字体、插画与日常观察。",
       "descriptionEn": "Independent research across image, type, objects and culture.",
       "gallery": [],
       "video": [],
@@ -530,6 +530,10 @@
         {
           "title": "艺术家肖像",
           "url": "/lab/artists/"
+        },
+        {
+          "title": "普通人的时尚",
+          "url": "/lab/ordinary-fashion/"
         }
       ]
     },
