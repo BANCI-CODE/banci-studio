@@ -1,5 +1,5 @@
 import { enhanceSeoAccessibility } from "./seo-accessibility.mjs";
-import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { enhanceImageMarkup } from "./image-performance.mjs";
 
@@ -38,3 +38,15 @@ await writeFile("github-dist/.nojekyll", "");
 await writeFile("github-dist/CNAME", "banci.studio\n");
 
 console.log("GitHub Pages export ready: github-dist/");
+
+// Cloudflare Pages rejects individual assets over 25 MiB.
+async function assertPagesAssetLimits(dir) {
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const file = path.join(dir, entry.name);
+    if (entry.isDirectory()) await assertPagesAssetLimits(file);
+    else if (entry.isFile() && (await stat(file)).size > 25 * 1024 * 1024) {
+      throw new Error(`Cloudflare Pages asset exceeds 25 MiB: ${file}`);
+    }
+  }
+}
+await assertPagesAssetLimits("github-dist");
