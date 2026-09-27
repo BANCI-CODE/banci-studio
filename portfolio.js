@@ -105,7 +105,8 @@ dataPromise.then(data => {
       { id: "brand", title: "Brand" },
       { id: "product", title: "Product" },
       { id: "ui", title: "UI" },
-      { id: "ai", title: "AI" }
+      { id: "ai", title: "AI" },
+      { id: "independent", title: "独立创作" }
     ];
     const groups = [
       { id: "featured", title: "重点案例", note: "BRAND & PRODUCT EXPERIENCE" },
@@ -118,15 +119,15 @@ dataPromise.then(data => {
       .filter(project => Number.isFinite(Number(project.workOrder)) && groups.some(group => group.id === project.workGroup))
       .sort((a, b) => Number(a.workOrder) - Number(b.workOrder));
 
-    const projectRow = project => `<article class="work-card" data-project="${escapeAttribute(project.slug)}"><a class="work-card-link" href="${escapeAttribute(projectUrl(project))}"><div class="work-card-media"><img src="${escapeAttribute(project.workCardSrc || project.cover)}" alt="${escapeAttribute(project.title)} 项目封面" width="800" height="1000" loading="lazy" decoding="async"></div><div class="work-card-info"><div class="work-card-meta"><span>${escapeAttribute(project.discipline || project.category.join(" / "))}</span><span>${escapeAttribute(project.year)}</span></div><h3>${escapeAttribute(project.title)}<span aria-hidden="true">↗</span></h3><p>${escapeAttribute(project.description)}</p></div></a></article>${project.labItems ? `<nav class="work-lab-links" aria-label="独立创作项目"><header><h4>独立创作档案</h4><a href="/lab/">全部 ${project.labItems.length} 项 ↗</a></header>${project.labItems.map((item, index) => `<a class="work-lab-entry" href="${escapeAttribute(item.url)}"><img src="${escapeAttribute(item.cover)}" alt="" loading="lazy" decoding="async"><span><small>${String(index + 1).padStart(2, "0")}</small><strong>${escapeAttribute(item.title)}</strong></span><span aria-hidden="true">↗</span></a>`).join("")}</nav>` : ""}`;
+    const projectRow = project => `<article class="work-card" data-project="${escapeAttribute(project.slug)}"><a class="work-card-link" href="${escapeAttribute(projectUrl(project))}"><div class="work-card-media"><img src="${escapeAttribute(project.workCardSrc || project.cover)}" alt="${escapeAttribute(project.title)} 项目封面" width="800" height="1000" loading="lazy" decoding="async"></div><div class="work-card-info"><div class="work-card-meta"><span>${escapeAttribute(project.discipline || project.category.join(" / "))}</span><span>${escapeAttribute(project.year)}</span></div><h3>${escapeAttribute(project.title)}<span aria-hidden="true">↗</span></h3><p>${escapeAttribute(project.description)}</p></div></a></article>${project.labItems ? `<nav class="work-lab-links" id="creative-archive" aria-label="独立创作项目"><header><div><h3>创作档案</h3><p>从角色、插画到字体与物件，持续记录自己的观察。</p></div><a href="/lab/">${project.labItems.length} 个系列 / 查看档案 ↗</a></header>${project.labItems.map((item, index) => `<a class="work-lab-entry" href="${escapeAttribute(item.url)}"><div class="work-lab-art"><img src="${escapeAttribute(item.cover)}" alt="" loading="lazy" decoding="async"></div><span><small>${String(index + 1).padStart(2, "0")}</small><strong>${escapeAttribute(item.title)}</strong></span><span aria-hidden="true">↗</span></a>`).join("")}</nav>` : ""}`;
 
     const render = () => {
-      const projects = orderedProjects.filter(project => active === "all" || project.category.includes(active));
+      const projects = orderedProjects.filter(project => active === "all" || (active === "independent" ? project.workGroup === "independent" : project.category.includes(active)));
       $("#work-list").innerHTML = projects.length ? groups.map(group => {
         const groupProjects = projects.filter(project => project.workGroup === group.id);
         if (!groupProjects.length) return "";
-        return `<section class="work-group" aria-labelledby="work-group-${group.id}">
-          <header class="work-group-head"><h3 id="work-group-${group.id}">${group.title}</h3><span>${group.note}</span></header>
+        return `<section class="work-group" id="section-${group.id}" data-group="${group.id}" aria-labelledby="work-group-${group.id}">
+          <header class="work-group-head"><h2 id="work-group-${group.id}">${group.title}<small>${String(groupProjects.length).padStart(2,"0")}</small></h2><span>${group.note}</span></header>
           <div class="work-group-list">${groupProjects.map(projectRow).join("")}</div>
         </section>`;
       }).join("") : `<p class="empty-state">该方向的项目正在整理中。</p>`;
@@ -143,6 +144,9 @@ dataPromise.then(data => {
       render();
     }));
     render();
+    $$("[data-work-jump]").forEach(link => link.addEventListener("click", () => {
+      if (active !== "all") $("[data-filter=all]", $("#filters")).click();
+    }));
   }
   if ($("#project-template")) {
     const slug = new URLSearchParams(location.search).get("slug") || "airseekers";
