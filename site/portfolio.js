@@ -108,9 +108,9 @@ dataPromise.then(data => {
       { id: "ai", title: "AI" }
     ];
     const groups = [
-      { id: "featured", title: "FEATURED WORKS", note: "PRIMARY CASES" },
-      { id: "selected", title: "SELECTED PROJECTS", note: "CURATED ARCHIVE" },
-      { id: "independent", title: "INDEPENDENT", note: "SELF-INITIATED PRACTICE" }
+      { id: "featured", title: "重点案例", note: "BRAND & PRODUCT EXPERIENCE" },
+      { id: "selected", title: "品牌与视觉", note: "SELECTED BRAND PROJECTS" },
+      { id: "independent", title: "独立创作", note: "WORLDS, EXPERIMENTS & PERSONAL WORK" }
     ];
     const requestedFilter = new URLSearchParams(location.search).get("category") || "all";
     let active = filterItems.some(item => item.id === requestedFilter) ? requestedFilter : "all";
@@ -118,36 +118,7 @@ dataPromise.then(data => {
       .filter(project => Number.isFinite(Number(project.workOrder)) && groups.some(group => group.id === project.workGroup))
       .sort((a, b) => Number(a.workOrder) - Number(b.workOrder));
 
-    let previewRequest = 0;
-    const setPreview = project => {
-      const request = ++previewRequest;
-      const image = $("#work-preview-image");
-      if (!image) return;
-      image.classList.add("is-changing");
-      const nextImage = new Image();
-      nextImage.decoding = "async";
-      nextImage.onload = () => {
-        if (request !== previewRequest) return;
-        image.src = nextImage.src;
-        $("#work-preview-number").textContent = String(project.workOrder).padStart(2, "0");
-        $("#work-preview-label").textContent = project.title;
-        image.classList.remove("is-changing");
-      };
-      const art = projectArtDirection(project);
-      nextImage.onerror = () => {
-        if (request === previewRequest) image.classList.remove("is-changing");
-      };
-      nextImage.src = project.workPreviewSrc || art.desktopSrc;
-    };
-
-    const projectRow = project => `<a class="work-index-row" href="${escapeAttribute(projectUrl(project))}" data-project="${escapeAttribute(project.slug)}">
-      <span class="work-index-number">${String(project.workOrder).padStart(2, "0")}</span>
-      <span class="work-index-primary"><strong class="work-index-title">${escapeAttribute(project.title)}</strong><span class="work-index-description">${escapeAttribute(project.description)}</span></span>
-      <span class="work-index-year">${escapeAttribute(project.year)}</span>
-      <span class="work-index-role">${escapeAttribute(project.role)}</span>
-      <span class="work-index-discipline">${escapeAttribute(project.discipline || project.category.join(" / "))}</span>
-      <span class="work-index-view">VIEW CASE <span aria-hidden="true">↗</span></span>
-    </a>${project.labItems ? `<nav class="work-lab-links" aria-label="独立创作项目">${project.labItems.map((item, index) => `<a href="${escapeAttribute(item.url)}"><span>${String(index + 1).padStart(2, "0")}</span>${escapeAttribute(item.title)} <span aria-hidden="true">↗</span></a>`).join("")}</nav>` : ""}`;
+    const projectRow = project => `<article class="work-card" data-project="${escapeAttribute(project.slug)}"><a class="work-card-link" href="${escapeAttribute(projectUrl(project))}"><div class="work-card-media"><img src="${escapeAttribute(project.workCardSrc || project.cover)}" alt="${escapeAttribute(project.title)} 项目封面" width="800" height="1000" loading="lazy" decoding="async"></div><div class="work-card-info"><div class="work-card-meta"><span>${escapeAttribute(project.discipline || project.category.join(" / "))}</span><span>${escapeAttribute(project.year)}</span></div><h3>${escapeAttribute(project.title)}<span aria-hidden="true">↗</span></h3><p>${escapeAttribute(project.description)}</p></div></a></article>${project.labItems ? `<nav class="work-lab-links" aria-label="独立创作项目"><header><h4>独立创作档案</h4><a href="/lab/">全部 ${project.labItems.length} 项 ↗</a></header>${project.labItems.map((item, index) => `<a class="work-lab-entry" href="${escapeAttribute(item.url)}"><img src="${escapeAttribute(item.cover)}" alt="" loading="lazy" decoding="async"><span><small>${String(index + 1).padStart(2, "0")}</small><strong>${escapeAttribute(item.title)}</strong></span><span aria-hidden="true">↗</span></a>`).join("")}</nav>` : ""}`;
 
     const render = () => {
       const projects = orderedProjects.filter(project => active === "all" || project.category.includes(active));
@@ -159,12 +130,6 @@ dataPromise.then(data => {
           <div class="work-group-list">${groupProjects.map(projectRow).join("")}</div>
         </section>`;
       }).join("") : `<p class="empty-state">该方向的项目正在整理中。</p>`;
-      $$(".work-index-row", $("#work-list")).forEach(row => {
-        const project = projects.find(item => item.slug === row.dataset.project);
-        row.addEventListener("mouseenter", () => setPreview(project));
-        row.addEventListener("focus", () => setPreview(project));
-      });
-      if (projects[0]) setPreview(projects[0]);
     };
     $("#filters").innerHTML = filterItems.map(category => `<button type="button" data-filter="${category.id}" class="${category.id === active ? "active" : ""}" aria-pressed="${category.id === active}">${category.title.toUpperCase()}</button>`).join("");
     $$("button", $("#filters")).forEach(button => button.addEventListener("click", () => {

@@ -168,7 +168,8 @@
       "result": "Global Crowdfunding & Market Launch",
       "status": "live",
       "url": "/project/airseekers/",
-      "workPreviewSrc": "/case-media/work-previews/airseekers.webp"
+      "workPreviewSrc": "/case-media/work-previews/airseekers.webp",
+      "workCardSrc": "/case-media/work-cards/airseekers.webp"
     },
     {
       "slug": "mova",
@@ -220,7 +221,8 @@
       "result": "Patent Concept / Product Development",
       "status": "live",
       "url": "/project/mova/",
-      "workPreviewSrc": "/case-media/work-previews/mova.webp"
+      "workPreviewSrc": "/case-media/work-previews/mova.webp",
+      "workCardSrc": "/case-media/work-cards/mova.webp"
     },
     {
       "slug": "forktech",
@@ -254,7 +256,8 @@
       "result": "Identity system",
       "status": "live",
       "url": "/project/forktech/",
-      "workPreviewSrc": "/case-media/work-previews/forktech.webp"
+      "workPreviewSrc": "/case-media/work-previews/forktech.webp",
+      "workCardSrc": "/case-media/work-cards/forktech.webp"
     },
     {
       "slug": "fantawild",
@@ -304,7 +307,8 @@
       "result": "9 Comic Projects",
       "status": "live",
       "url": "/project/fantawild/",
-      "workPreviewSrc": "/case-media/work-previews/fantawild.webp"
+      "workPreviewSrc": "/case-media/work-previews/fantawild.webp",
+      "workCardSrc": "/case-media/work-cards/fantawild.webp"
     },
     {
       "slug": "baidu",
@@ -338,7 +342,8 @@
       "result": "Commercial communication system",
       "status": "live",
       "url": "/project/baidu/",
-      "workPreviewSrc": "/case-media/baidu/work-preview.webp"
+      "workPreviewSrc": "/case-media/baidu/work-preview.webp",
+      "workCardSrc": "/case-media/work-cards/baidu.webp"
     },
     {
       "slug": "shantaiqing",
@@ -373,7 +378,8 @@
       "status": "live",
       "url": "/project/shantaiqing/",
       "workPreviewSrc": "/case-media/shantaiqing/work-preview.webp",
-      "descriptionEn": "SHANTAIQING: identity, key visuals, packaging, mini-program commerce and event materials."
+      "descriptionEn": "SHANTAIQING: identity, key visuals, packaging, mini-program commerce and event materials.",
+      "workCardSrc": "/case-media/work-cards/shantaiqing.webp"
     },
     {
       "slug": "kamingo",
@@ -408,7 +414,8 @@
       "status": "live",
       "url": "/project/kamingo/",
       "descriptionEn": "Brand identity, visual guidelines, applications and exhibition graphics.",
-      "workPreviewSrc": "/case-media/work-previews/kamingo.webp"
+      "workPreviewSrc": "/case-media/work-previews/kamingo.webp",
+      "workCardSrc": "/case-media/work-cards/kamingo.webp"
     },
     {
       "slug": "aku",
@@ -443,7 +450,8 @@
       "result": "206 / 365 days",
       "status": "live",
       "url": "/projects/aku.html",
-      "workPreviewSrc": "/case-media/work-previews/aku.webp"
+      "workPreviewSrc": "/case-media/work-previews/aku.webp",
+      "workCardSrc": "/case-media/work-cards/aku.webp"
     },
     {
       "slug": "creative-lab",
@@ -481,61 +489,76 @@
       "labItems": [
         {
           "title": "OM 动态表情包",
-          "url": "/lab/om/"
+          "url": "/lab/om/",
+          "cover": "/case-media/om/3d.webp"
         },
         {
           "title": "白 T 计划",
-          "url": "/lab/white-t/"
+          "url": "/lab/white-t/",
+          "cover": "/case-media/lab-covers/02.webp"
         },
         {
           "title": "从数字 1 到 100 的难度",
-          "url": "/lab/one-to-hundred/"
+          "url": "/lab/one-to-hundred/",
+          "cover": "/case-media/lab-covers/03.webp"
         },
         {
           "title": "搁浅的人",
-          "url": "/lab/stranded/"
+          "url": "/lab/stranded/",
+          "cover": "/case-media/lab-covers/04.webp"
         },
         {
           "title": "古拙体",
-          "url": "/lab/guzhuo/"
+          "url": "/lab/guzhuo/",
+          "cover": "/case-media/lab-covers/05.webp"
         },
         {
           "title": "关于镜子",
-          "url": "/lab/mirror/"
+          "url": "/lab/mirror/",
+          "cover": "/case-media/lab-covers/06.webp"
         },
         {
           "title": "另一处的城市街景明信片",
-          "url": "/lab/another-city/"
+          "url": "/lab/another-city/",
+          "cover": "/case-media/lab-covers/07.webp"
         },
         {
           "title": "口罩时间的旅居客",
-          "url": "/lab/mask-time/"
+          "url": "/lab/mask-time/",
+          "cover": "/case-media/lab-covers/08.webp"
         },
         {
           "title": "诗的意向",
-          "url": "/lab/poetry/"
+          "url": "/lab/poetry/",
+          "cover": "/case-media/poetry/20.webp"
         },
         {
           "title": "手写字体",
-          "url": "/lab/lettering/"
+          "url": "/lab/lettering/",
+          "cover": "/case-media/lab-covers/10.webp"
         },
         {
           "title": "睡着的人",
-          "url": "/lab/sleeping/"
+          "url": "/lab/sleeping/",
+          "cover": "/case-media/lab-covers/11.webp"
         },
         {
           "title": "小人小物",
-          "url": "/lab/little-people/"
+          "url": "/lab/little-people/",
+          "cover": "/case-media/little-people/01.webp"
         },
         {
           "title": "艺术家肖像",
-          "url": "/lab/artists/"
+          "url": "/lab/artists/",
+          "cover": "/case-media/lab-covers/13.webp"
         },
         {
           "title": "普通人的时尚",
-          "url": "/lab/ordinary-fashion/"
+          "url": "/lab/ordinary-fashion/",
+          "cover": "/case-media/ordinary-fashion/21.webp"
         }
-      ]
+      ],
+      "workCardSrc": "/case-media/work-cards/creative-lab.webp"
     },
     {
       "slug": "ai-workflow",
@@ -584,7 +607,8 @@
       "result": "Reusable Design Workflow",
       "status": "live",
       "url": "/project/ai-workflow/",
-      "workPreviewSrc": "/case-media/work-previews/ai-workflow.webp"
+      "workPreviewSrc": "/case-media/work-previews/ai-workflow.webp",
+      "workCardSrc": "/case-media/work-cards/ai-workflow.webp"
     }
   ]
 }

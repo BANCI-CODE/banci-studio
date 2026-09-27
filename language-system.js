@@ -33,7 +33,7 @@
     ],
     work: [
       ['.work-intro .eyebrow', 'BANCI / 精选实践 / 2015—2026', 'BANCI / SELECTED PRACTICE / 2015—2026'],
-      ['.work-intro h1', 'WORK<br>INDEX', 'WORK<br>INDEX', true],
+      ['.work-intro h1', 'WORK', 'WORK', true],
       ['#projects-title', '项目<br>索引', 'Selected<br>Projects', true],
       ['.project-index-head > p', '项目以实际角色、设计范围与优先级组织。桌面端移动鼠标可查看预览，点击进入完整案例。', 'Projects are organized by role, scope and priority. Hover to preview on desktop, then open the complete case study.']
     ],
