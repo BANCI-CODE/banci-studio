@@ -99,7 +99,7 @@ dataPromise.then(data => {
   if ($("#category-list")) {
     $("#category-list").innerHTML = data.categories.map(category => `<a class="category" href="/work/?category=${category.id}"><span>${category.number}</span><h2>${category.title}<small>${category.cn}</small></h2><p>${category.description}</p><span class="category-arrow">↗</span></a>`).join("");
   }
-  if ($("#work-list")) {
+  if ($("#work-list") && !$("#work-list").hasAttribute("data-prerendered")) {
     const get = slug => data.projects.find(p => p.slug === slug);
     const art = {fantawild:"/case-media/fantawild-posters/poster-315.webp",airseekers:"/case-media/airseekers-v2/product-context.webp",mova:"/case-media/mova-hd/hd-228-read.webp",kamingo:"/case-media/kamingo-v2/kamingo-156.webp",forktech:"/case-media/forktech-v2/forktech-91.webp",shantaiqing:"/case-media/shantaiqing/stq-1032.webp"};
     const img = (p, eager=false) => `<img src="${escapeAttribute(art[p.slug] || p.desktopSrc || p.cover)}" alt="${escapeAttribute(p.title)}" loading="${eager?'eager':'lazy'}" decoding="async">`;

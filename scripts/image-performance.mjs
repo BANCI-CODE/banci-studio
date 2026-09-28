@@ -51,7 +51,7 @@ export async function enhanceImageMarkup(html, outputRoot) {
       if (size) tag = tag.replace(/>$/, ` width="${size[0]}" height="${size[1]}">`);
     }
     const insidePicture = html.lastIndexOf("<picture", match.index) > html.lastIndexOf("</picture", match.index);
-    if (!critical && !insidePicture && /\bloading=["']lazy["']/i.test(tag) && !/\bdata-src=/i.test(tag)) {
+    if (!tag.includes('data-native-loading="true"') && !critical && !insidePicture && /\bloading=["']lazy["']/i.test(tag) && !/\bdata-src=/i.test(tag)) {
       tag = tag.replace(/\bsrc=(["'])([^"']+)\1/i, 'src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="$2"');
     }
     replacements.set(match[0], tag);
