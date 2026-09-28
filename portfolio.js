@@ -100,53 +100,17 @@ dataPromise.then(data => {
     $("#category-list").innerHTML = data.categories.map(category => `<a class="category" href="/work/?category=${category.id}"><span>${category.number}</span><h2>${category.title}<small>${category.cn}</small></h2><p>${category.description}</p><span class="category-arrow">↗</span></a>`).join("");
   }
   if ($("#work-list")) {
-    const filterItems = [
-      { id: "all", title: "All" },
-      { id: "brand", title: "Brand" },
-      { id: "product", title: "Product" },
-      { id: "ui", title: "UI" },
-      { id: "ai", title: "AI" },
-      { id: "independent", title: "独立创作" }
-    ];
-    const groups = [
-      { id: "featured", title: "重点案例", note: "BRAND & PRODUCT EXPERIENCE" },
-      { id: "selected", title: "品牌与视觉", note: "SELECTED BRAND PROJECTS" },
-      { id: "independent", title: "独立创作", note: "WORLDS, EXPERIMENTS & PERSONAL WORK" }
-    ];
-    const requestedFilter = new URLSearchParams(location.search).get("category") || "all";
-    let active = filterItems.some(item => item.id === requestedFilter) ? requestedFilter : "all";
-    const orderedProjects = [...data.projects]
-      .filter(project => Number.isFinite(Number(project.workOrder)) && groups.some(group => group.id === project.workGroup))
-      .sort((a, b) => Number(a.workOrder) - Number(b.workOrder));
-
-    const projectRow = project => `<article class="work-card" data-project="${escapeAttribute(project.slug)}"><a class="work-card-link" href="${escapeAttribute(projectUrl(project))}"><div class="work-card-media"><img src="${escapeAttribute(project.workCardSrc || project.cover)}" alt="${escapeAttribute(project.title)} 项目封面" width="800" height="1000" loading="lazy" decoding="async"></div><div class="work-card-info"><div class="work-card-meta"><span>${escapeAttribute(project.discipline || project.category.join(" / "))}</span><span>${escapeAttribute(project.year)}</span></div><h3>${escapeAttribute(project.title)}<span aria-hidden="true">↗</span></h3><p>${escapeAttribute(project.description)}</p></div></a></article>${project.labItems ? `<nav class="work-lab-links" id="creative-archive" aria-label="独立创作项目"><header><div><h3>创作档案</h3><p>从角色、插画到字体与物件，持续记录自己的观察。</p></div><a href="/lab/">${project.labItems.length} 个系列 / 查看档案 ↗</a></header>${project.labItems.map((item, index) => `<a class="work-lab-entry" href="${escapeAttribute(item.url)}"><div class="work-lab-art"><img src="${escapeAttribute(item.cover)}" alt="" loading="lazy" decoding="async"></div><span><small>${String(index + 1).padStart(2, "0")}</small><strong>${escapeAttribute(item.title)}</strong></span><span aria-hidden="true">↗</span></a>`).join("")}</nav>` : ""}`;
-
-    const render = () => {
-      const projects = orderedProjects.filter(project => active === "all" || (active === "independent" ? project.workGroup === "independent" : project.category.includes(active)));
-      $("#work-list").innerHTML = projects.length ? groups.map(group => {
-        const groupProjects = projects.filter(project => project.workGroup === group.id);
-        if (!groupProjects.length) return "";
-        return `<section class="work-group" id="section-${group.id}" data-group="${group.id}" aria-labelledby="work-group-${group.id}">
-          <header class="work-group-head"><h2 id="work-group-${group.id}">${group.title}<small>${String(groupProjects.length).padStart(2,"0")}</small></h2><span>${group.note}</span></header>
-          <div class="work-group-list">${groupProjects.map(projectRow).join("")}</div>
-        </section>`;
-      }).join("") : `<p class="empty-state">该方向的项目正在整理中。</p>`;
-    };
-    $("#filters").innerHTML = filterItems.map(category => `<button type="button" data-filter="${category.id}" class="${category.id === active ? "active" : ""}" aria-pressed="${category.id === active}">${category.title.toUpperCase()}</button>`).join("");
-    $$("button", $("#filters")).forEach(button => button.addEventListener("click", () => {
-      active = button.dataset.filter;
-      $$("button", $("#filters")).forEach(item => {
-        const selected = item === button;
-        item.classList.toggle("active", selected);
-        item.setAttribute("aria-pressed", String(selected));
-      });
-      history.replaceState(null, "", active === "all" ? "/work/" : `/work/?category=${active}`);
-      render();
-    }));
-    render();
-    $$("[data-work-jump]").forEach(link => link.addEventListener("click", () => {
-      if (active !== "all") $("[data-filter=all]", $("#filters")).click();
-    }));
+    const get = slug => data.projects.find(p => p.slug === slug);
+    const art = {fantawild:"/case-media/fantawild-posters/poster-315.webp",airseekers:"/case-media/airseekers-v2/product-context.webp",mova:"/case-media/mova-hd/hd-228-read.webp",kamingo:"/case-media/kamingo-v2/kamingo-156.webp",forktech:"/case-media/forktech-v2/forktech-91.webp",shantaiqing:"/case-media/shantaiqing/stq-1032.webp"};
+    const img = (p, eager=false) => `<img src="${escapeAttribute(art[p.slug] || p.desktopSrc || p.cover)}" alt="${escapeAttribute(p.title)}" loading="${eager?'eager':'lazy'}" decoding="async">`;
+    const heading = (id, label, title, text) => `<header class="ed-section-head" id="${id}"><div><small>${label}</small><h2>${title}</h2></div><p>${text}</p></header>`;
+    const feature = slug => {const p=get(slug);return `<a class="ed-feature" href="${projectUrl(p)}"><div class="ed-feature-image">${img(p,true)}</div><div class="ed-feature-caption"><div><small>${p.year} / ${slug==='mova'?'PRODUCT EXPERIENCE':'BRAND & PRODUCT'}</small><h3>${p.title}</h3><p>${p.description}</p></div><span aria-hidden="true">↗</span></div></a>`};
+    const employers=[['mova','2025—2026','MOVA · 追觅科技','屏幕交互 / 产品逻辑 / 外型探索'],['airseekers','2024—2025','AIRSEEKERS','品牌体系 / 包装交付 / 展会与数字体验'],['baidu','2022—2023','百度 · Baidu','IP 形象 / 行业会议 / 视觉设计'],['fantawild','2018—2022','华强方特 · Fantawild','漫画栏目 / 节日主视觉 / H5 与官网']];
+    const lab=get('creative-lab');
+    $("#work-list").innerHTML = `${heading('selected-cases','SELECTED CASE STUDIES','重点案例','从品牌表达，到产品被使用的体验。')}<div class="ed-feature-grid">${['airseekers','mova'].map(feature).join('')}</div>
+    ${heading('company-work','IN-HOUSE EXPERIENCE','任职经历与项目','按公司梳理工作阶段，进入对应案例查看设计内容。')}<div class="ed-employers">${employers.map(([slug,year,name,scope])=>{const p=get(slug);return `<a class="ed-employer" href="${projectUrl(p)}"><div class="ed-company-image">${img(p)}</div><time>${year}</time><div><h3>${name}</h3><span>${p.role}</span></div><p>${scope}</p><b aria-hidden="true">↗</b></a>`}).join('')}</div>
+    ${heading('brand-projects','BRAND PROJECTS','品牌项目','标志、视觉规范与品牌应用。')}<div class="ed-brands">${['kamingo','forktech','shantaiqing'].map(slug=>{const p=get(slug);return `<a class="ed-brand" href="${projectUrl(p)}"><div>${img(p)}</div><small>${p.year} / BRAND DESIGN</small><h3>${p.title}<span aria-hidden="true">↗</span></h3><p>${p.description}</p></a>`}).join('')}</div>
+    <section class="ed-personal" id="personal-work">${heading('personal-heading','INDEPENDENT PRACTICE','个人创作','商业项目之外，关于角色、图像、字体与日常的持续观察。')}<div class="ed-practice-links">${['aku','ai-workflow'].map(slug=>{const p=get(slug);return `<a href="${projectUrl(p)}"><small>${slug==='aku'?'CHARACTER WORLD':'CREATIVE PROCESS'}</small><h3>${p.title} ↗</h3><p>${p.description}</p></a>`}).join('')}</div><div class="ed-lab-grid"><div class="ed-lab-intro"><small>CREATIVE LAB / 14 SERIES</small><h3>独立创作<br>档案</h3><p>插画、字体、书籍与物件。<br>每一个系列，都是一次自己的提问。</p><a href="/lab/">浏览完整档案 ↗</a></div>${lab.labItems.map((item,i)=>`<a class="ed-lab-item" href="${item.url}"><div><img src="${item.cover}" alt="${item.title}" loading="lazy" decoding="async"></div><span><small>${String(i+1).padStart(2,'0')}</small><strong>${item.title}</strong><b aria-hidden="true">↗</b></span></a>`).join('')}</div></section>`;
   }
   if ($("#project-template")) {
     const slug = new URLSearchParams(location.search).get("slug") || "airseekers";
