@@ -1,0 +1,31 @@
+(() => {
+ const root=document.querySelector('.archive-hero'); if(!root)return;
+ const data=JSON.parse(document.getElementById('archive-data').textContent), stage=root.querySelector('.archive-stage'), ring=root.querySelector('.archive-ring'), reduce=matchMedia('(prefers-reduced-motion: reduce)');
+ const descriptions=['从包装、展会到网站与 App，连接智能割草机器人的品牌与产品体验。','围绕带屏幕充电头，探索 UI、充电模式交互与产品外型。','从标志构思、视觉规范到品牌应用，建立统一的品牌识别。','用条漫、插画主视觉与数字页面，讲述主题乐园的故事。','山冭清：从视觉识别、包装到小程序与展会物料的品牌设计。','贯穿品牌识别与展会场景的视觉体验。','用角色造型和动态表情，把日常情绪变成可以分享的图像。','围绕白 T 计划展开的展览主视觉与系列视觉物料。','一本从数字 1 走向 100 的插画人像书，记录不同面孔与绘画探索。','以插画讲述搁浅的人，在画面中留下情绪与想象的空间。','从纸张原稿到文字展示，保留手写笔触的古拙质感。','围绕镜子展开的图像创作，探索观看与自我映照。','一组虚构城市的街景明信片，每一处风景都有自己的故事。','口罩时间里的旅居记录，以单幅画面与图文明信片呈现。','让诗的意向在图像、文字与动态影像之间流动。','从白底手写字到图像文字，再延伸到三维与动态表达。','以睡着的人为主题，描绘安静的姿态与片刻。','小人物、小物件与贴纸，在日常尺度里发现创作的趣味。','以复古海报语言描绘艺术家肖像，呈现绘画过程与人物表达。','用人物、造型与色彩，观察普通人的时尚表达。'];
+ const cards=[...root.querySelectorAll('.archive-card')].map((el,i)=>{const b=document.createElement('button');b.type='button';b.className=el.className;b.dataset.index=i;b.setAttribute('aria-label','查看作品便签：'+data[i].title);b.innerHTML=el.innerHTML;el.replaceWith(b);return b});
+ const dialog=document.createElement('dialog');dialog.className='archive-note';dialog.setAttribute('aria-labelledby','archive-note-title');dialog.innerHTML='<button type="button" class="archive-note-close" aria-label="关闭作品便签">×</button><div class="archive-note-picture"><img alt=""></div><div class="archive-note-copy"><small></small><h2 id="archive-note-title"></h2><p></p><a>查看完整项目 ↗</a></div>';document.body.append(dialog);
+ const toggle=document.createElement('button');toggle.type='button';toggle.dataset.archivePlay='';root.querySelector('.archive-controls').append(toggle);
+ let order=[],index=0,yaw=0,raf=0,last=0,paused=reduce.matches,hover=false,visible=true,start=null,suppress=false,oldOverflow='';
+ const modulo=n=>(n+data.length)%data.length;
+ const update=()=>{index=modulo(Math.round(-yaw/18)%data.length);const item=data[order[index]];root.querySelector('#archive-name').textContent=item.title;root.querySelector('#archive-category').textContent=item.category;root.querySelector('#archive-project').href=item.url;root.querySelector('#archive-count').textContent=String(index+1).padStart(2,'0')+' / '+data.length;cards.forEach((c,i)=>c.tabIndex=i===order[index]?0:-1)};
+ const paint=()=>{ring.style.setProperty('--spin',yaw+'deg');update()};
+ const layout=()=>{const mobile=innerWidth<=700;stage.style.setProperty('--radius',(mobile?250:460)+'px');stage.style.setProperty('--ring-scale',String(mobile?Math.min(.6,(innerWidth-16)/610):Math.min(.82,(innerWidth-80)/1450)))};
+ const shuffle=()=>{order=data.map((_,i)=>i);for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]]}cards.forEach((c,i)=>c.style.setProperty('--angle',order.indexOf(i)*18+'deg'));yaw=0;paint()};
+ const canRun=()=>!paused&&!hover&&visible&&!document.hidden&&!dialog.open&&!start&&!root.contains(document.activeElement);
+ function tick(time){raf=0;if(!canRun()){last=0;return}if(last)yaw-=Math.min(time-last,50)*.004;last=time;paint();raf=requestAnimationFrame(tick)}
+ function sync(){toggle.textContent=paused?'播放':'暂停';toggle.setAttribute('aria-label',paused?'播放圆环自动旋转':'暂停圆环自动旋转');toggle.setAttribute('aria-pressed',String(!paused));if(canRun()){if(!raf)raf=requestAnimationFrame(tick)}else{cancelAnimationFrame(raf);raf=0;last=0}}
+ const move=step=>{yaw=-((Math.round(-yaw/18))+step)*18;paint()};
+ function openNote(i){const d=data[i];dialog.querySelector('img').src=d.src;dialog.querySelector('img').alt=d.title;dialog.querySelector('small').textContent=d.category;dialog.querySelector('h2').textContent=d.title;dialog.querySelector('p').textContent=descriptions[i];dialog.querySelector('a').href=d.url;oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';dialog.showModal();sync()}
+ cards.forEach((c,i)=>c.addEventListener('click',()=>{if(!suppress)openNote(i)}));
+ root.querySelector('#archive-project').addEventListener('click',e=>{e.preventDefault();openNote(order[index])});
+ dialog.querySelector('button').onclick=()=>dialog.close();dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});dialog.addEventListener('close',()=>{document.body.style.overflow=oldOverflow;sync()});
+ root.querySelector('[data-archive-prev]').onclick=()=>move(-1);root.querySelector('[data-archive-next]').onclick=()=>move(1);root.querySelector('[data-archive-shuffle]').onclick=shuffle;toggle.onclick=()=>{paused=!paused;toggle.blur();sync()};
+ stage.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();move(e.key==='ArrowLeft'?-1:1)}});
+ stage.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;sync()}});stage.addEventListener('pointerleave',()=>{hover=false;sync()});
+ stage.addEventListener('pointerdown',e=>{if(e.isPrimary&&e.button===0){start={x:e.clientX,y:e.clientY,id:e.pointerId};suppress=false;sync()}});
+ window.addEventListener('pointerup',e=>{if(!start||start.id!==e.pointerId)return;const dx=e.clientX-start.x,dy=e.clientY-start.y;start=null;suppress=Math.abs(dx)>12||Math.abs(dy)>12;if(Math.abs(dx)>35&&Math.abs(dx)>Math.abs(dy)*1.3)move(dx<0?1:-1);setTimeout(()=>suppress=false,0);sync()});window.addEventListener('pointercancel',()=>{start=null;sync()});
+ root.addEventListener('focusin',sync);root.addEventListener('focusout',()=>setTimeout(sync,0));document.addEventListener('visibilitychange',sync);reduce.addEventListener('change',()=>{paused=reduce.matches;sync()});window.addEventListener('resize',layout);
+ new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync()},{threshold:0}).observe(root);
+ root.querySelector('#archive-count').removeAttribute('aria-live');root.querySelector('.archive-description p').textContent='点击作品查看便签 · 左右滑动浏览';
+ shuffle();layout();root.classList.add('archive-ready');root.querySelector('.archive-controls').hidden=false;sync();
+})();
