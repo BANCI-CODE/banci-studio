@@ -48,3 +48,47 @@
 .archive-letter{display:block;transform:scaleY(var(--letter-scale,2.45));transform-origin:top center;transition:transform .48s cubic-bezier(.2,.7,.25,1);will-change:transform}
 @media(max-width:700px){.archive-depth-title{transform:translateZ(0)!important}.archive-letter{transform:scaleY(var(--letter-scale,2.8))}}
 @media(prefers-reduced-motion:reduce){.archive-depth-title{transform:translateZ(0)!important}.archive-letter{transform:scaleY(2.45);transition:none;will-change:auto}}
+
+/* User-designed covers: full-bleed, square corners on both faces. */
+.archive-card,.archive-card img,.archive-card:before,.archive-card:after{border-radius:0!important}.archive-card img{border:0!important;object-fit:cover;background:transparent}.archive-card:before,.archive-card:after{border:0;box-shadow:none;background:none}.archive-edge{top:0;bottom:0}
+/* Flat double-sided prints with a clearer perspective and breathing room. */
+.archive-stage{perspective:1050px;perspective-origin:50% 46%}
+.archive-card,.archive-card img{background:none;box-shadow:none!important;filter:none}
+.archive-card img{transform:translateZ(.25px)}
+.archive-card .archive-card-back{transform:rotateY(180deg) translateZ(.25px)}
+.archive-card:before,.archive-card:after,.archive-edge{display:none!important}
+.archive-ring{top:42%}
+@media(max-width:700px){.archive-stage{perspective:720px}.archive-ring{top:46%}}
+.archive-ring{top:30%}@media(max-width:700px){.archive-ring{top:42%}}
+/* One quiet navigation rail rather than a cluster of competing buttons. */
+.archive-bottom{column-gap:28px;align-items:end}
+.archive-controls{gap:0;align-items:center;flex-wrap:wrap;border-top:1px solid #18181828;padding-top:8px}
+.archive-controls button,.archive-controls button:last-child{border:0;background:transparent;color:#5a5a55;min-width:44px;min-height:44px;padding:0 12px;font-size:12px;line-height:1;transition:color .2s,background .2s}
+.archive-controls [data-archive-prev],.archive-controls [data-archive-next]{font-size:18px;padding:0;width:44px}
+.archive-controls #archive-count{min-width:58px;font-size:11px;color:#77776f;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.archive-controls [data-archive-shuffle]{margin-left:12px;position:relative}
+.archive-controls [data-archive-shuffle]:before{content:'';position:absolute;left:-6px;top:14px;height:16px;width:1px;background:#18181824}
+.archive-controls button:hover{color:#111;background:#18181806}
+.archive-controls button:focus-visible,.archive-scroll:focus-visible{outline:1px solid #181818;outline-offset:2px}
+.archive-scroll{align-self:end;min-height:53px;padding:8px 0 0;background:transparent;color:#181818;border-top:1px solid #18181828;display:flex;align-items:center;justify-content:space-between;gap:28px;font-size:12px;white-space:nowrap}
+.archive-scroll span{transition:transform .2s}.archive-scroll:hover span{transform:translateY(3px)}
+.archive-motion-status{flex-basis:100%;padding:6px 12px}
+@media(max-width:700px){.archive-bottom{grid-template-columns:1fr;gap:16px}.archive-controls{width:100%;padding-top:6px}.archive-controls button,.archive-controls button:last-child{font-size:11px;padding:0 10px;min-height:44px}.archive-controls [data-archive-prev],.archive-controls [data-archive-next]{font-size:18px;width:44px;padding:0}.archive-scroll{border:0;min-height:44px;padding:0;gap:18px;justify-self:end;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.archive-scroll span,.archive-controls button{transition:none}}
+/* A longer lens settles the gallery after the staggered near-camera entrance. */
+.archive-stage{perspective:1650px;perspective-origin:50% 45%}
+.archive-ring{top:38%}
+.archive-flight .archive-card{will-change:transform,opacity}
+@media(max-width:700px){.archive-stage{perspective:1050px}.archive-ring{top:46%}}
+
+.archive-spotlight{position:absolute;z-index:3;top:17%;left:50%;margin-left:-155px;width:310px;max-width:none;height:min(60svh,588px);padding:0;border:0;border-radius:0;background:none;cursor:pointer;transform-origin:center;will-change:transform,opacity}
+.archive-spotlight img{display:block;width:100%;height:100%;object-fit:contain}.archive-spotlight[hidden]{display:none}
+.archive-hero-mode .archive-ring{opacity:.16;pointer-events:none;transition:opacity .5s}.archive-hero-mode .archive-bottom{z-index:4}
+@media(max-width:700px){.archive-spotlight{top:25%;width:220px;margin-left:-110px;height:416px;max-height:49svh}}
+@media(prefers-reduced-motion:reduce){.archive-hero-mode .archive-ring{transition:none}}
+
+/* The current item grows within the same rotating ring, without an overlay. */
+.archive-card{transform:rotateY(var(--angle,0deg)) translateZ(var(--radius,610px)) scale(var(--focus-scale,.78));transition:none}
+.archive-stage{perspective:1800px}
+.archive-ring{top:33%}
+@media(max-width:700px){.archive-stage{perspective:1200px}.archive-ring{top:43%}}
