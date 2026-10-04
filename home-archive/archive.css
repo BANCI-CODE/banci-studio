@@ -101,3 +101,24 @@
 .archive-card.is-hovered img:not(.archive-card-back){transform:rotateY(var(--hover-y,0deg)) rotateZ(9deg) rotateX(6deg) translateZ(.25px)}
 .archive-card.is-hovered .archive-card-back{transform:rotateY(var(--hover-y,0deg)) rotateZ(9deg) rotateX(6deg) rotateY(180deg) translateZ(.25px)}
 @media(prefers-reduced-motion:reduce){.archive-card img{transition:none}}
+
+/* Keep the two faces parallel; only their shared surface may rotate. */
+.archive-stage{transform-style:flat}.archive-ring{z-index:2}.archive-depth-title{z-index:0}
+.archive-surface{display:block;position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(0deg) rotateZ(0deg) rotateX(0deg);transition:transform .42s cubic-bezier(.2,.75,.25,1)}
+.archive-card.is-hovered .archive-surface{transform:rotateY(var(--hover-y,0deg)) rotateZ(6deg) rotateX(4deg)}
+.archive-card img,.archive-card.is-hovered img:not(.archive-card-back){transform:translateZ(1px)!important;transition:none!important;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.archive-card .archive-card-back,.archive-card.is-hovered .archive-card-back{transform:rotateY(180deg) translateZ(1px)!important;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+@media(prefers-reduced-motion:reduce){.archive-surface{transition:none}}
+/* A solid reverse and a shared depth plane place the title inside the ring. */
+.archive-stage{transform-style:preserve-3d}
+.archive-ring{z-index:auto}
+.archive-depth-title{z-index:auto}
+.archive-surface>.archive-card-back{display:block;position:absolute;inset:0;width:100%;height:100%;background:#cecec5;border:0;border-radius:0;transform:rotateY(180deg) translateZ(1px)!important;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.archive-card.is-hovered .archive-surface>.archive-card-back{transform:rotateY(180deg) translateZ(1px)!important}
+/* Recede gently into the back arc; soft local shadows reinforce the foreground. */
+.archive-card{transform:rotateY(calc(var(--angle,0deg) + var(--spread,0deg))) translateZ(calc(var(--radius,665px) + var(--depth-offset,0px))) scale(var(--focus-scale,1))}
+.archive-surface:after{content:'';position:absolute;inset:5px;pointer-events:none;transform:translate3d(9px,16px,-3px);box-shadow:0 12px 25px 8px rgba(25,28,24,var(--shadow-opacity,0));backface-visibility:hidden}
+
+/* The wordmark receives the shadow; the page and card edges stay clean. */
+.archive-surface:after{display:none!important}
+.archive-letter{color:transparent;background-color:#deded7;background-image:linear-gradient(#deded7,#deded7);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-repeat:no-repeat}
