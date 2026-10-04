@@ -96,12 +96,8 @@
 .archive-card{transform:rotateY(calc(var(--angle,0deg) + var(--spread,0deg))) translateZ(var(--radius,720px)) scale(var(--focus-scale,.8))}
 .archive-stage{perspective:2400px}.archive-ring{top:19%}
 @media(max-width:700px){.archive-stage{perspective:1450px}.archive-ring{top:31%}}
-
-/* Manual, eye-level card carousel. Original artwork remains a single surface. */
-.archive-stage{perspective:1500px;perspective-origin:50% 50%;margin-top:60px;min-height:620px}
-.archive-ring{top:48%;left:50%;transform:none!important;transform-style:preserve-3d;transition:none}
-.archive-card{transition:none;box-shadow:0 12px 30px #1110000a!important}
-.archive-card img{transform:none}.archive-card .archive-card-back{display:none}
-.archive-depth-title{pointer-events:none}.archive-bottom{z-index:3}
-@media(max-width:700px){.archive-stage{perspective:1100px;margin-top:90px;min-height:460px}.archive-ring{top:48%}.archive-hero{min-height:960px;max-height:none}}
-.archive-stage{transform-style:flat}.archive-ring{z-index:2}.archive-depth-title{z-index:0}
+/* Tighten the arc; gently face the hovered artwork toward the viewer. */
+.archive-card img{transition:transform .48s cubic-bezier(.2,.8,.25,1)}
+.archive-card.is-hovered img:not(.archive-card-back){transform:rotateY(var(--hover-y,0deg)) rotateZ(9deg) rotateX(6deg) translateZ(.25px)}
+.archive-card.is-hovered .archive-card-back{transform:rotateY(var(--hover-y,0deg)) rotateZ(9deg) rotateX(6deg) rotateY(180deg) translateZ(.25px)}
+@media(prefers-reduced-motion:reduce){.archive-card img{transition:none}}
