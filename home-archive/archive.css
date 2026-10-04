@@ -97,11 +97,11 @@
 .archive-stage{perspective:2400px}.archive-ring{top:19%}
 @media(max-width:700px){.archive-stage{perspective:1450px}.archive-ring{top:31%}}
 
-/* Eye-level gallery corridor: the vanishing point is at the centre. */
-.archive-stage{perspective:none;transform-style:flat;min-height:560px;margin-top:100px}
-.archive-ring{top:48%;left:50%;transform:translateX(var(--camera-shift,0px));transform-style:flat;transition:transform .3s ease-out;z-index:1}
-.archive-card{transform-style:flat;backface-visibility:visible;will-change:transform}
-.archive-card img{transform:none;backface-visibility:visible}.archive-card .archive-card-back{display:none}
-.archive-depth-title{z-index:0}.archive-bottom{z-index:3}
-@media(max-width:700px){.archive-stage{perspective:none;min-height:340px;margin-top:120px}.archive-ring{top:47%;transform:translateX(var(--camera-shift,0px))}}
-@media(prefers-reduced-motion:reduce){.archive-ring{transition:none}.archive-card{will-change:auto}}
+/* Manual, eye-level card carousel. Original artwork remains a single surface. */
+.archive-stage{perspective:1500px;perspective-origin:50% 50%;margin-top:60px;min-height:620px}
+.archive-ring{top:48%;left:50%;transform:none!important;transform-style:preserve-3d;transition:none}
+.archive-card{transition:none;box-shadow:0 12px 30px #1110000a!important}
+.archive-card img{transform:none}.archive-card .archive-card-back{display:none}
+.archive-depth-title{pointer-events:none}.archive-bottom{z-index:3}
+@media(max-width:700px){.archive-stage{perspective:1100px;margin-top:90px;min-height:460px}.archive-ring{top:48%}.archive-hero{min-height:960px;max-height:none}}
+.archive-stage{transform-style:flat}.archive-ring{z-index:2}.archive-depth-title{z-index:0}
