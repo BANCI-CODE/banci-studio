@@ -110,3 +110,65 @@
 @media(max-width:700px){.archive-bottom{gap:14px 8px;padding-top:16px}.archive-bottom:before{inset:0 -20px -20px}.archive-description{display:block;padding:0}.archive-description small{font-size:8px}.archive-description>a{font-size:23px;margin-top:6px;gap:12px}.archive-controls{gap:0;flex-wrap:wrap;max-width:100%}.archive-controls button,.archive-controls button:last-child{min-width:36px;padding:0 8px;font-size:11px}.archive-controls [data-archive-prev],.archive-controls [data-archive-next]{width:36px;font-size:18px}.archive-controls #archive-count{min-width:44px;font-size:10px}.archive-controls [data-archive-shuffle]{margin-left:6px;padding-left:10px}.archive-scroll{font-size:11px;gap:10px}.archive-controls [data-archive-motion]{font-size:10px}.archive-description>a>span:last-child{font-size:16px}}
 @media(max-width:380px){.archive-bottom:before{inset:0 -16px -20px}.archive-controls button,.archive-controls button:last-child{padding:0 6px}.archive-controls [data-archive-shuffle]{margin-left:2px;padding-left:8px}.archive-scroll{gap:6px}}
 @media(max-width:700px){.archive-bottom{grid-template-columns:minmax(0,1fr) 64px}.archive-controls{flex-wrap:nowrap;gap:0;min-width:0}.archive-controls button,.archive-controls button:last-child{flex:0 0 auto;min-width:30px;padding:0 5px}.archive-controls [data-archive-prev],.archive-controls [data-archive-next]{width:30px}.archive-controls #archive-count{flex:0 0 43px;min-width:43px}.archive-controls [data-archive-shuffle]{margin-left:3px;padding-left:8px}.archive-controls [data-archive-motion]{position:absolute;right:0;top:16px}.archive-scroll{gap:6px;font-size:10px}.archive-description{padding-right:60px}}
+
+/* Artwork core between two neutral clear glass faces. Borders overlay the art. */
+.archive-card img{border:0!important;background:transparent!important;object-fit:contain;box-shadow:none!important;transform:translateZ(.25px)!important}
+.archive-card .archive-card-back{transform:rotateY(180deg) translateZ(.25px)!important}
+.archive-glass-surface:before,.archive-glass-surface:after{box-sizing:border-box;border:1px solid rgba(255,255,255,.72);background-image:linear-gradient(125deg,rgba(255,255,255,.19),rgba(255,255,255,0) 24%,rgba(255,255,255,0) 78%,rgba(255,255,255,.1));background-size:auto;box-shadow:inset 1px 1px 1px rgba(255,255,255,.8),inset -1px -1px 2px rgba(40,40,40,.2),0 1px 3px rgba(0,0,0,.1)}
+.archive-glass-surface:after{transform:translateZ(2px)}.archive-glass-surface:before{transform:rotateY(180deg) translateZ(2px)}
+.archive-card.glass-active .archive-glass-surface:before,.archive-card.glass-active .archive-glass-surface:after{border-color:#fff;box-shadow:inset 0 0 2px #fff,0 0 3px 1px #fff,0 0 13px 3px rgba(255,255,255,.9),0 0 28px 7px rgba(255,255,255,.45)}
+.archive-card.glass-active img{border:0!important;box-shadow:none!important}
+@media(max-width:700px){.archive-card img{border:0!important}.archive-glass-surface:after{transform:translateZ(1.25px)}.archive-glass-surface:before{transform:rotateY(180deg) translateZ(1.25px)}}
+
+/* Translucent holographic foil on the outside glass, never on the artwork core. */
+.archive-glass-surface:before,.archive-glass-surface:after{background-image:radial-gradient(ellipse at var(--foil-x,45%) var(--foil-y,35%),rgba(255,255,255,.30),transparent 48%),linear-gradient(var(--foil-angle,125deg),transparent 6%,rgba(132,210,255,.10) 20%,rgba(177,146,255,.14) 30%,rgba(255,155,213,.12) 40%,rgba(255,228,151,.15) 50%,rgba(158,240,216,.12) 60%,rgba(144,191,255,.14) 70%,transparent 85%),repeating-linear-gradient(115deg,rgba(255,255,255,.055) 0,rgba(255,255,255,.055) .5px,transparent 1px,transparent 4px);background-size:100% 100%,180% 180%,100% 100%;background-position:center,var(--foil-x,45%) var(--foil-y,35%),center;transition:box-shadow .35s,border-color .35s}
+.archive-card:hover .archive-glass-surface:before,.archive-card:hover .archive-glass-surface:after{background-image:radial-gradient(ellipse at var(--foil-x,45%) var(--foil-y,35%),rgba(255,255,255,.48),transparent 46%),linear-gradient(var(--foil-angle,125deg),transparent 6%,rgba(132,210,255,.24) 20%,rgba(177,146,255,.28) 30%,rgba(255,155,213,.25) 40%,rgba(255,228,151,.30) 50%,rgba(158,240,216,.26) 60%,rgba(144,191,255,.27) 70%,transparent 85%),repeating-linear-gradient(115deg,rgba(255,255,255,.08) 0,rgba(255,255,255,.08) .5px,transparent 1px,transparent 4px)}
+@media(prefers-reduced-motion:reduce){.archive-glass-surface:before,.archive-glass-surface:after{background-position:center!important}}
+
+/* Neutral at rest; holographic reflection is exclusive to a fine pointer hover. */
+.archive-card:not(:hover) .archive-glass-surface:before,.archive-card:not(:hover) .archive-glass-surface:after{background-image:linear-gradient(125deg,rgba(255,255,255,.19),transparent 24%,transparent 78%,rgba(255,255,255,.1));background-size:100% 100%;background-position:center}
+@media(hover:none),(pointer:coarse){.archive-card .archive-glass-surface:before,.archive-card .archive-glass-surface:after{background-image:linear-gradient(125deg,rgba(255,255,255,.19),transparent 24%,transparent 78%,rgba(255,255,255,.1))!important;background-size:100% 100%;background-position:center}}
+
+/* Convex capsule: inset print, curved optical perimeter and a five-plane edge. */
+.archive-glass-surface{border-radius:23px}
+.archive-card img{inset:4px;width:calc(100% - 8px);height:calc(100% - 8px);border-radius:19px!important;object-fit:fill}
+.archive-glass-surface:before,.archive-glass-surface:after{inset:-2px;border-radius:25px!important;border:1px solid rgba(255,255,255,.9);box-shadow:inset 2px 3px 3px rgba(255,255,255,.95),inset -2px -3px 4px rgba(30,30,30,.23),inset 5px 7px 7px rgba(255,255,255,.48),inset -5px -7px 8px rgba(255,255,255,.6),0 2px 4px rgba(0,0,0,.15)}
+.archive-glass-surface:after{transform:translateZ(5px)}.archive-glass-surface:before{transform:rotateY(180deg) translateZ(5px)}
+.archive-glass-rim{position:absolute;inset:-1px;border-radius:24px;border:1px solid rgba(255,255,255,.65);background:transparent;box-shadow:inset 1px 0 1px rgba(255,255,255,.8),inset -1px -1px 1px rgba(35,35,35,.18);transform:translateZ(var(--rim-z));pointer-events:none;backface-visibility:visible}
+.archive-glass-rim:nth-last-child(3){border-color:rgba(120,120,120,.32)}
+.archive-card.glass-active .archive-glass-surface:before,.archive-card.glass-active .archive-glass-surface:after{box-shadow:inset 2px 3px 3px #fff,inset -2px -3px 4px rgba(30,30,30,.2),inset 5px 7px 8px rgba(255,255,255,.65),inset -5px -7px 8px rgba(255,255,255,.65),0 0 3px #fff,0 0 14px 3px rgba(255,255,255,.8)}
+@media(max-width:700px){.archive-glass-surface{border-radius:15px}.archive-card img{inset:2px;width:calc(100% - 4px);height:calc(100% - 4px);border-radius:13px!important}.archive-glass-surface:before,.archive-glass-surface:after{inset:-1px;border-radius:16px!important;box-shadow:inset 1px 2px 2px #ffffffe6,inset -1px -2px 3px #22222233,inset 3px 4px 5px #ffffff80,inset -3px -4px 5px #ffffff99,0 2px 3px #0000001a}.archive-glass-rim{border-radius:15px;transform:translateZ(calc(var(--rim-z)*.65))}.archive-glass-surface:after{transform:translateZ(3px)}.archive-glass-surface:before{transform:rotateY(180deg) translateZ(3px)}}
+
+/* High-chroma foil bands: pointer-only, with a clear window between reflections. */
+@media(hover:hover) and (pointer:fine){
+.archive-card:hover .archive-glass-surface:before,.archive-card:hover .archive-glass-surface:after{
+background-image:radial-gradient(ellipse at var(--foil-x,45%) var(--foil-y,35%),rgba(255,255,255,.82),rgba(255,255,255,.18) 12%,transparent 32%),repeating-linear-gradient(var(--foil-angle,125deg),transparent 0%,rgba(30,75,200,.24) 7%,rgba(0,205,255,.54) 13%,rgba(99,45,255,.51) 19%,rgba(255,34,173,.48) 25%,rgba(255,185,37,.50) 31%,rgba(240,255,122,.43) 36%,rgba(0,221,181,.44) 42%,transparent 49%,transparent 62%),repeating-linear-gradient(115deg,rgba(255,255,255,.18) 0,rgba(255,255,255,.18) .5px,rgba(45,40,70,.10) 1px,transparent 2px,transparent 3px);
+background-size:100% 100%,160% 160%,100% 100%;background-position:center,var(--foil-x,45%) var(--foil-y,35%),center;
+box-shadow:inset 2px 3px 3px #fff,inset -2px -3px 4px #20203055,inset 5px 7px 8px #ffffffa6,0 0 3px #fff,0 0 12px 2px #ffffffb3,0 0 19px 3px #b5baff40}
+}
+
+/* Clear water light replaces all chromatic foil, including its hover layer. */
+.archive-card .archive-glass-surface:before,.archive-card .archive-glass-surface:after,.archive-card:hover .archive-glass-surface:before,.archive-card:hover .archive-glass-surface:after{background-image:linear-gradient(125deg,rgba(255,255,255,.19),transparent 24%,transparent 78%,rgba(255,255,255,.1))!important;background-size:100% 100%!important;background-position:center!important}
+.archive-water{position:absolute;inset:0;overflow:hidden;border-radius:23px;transform:translateZ(5.5px);backface-visibility:hidden;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(ellipse at var(--foil-x,45%) var(--foil-y,35%),#ffffff55,transparent 55%)}
+.archive-water i{position:absolute;left:var(--foil-x,45%);top:var(--foil-y,35%);width:155%;aspect-ratio:1;border:1px solid #ffffffe6;border-radius:45% 55% 48% 52%;box-shadow:0 0 3px #fff,inset 0 0 5px #ffffffb3,0 0 10px #e9f5ff88;transform:translate(-50%,-50%) scale(.08);opacity:0;animation:archive-water-wave 2.4s var(--wave-delay) linear infinite;animation-play-state:paused}
+.archive-water:after{content:'';position:absolute;inset:-8%;background-image:radial-gradient(circle at 15% 24%,#fff 0 1px,transparent 2px),radial-gradient(circle at 72% 15%,#fff 0 .7px,transparent 2px),radial-gradient(circle at 40% 62%,#fff 0 1px,transparent 2px),radial-gradient(circle at 84% 77%,#fff 0 .8px,transparent 2px);background-size:43px 67px,61px 47px,57px 83px,79px 59px;filter:drop-shadow(0 0 2px #fff);animation:archive-water-particles 3s ease-in-out infinite alternate;animation-play-state:paused}
+@media(hover:hover) and (pointer:fine){.archive-card:hover .archive-water{opacity:1}.archive-card:hover .archive-water i,.archive-card:hover .archive-water:after{animation-play-state:running}}
+@keyframes archive-water-wave{0%{transform:translate(-50%,-50%) scale(.08) rotate(0deg);opacity:0}18%{opacity:.85}100%{transform:translate(-50%,-50%) scale(1.35) rotate(24deg);opacity:0}}
+@keyframes archive-water-particles{from{transform:translateY(3px);opacity:.3}to{transform:translateY(-5px);opacity:.9}}
+@media(max-width:700px){.archive-water{border-radius:15px;transform:translateZ(3.5px)}}
+@media(prefers-reduced-motion:reduce){.archive-water i{animation:none;transform:translate(-50%,-50%) scale(.65);opacity:.25}.archive-water:after{animation:none;opacity:.5}}
+
+/* The cover is the object; the accompanying copy is its quiet exhibition label. */
+.archive-note{width:min(860px,calc(100% - 48px));max-height:calc(100svh - 48px);padding:22px;border:1px solid #ffffffd9;border-radius:26px;background:#f5f5f0;box-shadow:inset 0 1px 2px #fff,0 24px 90px #00000033;color:#181818;overscroll-behavior:contain}
+.archive-note[open]{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:32px;align-items:stretch}
+.archive-note::backdrop{background:rgba(25,25,24,.42);backdrop-filter:blur(12px)}
+.archive-note-picture{padding:8px;min-height:0;background:#e9e9e3;border:1px solid #fff;border-radius:19px;box-shadow:inset 1px 1px 2px #fff,inset -1px -2px 3px #00000014;align-self:center}
+.archive-note-picture img{display:block;width:100%;height:min(65svh,620px);object-fit:contain;border-radius:13px}
+.archive-note-copy{padding:66px 14px 18px 0;min-width:0;align-self:stretch;justify-content:center}
+.archive-note-copy small{font-size:9px;line-height:1.6;letter-spacing:.14em;color:#77776f}
+.archive-note-copy h2{font-size:clamp(26px,3vw,38px);line-height:1.18;letter-spacing:-.025em;font-weight:600;margin:18px 0 24px;overflow-wrap:anywhere}
+.archive-note-copy p{font-size:14px;line-height:1.9;color:#62625c;margin:0 0 32px;text-wrap:pretty}
+.archive-note-copy a{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:48px;padding:12px 0;margin-top:auto;border-bottom:1px solid #181818;font-size:12px;letter-spacing:.04em}
+.archive-note-close{top:14px;right:14px;width:44px;height:44px;min-width:44px;min-height:44px;border:1px solid #18181820;border-radius:50%;font-size:25px;line-height:1;background:#f5f5f0e6;box-shadow:inset 0 1px 1px #fff;color:#181818}
+.archive-note-close:hover{background:#e7e7e0}
+@media(max-width:700px){.archive-note{width:calc(100% - 24px);max-height:calc(100svh - 24px);padding:52px 16px 18px;border-radius:22px}.archive-note[open]{grid-template-columns:minmax(0,1fr);gap:22px}.archive-note-close{top:8px;right:8px}.archive-note-picture{padding:6px;border-radius:17px;width:min(100%,250px);justify-self:center}.archive-note-picture img{height:min(43svh,420px);border-radius:11px}.archive-note-copy{padding:0 4px 0;gap:0}.archive-note-copy small{font-size:8px}.archive-note-copy h2{font-size:26px;margin:10px 0 14px}.archive-note-copy p{font-size:13px;line-height:1.8;margin:0 0 18px}.archive-note-copy a{font-size:12px;min-height:48px}}
