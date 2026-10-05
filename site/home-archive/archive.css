@@ -51,74 +51,13 @@
 
 /* User-designed covers: full-bleed, square corners on both faces. */
 .archive-card,.archive-card img,.archive-card:before,.archive-card:after{border-radius:0!important}.archive-card img{border:0!important;object-fit:cover;background:transparent}.archive-card:before,.archive-card:after{border:0;box-shadow:none;background:none}.archive-edge{top:0;bottom:0}
-/* Flat double-sided prints with a clearer perspective and breathing room. */
-.archive-stage{perspective:1050px;perspective-origin:50% 46%}
-.archive-card,.archive-card img{background:none;box-shadow:none!important;filter:none}
-.archive-card img{transform:translateZ(.25px)}
-.archive-card .archive-card-back{transform:rotateY(180deg) translateZ(.25px)}
-.archive-card:before,.archive-card:after,.archive-edge{display:none!important}
-.archive-ring{top:42%}
-@media(max-width:700px){.archive-stage{perspective:720px}.archive-ring{top:46%}}
-.archive-ring{top:30%}@media(max-width:700px){.archive-ring{top:42%}}
-/* One quiet navigation rail rather than a cluster of competing buttons. */
-.archive-bottom{column-gap:28px;align-items:end}
-.archive-controls{gap:0;align-items:center;flex-wrap:wrap;border-top:1px solid #18181828;padding-top:8px}
-.archive-controls button,.archive-controls button:last-child{border:0;background:transparent;color:#5a5a55;min-width:44px;min-height:44px;padding:0 12px;font-size:12px;line-height:1;transition:color .2s,background .2s}
-.archive-controls [data-archive-prev],.archive-controls [data-archive-next]{font-size:18px;padding:0;width:44px}
-.archive-controls #archive-count{min-width:58px;font-size:11px;color:#77776f;font-variant-numeric:tabular-nums;letter-spacing:.04em}
-.archive-controls [data-archive-shuffle]{margin-left:12px;position:relative}
-.archive-controls [data-archive-shuffle]:before{content:'';position:absolute;left:-6px;top:14px;height:16px;width:1px;background:#18181824}
-.archive-controls button:hover{color:#111;background:#18181806}
-.archive-controls button:focus-visible,.archive-scroll:focus-visible{outline:1px solid #181818;outline-offset:2px}
-.archive-scroll{align-self:end;min-height:53px;padding:8px 0 0;background:transparent;color:#181818;border-top:1px solid #18181828;display:flex;align-items:center;justify-content:space-between;gap:28px;font-size:12px;white-space:nowrap}
-.archive-scroll span{transition:transform .2s}.archive-scroll:hover span{transform:translateY(3px)}
-.archive-motion-status{flex-basis:100%;padding:6px 12px}
-@media(max-width:700px){.archive-bottom{grid-template-columns:1fr;gap:16px}.archive-controls{width:100%;padding-top:6px}.archive-controls button,.archive-controls button:last-child{font-size:11px;padding:0 10px;min-height:44px}.archive-controls [data-archive-prev],.archive-controls [data-archive-next]{font-size:18px;width:44px;padding:0}.archive-scroll{border:0;min-height:44px;padding:0;gap:18px;justify-self:end;font-size:11px}}
-@media(prefers-reduced-motion:reduce){.archive-scroll span,.archive-controls button{transition:none}}
-/* A longer lens settles the gallery after the staggered near-camera entrance. */
-.archive-stage{perspective:1650px;perspective-origin:50% 45%}
-.archive-ring{top:38%}
-.archive-flight .archive-card{will-change:transform,opacity}
-@media(max-width:700px){.archive-stage{perspective:1050px}.archive-ring{top:46%}}
+/* Rounded clear mounts: no blur filters on the shared 3D scene. */
+.archive-card{border-radius:18px!important;background:transparent;box-shadow:none!important}
+.archive-card img{border:5px solid rgba(245,255,253,.62)!important;border-radius:18px!important;background:rgba(255,255,255,.24);object-fit:contain;box-shadow:0 4px 12px #2d514819,inset 0 0 0 1px #ffffffc0;transform:translateZ(1px);backface-visibility:hidden}
+.archive-card .archive-card-back{transform:rotateY(180deg) translateZ(1px)}
+.archive-card:before,.archive-card:after{display:block!important;position:absolute;inset:0;border:1px solid #ffffffd9!important;border-radius:18px!important;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.32),rgba(255,255,255,0) 28%,rgba(255,255,255,0) 72%,rgba(216,245,236,.22));box-shadow:inset 2px 2px 2px #ffffffb0,inset -2px -2px 3px #abcac34a;backface-visibility:hidden}
+.archive-card:after{transform:translateZ(1.3px)}.archive-card:before{transform:rotateY(180deg) translateZ(1.3px)}
+.archive-edge{display:none!important}
+@media(max-width:700px){.archive-card,.archive-card img,.archive-card:before,.archive-card:after{border-radius:11px!important}.archive-card img{border-width:3px!important}}
 
-.archive-spotlight{position:absolute;z-index:3;top:17%;left:50%;margin-left:-155px;width:310px;max-width:none;height:min(60svh,588px);padding:0;border:0;border-radius:0;background:none;cursor:pointer;transform-origin:center;will-change:transform,opacity}
-.archive-spotlight img{display:block;width:100%;height:100%;object-fit:contain}.archive-spotlight[hidden]{display:none}
-.archive-hero-mode .archive-ring{opacity:.16;pointer-events:none;transition:opacity .5s}.archive-hero-mode .archive-bottom{z-index:4}
-@media(max-width:700px){.archive-spotlight{top:25%;width:220px;margin-left:-110px;height:416px;max-height:49svh}}
-@media(prefers-reduced-motion:reduce){.archive-hero-mode .archive-ring{transition:none}}
-
-/* The current item grows within the same rotating ring, without an overlay. */
-.archive-card{transform:rotateY(var(--angle,0deg)) translateZ(var(--radius,610px)) scale(var(--focus-scale,.78));transition:none}
-.archive-stage{perspective:1800px}
-.archive-ring{top:33%}
-@media(max-width:700px){.archive-stage{perspective:1200px}.archive-ring{top:43%}}
-/* A broad front trio with additional angular space as it comes forward. */
-.archive-card{transform:rotateY(calc(var(--angle,0deg) + var(--spread,0deg))) translateZ(var(--radius,720px)) scale(var(--focus-scale,.8))}
-.archive-stage{perspective:2400px}.archive-ring{top:19%}
-@media(max-width:700px){.archive-stage{perspective:1450px}.archive-ring{top:31%}}
-/* Tighten the arc; gently face the hovered artwork toward the viewer. */
-.archive-card img{transition:transform .48s cubic-bezier(.2,.8,.25,1)}
-.archive-card.is-hovered img:not(.archive-card-back){transform:rotateY(var(--hover-y,0deg)) rotateZ(9deg) rotateX(6deg) translateZ(.25px)}
-.archive-card.is-hovered .archive-card-back{transform:rotateY(var(--hover-y,0deg)) rotateZ(9deg) rotateX(6deg) rotateY(180deg) translateZ(.25px)}
-@media(prefers-reduced-motion:reduce){.archive-card img{transition:none}}
-
-/* Keep the two faces parallel; only their shared surface may rotate. */
-.archive-stage{transform-style:flat}.archive-ring{z-index:2}.archive-depth-title{z-index:0}
-.archive-surface{display:block;position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(0deg) rotateZ(0deg) rotateX(0deg);transition:transform .42s cubic-bezier(.2,.75,.25,1)}
-.archive-card.is-hovered .archive-surface{transform:rotateY(var(--hover-y,0deg)) rotateZ(6deg) rotateX(4deg)}
-.archive-card img,.archive-card.is-hovered img:not(.archive-card-back){transform:translateZ(1px)!important;transition:none!important;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.archive-card .archive-card-back,.archive-card.is-hovered .archive-card-back{transform:rotateY(180deg) translateZ(1px)!important;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-@media(prefers-reduced-motion:reduce){.archive-surface{transition:none}}
-/* A solid reverse and a shared depth plane place the title inside the ring. */
-.archive-stage{transform-style:preserve-3d}
-.archive-ring{z-index:auto}
-.archive-depth-title{z-index:auto}
-.archive-surface>.archive-card-back{display:block;position:absolute;inset:0;width:100%;height:100%;background:#cecec5;border:0;border-radius:0;transform:rotateY(180deg) translateZ(1px)!important;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.archive-card.is-hovered .archive-surface>.archive-card-back{transform:rotateY(180deg) translateZ(1px)!important}
-/* Recede gently into the back arc; soft local shadows reinforce the foreground. */
-.archive-card{transform:rotateY(calc(var(--angle,0deg) + var(--spread,0deg))) translateZ(calc(var(--radius,665px) + var(--depth-offset,0px))) scale(var(--focus-scale,1))}
-.archive-surface:after{content:'';position:absolute;inset:5px;pointer-events:none;transform:translate3d(9px,16px,-3px);box-shadow:0 12px 25px 8px rgba(25,28,24,var(--shadow-opacity,0));backface-visibility:hidden}
-
-/* The wordmark receives the shadow; the page and card edges stay clean. */
-.archive-surface:after{display:none!important}
-.archive-letter{color:transparent;background-color:#deded7;background-image:linear-gradient(#deded7,#deded7);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-repeat:no-repeat}
+.archive-stage{transform-style:preserve-3d}.archive-ring,.archive-depth-title{z-index:auto}.archive-depth-title{pointer-events:none;transform:translateZ(0)!important}
