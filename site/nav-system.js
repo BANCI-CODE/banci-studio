@@ -128,7 +128,7 @@ function setupMobileNavigation() {
   toggle.setAttribute('aria-expanded', 'false');
   toggle.setAttribute('aria-controls', 'mobile-navigation');
   toggle.setAttribute('aria-label', 'Open mobile navigation');
-  toggle.textContent = 'MENU';
+  toggle.innerHTML = '<span class="nav-menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>';
   header.appendChild(toggle);
 
   const overlay = document.createElement('nav');
@@ -165,7 +165,7 @@ function setupMobileNavigation() {
     overlay.setAttribute('aria-hidden', 'false');
     overlay.classList.add('is-open');
     document.body.classList.add('nav-open');
-    toggle.textContent = 'CLOSE';
+
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Close mobile navigation');
     // Wait for the visibility change to commit, including reduced-motion mode.
@@ -184,7 +184,7 @@ function setupMobileNavigation() {
     overlay.setAttribute('aria-hidden', 'true');
     overlay.inert = true;
     document.body.classList.remove('nav-open');
-    toggle.textContent = 'MENU';
+
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open mobile navigation');
     if (restoreFocus && document.contains(toggle)) toggle.focus();
@@ -239,7 +239,7 @@ if(!document.getElementById('nav-acrylic-defs')){
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.id='nav-acrylic-defs';svg.setAttribute('aria-hidden','true');svg.style.cssText='position:fixed;width:0;height:0;pointer-events:none';
  svg.innerHTML='<defs><filter id="nav-acrylic" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage result="lens" preserveAspectRatio="none"/><feDisplacementMap in="SourceGraphic" in2="lens" scale="26" xChannelSelector="R" yChannelSelector="G"/></filter></defs>';document.body.append(svg);
  const header=document.querySelector('.nav-system-shell');
- const draw=()=>{if(!header)return;const w=Math.round(header.clientWidth),h=Math.round(header.clientHeight);if(!w||!h)return;const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d'),im=ctx.createImageData(w,h),radius=h/2;
+ const draw=()=>{if(!header)return;const w=Math.round(header.clientWidth),h=Math.round(header.clientHeight);if(!w||!h)return;const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d'),im=ctx.createImageData(w,h),radius=Math.min(parseFloat(getComputedStyle(header).borderTopLeftRadius)||12,h/2);
  for(let y=0;y<h;y++)for(let x=0;x<w;x++){
  const cx=Math.max(radius,Math.min(w-radius,x)),cy=Math.max(radius,Math.min(h-radius,y));const dx=x-cx,dy=y-cy,len=Math.hypot(dx,dy);let nx=0,ny=0,d;
  if(len){nx=dx/len;ny=dy/len;d=radius-len}else{const a=[x,w-1-x,y,h-1-y];d=Math.min(...a);const k=a.indexOf(d);nx=k===0?-1:k===1?1:0;ny=k===2?-1:k===3?1:0}
@@ -247,3 +247,20 @@ if(!document.getElementById('nav-acrylic-defs')){
  }ctx.putImageData(im,0,0);svg.querySelector('feImage').setAttribute('href',c.toDataURL());};
  if(header){new ResizeObserver(draw).observe(header);draw();header.addEventListener('pointermove',e=>{const r=header.getBoundingClientRect();header.style.setProperty('--nav-light',((e.clientX-r.left)/r.width*100)+'%')},{passive:true})}
 }
+
+// Foreground contrast is resolved separately from the optical surface.
+{
+ let queued=false;
+ const resolve=()=>{queued=false;document.querySelectorAll('.nav-system-shell').forEach(h=>{
+ let tone=h.dataset.tone;
+ if(h.classList.contains('aku-nav'))tone=h.classList.contains('on-light')?'light':'dark';
+ if(!tone){let el=document.body;const rgb=getComputedStyle(el).backgroundColor.match(/[\d.]+/g);tone=rgb&&rgb.length>=3&&(+rgb[0]*.2126+ +rgb[1]*.7152+ +rgb[2]*.0722)<125?'dark':'light'}
+ if(document.body.classList.contains('mobile-nav-open')||h.querySelector('[aria-expanded="true"]'))tone='light';
+ if(h.dataset.navContrast!==tone)h.dataset.navContrast=tone;
+ })};
+ const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(resolve)}};
+ document.querySelectorAll('.nav-system-shell').forEach(h=>new MutationObserver(schedule).observe(h,{attributes:true,attributeFilter:['data-tone','class'],subtree:true}));
+ resolve();addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});
+}
+
+document.querySelectorAll('.back-top').forEach(button=>{button.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>';button.setAttribute('aria-label','返回顶部')});

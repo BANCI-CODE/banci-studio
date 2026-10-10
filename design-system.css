@@ -212,3 +212,28 @@ body .site-header.nav-system-shell .logo::before,body .site-header.nav-system-sh
 body .site-header.nav-system-shell .logo,body .site-header.nav-system-shell .nav-system,body .site-header.nav-system-shell .mobile-nav-toggle{text-shadow:0 1px 3px #ffffffa6}
 @supports(backdrop-filter:url("#nav-acrylic")){body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{backdrop-filter:url("#nav-acrylic") blur(7px) saturate(140%)!important}}
 @media(prefers-reduced-transparency:reduce){body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{background:#f3f0e8!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}body .site-header.nav-system-shell[data-tone="dark"]{background:#171717!important}}
+
+/* Compact rounded rectangle, with one authoritative foreground tone. */
+body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{border-radius:12px!important}
+body .site-header.nav-system-shell[data-nav-contrast="light"]{--nav-ink:#111111;background:rgba(247,247,248,.32)!important;color:var(--nav-ink)!important}
+body .site-header.nav-system-shell[data-nav-contrast="dark"]{--nav-ink:#ffffff;background:rgba(18,20,23,.58)!important;color:var(--nav-ink)!important}
+body .site-header.nav-system-shell[data-nav-contrast] :is(a,button,b,span,.nav-system__item,.logo,.mobile-nav-toggle){color:var(--nav-ink)!important;text-shadow:none!important}
+body .site-header.nav-system-shell[data-nav-contrast] .logo img{filter:brightness(0)!important;box-shadow:none!important;opacity:1!important}
+body .site-header.nav-system-shell[data-nav-contrast="dark"] .logo img{filter:brightness(0) invert(1)!important}
+body .site-header.nav-system-shell[data-nav-contrast] .logo::before,body .site-header.nav-system-shell[data-nav-contrast] .nav-system::before{display:none!important}
+body .site-header.nav-system-shell[data-nav-contrast] .nav-system__item{opacity:1!important}
+@media(max-width:700px){body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{border-radius:10px!important}}
+
+/* Icon controls share the optical surface; motion communicates menu state. */
+body .site-header.nav-system-shell .mobile-nav-toggle{width:44px!important;min-width:44px!important;height:44px!important;padding:0!important;align-items:center;justify-content:center}
+.nav-menu-icon{display:block;position:relative;width:22px;height:18px;margin:auto}
+.nav-menu-icon i{position:absolute;left:0;top:8px;width:22px;height:2px;border-radius:1px;background:currentColor;transform-origin:center;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .18s ease}
+.nav-menu-icon i:first-child{transform:translateY(-7px)}
+.nav-menu-icon i:last-child{transform:translateY(7px)}
+[aria-expanded="true"] .nav-menu-icon i:first-child{transform:rotate(45deg)}
+[aria-expanded="true"] .nav-menu-icon i:nth-child(2){opacity:0;transform:scaleX(.4)}
+[aria-expanded="true"] .nav-menu-icon i:last-child{transform:rotate(-45deg)}
+body .back-top{width:48px!important;height:48px!important;min-height:48px;padding:0!important;border-radius:12px!important;border:1px solid #ffffff99!important;background:rgba(247,247,248,.48)!important;color:#111!important;backdrop-filter:blur(9px) saturate(140%)!important;-webkit-backdrop-filter:blur(9px) saturate(140%)!important;box-shadow:inset 0 2px 4px #ffffffe0,inset 2px 0 5px #ffffff66,inset 0 -2px 5px #ffffff99,0 6px 18px #20252e14!important;align-items:center;justify-content:center;text-shadow:none!important}
+.back-top svg{display:block;margin:auto;transition:transform .2s ease}
+@media(hover:hover){.back-top:hover svg{transform:translateY(-2px)}}
+@media(prefers-reduced-motion:reduce){.nav-menu-icon i,.back-top svg{transition:none}}

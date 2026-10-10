@@ -350,3 +350,29 @@ body.home-classic:has(.archive-hero) .site-header .logo img{filter:none!importan
 .archive-card .archive-layers img{border-radius:0!important}
 .archive-optical-rim,.archive-card.is-current .archive-optical-rim,.archive-card:hover .archive-optical-rim{position:absolute;inset:0;display:block;pointer-events:none;box-sizing:border-box;border-radius:var(--card-radius);transform:translateZ(4px);backface-visibility:hidden;border:1px solid #303030;background:none;box-shadow:inset 0 1px 1px #303030,inset 1px 0 1px #303030;transition:none}
 @media(max-width:700px){.archive-card{--card-radius:6px}}
+
+/* Reveal the artwork itself, without switching the printed cover to white. */
+.archive-card .archive-layers{background:#111!important;transition:opacity .35s ease!important}
+.archive-card:hover .archive-layers .layer-top,.archive-card:hover .archive-layers .layer-bottom{filter:none!important;mix-blend-mode:normal!important}
+.archive-card .archive-layers .layer-art{object-fit:cover!important;transition:inset .6s cubic-bezier(.22,.68,.2,1),width .6s cubic-bezier(.22,.68,.2,1),height .6s cubic-bezier(.22,.68,.2,1)!important;animation:none!important;translate:0!important}
+.archive-card .archive-layers .layer-top,.archive-card .archive-layers .layer-bottom{transition:opacity .3s ease!important;animation:none!important;translate:0!important}
+@media(hover:hover) and (pointer:fine){
+.archive-card[data-index]:hover .archive-layers .layer-art{inset:0!important;left:0!important;top:0!important;width:100%!important;height:100%!important;object-fit:cover!important;filter:none!important;mix-blend-mode:normal!important;opacity:1!important}
+.archive-card:hover .archive-layers .layer-top,.archive-card:hover .archive-layers .layer-bottom{opacity:0!important}
+}
+@media(prefers-reduced-motion:reduce){.archive-card .archive-layers,.archive-card .archive-layers .layer-art,.archive-card .archive-layers .layer-top,.archive-card .archive-layers .layer-bottom{transition:none!important}}
+
+/* Clean artwork edges: no graphite rim or inset highlight. */
+.archive-card .archive-optical-rim{display:none!important;border:0!important;box-shadow:none!important;background:none!important}
+
+/* The active project reveals its artwork automatically, with a restrained spring. */
+.archive-card .archive-layers{opacity:1!important}
+.archive-card .archive-layers .layer-art{transition:inset .72s cubic-bezier(.22,1.18,.36,1),width .72s cubic-bezier(.22,1.18,.36,1),height .72s cubic-bezier(.22,1.18,.36,1)!important}
+.archive-card[data-index].is-current .archive-layers .layer-art{inset:0!important;left:0!important;top:0!important;width:100%!important;height:100%!important;object-fit:cover!important;opacity:1!important;filter:none!important}
+.archive-card.is-current .archive-layers .layer-top,.archive-card.is-current .archive-layers .layer-bottom{opacity:0!important}
+@media(prefers-reduced-motion:reduce){.archive-card .archive-layers .layer-art{transition:none!important}}
+
+/* Inset photographic mount on the expanded artwork only. */
+.archive-card.is-current .archive-optical-rim{display:block!important;border:0!important;background:none!important;box-shadow:inset 0 0 0 5px #111!important;border-radius:var(--card-radius);pointer-events:none}
+@media(hover:hover) and (pointer:fine){.archive-card:hover .archive-optical-rim{display:block!important;border:0!important;background:none!important;box-shadow:inset 0 0 0 5px #111!important}}
+@media(max-width:700px){.archive-card.is-current .archive-optical-rim{box-shadow:inset 0 0 0 3px #111!important}}
