@@ -142,3 +142,73 @@ section.next-case{min-height:0;padding-top:80px;padding-bottom:64px}
 .lab-hero h1{font-size:clamp(58px,8vw,120px)!important;margin:32px 0!important;max-width:none!important}
 @media(max-width:680px){.case-page .case-hero{padding-top:116px;gap:32px}.case-page .case-hero h1{font-size:clamp(40px,11.8vw,78px)}.airseekers-page .air-hero h1{font-size:15vw}.lab-hero{padding-top:116px!important}.lab-hero h1{font-size:clamp(48px,12vw,76px)!important}}
 
+
+/* Shared editorial rhythm; project artwork retains its own visual identity. */
+:root{--editorial-gutter:clamp(20px,3vw,48px);--editorial-rule:rgba(100,100,94,.28)}
+body{font-family:Arial,Helvetica,'PingFang SC','Microsoft YaHei',sans-serif}
+main h1,main h2{font-kerning:normal;text-wrap:balance}
+main p{ text-wrap:pretty }
+.section-tag,.eyebrow,.work-group-heading{letter-spacing:.09em}
+.page-head,.work-intro,.lab-hero,.contact-page-hero{padding-inline:var(--editorial-gutter)}
+@media(max-width:700px){:root{--editorial-gutter:20px}}
+/* Optical acrylic navigation: neutral surface, crisp type, refracted backdrop. */
+body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{position:fixed!important;top:12px!important;left:var(--nav-edge)!important;right:var(--nav-edge)!important;width:auto!important;padding:0 18px!important;border-radius:18px!important;border:1px solid #ffffffa6!important;background:rgba(250,249,245,.38)!important;backdrop-filter:blur(12px) saturate(135%)!important;-webkit-backdrop-filter:blur(12px) saturate(135%)!important;box-shadow:inset 0 1px 0 #fffffff2,inset 0 -1px 0 #ffffff80,0 6px 20px #1818140b!important;overflow:visible}
+body .site-header.nav-system-shell::before{content:''!important;display:block!important;position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;background:linear-gradient(120deg,#ffffff50,transparent 30%,transparent 70%,#ffffff30);box-shadow:inset 1px 1px 2px #ffffffe0,inset -1px -1px 2px #ffffff90}
+body .site-header.nav-system-shell[data-tone="dark"],body .site-header.nav-system-shell.aku-nav:not(.on-light){background:rgba(20,20,20,.55)!important;border-color:#ffffff45!important;color:#fff!important}
+body .site-header.nav-system-shell.is-scrolled{background:rgba(250,249,245,.60)!important}
+body .site-header.nav-system-shell[data-tone="dark"].is-scrolled{background:rgba(20,20,20,.68)!important}
+body .site-header.nav-system-shell .nav-system__item{font-size:12px;letter-spacing:.035em}
+@supports(backdrop-filter:url("#nav-acrylic")){body .site-header.nav-system-shell::before{backdrop-filter:url("#nav-acrylic") blur(1px)}}
+@media(max-width:700px){body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{top:8px!important;padding-inline:14px!important;border-radius:15px!important}}
+@media(prefers-reduced-transparency:reduce){body .site-header.nav-system-shell{background:#f3f0e8!important;backdrop-filter:none!important}body .site-header.nav-system-shell::before{backdrop-filter:none!important}}
+
+/* Clear lens: a refracting perimeter and restrained travelling specular light. */
+body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{background:rgba(250,249,245,.18)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:inset 0 1px 0 #ffffffd9,inset 0 -1px 0 #ffffff66,0 5px 18px #1818140d!important}
+body .site-header.nav-system-shell::before{background:linear-gradient(135deg,#ffffff35,transparent 30%,transparent 75%,#ffffff18)!important;backdrop-filter:blur(7px) saturate(140%);-webkit-backdrop-filter:blur(7px) saturate(140%);box-shadow:inset 1px 1px 1px #ffffffb3,inset -1px -1px 1px #ffffff70}
+body .site-header.nav-system-shell::after{content:''!important;display:block!important;position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:0;background:radial-gradient(ellipse at var(--nav-light,25%) 0%,#ffffff80,transparent 48%);opacity:.5;mask-image:linear-gradient(#000,transparent 18%,transparent 80%,#000)}
+body .site-header.nav-system-shell.is-scrolled{background:rgba(250,249,245,.3)!important}
+body .site-header.nav-system-shell[data-tone="dark"],body .site-header.nav-system-shell.aku-nav:not(.on-light){background:rgba(16,16,16,.48)!important}
+@supports(backdrop-filter:url("#nav-acrylic")){body .site-header.nav-system-shell::before{backdrop-filter:url("#nav-acrylic") blur(3px) saturate(140%)}}
+@media(prefers-reduced-transparency:reduce){body .site-header.nav-system-shell{background:#f3f0e8!important}body .site-header.nav-system-shell[data-tone="dark"]{background:#171717!important}body .site-header.nav-system-shell::before{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+/* About: four purposeful lines, with room for the positioning statement. */
+.about-page .about-intro{min-height:0;padding:140px var(--editorial-gutter) 48px;gap:40px}
+.about-page .about-intro h1{font-size:clamp(56px,6.8vw,108px);line-height:1.02;letter-spacing:-.045em;margin:0;font-weight:700}
+.about-page .about-intro h1 em{font-family:inherit;font-style:normal;font-weight:inherit}
+@media(max-width:700px){.about-page .about-intro{padding-top:116px;gap:32px}.about-page .about-intro h1{font-size:clamp(44px,12vw,76px)}}
+
+/* The lens samples the page directly; nested backdrops lose their source. */
+body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{background:rgba(250,249,245,.1)!important;backdrop-filter:blur(2px) saturate(135%)!important;-webkit-backdrop-filter:blur(2px) saturate(135%)!important;box-shadow:inset 0 2px 1px #ffffffd9,inset 1px 0 2px #ffffff80,inset 0 -2px 2px #ffffff90,0 6px 18px #18181412!important}
+body .site-header.nav-system-shell::before{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:linear-gradient(115deg,#ffffff45,transparent 18%,transparent 75%,#ffffff25)!important}
+body .site-header.nav-system-shell::after{background:radial-gradient(ellipse at var(--nav-light,25%) 0%,#ffffffed,transparent 48%)!important;opacity:.85!important;mask-image:linear-gradient(#000,transparent 28%,transparent 68%,#000)}
+@supports(backdrop-filter:url("#nav-acrylic")){body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{backdrop-filter:url("#nav-acrylic") saturate(125%)!important}}
+body .site-header.nav-system-shell[data-tone="dark"],body .site-header.nav-system-shell.aku-nav:not(.on-light){background:rgba(16,16,16,.4)!important}
+@media(prefers-reduced-transparency:reduce){body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#f3f0e8!important}body .site-header.nav-system-shell[data-tone="dark"]{background:#171717!important}}
+
+/* Keep labels legible over refracted high-contrast imagery. */
+body .site-header.nav-system-shell .logo,body .site-header.nav-system-shell .nav-system,body .site-header.nav-system-shell .mobile-nav-toggle{isolation:isolate;text-shadow:0 1px 4px #f8f7f1,0 0 10px #f8f7f1}
+body .site-header.nav-system-shell .logo::before,body .site-header.nav-system-shell .nav-system::before{content:'';position:absolute;inset:-5px -10px;z-index:-1;pointer-events:none;background:rgba(248,247,241,.55);filter:blur(10px);border-radius:18px}
+body .site-header.nav-system-shell .nav-system{position:relative!important}
+body .site-header.nav-system-shell[data-tone="dark"] .logo,body .site-header.nav-system-shell[data-tone="dark"] .nav-system,body .site-header.nav-system-shell[data-tone="dark"] .mobile-nav-toggle{text-shadow:0 1px 4px #161616,0 0 10px #161616}
+body .site-header.nav-system-shell[data-tone="dark"] .logo::before,body .site-header.nav-system-shell[data-tone="dark"] .nav-system::before{background:#16161688}
+
+/* Reference: softly inflated capsule, broad optical rim and diffused transmitted colour. */
+body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{
+ border-radius:999px!important;border:1px solid rgba(255,255,255,.5)!important;
+ background:rgba(247,247,248,.24)!important;
+ -webkit-backdrop-filter:blur(9px) saturate(140%)!important;backdrop-filter:blur(9px) saturate(140%)!important;
+ box-shadow:inset 0 2px 4px rgba(255,255,255,.92),inset 3px 0 8px rgba(255,255,255,.48),inset -3px 0 8px rgba(255,255,255,.48),inset 0 -3px 7px rgba(255,255,255,.64),inset 0 7px 16px rgba(255,255,255,.15),0 12px 24px -12px rgba(35,39,46,.2)!important;
+}
+body .site-header.nav-system-shell::before{
+ inset:0!important;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.05) 32%,rgba(255,255,255,.015) 58%,rgba(255,255,255,.18))!important;
+ box-shadow:inset 0 1px 2px #ffffffcc,inset 0 -1px 3px #ffffffb3!important;
+}
+body .site-header.nav-system-shell::after{
+ inset:1px!important;border-radius:inherit;mask-image:none!important;opacity:.65!important;
+ background:radial-gradient(ellipse 38% 65% at var(--nav-light,28%) 0%,rgba(255,255,255,.55),transparent 90%),linear-gradient(90deg,rgba(255,255,255,.18),transparent 6%,transparent 94%,rgba(255,255,255,.18))!important;
+}
+body .site-header.nav-system-shell.is-scrolled{background:rgba(247,247,248,.28)!important}
+body .site-header.nav-system-shell[data-tone="dark"],body .site-header.nav-system-shell.aku-nav:not(.on-light){background:rgba(30,32,36,.40)!important;box-shadow:inset 0 2px 4px #ffffff66,inset 3px 0 8px #ffffff26,inset -3px 0 8px #ffffff26,inset 0 -3px 7px #ffffff38,0 12px 24px -12px #0005!important}
+body .site-header.nav-system-shell .logo::before,body .site-header.nav-system-shell .nav-system::before{display:none}
+body .site-header.nav-system-shell .logo,body .site-header.nav-system-shell .nav-system,body .site-header.nav-system-shell .mobile-nav-toggle{text-shadow:0 1px 3px #ffffffa6}
+@supports(backdrop-filter:url("#nav-acrylic")){body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{backdrop-filter:url("#nav-acrylic") blur(7px) saturate(140%)!important}}
+@media(prefers-reduced-transparency:reduce){body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{background:#f3f0e8!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}body .site-header.nav-system-shell[data-tone="dark"]{background:#171717!important}}

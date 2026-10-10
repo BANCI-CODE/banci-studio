@@ -232,3 +232,18 @@ setupMobileNavigation();
 syncScrolledState();
 window.addEventListener('scroll', syncScrolledState, { passive: true });
 window.BanciNavigation = { primaryNavItems, disciplineNavItems };
+
+
+// Rounded lens displacement: neutral centre, smooth refraction at the perimeter.
+if(!document.getElementById('nav-acrylic-defs')){
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.id='nav-acrylic-defs';svg.setAttribute('aria-hidden','true');svg.style.cssText='position:fixed;width:0;height:0;pointer-events:none';
+ svg.innerHTML='<defs><filter id="nav-acrylic" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage result="lens" preserveAspectRatio="none"/><feDisplacementMap in="SourceGraphic" in2="lens" scale="26" xChannelSelector="R" yChannelSelector="G"/></filter></defs>';document.body.append(svg);
+ const header=document.querySelector('.nav-system-shell');
+ const draw=()=>{if(!header)return;const w=Math.round(header.clientWidth),h=Math.round(header.clientHeight);if(!w||!h)return;const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d'),im=ctx.createImageData(w,h),radius=h/2;
+ for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+ const cx=Math.max(radius,Math.min(w-radius,x)),cy=Math.max(radius,Math.min(h-radius,y));const dx=x-cx,dy=y-cy,len=Math.hypot(dx,dy);let nx=0,ny=0,d;
+ if(len){nx=dx/len;ny=dy/len;d=radius-len}else{const a=[x,w-1-x,y,h-1-y];d=Math.min(...a);const k=a.indexOf(d);nx=k===0?-1:k===1?1:0;ny=k===2?-1:k===3?1:0}
+ const strength=Math.pow(Math.max(0,1-Math.max(0,d)/18),2)*.8,i=(y*w+x)*4;im.data[i]=128+nx*strength*127;im.data[i+1]=128+ny*strength*127;im.data[i+2]=128;im.data[i+3]=255;
+ }ctx.putImageData(im,0,0);svg.querySelector('feImage').setAttribute('href',c.toDataURL());};
+ if(header){new ResizeObserver(draw).observe(header);draw();header.addEventListener('pointermove',e=>{const r=header.getBoundingClientRect();header.style.setProperty('--nav-light',((e.clientX-r.left)/r.width*100)+'%')},{passive:true})}
+}
