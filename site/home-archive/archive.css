@@ -386,3 +386,32 @@ body.home-classic:has(.archive-hero) .site-header .logo img{filter:none!importan
 /* Touch focus restoration must not draw a keyboard outline after closing a note. */
 .archive-hero.archive-touch-input .archive-card:focus,.archive-hero.archive-touch-input .archive-stage:focus,.archive-hero.archive-touch-input a:focus,.archive-hero.archive-touch-input button:focus{outline:none!important}
 @media(hover:none) and (pointer:coarse){.archive-card:hover:not(.is-current) .archive-optical-rim{display:none!important;box-shadow:none!important}}
+
+/* Mobile project note: cover and title above, full-width reading area below. */
+@media(max-width:700px){
+.archive-note{box-sizing:border-box;width:calc(100% - 24px);max-width:440px;max-height:calc(100svh - 32px);max-height:calc(100dvh - 32px);padding:56px 20px 24px;border-radius:14px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain}
+.archive-note[open]{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:20px 18px;align-items:start}
+.archive-note-picture{grid-column:1;grid-row:1/3;min-height:0;width:100%;margin:0;padding:0;border-radius:6px;align-self:start}
+.archive-note-picture img{display:block;width:100%;height:auto;max-height:none;aspect-ratio:739/1400;object-fit:contain;border-radius:6px}
+.archive-note-copy{display:contents;overflow:visible;padding:0}
+.archive-note-copy small{grid-column:2;grid-row:1;align-self:end;font-size:10px;line-height:1.5;letter-spacing:.055em;overflow-wrap:anywhere;margin:0}
+.archive-note-copy h2{grid-column:2;grid-row:2;align-self:start;font-size:clamp(20px,6vw,27px);line-height:1.25;margin:0;overflow-wrap:anywhere;letter-spacing:-.025em}
+.archive-note-copy p{grid-column:1/-1;font-size:15px;line-height:1.75;margin:0;padding-top:18px;border-top:1px solid #2222;color:#53534d}
+.archive-note-copy a{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;min-height:48px;margin:0;padding:0;font-size:14px;line-height:1.4}
+.archive-note-close{position:absolute;top:6px;right:8px;width:44px;height:44px;min-width:44px;min-height:44px;margin:0;font-size:26px;border:0;background:transparent}
+}
+
+/* Solid graphite card silhouettes replace the legacy white glass outlines. */
+.archive-card{background:#303030!important;box-shadow:none!important}
+.archive-card::before,.archive-card::after{display:none!important;content:none!important}
+.archive-card .archive-glass-surface{background:#303030!important}
+.archive-card .archive-plain-back{background:#303030!important;border:0!important;box-shadow:none!important}
+
+/* Unrequested images must not expose the browser's empty-image outline. */
+.archive-card .archive-layers .layer-placeholder{position:absolute;display:block;background:#303030;pointer-events:none;border:0;border-radius:3px}
+.archive-card .archive-layers img.layer-art:not(.art-loaded){visibility:hidden!important}
+.archive-card .archive-layers img.layer-art{border-radius:3px!important}
+.archive-card[data-index].is-current .archive-layers img.layer-art{border-radius:var(--card-radius)!important}
+@media(hover:hover) and (pointer:fine){.archive-card[data-index]:hover .archive-layers img.layer-art{border-radius:var(--card-radius)!important}}
+.archive-note .archive-note-picture{overflow:hidden;border-radius:9px}
+.archive-note .archive-note-picture img{border-radius:9px}
