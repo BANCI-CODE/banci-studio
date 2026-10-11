@@ -415,3 +415,9 @@ body.home-classic:has(.archive-hero) .site-header .logo img{filter:none!importan
 @media(hover:hover) and (pointer:fine){.archive-card[data-index]:hover .archive-layers img.layer-art{border-radius:var(--card-radius)!important}}
 .archive-note .archive-note-picture{overflow:hidden;border-radius:9px}
 .archive-note .archive-note-picture img{border-radius:9px}
+
+/* All deferred cover planes stay invisible until a source is assigned. */
+.archive-card img:not([src]),.archive-card img[src=""]{visibility:hidden!important}
+.archive-card .archive-glass-surface>img{inset:0!important;width:100%!important;height:100%!important;border:0!important;outline:0!important}
+.archive-card .archive-layers{clip-path:inset(0 round var(--card-radius))}
+.archive-card .archive-layers .layer-placeholder{outline:0!important;box-shadow:none!important}
