@@ -244,3 +244,11 @@ body .site-header.nav-system-shell[data-nav-contrast="light"]{background:rgba(24
 body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:rgba(18,20,23,.65)!important;border-color:#ffffff38!important}
 body .site-header.nav-system-shell[data-nav-contrast] .logo img{transition:none!important}
 @media(prefers-reduced-transparency:reduce){html.nav-native-glass body .site-header.nav-system-shell{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+
+/* Touch feedback belongs to the component, not a rectangular browser overlay. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+a,button,[role="button"],.archive-stage{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.archive-stage{touch-action:pan-y pinch-zoom}
+.archive-card,.archive-card img{-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
+a:focus:not(:focus-visible),button:focus:not(:focus-visible),.archive-stage:focus:not(:focus-visible){outline:none}
+@media(pointer:coarse){input,textarea,select{font-size:max(16px,1em)}}
