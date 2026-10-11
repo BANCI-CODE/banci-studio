@@ -386,3 +386,7 @@ body.home-classic:has(.archive-hero) .site-header .logo img{filter:none!importan
 @media(max-width:700px){
 .archive-hero .archive-card[data-index].is-current .archive-layers .layer-art,.archive-hero .archive-card[data-index]:hover .archive-layers .layer-art{object-fit:contain!important;object-position:center!important;background:#111!important}
 }
+
+/* Touch focus restoration must not draw a keyboard outline after closing a note. */
+.archive-hero.archive-touch-input .archive-card:focus,.archive-hero.archive-touch-input .archive-stage:focus,.archive-hero.archive-touch-input a:focus,.archive-hero.archive-touch-input button:focus{outline:none!important}
+@media(hover:none) and (pointer:coarse){.archive-card:hover:not(.is-current) .archive-optical-rim{display:none!important;box-shadow:none!important}}
