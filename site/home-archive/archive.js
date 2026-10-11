@@ -31,7 +31,14 @@ cards.forEach((card,i)=>{const d=layerData[i],layers=document.createElement('spa
  const canRun=()=>!paused&&!hover&&visible&&!document.hidden&&!dialog.open&&!start&&!root.contains(document.activeElement);
  function tick(time){raf=0;if(!canRun()){last=0;return}if(last)yaw-=Math.min(time-last,50)*.004;last=time;paint();raf=requestAnimationFrame(tick)}
  function sync(){toggle.textContent=paused?'播放':'暂停';toggle.setAttribute('aria-label',paused?'播放圆环自动旋转':'暂停圆环自动旋转');toggle.setAttribute('aria-pressed',String(!paused));if(canRun()){if(!raf)raf=requestAnimationFrame(tick)}else{cancelAnimationFrame(raf);raf=0;last=0}}
- const move=step=>{pointedCard=null;lastLabel="";yaw=-((Math.round(-yaw/(360/data.length)))+step)*(360/data.length);paint()};
+ let blurTimer=0,blurX=0,blurTime=0;
+ const motionBlur=amount=>{if(reduce.matches)return;root.style.setProperty('--motion-blur',Math.min(2.4,Math.max(.25,amount)).toFixed(2)+'px');clearTimeout(blurTimer);blurTimer=setTimeout(()=>root.style.setProperty('--motion-blur','0px'),100)};
+ stage.addEventListener('pointerdown',e=>{blurX=e.clientX;blurTime=performance.now()},{passive:true});
+ stage.addEventListener('pointermove',e=>{if(!start)return;const now=performance.now(),speed=Math.abs(e.clientX-blurX)/Math.max(16,now-blurTime);motionBlur(speed*1.8);blurX=e.clientX;blurTime=now},{passive:true});
+ let previousScroll=scrollY,scrollTime=performance.now();
+ addEventListener('scroll',()=>{const now=performance.now(),speed=Math.abs(scrollY-previousScroll)/Math.max(16,now-scrollTime);if(visible)motionBlur(speed);previousScroll=scrollY;scrollTime=now},{passive:true});
+ reduce.addEventListener('change',()=>{if(reduce.matches){clearTimeout(blurTimer);root.style.setProperty('--motion-blur','0px')}});
+ const move=step=>{motionBlur(1.8);pointedCard=null;lastLabel="";yaw=-((Math.round(-yaw/(360/data.length)))+step)*(360/data.length);paint()};
  function openNote(i){const d=data[i];dialog.querySelector('img').src=d.src;dialog.querySelector('img').alt=d.title;dialog.querySelector('small').textContent=d.category;dialog.querySelector('h2').textContent=d.title;dialog.querySelector('p').textContent=d.description;dialog.querySelector('a').href=d.url;oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';dialog.showModal();sync()}
  cards.forEach((c,i)=>c.addEventListener('click',()=>{if(!suppress)openNote(i)}));
  root.querySelector('#archive-project').addEventListener('click',e=>{e.preventDefault();openNote(pointedCard===null?order[index]:pointedCard)});

@@ -376,3 +376,8 @@ body.home-classic:has(.archive-hero) .site-header .logo img{filter:none!importan
 .archive-card.is-current .archive-optical-rim{display:block!important;border:0!important;background:none!important;box-shadow:inset 0 0 0 5px #111!important;border-radius:var(--card-radius);pointer-events:none}
 @media(hover:hover) and (pointer:fine){.archive-card:hover .archive-optical-rim{display:block!important;border:0!important;background:none!important;box-shadow:inset 0 0 0 5px #111!important}}
 @media(max-width:700px){.archive-card.is-current .archive-optical-rim{box-shadow:inset 0 0 0 3px #111!important}}
+
+/* Filter only the flat artwork planes, preserving the ring's 3D stacking. */
+.archive-hero.archive-ready .archive-card[data-index] .archive-glass-surface img{filter:blur(var(--motion-blur,0px))!important;transition:filter .24s ease-out}
+.archive-hero.archive-ready .archive-card[data-index] .archive-layers .layer-art{transition:inset .72s cubic-bezier(.22,1.18,.36,1),width .72s cubic-bezier(.22,1.18,.36,1),height .72s cubic-bezier(.22,1.18,.36,1),filter .24s ease-out!important}
+@media(prefers-reduced-motion:reduce){.archive-hero.archive-ready .archive-card[data-index] .archive-glass-surface img{filter:none!important;transition:none!important}}
