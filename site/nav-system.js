@@ -252,10 +252,20 @@ if(!document.getElementById('nav-acrylic-defs')){
 {
  let queued=false;
  const resolve=()=>{queued=false;document.querySelectorAll('.nav-system-shell').forEach(h=>{
- let tone=h.dataset.tone;
+ const rect=h.getBoundingClientRect(),y=Math.max(0,Math.min(innerHeight-1,rect.top+rect.height/2));
+ const tones=[.2,.5,.8].map(f=>{
+ const el=document.elementsFromPoint(innerWidth*f,y).find(e=>!h.contains(e)&&!e.closest('.mobile-navigation')&&e!==document.documentElement);
+ let node=el;
+ while(node){
+ if(node.dataset?.headerTone)return node.dataset.headerTone;
+ const rgba=getComputedStyle(node).backgroundColor.match(/[\d.]+/g);
+ if(rgba&&rgba.length>=3&&(rgba.length<4||+rgba[3]>.8))return (+rgba[0]*.2126+ +rgba[1]*.7152+ +rgba[2]*.0722)<125?'dark':'light';
+ node=node.parentElement;
+ }return 'light';
+ });
+ let tone=tones.filter(t=>t==='dark').length>=2?'dark':'light';
  if(h.classList.contains('aku-nav'))tone=h.classList.contains('on-light')?'light':'dark';
- if(!tone){let el=document.body;const rgb=getComputedStyle(el).backgroundColor.match(/[\d.]+/g);tone=rgb&&rgb.length>=3&&(+rgb[0]*.2126+ +rgb[1]*.7152+ +rgb[2]*.0722)<125?'dark':'light'}
- if(document.body.classList.contains('mobile-nav-open')||h.querySelector('[aria-expanded="true"]'))tone='light';
+ if(document.body.classList.contains('nav-open')||h.querySelector('[aria-expanded="true"]'))tone='light';
  if(h.dataset.navContrast!==tone)h.dataset.navContrast=tone;
  })};
  const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(resolve)}};
@@ -264,3 +274,7 @@ if(!document.getElementById('nav-acrylic-defs')){
 }
 
 document.querySelectorAll('.back-top').forEach(button=>{button.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>';button.setAttribute('aria-label','返回顶部')});
+
+// CSS.supports accepts SVG syntax even where the backdrop renderer ignores it.
+const hasChromiumLens=/Chrome|Chromium|Edg\//.test(navigator.userAgent)&&!(/iPhone|iPad|iPod/.test(navigator.userAgent)||navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+document.documentElement.classList.toggle('nav-native-glass',!hasChromiumLens);

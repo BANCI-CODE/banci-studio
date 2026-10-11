@@ -237,3 +237,10 @@ body .back-top{width:48px!important;height:48px!important;min-height:48px;paddin
 .back-top svg{display:block;margin:auto;transition:transform .2s ease}
 @media(hover:hover){.back-top:hover svg{transform:translateY(-2px)}}
 @media(prefers-reduced-motion:reduce){.nav-menu-icon i,.back-top svg{transition:none}}
+
+/* WebKit fallback keeps the material visible without unsupported SVG backdrop URLs. */
+html.nav-native-glass body .site-header.nav-system-shell,html.nav-native-glass body.home-classic:has(.archive-hero) .site-header.nav-system-shell{backdrop-filter:blur(12px) saturate(155%)!important;-webkit-backdrop-filter:blur(12px) saturate(155%)!important;box-shadow:inset 0 2px 4px #ffffffb3,inset 2px 0 6px #ffffff45,inset -2px 0 6px #ffffff45,inset 0 -2px 4px #ffffff70,0 6px 20px #00000012!important}
+body .site-header.nav-system-shell[data-nav-contrast="light"]{background:rgba(247,247,248,.38)!important}
+body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:rgba(18,20,23,.65)!important;border-color:#ffffff38!important}
+body .site-header.nav-system-shell[data-nav-contrast] .logo img{transition:none!important}
+@media(prefers-reduced-transparency:reduce){html.nav-native-glass body .site-header.nav-system-shell{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
