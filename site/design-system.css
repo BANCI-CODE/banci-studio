@@ -252,3 +252,10 @@ a,button,[role="button"],.archive-stage{-webkit-tap-highlight-color:transparent;
 .archive-card,.archive-card img{-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
 a:focus:not(:focus-visible),button:focus:not(:focus-visible),.archive-stage:focus:not(:focus-visible){outline:none}
 @media(pointer:coarse){input,textarea,select{font-size:max(16px,1em)}}
+
+/* Homepage project covers preserve their entire editorial composition on mobile. */
+@media(max-width:820px){
+.home-classic .featured-case__media{width:100%!important;max-width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:auto!important}
+.home-classic .featured-case__media picture{display:block;width:100%;height:auto!important}
+.home-classic .featured-case__media img{display:block;width:100%!important;max-width:100%;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;transform:none!important}
+}
