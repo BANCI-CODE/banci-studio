@@ -41,6 +41,11 @@
     async function draw() {
       if (!items.length) { loading.textContent = '暂时没有可展示的故事'; button.disabled = true; return; }
       button.disabled = true;
+      const focus = document.querySelector('#aku-daily-focus');
+      focus.classList.remove('is-revealed');
+      focus.classList.add('is-drawing');
+      const motion = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const turn = new Promise(resolve => setTimeout(resolve, motion ? 320 : 0));
       loading.hidden = false;
       loading.textContent = '正在抽取故事…';
       const item = nextItem();
@@ -48,6 +53,7 @@
       try {
         const preload = new Image();
         await new Promise((resolve, reject) => { preload.onload = resolve; preload.onerror = reject; preload.src = source; });
+        await turn;
         image.src = source;
         image.alt = `Day ${item.day} ${item.title}`;
         document.querySelector('#aku-daily-day').textContent = `DAY ${String(item.day).padStart(3, '0')} / ${config.totalDays}`;
@@ -57,8 +63,11 @@
         document.querySelector('#aku-daily-week').textContent = item.week ? `WEEK ${item.week}` : '';
         current = item;
         loading.hidden = true;
+        focus.classList.remove('is-drawing');
+        focus.classList.add('is-revealed');
+        await new Promise(resolve => setTimeout(resolve, motion ? 480 : 0));
       } catch { loading.textContent = '图片暂未加载，请再抽一次'; }
-      finally { button.disabled = false; }
+      finally { focus.classList.remove('is-drawing'); button.disabled = false; }
     }
     button.addEventListener('click', draw);
     await draw();
@@ -75,7 +84,7 @@
       const media = document.createElement('div');
       media.className = 'aku-calendar-card__image';
       const image = document.createElement('img');
-      image.dataset.src = item.thumb;
+      image.dataset.src = item.detail || item.thumb;
       image.width = item.thumbWidth;
       image.height = item.thumbHeight;
       image.alt = `${item.year} 年 ${item.month} 月 AKU 月历插画`;

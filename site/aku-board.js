@@ -149,6 +149,8 @@
 
     preview.style.setProperty('--preview-x', `${Math.round(x)}px`);
     preview.style.setProperty('--preview-y', `${Math.round(y)}px`);
+    preview.dataset.pointer = y >= dotBottom ? 'top' : 'bottom';
+    preview.style.setProperty('--pointer-x', `${Math.max(18, Math.min(cardWidth - 18, dotX - x))}px`);
     preview.classList.add('is-visible');
   }
 

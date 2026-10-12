@@ -440,3 +440,12 @@ button { font: inherit; }
   .aku-dot::before,
   .aku-preview { transition: none; }
 }
+
+/* The callout pointer must sit outside the rounded preview. */
+@media(min-width:861px) and (pointer:fine){
+.aku-preview{overflow:visible}
+.aku-preview__image-wrap{border-radius:13px 13px 0 0}
+.aku-preview::after{content:'';position:absolute;left:var(--pointer-x,50%);width:16px;height:12px;transform:translateX(-50%);background:#eef0ea;pointer-events:none}
+.aku-preview[data-pointer="top"]::after{top:-11px;clip-path:polygon(50% 0,100% 100%,0 100%);background:#fff}
+.aku-preview[data-pointer="bottom"]::after{bottom:-11px;clip-path:polygon(0 0,100% 0,50% 100%)}
+}
