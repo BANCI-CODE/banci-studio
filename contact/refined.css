@@ -1,0 +1,14 @@
+.contact-page{--contact-orange:#f3f0e8;--contact-ink:#171715;--contact-line:#17171526}
+body.contact-page .site-header.nav-system-shell[data-nav-contrast]{--nav-ink:#171715!important;background:rgba(247,246,241,.87)!important;color:#171715!important;border-color:#1717151c!important}
+body.contact-page .site-header.nav-system-shell[data-nav-contrast] .logo img{filter:brightness(0)!important}
+.contact-page-hero{min-height:0;padding:132px var(--editorial-gutter,32px) 48px;gap:28px}
+.contact-page-hero h1{max-width:14ch;font-size:clamp(48px,6.5vw,100px);line-height:1.08;letter-spacing:-.055em;margin:0}
+.contact-intro{margin:0;font-size:clamp(15px,1.5vw,20px);line-height:1.7;color:#66645d}
+.contact-art{margin:0;padding:40px var(--editorial-gutter,32px) 0}
+.contact-art a,.contact-art img{display:block;width:100%}.contact-art img{height:auto}
+.contact-art figcaption{display:flex;justify-content:space-between;gap:16px;padding:16px 0;font-size:11px;letter-spacing:.06em;color:#66645d;border-bottom:1px solid var(--contact-line)}
+.contact-direct{padding:36px var(--editorial-gutter,32px) 56px;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.contact-direct a{display:grid;grid-template-columns:1fr auto;gap:22px 12px;padding:24px 0;border-bottom:1px solid var(--contact-line);color:inherit;text-decoration:none}
+.contact-direct a>span{grid-column:1/-1;font-size:11px;letter-spacing:.08em}.contact-direct strong{font-size:clamp(20px,2.6vw,40px);font-weight:500;overflow-wrap:anywhere;letter-spacing:-.035em}.contact-direct i{font-style:normal;font-size:24px}.contact-direct a:hover strong{text-decoration:underline;text-underline-offset:6px}
+.contact-available{padding-top:40px;padding-bottom:48px}.contact-section-label{margin-bottom:24px}
+@media(max-width:700px){.contact-page-hero{padding-top:112px;padding-bottom:32px;gap:22px}.contact-page-hero h1{font-size:clamp(42px,10vw,66px)}.contact-art{padding-top:24px}.contact-art figcaption{font-size:9px;gap:8px}.contact-direct{grid-template-columns:1fr;gap:0;padding-top:8px;padding-bottom:32px}.contact-direct a{gap:16px;padding:24px 0}.contact-direct strong{font-size:26px}}

@@ -421,3 +421,22 @@ body.home-classic:has(.archive-hero) .site-header .logo img{filter:none!importan
 .archive-card .archive-glass-surface>img{inset:0!important;width:100%!important;height:100%!important;border:0!important;outline:0!important}
 .archive-card .archive-layers{clip-path:inset(0 round var(--card-radius))}
 .archive-card .archive-layers .layer-placeholder{outline:0!important;box-shadow:none!important}
+
+/* Remove type synchronously before artwork expansion, including the base cover. */
+.archive-card .archive-layers .layer-top,.archive-card .archive-layers .layer-bottom{transition:none!important}
+.archive-card.is-current .layer-top,.archive-card.is-current .layer-bottom,.archive-card.is-current .archive-glass-surface>img{visibility:hidden!important;opacity:0!important;transition:none!important}
+@media(hover:hover) and (pointer:fine){
+.archive-card:hover .layer-top,.archive-card:hover .layer-bottom,.archive-card:hover .archive-glass-surface>img{visibility:hidden!important;opacity:0!important;transition:none!important}
+}
+
+/* Keep transparency on the rear face; never paint the shared 3D parent. */
+.archive-card,.archive-card .archive-glass-surface{background:transparent!important}
+.archive-card .archive-plain-back{opacity:1;background:linear-gradient(135deg,rgba(255,255,255,.34),rgba(48,48,48,.18) 48%,rgba(255,255,255,.22))!important;box-shadow:inset 0 1px 1px #ffffff66,inset 0 -1px 1px #30303018!important;backdrop-filter:blur(6px) saturate(115%);-webkit-backdrop-filter:blur(6px) saturate(115%)}
+/* Clip in the artwork's own flat plane, including WebKit compositing. */
+.archive-card .archive-layers{overflow:hidden!important;transform-style:flat!important;-webkit-clip-path:inset(0 round var(--card-radius));clip-path:inset(0 round var(--card-radius));isolation:isolate}
+.archive-hero.archive-ready .archive-card[data-index] .archive-layers .layer-art{max-width:100%!important;max-height:100%!important;transition:inset .6s cubic-bezier(.22,1,.36,1),width .6s cubic-bezier(.22,1,.36,1),height .6s cubic-bezier(.22,1,.36,1),filter .24s ease-out!important}
+.archive-card .archive-layers .layer-bottom{clip-path:inset(calc(100% - var(--art-bottom) + .35%) 0 0 0)}
+.archive-card .archive-layers .layer-top{clip-path:inset(0 0 calc(100% - var(--art-top) + .35%) 0)}
+
+/* Neutral charcoal rear faces, with restrained translucent depth. */
+.archive-card .archive-plain-back{background:linear-gradient(135deg,rgba(60,60,60,.62),rgba(40,40,40,.58) 55%,rgba(48,48,48,.64))!important;box-shadow:inset 0 1px 1px #ffffff26,inset 0 -1px 1px #00000020!important}
