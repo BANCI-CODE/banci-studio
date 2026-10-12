@@ -21,20 +21,47 @@
   }
 
   async function initDaily() {
-    const [config, items] = await Promise.all([data.loadConfig(), data.loadCollection('daily')]);
-    const item = items.find(entry => Number(entry.day) === Number(config.currentDay));
-    if (!item) throw new Error(`AKU Day ${config.currentDay} is unavailable`);
-
+    const [config, collection] = await Promise.all([data.loadConfig(), data.loadCollection('daily')]);
+    const items = collection.filter(item => item.thumb);
     const image = document.querySelector('#aku-daily-image');
     const loading = document.querySelector('#aku-daily-loading');
-    image.alt = `Day ${item.day} ${item.title}`;
-    image.addEventListener('load', () => { loading.hidden = true; }, { once: true });
-    image.src = item.thumb;
-    document.querySelector('#aku-daily-day').textContent = `DAY ${String(item.day).padStart(3, '0')} / ${config.totalDays}`;
-    document.querySelector('#aku-daily-title').textContent = item.title;
-    document.querySelector('#aku-daily-story').textContent = item.story || `今天，AKU 正在经历「${item.title}」。`;
-    document.querySelector('#aku-daily-date').textContent = item.date || 'ONGOING';
-    document.querySelector('#aku-daily-week').textContent = `WEEK ${item.week}`;
+    const button = document.querySelector('#aku-daily-shuffle');
+    let bag = [], current = null;
+    function nextItem() {
+      if (!bag.length) {
+        bag = [...items];
+        for (let i = bag.length - 1; i > 0; i--) {
+          const k = Math.floor(Math.random() * (i + 1));
+          [bag[i], bag[k]] = [bag[k], bag[i]];
+        }
+        if (bag.length > 1 && bag[bag.length - 1] === current) [bag[0], bag[bag.length - 1]] = [bag[bag.length - 1], bag[0]];
+      }
+      return bag.pop();
+    }
+    async function draw() {
+      if (!items.length) { loading.textContent = '暂时没有可展示的故事'; button.disabled = true; return; }
+      button.disabled = true;
+      loading.hidden = false;
+      loading.textContent = '正在抽取故事…';
+      const item = nextItem();
+      const source = item.detail || item.thumb;
+      try {
+        const preload = new Image();
+        await new Promise((resolve, reject) => { preload.onload = resolve; preload.onerror = reject; preload.src = source; });
+        image.src = source;
+        image.alt = `Day ${item.day} ${item.title}`;
+        document.querySelector('#aku-daily-day').textContent = `DAY ${String(item.day).padStart(3, '0')} / ${config.totalDays}`;
+        document.querySelector('#aku-daily-title').textContent = item.title;
+        document.querySelector('#aku-daily-story').textContent = item.story || `这一天，AKU 正在经历「${item.title}」。`;
+        document.querySelector('#aku-daily-date').textContent = item.date || 'ONGOING';
+        document.querySelector('#aku-daily-week').textContent = item.week ? `WEEK ${item.week}` : '';
+        current = item;
+        loading.hidden = true;
+      } catch { loading.textContent = '图片暂未加载，请再抽一次'; }
+      finally { button.disabled = false; }
+    }
+    button.addEventListener('click', draw);
+    await draw();
   }
 
   async function initCalendar() {

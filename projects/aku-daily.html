@@ -4,7 +4,7 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="description" content="AKU Daily — 一天、一张图、一个故事。"><title>AKU Daily — AKU World</title>
   <link rel="icon" href="/banci.svg"><link rel="stylesheet" href="/aku-world.css">
-<link rel="stylesheet" href="/nav-system.css?v=75"><link rel="stylesheet" href="/language-system.css"><link rel="stylesheet" href="/responsive-system.css"><link rel="stylesheet" href="/design-system.css?v=83"><link rel="canonical" href="https://banci.studio/projects/aku-daily.html">
+<link rel="stylesheet" href="/nav-system.css?v=75"><link rel="stylesheet" href="/language-system.css"><link rel="stylesheet" href="/responsive-system.css"><link rel="stylesheet" href="/design-system.css?v=83"><style>.aku-daily-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin:28px 0 56px}.aku-daily-actions button{font:inherit;padding:14px 22px;min-height:48px;color:inherit;background:transparent;border:1px solid currentColor;cursor:pointer}.aku-daily-actions button:disabled{opacity:.45;cursor:wait}.aku-daily-actions button:focus-visible{outline:2px solid currentColor;outline-offset:4px}.aku-daily-actions span{font-size:12px;opacity:.6}</style><link rel="canonical" href="https://banci.studio/projects/aku-daily.html">
 <meta property="og:title" content="AKU Daily — AKU World">
 <meta property="og:description" content="AKU Daily — 一天、一张图、一个故事。">
 <meta property="og:url" content="https://banci.studio/projects/aku-daily.html">
@@ -17,12 +17,12 @@
   <header class="site-header" data-tone="dark"><a class="logo" href="/" aria-label="BANCI home"><img src="/banci.svg" alt=""><b>BANCI</b></a></header>
   <main class="aku-module-main" id="main">
     <nav class="aku-module-breadcrumb" aria-label="AKU World navigation"><a href="/projects/aku.html">AKU WORLD</a><span>/</span><span>AKU DAILY</span></nav>
-    <header class="aku-module-heading"><span>02</span><div><p>STORY / CHARACTER</p><h1>AKU DAILY</h1><p class="aku-module-heading__intro">一天、一张图、一个故事。这里只呈现正在发生的今天。</p></div></header>
+    <header class="aku-module-heading"><span>02</span><div><p>STORY / CHARACTER</p><h1>AKU DAILY</h1><p class="aku-module-heading__intro">一天、一张图、一个故事。随机翻开 AKU 的一天，遇见一个故事。</p></div></header>
     <article class="aku-daily-focus" id="aku-daily-focus" aria-live="polite">
-      <div class="aku-daily-focus__image"><img id="aku-daily-image" alt="" decoding="async"><span id="aku-daily-loading">LOADING CURRENT DAY</span></div>
-      <div class="aku-daily-focus__copy"><p id="aku-daily-day">DAY —</p><h2 id="aku-daily-title">正在载入</h2><p id="aku-daily-story">AKU 的今天正在抵达。</p><div><span id="aku-daily-date">ONGOING</span><span id="aku-daily-week">WEEK —</span></div></div>
-    </article>
+      <div class="aku-daily-focus__image"><img id="aku-daily-image" alt="" decoding="async"><span id="aku-daily-loading">正在抽取故事…</span></div>
+      <div class="aku-daily-focus__copy"><p id="aku-daily-day">DAY —</p><h2 id="aku-daily-title">正在载入</h2><p id="aku-daily-story">随机翻开的一天，正在抵达。</p><div><span id="aku-daily-date">ONGOING</span><span id="aku-daily-week">WEEK —</span></div></div>
+    </article><div class="aku-daily-actions"><button id="aku-daily-shuffle" type="button">再抽一个故事 ↗</button><span>随机浏览 · 每轮不重复</span></div>
   </main>
-  <script src="/aku-data.js"></script><script src="/aku-world.js"></script>
+  <script src="/aku-data.js"></script><script src="/aku-world.js?v=random2"></script>
 <script src="/nav-system.js?v=82" defer></script><script src="/language-system.js" defer></script><script src="/image-loader.js" defer></script></body>
 </html>
