@@ -27,6 +27,16 @@
     const loading = document.querySelector('#aku-daily-loading');
     const button = document.querySelector('#aku-daily-shuffle');
     let bag = [], current = null;
+    let warmedSource = '', warmedPromise = null;
+    function prepareImage(source, priority='low') {
+      if (warmedSource === source && warmedPromise) return warmedPromise;
+      warmedSource = source;
+      warmedPromise = new Promise((resolve,reject)=>{
+        const im = new Image();im.decoding='async';im.fetchPriority=priority;
+        im.onload=async()=>{try{await im.decode()}catch{}resolve()};im.onerror=reject;im.src=source;
+      });
+      return warmedPromise;
+    }
     function nextItem() {
       if (!bag.length) {
         bag = [...items];
@@ -51,8 +61,7 @@
       const item = nextItem();
       const source = item.detail || item.thumb;
       try {
-        const preload = new Image();
-        await new Promise((resolve, reject) => { preload.onload = resolve; preload.onerror = reject; preload.src = source; });
+        await prepareImage(source, 'high');
         await turn;
         image.src = source;
         image.alt = `Day ${item.day} ${item.title}`;
@@ -62,6 +71,12 @@
         document.querySelector('#aku-daily-date').textContent = item.date || 'ONGOING';
         document.querySelector('#aku-daily-week').textContent = item.week ? `WEEK ${item.week}` : '';
         current = item;
+        // Warm only the next known card, without changing random order or image quality.
+        if (bag.length && !navigator.connection?.saveData) {
+          const next=bag[bag.length-1];
+          const warm=()=>prepareImage(next.detail || next.thumb).catch(()=>{warmedSource='';warmedPromise=null});
+          if ('requestIdleCallback' in window) requestIdleCallback(warm,{timeout:1200});else setTimeout(warm,250);
+        }
         loading.hidden = true;
         focus.classList.remove('is-drawing');
         focus.classList.add('is-revealed');
