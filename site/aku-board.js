@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const defaults = Object.freeze({ totalDays: 365, currentDay: 206 });
+  const defaults = Object.freeze({ totalDays: 365, currentDay: 213 });
   const dataSource = window.AKUContent;
 
   const panel = document.querySelector('#aku-evolution-board');
@@ -136,21 +136,16 @@
     const dotRect = dot.getBoundingClientRect();
     const cardWidth = preview.offsetWidth;
     const cardHeight = preview.offsetHeight;
-    const margin = 12;
     const dotX = dotRect.left - stageRect.left + dotRect.width / 2;
-    const dotTop = dotRect.top - stageRect.top;
-    const dotBottom = dotRect.bottom - stageRect.top;
-    let x = dotX - cardWidth / 2;
-    let y = dotTop - cardHeight - 14;
-
-    x = Math.max(margin, Math.min(x, stageRect.width - cardWidth - margin));
-    if (y < margin) y = dotBottom + 14;
-    y = Math.max(margin, Math.min(y, stageRect.height - cardHeight - margin));
-
-    preview.style.setProperty('--preview-x', `${Math.round(x)}px`);
-    preview.style.setProperty('--preview-y', `${Math.round(y)}px`);
-    preview.dataset.pointer = y >= dotBottom ? 'top' : 'bottom';
-    preview.style.setProperty('--pointer-x', `${Math.max(18, Math.min(cardWidth - 18, dotX - x))}px`);
+    const dotY = dotRect.top - stageRect.top + dotRect.height / 2;
+    // Keep the marker tip directly above the selected grid point. Never clamp
+    // the card independently, which disconnects the callout from its target.
+    const x = dotX - cardWidth / 2;
+    const y = dotY - cardHeight - 30;
+    preview.style.setProperty('--preview-x', `${x}px`);
+    preview.style.setProperty('--preview-y', `${y}px`);
+    preview.dataset.pointer = 'bottom';
+    preview.style.setProperty('--pointer-x', `${cardWidth / 2}px`);
     preview.classList.add('is-visible');
   }
 
