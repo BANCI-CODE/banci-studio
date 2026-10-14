@@ -482,3 +482,7 @@ body.home-classic .archive-heading{top:calc(88px + env(safe-area-inset-top,0px))
 .archive-card .archive-glass-surface,.archive-card .archive-layers,.archive-card .archive-layers .layer-placeholder,.archive-card .archive-layers img.layer-art{background:#eee!important}
 .archive-card.is-current .archive-optical-rim{box-shadow:inset 0 0 0 3px #eee!important}
 @media(hover:hover) and (pointer:fine){.archive-card:hover .archive-optical-rim{box-shadow:inset 0 0 0 3px #eee!important}}
+/* Transparent shared planes let the translucent rear face reveal the scene. */
+.archive-card,.archive-card .archive-glass-surface{background:transparent!important}
+.archive-card .archive-layers{background:#eee!important;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.archive-card .archive-plain-back{background:linear-gradient(135deg,rgba(255,255,255,.34),rgba(238,238,238,.16) 55%,rgba(255,255,255,.26))!important;box-shadow:inset 0 1px 1px #ffffff80,inset 0 0 0 1px #b8b5ab30!important;opacity:1!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
