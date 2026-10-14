@@ -464,3 +464,21 @@ html:has(body.home-classic),body.home-classic{background:#f3f0e8}
 body.home-classic:has(.archive-hero) .site-header.nav-system-shell{top:calc(12px + env(safe-area-inset-top,0px))!important}
 body.home-classic .archive-heading{top:calc(88px + env(safe-area-inset-top,0px))}
 @media(max-width:700px){body.home-classic .archive-heading{top:calc(88px + env(safe-area-inset-top,0px));left:16px;right:16px}}
+/* White printed stock; artwork remains in its original colors. */
+.archive-hero.archive-ready .archive-card[data-index] .archive-glass-surface>img{visibility:hidden!important;opacity:0!important}
+.archive-card .archive-glass-surface{background:#faf9f5!important}
+.archive-hero.archive-ready .archive-card[data-index] .archive-layers :is(.layer-top,.layer-bottom){filter:grayscale(1) invert(1)!important;mix-blend-mode:normal!important}
+.archive-card .archive-layers .layer-placeholder{background:#e9e7e1!important}
+.archive-card .archive-plain-back{background:linear-gradient(135deg,rgba(255,255,252,.95),rgba(225,223,216,.86))!important;box-shadow:inset 0 0 0 1px #b8b5ab55!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+/* Light loading and artwork planes must match the white printed stock. */
+.archive-card .archive-layers{background:#faf9f5!important}
+.archive-card .archive-layers img.layer-art{background:#faf9f5!important}
+.archive-card .archive-layers .layer-placeholder{background:#eeece6!important}
+.archive-card.is-current .archive-optical-rim{box-shadow:inset 0 0 0 3px #faf9f5!important}
+@media(hover:hover) and (pointer:fine){.archive-card:hover .archive-optical-rim{box-shadow:inset 0 0 0 3px #faf9f5!important}}
+/* One paper color across the rectangular mount and empty artwork area. */
+.archive-card .archive-glass-surface,.archive-card .archive-layers,.archive-card .archive-layers .layer-placeholder,.archive-card .archive-layers img.layer-art{background:#faf9f5!important}
+/* Printed cover pixels are #111 before inversion, therefore #eee afterwards. */
+.archive-card .archive-glass-surface,.archive-card .archive-layers,.archive-card .archive-layers .layer-placeholder,.archive-card .archive-layers img.layer-art{background:#eee!important}
+.archive-card.is-current .archive-optical-rim{box-shadow:inset 0 0 0 3px #eee!important}
+@media(hover:hover) and (pointer:fine){.archive-card:hover .archive-optical-rim{box-shadow:inset 0 0 0 3px #eee!important}}
