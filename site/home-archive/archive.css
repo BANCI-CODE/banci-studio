@@ -458,3 +458,9 @@ body.home-classic:has(.archive-hero) .site-header .logo img{filter:none!importan
 }
 @media(max-width:370px){.archive-bottom{left:16px;right:16px;gap:12px 8px}.archive-controls button,.archive-controls button:last-child{min-width:28px;font-size:10px}.archive-scroll{padding:0 8px;font-size:10px}}
 @media(max-width:700px) and (max-height:700px){.archive-heading{top:110px}.archive-description{min-height:48px}.archive-description>a{font-size:22px}.archive-bottom{padding-top:12px;gap:8px;bottom:12px}}
+
+/* Match Safari's safe area to the opening canvas and place the title below navigation. */
+html:has(body.home-classic),body.home-classic{background:#f3f0e8}
+body.home-classic:has(.archive-hero) .site-header.nav-system-shell{top:calc(12px + env(safe-area-inset-top,0px))!important}
+body.home-classic .archive-heading{top:calc(88px + env(safe-area-inset-top,0px))}
+@media(max-width:700px){body.home-classic .archive-heading{top:calc(88px + env(safe-area-inset-top,0px));left:16px;right:16px}}
