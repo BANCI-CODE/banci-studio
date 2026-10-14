@@ -464,25 +464,12 @@ html:has(body.home-classic),body.home-classic{background:#f3f0e8}
 body.home-classic:has(.archive-hero) .site-header.nav-system-shell{top:calc(12px + env(safe-area-inset-top,0px))!important}
 body.home-classic .archive-heading{top:calc(88px + env(safe-area-inset-top,0px))}
 @media(max-width:700px){body.home-classic .archive-heading{top:calc(88px + env(safe-area-inset-top,0px));left:16px;right:16px}}
-/* White printed stock; artwork remains in its original colors. */
+/* Consolidated white stock; creative ring geometry remains above. */
 .archive-hero.archive-ready .archive-card[data-index] .archive-glass-surface>img{visibility:hidden!important;opacity:0!important}
-.archive-card .archive-glass-surface{background:#faf9f5!important}
-.archive-hero.archive-ready .archive-card[data-index] .archive-layers :is(.layer-top,.layer-bottom){filter:grayscale(1) invert(1)!important;mix-blend-mode:normal!important}
-.archive-card .archive-layers .layer-placeholder{background:#e9e7e1!important}
-.archive-card .archive-plain-back{background:linear-gradient(135deg,rgba(255,255,252,.95),rgba(225,223,216,.86))!important;box-shadow:inset 0 0 0 1px #b8b5ab55!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-/* Light loading and artwork planes must match the white printed stock. */
-.archive-card .archive-layers{background:#faf9f5!important}
-.archive-card .archive-layers img.layer-art{background:#faf9f5!important}
-.archive-card .archive-layers .layer-placeholder{background:#eeece6!important}
-.archive-card.is-current .archive-optical-rim{box-shadow:inset 0 0 0 3px #faf9f5!important}
-@media(hover:hover) and (pointer:fine){.archive-card:hover .archive-optical-rim{box-shadow:inset 0 0 0 3px #faf9f5!important}}
-/* One paper color across the rectangular mount and empty artwork area. */
-.archive-card .archive-glass-surface,.archive-card .archive-layers,.archive-card .archive-layers .layer-placeholder,.archive-card .archive-layers img.layer-art{background:#faf9f5!important}
-/* Printed cover pixels are #111 before inversion, therefore #eee afterwards. */
-.archive-card .archive-glass-surface,.archive-card .archive-layers,.archive-card .archive-layers .layer-placeholder,.archive-card .archive-layers img.layer-art{background:#eee!important}
-.archive-card.is-current .archive-optical-rim{box-shadow:inset 0 0 0 3px #eee!important}
-@media(hover:hover) and (pointer:fine){.archive-card:hover .archive-optical-rim{box-shadow:inset 0 0 0 3px #eee!important}}
-/* Transparent shared planes let the translucent rear face reveal the scene. */
 .archive-card,.archive-card .archive-glass-surface{background:transparent!important}
-.archive-card .archive-layers{background:#eee!important;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.archive-card .archive-plain-back{background:linear-gradient(135deg,rgba(255,255,255,.34),rgba(238,238,238,.16) 55%,rgba(255,255,255,.26))!important;box-shadow:inset 0 1px 1px #ffffff80,inset 0 0 0 1px #b8b5ab30!important;opacity:1!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.archive-card .archive-layers{background:var(--ds-card-paper,#eee)!important;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.archive-hero.archive-ready .archive-card[data-index] .archive-layers :is(.layer-top,.layer-bottom){filter:grayscale(1) invert(1)!important;mix-blend-mode:normal!important}
+.archive-card .archive-layers .layer-placeholder,.archive-card .archive-layers img.layer-art{background:var(--ds-card-paper,#eee)!important}
+.archive-card.is-current .archive-optical-rim{box-shadow:inset 0 0 0 3px var(--ds-card-paper,#eee)!important}
+@media(hover:hover) and (pointer:fine){.archive-card:hover .archive-optical-rim{box-shadow:inset 0 0 0 3px var(--ds-card-paper,#eee)!important}}
+.archive-card .archive-plain-back{background:var(--ds-card-back,linear-gradient(135deg,rgba(255,255,255,.34),rgba(238,238,238,.16) 55%,rgba(255,255,255,.26)))!important;box-shadow:inset 0 1px 1px #ffffff80,inset 0 0 0 1px #b8b5ab30!important;opacity:1!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}

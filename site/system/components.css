@@ -1,0 +1,26 @@
+/* Explicit class opt-in: these primitives never restyle an unmigrated route. */
+.ds-page{margin:0;background:var(--ds-bg);color:var(--ds-ink);font-family:var(--ds-font-body);line-height:var(--ds-leading-body)}
+.ds-container{box-sizing:border-box;width:100%;max-width:var(--ds-content-max);margin-inline:auto;padding-inline:var(--ds-page-gutter)}
+.ds-section{padding-block:var(--ds-section-space)}
+.ds-grid{display:grid;grid-template-columns:repeat(var(--ds-grid-columns),minmax(0,1fr));gap:var(--ds-grid-gap)}
+.ds-project-card{grid-column:span 4;min-width:0;border-radius:var(--ds-radius-none)}
+.ds-image{margin:0;overflow:hidden;background:var(--ds-surface)}
+.ds-image img{display:block;width:100%;height:auto}
+.ds-image[data-fit="cover"]{aspect-ratio:16/10}
+.ds-image[data-fit="cover"] img{height:100%;object-fit:cover;object-position:center}
+.ds-h1,.ds-h2,.ds-h3,.ds-h4{font-family:var(--ds-font-body);font-weight:var(--ds-weight-bold);line-height:var(--ds-leading-heading);letter-spacing:var(--ds-tracking-heading);margin:0;text-wrap:balance}
+.ds-h1{font-size:var(--ds-h1)}.ds-h2{font-size:var(--ds-h2)}.ds-h3{font-size:var(--ds-h3)}.ds-h4{font-size:var(--ds-h4)}
+.ds-body{font-size:var(--ds-body);line-height:var(--ds-leading-body);max-width:var(--ds-reading-max)}
+.ds-label,.ds-tag{font-size:var(--ds-label);line-height:var(--ds-leading-label);letter-spacing:var(--ds-tracking-label)}
+.ds-tag{display:inline-flex;padding:var(--ds-space-1) var(--ds-space-2);border:1px solid var(--ds-border);border-radius:var(--ds-radius-none)}
+.ds-button{display:inline-flex;align-items:center;justify-content:center;gap:var(--ds-component-gap);box-sizing:border-box;min-height:var(--ds-control-md);min-width:var(--ds-control-sm);padding:var(--ds-space-3) var(--ds-space-6);border:1px solid currentColor;border-radius:var(--ds-radius-none);background:transparent;color:var(--ds-ink);font:inherit;font-size:var(--ds-body-small);line-height:var(--ds-leading-label);text-decoration:none;cursor:pointer;transition:background-color var(--ds-motion-hover) var(--ds-ease-standard),color var(--ds-motion-hover) var(--ds-ease-standard),opacity var(--ds-motion-micro) linear}
+.ds-button[data-variant="primary"]{background:var(--ds-interactive);color:var(--ds-on-dark);border-color:transparent}
+.ds-button[data-variant="text"],.ds-button[data-variant="icon"]{border-color:transparent}
+.ds-button[data-variant="icon"]{padding:var(--ds-space-2)}
+.ds-button[data-size="sm"]{min-height:var(--ds-control-sm);padding:var(--ds-space-2) var(--ds-space-4)}
+.ds-button[data-size="lg"]{min-height:var(--ds-control-lg)}
+.ds-button:active{background:var(--ds-interactive-active);color:var(--ds-on-dark)}
+.ds-button:disabled,.ds-button[aria-disabled="true"]{background:var(--ds-interactive-disabled);color:var(--ds-text-muted);cursor:not-allowed;opacity:.65}
+.ds-button:focus-visible,.ds-link:focus-visible{outline:2px solid var(--ds-focus);outline-offset:var(--ds-space-1)}
+.ds-link{color:inherit;text-underline-offset:.25em;text-decoration-thickness:1px;transition:opacity var(--ds-motion-hover) linear}
+@media(hover:hover) and (pointer:fine){.ds-button:not(:disabled):not([aria-disabled="true"]):hover{background:var(--ds-interactive-hover);color:var(--ds-on-dark)}.ds-link:hover{opacity:.7}}
