@@ -1,0 +1,11 @@
+/* Journal gutters and inset captions use the shared spacing foundation. */
+.journal-page{--pad:var(--ds-page-gutter);--page-pad:var(--ds-page-gutter);--editorial-gutter:var(--ds-page-gutter)}
+.journal-page main>section{padding-inline:var(--ds-page-gutter)}
+.journal-page .lab-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--ds-grid-gap);padding-block:var(--ds-section-space)}
+.journal-page .lab-card{margin:0;min-width:0}
+.journal-page .lab-card img{width:100%;height:auto;display:block}
+.journal-page .lab-card figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--ds-space-2) var(--ds-space-4);padding:var(--ds-space-4);font-size:var(--ds-caption);line-height:var(--ds-leading-label)}
+.journal-page .lab-index{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--ds-space-3);padding-block:var(--ds-space-6)}
+.journal-page footer{padding-inline:var(--ds-page-gutter)}
+@media(max-width:1199px){.journal-page .lab-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.journal-page .lab-gallery{grid-template-columns:1fr}.journal-page .lab-close h2{font-size:var(--ds-h2);overflow-wrap:anywhere}.journal-page .lab-close a{max-width:100%;width:auto;overflow-wrap:anywhere}}

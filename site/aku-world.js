@@ -22,11 +22,12 @@
 
   async function initDaily() {
     const [config, collection] = await Promise.all([data.loadConfig(), data.loadCollection('daily')]);
-    const items = collection.filter(item => item.thumb);
+    const items = collection.filter(item => item.portrait || item.detail || item.thumb);
     const image = document.querySelector('#aku-daily-image');
     const loading = document.querySelector('#aku-daily-loading');
     const button = document.querySelector('#aku-daily-shuffle');
     let bag = [], current = null;
+    const storyLink=document.createElement('a');storyLink.className='aku-story-link';storyLink.textContent='查看文字版 ↗';storyLink.hidden=true;storyLink.target='_blank';storyLink.rel='noopener';document.querySelector('.aku-daily-focus__copy').append(storyLink);
     let warmedSource = '', warmedPromise = null;
     function prepareImage(source, priority='low') {
       if (warmedSource === source && warmedPromise) return warmedPromise;
@@ -59,12 +60,14 @@
       loading.hidden = false;
       loading.textContent = '正在抽取故事…';
       const item = nextItem();
-      const source = item.detail || item.thumb;
+      const source = item.portrait || item.detail || item.thumb;
       try {
         await prepareImage(source, 'high');
         await turn;
         image.src = source;
         image.alt = `Day ${item.day} ${item.title}`;
+        storyLink.hidden=!item.storyImage;
+        if(item.storyImage){storyLink.href=item.storyImage;storyLink.setAttribute('aria-label',`查看 ${item.title} 的完整文字版`)}else storyLink.removeAttribute('href');
         document.querySelector('#aku-daily-day').textContent = `DAY ${String(item.day).padStart(3, '0')} / ${config.totalDays}`;
         document.querySelector('#aku-daily-title').textContent = item.title;
         document.querySelector('#aku-daily-story').textContent = item.story || `这一天，AKU 正在经历「${item.title}」。`;
@@ -74,7 +77,7 @@
         // Warm only the next known card, without changing random order or image quality.
         if (bag.length && !navigator.connection?.saveData) {
           const next=bag[bag.length-1];
-          const warm=()=>prepareImage(next.detail || next.thumb).catch(()=>{warmedSource='';warmedPromise=null});
+          const warm=()=>prepareImage(next.portrait || next.detail || next.thumb).catch(()=>{warmedSource='';warmedPromise=null});
           if ('requestIdleCallback' in window) requestIdleCallback(warm,{timeout:1200});else setTimeout(warm,250);
         }
         loading.hidden = true;
