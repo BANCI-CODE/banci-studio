@@ -259,3 +259,12 @@ a { color: inherit; }
   html { scroll-behavior: auto; }
   .aku-world-entry, .aku-world-entry__arrow, .aku-calendar-card img, .aku-pin-item img { transition: none; }
 }
+
+/* World landing uses the same responsive content edges as Work and Journal. */
+body[data-aku-view="world"] .aku-world-main { width:calc(100% - 2 * var(--ds-page-gutter,16px)); max-width:none; margin-inline:auto; }
+body[data-aku-view="world"] .aku-world-entry > * { min-width:0; }
+@media (max-width:767px) {
+ body[data-aku-view="world"] .aku-world-entry { grid-template-columns:24px minmax(0,1fr) 28px; gap:12px; }
+ body[data-aku-view="world"] .aku-world-entry__title { font-size:clamp(30px,6.6vw,48px); }
+}
+
