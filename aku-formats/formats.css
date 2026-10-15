@@ -1,0 +1,7 @@
+/* Explicit asset roles: square preview, portrait draw, optional text edition. */
+.aku-preview img{object-fit:contain!important;object-position:center!important;background:#f3f1eb}
+.aku-story-link{display:inline-flex;align-items:center;min-height:var(--ds-control-sm);margin-top:var(--ds-space-4);font-size:var(--ds-body-small);text-decoration:underline;text-underline-offset:4px;color:inherit}
+.aku-story-link[hidden]{display:none}
+.aku-story-link:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+
+.aku-preview__image-wrap{aspect-ratio:1}

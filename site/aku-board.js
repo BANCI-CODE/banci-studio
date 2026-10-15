@@ -87,7 +87,7 @@
     previewMeta.textContent = `WEEK ${item.week} / ${isCurrent ? 'CURRENT WORK' : 'DAILY WORK'}`;
     previewLock.textContent = lockedDay ? 'LOCKED' : isCurrent ? 'CURRENT' : 'PREVIEW';
 
-    const previewSrc = item.thumb || '';
+    const previewSrc = item.square || item.detail || item.thumb || '';
     if (previewSrc) {
       previewImage.alt = `Day ${day} ${item.title}`;
       if (previewImage.getAttribute('src') === previewSrc) {
@@ -121,7 +121,7 @@
   }
 
   function preloadAdjacent(day) {
-    dataSource?.preloadAdjacent([...itemsByDay.values()], day, { key: 'day', field: 'thumb', radius: 1 });
+    dataSource?.preloadAdjacent([...itemsByDay.values()], day, { key: 'day', field: 'square', radius: 1 });
   }
 
   function queueAdjacentPreload(day) {
