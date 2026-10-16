@@ -39,8 +39,8 @@ body.ds-home .archive-note{background:var(--ds-surface-raised);color:var(--ds-in
 body.ds-home .archive-note-copy p{font-size:var(--ds-body);line-height:var(--ds-leading-body);color:var(--ds-text-secondary)}
 body.ds-home .archive-note-close{min-width:var(--ds-control-sm);min-height:var(--ds-control-sm)}
 /* Legacy shell is important-locked. These two bridges stay scoped to the pilot. */
-body.ds-home .site-header.nav-system-shell{padding-inline:var(--ds-space-4)!important;border-radius:var(--ds-radius-md)!important}
-body.ds-home .back-top{border-radius:var(--ds-radius-md)!important}
+body.ds-home .site-header.nav-system-shell{padding-inline:var(--ds-space-4)!important;border-radius:0!important}
+body.ds-home .back-top{border-radius:0!important}
 @media(hover:hover) and (pointer:fine){
  body.ds-home .archive-controls button:hover{background:var(--ds-border-subtle)}
  body.ds-home .archive-scroll:hover{background:var(--ds-interactive-hover)}

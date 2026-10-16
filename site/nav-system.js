@@ -237,15 +237,40 @@ window.BanciNavigation = { primaryNavItems, disciplineNavItems };
 // Rounded lens displacement: neutral centre, smooth refraction at the perimeter.
 if(!document.getElementById('nav-acrylic-defs')){
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.id='nav-acrylic-defs';svg.setAttribute('aria-hidden','true');svg.style.cssText='position:fixed;width:0;height:0;pointer-events:none';
- svg.innerHTML='<defs><filter id="nav-acrylic" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage result="lens" preserveAspectRatio="none"/><feDisplacementMap in="SourceGraphic" in2="lens" scale="26" xChannelSelector="R" yChannelSelector="G"/></filter></defs>';document.body.append(svg);
+ svg.innerHTML='<defs><filter id="nav-acrylic" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage result="lens" preserveAspectRatio="none"/><feDisplacementMap in="SourceGraphic" in2="lens" scale="78" xChannelSelector="R" yChannelSelector="G" result="redRay"/><feColorMatrix in="redRay" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red"/><feDisplacementMap in="SourceGraphic" in2="lens" scale="70" xChannelSelector="R" yChannelSelector="G" result="greenRay"/><feColorMatrix in="greenRay" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green"/><feDisplacementMap in="SourceGraphic" in2="lens" scale="58" xChannelSelector="R" yChannelSelector="G" result="blueRay"/><feColorMatrix in="blueRay" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="blue"/><feComposite in="red" in2="green" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="warm"/><feComposite in="warm" in2="blue" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="spectrum"/><feGaussianBlur in="spectrum" stdDeviation="0.25 0.35"/></filter></defs>';document.body.append(svg);
  const header=document.querySelector('.nav-system-shell');
- const draw=()=>{if(!header)return;const w=Math.round(header.clientWidth),h=Math.round(header.clientHeight);if(!w||!h)return;const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d'),im=ctx.createImageData(w,h),radius=Math.min(parseFloat(getComputedStyle(header).borderTopLeftRadius)||12,h/2);
+ const draw=()=>{if(!header)return;const w=Math.round(header.clientWidth),h=Math.round(header.clientHeight);if(!w||!h)return;const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d'),im=ctx.createImageData(w,h),radius=Math.min(parseFloat(getComputedStyle(header).borderTopLeftRadius)||0,h/2);
  for(let y=0;y<h;y++)for(let x=0;x<w;x++){
  const cx=Math.max(radius,Math.min(w-radius,x)),cy=Math.max(radius,Math.min(h-radius,y));const dx=x-cx,dy=y-cy,len=Math.hypot(dx,dy);let nx=0,ny=0,d;
  if(len){nx=dx/len;ny=dy/len;d=radius-len}else{const a=[x,w-1-x,y,h-1-y];d=Math.min(...a);const k=a.indexOf(d);nx=k===0?-1:k===1?1:0;ny=k===2?-1:k===3?1:0}
- const strength=Math.pow(Math.max(0,1-Math.max(0,d)/18),2)*.8,i=(y*w+x)*4;im.data[i]=128+nx*strength*127;im.data[i+1]=128+ny*strength*127;im.data[i+2]=128;im.data[i+3]=255;
+ const strength=Math.pow(Math.max(0,1-Math.max(0,d)/22),1.6)*.7;
+ const v=(y/(h-1)-.5)*2, magnify=-v*.34, bend=ny*strength;
+ const i=(y*w+x)*4;
+ im.data[i]=128+nx*strength*127;
+ im.data[i+1]=128+Math.max(-1,Math.min(1,magnify+bend))*127;
+ im.data[i+2]=128;im.data[i+3]=255;
  }ctx.putImageData(im,0,0);svg.querySelector('feImage').setAttribute('href',c.toDataURL());};
  if(header){new ResizeObserver(draw).observe(header);draw();header.addEventListener('pointermove',e=>{const r=header.getBoundingClientRect();header.style.setProperty('--nav-light',((e.clientX-r.left)/r.width*100)+'%')},{passive:true})}
+}
+
+// Motion is driven by scrolling, then settles; foreground navigation is not filtered.
+{
+ const filter=document.querySelector('#nav-acrylic');
+ const blur=filter?.querySelector('feGaussianBlur');
+ const rays=filter?[...filter.querySelectorAll('feDisplacementMap')]:[];
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+ let previous=scrollY,energy=0,frame=0;
+ const settle=()=>{
+   energy*=.84;
+   const amount=reduce.matches?0:Math.min(1,energy/65);
+   blur?.setAttribute('stdDeviation',`0.25 ${(.35+amount*1.7).toFixed(2)}`);
+   rays.forEach((ray,i)=>ray.setAttribute('scale',String([78,70,58][i]+amount*8)));
+   frame=energy>.2&&!reduce.matches?requestAnimationFrame(settle):0;
+ };
+ addEventListener('scroll',()=>{
+   const now=scrollY;energy=Math.min(90,energy+Math.abs(now-previous));previous=now;
+   if(!frame)frame=requestAnimationFrame(settle);
+ },{passive:true});
 }
 
 // Foreground contrast is resolved separately from the optical surface.

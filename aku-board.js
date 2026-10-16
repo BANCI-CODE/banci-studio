@@ -116,8 +116,8 @@
       previewPlaceholder.hidden = false;
     }
 
-    panel.querySelector('[data-step="-1"]').disabled = day <= 1;
-    panel.querySelector('[data-step="1"]').disabled = day >= settings.currentDay;
+    preview.querySelector('[data-step="-1"]').disabled = day <= 1;
+    preview.querySelector('[data-step="1"]').disabled = day >= settings.currentDay;
   }
 
   function preloadAdjacent(day) {
@@ -130,22 +130,18 @@
   }
 
   function positionPreview(dot) {
-    if (coarseOrMobile.matches || !dot) return;
-
-    const stageRect = stage.getBoundingClientRect();
-    const dotRect = dot.getBoundingClientRect();
-    const cardWidth = preview.offsetWidth;
-    const cardHeight = preview.offsetHeight;
-    const dotX = dotRect.left - stageRect.left + dotRect.width / 2;
-    const dotY = dotRect.top - stageRect.top + dotRect.height / 2;
-    // Keep the marker tip directly above the selected grid point. Never clamp
-    // the card independently, which disconnects the callout from its target.
-    const x = dotX - cardWidth / 2;
-    const y = dotY - cardHeight - 30;
-    preview.style.setProperty('--preview-x', `${x}px`);
-    preview.style.setProperty('--preview-y', `${y}px`);
-    preview.dataset.pointer = 'bottom';
-    preview.style.setProperty('--pointer-x', `${cardWidth / 2}px`);
+    if (!dot) return;
+    if(coarseOrMobile.matches && !lockedDay){preview.classList.remove('is-visible');return;}
+    const stageRect=stage.getBoundingClientRect(), dotRect=dot.getBoundingClientRect();
+    const w=preview.offsetWidth,h=preview.offsetHeight;
+    const dx=dotRect.left-stageRect.left+dotRect.width/2;
+    const dy=dotRect.top-stageRect.top+dotRect.height/2;
+    const x=Math.max(0,Math.min(stageRect.width-w,dx-w/2));
+    const above=dotRect.top-h-18>70;
+    preview.style.setProperty('--preview-x',x+'px');
+    preview.style.setProperty('--preview-y',(above?dy-h-18:dy+18)+'px');
+    preview.style.setProperty('--pointer-x',(dx-x)+'px');
+    preview.dataset.pointer=above?'bottom':'top';
     preview.classList.add('is-visible');
   }
 
@@ -192,7 +188,7 @@
     if (!event.target.closest('.aku-preview') && !event.target.closest('.aku-dot')) resetToCurrent();
   });
 
-  panel.addEventListener('click', event => {
+  document.addEventListener('click', event => {
     const stepButton = event.target.closest('[data-step]');
     if (!stepButton || stepButton.disabled) return;
     const nextDay = Math.max(1, Math.min(settings.currentDay, activeDay + Number(stepButton.dataset.step)));
@@ -250,3 +246,5 @@
 
   init();
 })();
+
+

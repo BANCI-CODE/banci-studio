@@ -196,18 +196,18 @@ body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-he
  border-radius:999px!important;border:1px solid rgba(255,255,255,.5)!important;
  background:rgba(247,247,248,.24)!important;
  -webkit-backdrop-filter:blur(9px) saturate(140%)!important;backdrop-filter:blur(9px) saturate(140%)!important;
- box-shadow:inset 0 2px 4px rgba(255,255,255,.92),inset 3px 0 8px rgba(255,255,255,.48),inset -3px 0 8px rgba(255,255,255,.48),inset 0 -3px 7px rgba(255,255,255,.64),inset 0 7px 16px rgba(255,255,255,.15),0 12px 24px -12px rgba(35,39,46,.2)!important;
+ box-shadow:inset 0 1px 0 #ffffff80,inset 0 -1px 0 #ffffff18,0 6px 20px -8px #00000024!important;
 }
 body .site-header.nav-system-shell::before{
- inset:0!important;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.05) 32%,rgba(255,255,255,.015) 58%,rgba(255,255,255,.18))!important;
- box-shadow:inset 0 1px 2px #ffffffcc,inset 0 -1px 3px #ffffffb3!important;
+ inset:0!important;border-radius:inherit;background:linear-gradient(115deg,#ffffff0f,transparent 24%,transparent 80%,#ffffff08)!important;
+ box-shadow:none!important;
 }
 body .site-header.nav-system-shell::after{
- inset:1px!important;border-radius:inherit;mask-image:none!important;opacity:.65!important;
+ inset:1px!important;border-radius:inherit;mask-image:linear-gradient(#000,transparent 12%,transparent 88%,#000)!important;opacity:.3!important;
  background:radial-gradient(ellipse 38% 65% at var(--nav-light,28%) 0%,rgba(255,255,255,.55),transparent 90%),linear-gradient(90deg,rgba(255,255,255,.18),transparent 6%,transparent 94%,rgba(255,255,255,.18))!important;
 }
 body .site-header.nav-system-shell.is-scrolled{background:rgba(247,247,248,.28)!important}
-body .site-header.nav-system-shell[data-tone="dark"],body .site-header.nav-system-shell.aku-nav:not(.on-light){background:rgba(30,32,36,.40)!important;box-shadow:inset 0 2px 4px #ffffff66,inset 3px 0 8px #ffffff26,inset -3px 0 8px #ffffff26,inset 0 -3px 7px #ffffff38,0 12px 24px -12px #0005!important}
+body .site-header.nav-system-shell[data-tone="dark"],body .site-header.nav-system-shell.aku-nav:not(.on-light){background:rgba(30,32,36,.40)!important;box-shadow:inset 0 1px 0 #ffffff38,inset 0 -1px 0 #ffffff0d,0 6px 20px -8px #0005!important}
 body .site-header.nav-system-shell .logo::before,body .site-header.nav-system-shell .nav-system::before{display:none}
 body .site-header.nav-system-shell .logo,body .site-header.nav-system-shell .nav-system,body .site-header.nav-system-shell .mobile-nav-toggle{text-shadow:0 1px 3px #ffffffa6}
 @supports(backdrop-filter:url("#nav-acrylic")){body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell{backdrop-filter:url("#nav-acrylic") blur(7px) saturate(140%)!important}}
@@ -239,9 +239,9 @@ body .back-top{width:48px!important;height:48px!important;min-height:48px;paddin
 @media(prefers-reduced-motion:reduce){.nav-menu-icon i,.back-top svg{transition:none}}
 
 /* WebKit fallback keeps the material visible without unsupported SVG backdrop URLs. */
-html.nav-native-glass body .site-header.nav-system-shell,html.nav-native-glass body.home-classic:has(.archive-hero) .site-header.nav-system-shell{backdrop-filter:blur(12px) saturate(155%)!important;-webkit-backdrop-filter:blur(12px) saturate(155%)!important;box-shadow:inset 0 2px 4px #ffffffb3,inset 2px 0 6px #ffffff45,inset -2px 0 6px #ffffff45,inset 0 -2px 4px #ffffff70,0 6px 20px #00000012!important}
-body .site-header.nav-system-shell[data-nav-contrast="light"]{background:rgba(247,247,248,.38)!important}
-body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:rgba(18,20,23,.65)!important;border-color:#ffffff38!important}
+html.nav-native-glass body .site-header.nav-system-shell,html.nav-native-glass body.home-classic:has(.archive-hero) .site-header.nav-system-shell{backdrop-filter:blur(12px) saturate(155%)!important;-webkit-backdrop-filter:blur(12px) saturate(155%)!important;box-shadow:inset 0 1px 0 #ffffff45,inset 0 -1px 0 #ffffff12,0 6px 20px -8px #00000024!important}
+body .site-header.nav-system-shell[data-nav-contrast="light"]{background:rgba(247,247,248,.26)!important}
+body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:rgba(18,20,23,.36)!important;border-color:#ffffff20!important}
 body .site-header.nav-system-shell[data-nav-contrast] .logo img{transition:none!important}
 @media(prefers-reduced-transparency:reduce){html.nav-native-glass body .site-header.nav-system-shell{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
 
@@ -259,3 +259,33 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible),.archive-stage:focu
 .home-classic .featured-case__media picture{display:block;width:100%;height:auto!important}
 .home-classic .featured-case__media img{display:block;width:100%!important;max-width:100%;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;transform:none!important}
 }
+
+
+/* Quiet navigation surface: single contour, no decorative rim layers. */
+body .site-header.nav-system-shell,body.home-classic:has(.archive-hero) .site-header.nav-system-shell,html.nav-native-glass body .site-header.nav-system-shell{
+ border:1px solid #ffffff21!important;background:rgba(248,247,243,.7)!important;
+ box-shadow:0 4px 18px -8px #00000020,inset 0 1px 0 #ffffff40!important;
+ -webkit-backdrop-filter:blur(18px) saturate(115%)!important;backdrop-filter:blur(18px) saturate(115%)!important;
+}
+body .site-header.nav-system-shell::before,body .site-header.nav-system-shell::after{display:none!important}
+body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:rgba(25,28,29,.68)!important;border-color:#ffffff16!important}
+@media(prefers-reduced-transparency:reduce){body .site-header.nav-system-shell,html.nav-native-glass body .site-header.nav-system-shell{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#f3f0e8!important}body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:#171717!important}}
+
+/* Full-width square navigation. Foreground remains outside the optical filter. */
+html body .site-header.nav-system-shell,html body.home-classic:has(.archive-hero) .site-header.nav-system-shell{
+ top:0!important;left:0!important;right:0!important;width:100%!important;box-sizing:border-box;
+ border-radius:0!important;border-width:0 0 1px!important;
+ height:calc(var(--nav-height,60px) + env(safe-area-inset-top,0px))!important;
+ padding-top:env(safe-area-inset-top,0px)!important;
+ padding-inline:var(--ds-page-gutter,clamp(16px,3vw,48px))!important;
+}
+@supports(backdrop-filter:url("#nav-acrylic")){
+ html:not(.nav-native-glass) body .site-header.nav-system-shell,
+ html:not(.nav-native-glass) body.home-classic:has(.archive-hero) .site-header.nav-system-shell{background-color:rgba(248,247,243,.16)!important;backdrop-filter:url("#nav-acrylic") blur(.4px) saturate(115%)!important}
+}
+@media(prefers-reduced-transparency:reduce){html body .site-header.nav-system-shell,html body.home-classic:has(.archive-hero) .site-header.nav-system-shell{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+
+/* Keep the refracted source visible through the slab instead of hiding it under tint. */
+html:not(.nav-native-glass) body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:rgba(20,24,26,.24)!important}
+html:not(.nav-native-glass) body .site-header.nav-system-shell[data-nav-contrast="light"]{background:rgba(248,247,243,.16)!important}
+@media(prefers-reduced-transparency:reduce){html:not(.nav-native-glass) body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:#171717!important}html:not(.nav-native-glass) body .site-header.nav-system-shell[data-nav-contrast="light"]{background:#f3f0e8!important}}
