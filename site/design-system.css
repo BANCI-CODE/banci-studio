@@ -289,3 +289,16 @@ html body .site-header.nav-system-shell,html body.home-classic:has(.archive-hero
 html:not(.nav-native-glass) body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:rgba(20,24,26,.24)!important}
 html:not(.nav-native-glass) body .site-header.nav-system-shell[data-nav-contrast="light"]{background:rgba(248,247,243,.16)!important}
 @media(prefers-reduced-transparency:reduce){html:not(.nav-native-glass) body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:#171717!important}html:not(.nav-native-glass) body .site-header.nav-system-shell[data-nav-contrast="light"]{background:#f3f0e8!important}}
+
+/* Phone fallback: compact floating rounded rectangle, with safe-area clearance. */
+@media(max-width:767px){
+ html body .site-header.nav-system-shell,html body.home-classic:has(.archive-hero) .site-header.nav-system-shell{
+  top:max(8px,env(safe-area-inset-top,0px))!important;left:8px!important;right:8px!important;width:auto!important;
+  height:58px!important;min-height:58px!important;padding-top:0!important;padding-inline:16px!important;
+  border:1px solid #ffffff28!important;border-radius:12px!important;
+ }
+ html.nav-native-glass body .site-header.nav-system-shell{
+  -webkit-backdrop-filter:blur(18px) saturate(125%)!important;backdrop-filter:blur(18px) saturate(125%)!important;
+ }
+}
+@media(max-width:767px) and (prefers-reduced-transparency:reduce){html.nav-native-glass body .site-header.nav-system-shell{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
