@@ -303,3 +303,22 @@ document.querySelectorAll('.back-top').forEach(button=>{button.innerHTML='<svg a
 // CSS.supports accepts SVG syntax even where the backdrop renderer ignores it.
 const hasChromiumLens=/Chrome|Chromium|Edg\//.test(navigator.userAgent)&&!(/iPhone|iPad|iPod/.test(navigator.userAgent)||navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 document.documentElement.classList.toggle('nav-native-glass',!hasChromiumLens);
+
+// Continue the preview artwork across a same-origin project navigation.
+(()=>{
+ let pending;try{pending=JSON.parse(sessionStorage.getItem('banci-film-arrival')||'null');sessionStorage.removeItem('banci-film-arrival');}catch{return;}
+ if(!pending||Date.now()-pending.time>15000||location.pathname!==new URL(pending.url,location.origin).pathname)return;
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const veil=document.createElement('div'),image=document.createElement('img');
+ veil.style.cssText='position:fixed;inset:0;z-index:1000;background:#f3f0e8;pointer-events:none';
+ image.src=pending.src;image.alt='';image.style.cssText=`position:absolute;left:${(innerWidth-pending.width)/2}px;top:${(innerHeight-pending.height)/2}px;width:${pending.width}px;height:${pending.height}px;object-fit:cover;border-radius:8px`;
+ veil.append(image);document.body.append(veil);
+ const hero=document.querySelector('main img:not([loading="lazy"])')||document.querySelector('main img');
+ if(hero){hero.loading='eager';hero.fetchPriority='high';}
+ const ready=hero?.decode?hero.decode().catch(()=>{}):Promise.resolve();
+ Promise.race([ready,new Promise(resolve=>setTimeout(resolve,1400))]).then(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  const rect=hero?.getBoundingClientRect();
+  if(rect&&rect.width>20&&rect.height>20&&rect.top<innerHeight){image.animate([{left:image.style.left,top:image.style.top,width:image.style.width,height:image.style.height},{left:rect.left+'px',top:rect.top+'px',width:rect.width+'px',height:rect.height+'px'}],{duration:500,easing:'cubic-bezier(.22,.8,.18,1)',fill:'forwards'});}
+  veil.animate([{opacity:1},{opacity:0}],{duration:560,easing:'ease',fill:'forwards'}).finished.then(()=>veil.remove());
+ })));
+})();

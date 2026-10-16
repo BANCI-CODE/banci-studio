@@ -6,7 +6,7 @@ body.ds-home{
  --type-label:var(--ds-label);--type-meta:var(--ds-caption);
  font-family:var(--ds-font-body);line-height:var(--ds-leading-body);
 }
-body.ds-home main>section:not(.archive-hero){padding-inline:var(--ds-page-gutter);padding-block:var(--ds-section-space)}
+body.ds-home main>section:not(.archive-hero):not(.film-main){padding-inline:var(--ds-page-gutter);padding-block:var(--ds-section-space)}
 body.ds-home .site-footer--compact{padding:var(--ds-space-6) var(--ds-page-gutter);gap:var(--ds-space-6)}
 body.ds-home .archive-heading{left:var(--ds-page-gutter);right:var(--ds-page-gutter);top:var(--ds-header-offset)}
 body.ds-home .archive-bottom{left:var(--ds-page-gutter);right:var(--ds-page-gutter);bottom:max(var(--ds-space-6),env(safe-area-inset-bottom));gap:var(--ds-space-6);padding-top:var(--ds-space-4)}
@@ -56,3 +56,4 @@ body.ds-home .archive-controls button:active{background:var(--ds-interactive);co
  body.ds-home .archive-note[open]{gap:var(--ds-space-6) var(--ds-space-4)}
  body.ds-home :is(.practice-grid,.personal-practice__grid,.featured-cases){margin-top:var(--ds-space-12)}
 }
+
