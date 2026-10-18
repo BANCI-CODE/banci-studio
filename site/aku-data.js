@@ -16,6 +16,20 @@
     return manifestCache.get(url);
   }
 
+  async function loadDraw() {
+    const manifest = await fetchJSON('/content/aku/aku-draw.json?v=perf4');
+    if (manifest.version !== 1) throw new Error('Unsupported AKU draw manifest');
+    const items = manifest.rows.map(row => {
+      const item = Object.fromEntries(manifest.fields.map((key, i) => [key, row[i]]));
+      item.portraitVariants = item.variants.map(([src, width]) => ({
+        src: src.startsWith('/') ? src : manifest.base + src, width
+      }));
+      delete item.variants;
+      return item;
+    });
+    return { config: { totalDays: manifest.totalDays }, items };
+  }
+
   function loadConfig() {
     if (!configPromise) configPromise = fetchJSON(CONFIG_URL);
     return configPromise;
@@ -75,6 +89,7 @@
   }
 
   window.AKUContent = Object.freeze({
+    loadDraw,
     loadConfig,
     loadCollection,
     observeImages,

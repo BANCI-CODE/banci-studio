@@ -1,3 +1,4 @@
+import { generateAkuDrawManifest } from "./aku-draw-manifest.mjs";
 import { enhanceSeoAccessibility } from "./seo-accessibility.mjs";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -8,6 +9,7 @@ await mkdir("dist/client", { recursive: true });
 await mkdir("dist/server", { recursive: true });
 await cp("public", "dist/client", { recursive: true });
 await cp("site", "dist/client", { recursive: true });
+await generateAkuDrawManifest("dist/client");
 // Keep the original high-resolution portfolio PDF in the workspace, but do not
 // ship the unused 100 MB source file with the web deployment.
 await rm("dist/client/BANCI-Portfolio.pdf", { force: true });

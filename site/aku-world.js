@@ -21,7 +21,7 @@
   }
 
   async function initDaily() {
-    const [config, collection] = await Promise.all([data.loadConfig(), data.loadCollection('daily')]);
+    const { config, items: collection } = await data.loadDraw();
     const items = collection.filter(item => item.portrait || item.detail || item.thumb);
     const image = document.querySelector('#aku-daily-image');
     const loading = document.querySelector('#aku-daily-loading');
