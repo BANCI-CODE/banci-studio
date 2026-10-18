@@ -28,6 +28,12 @@
     const button = document.querySelector('#aku-daily-shuffle');
     let bag = [], current = null;
     const storyLink=document.createElement('a');storyLink.className='aku-story-link';storyLink.textContent='查看文字版 ↗';storyLink.hidden=true;storyLink.target='_blank';storyLink.rel='noopener';document.querySelector('.aku-daily-focus__copy').append(storyLink);
+    // Match the rendered card and real device pixel ratio; retain full-size fallback.
+    function portraitSource(item) {
+      const width = image.parentElement.getBoundingClientRect().width;
+      const required = Math.ceil(width * (window.devicePixelRatio || 1));
+      return item.portraitVariants?.find(v => v.width >= required)?.src || item.portrait || item.detail || item.thumb;
+    }
     let warmedSource = '', warmedPromise = null;
     function prepareImage(source, priority='low') {
       if (warmedSource === source && warmedPromise) return warmedPromise;
@@ -60,7 +66,7 @@
       loading.hidden = false;
       loading.textContent = '正在抽取故事…';
       const item = nextItem();
-      const source = item.portrait || item.detail || item.thumb;
+      const source = portraitSource(item);
       try {
         await prepareImage(source, 'high');
         await turn;
@@ -77,7 +83,7 @@
         // Warm only the next known card, without changing random order or image quality.
         if (bag.length && !navigator.connection?.saveData && (!navigator.connection || navigator.connection.effectiveType === '4g') && (!navigator.connection?.downlink || navigator.connection.downlink >= 5)) {
           const next=bag[bag.length-1];
-          const warm=()=>prepareImage(next.portrait || next.detail || next.thumb).catch(()=>{warmedSource='';warmedPromise=null});
+          const warm=()=>prepareImage(portraitSource(next)).catch(()=>{warmedSource='';warmedPromise=null});
           setTimeout(() => { if (document.visibilityState === 'visible' && current === item && !button.disabled) warm(); }, 4000);
         }
         loading.hidden = true;
@@ -87,6 +93,17 @@
       } catch { loading.textContent = '图片暂未加载，请再抽一次'; }
       finally { focus.classList.remove('is-drawing'); button.disabled = false; }
     }
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(async () => {
+        const item = current;
+        if (!item || button.disabled) return;
+        const source = portraitSource(item);
+        if (image.getAttribute('src') === source) return;
+        try { await prepareImage(source); if (current === item && !button.disabled) image.src = source; } catch {}
+      }, 200);
+    });
     button.addEventListener('click', draw);
     await draw();
   }

@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const CONFIG_URL = '/content/aku/aku-config.json?v=formats1';
+  const CONFIG_URL = '/content/aku/aku-config.json?v=perf2';
   const manifestCache = new Map();
   const prefetchedImages = new Set();
   let configPromise = null;
