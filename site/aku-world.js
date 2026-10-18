@@ -40,7 +40,7 @@
       warmedSource = source;
       warmedPromise = new Promise((resolve,reject)=>{
         const im = new Image();im.decoding='async';im.fetchPriority=priority;
-        im.onload=async()=>{try{await im.decode()}catch{}resolve()};im.onerror=reject;im.src=source;
+        im.onload=async()=>{try{await im.decode()}catch{}resolve()};im.onerror=()=>{if(warmedSource===source){warmedSource='';warmedPromise=null;}reject(new Error('Image load failed'));};im.src=source;
       });
       return warmedPromise;
     }
@@ -93,15 +93,16 @@
       } catch { loading.textContent = '图片暂未加载，请再抽一次'; }
       finally { focus.classList.remove('is-drawing'); button.disabled = false; }
     }
-    let resizeTimer;
+    let resizeTimer, resizeVersion = 0;
     window.addEventListener('resize', () => {
+      const version = ++resizeVersion;
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(async () => {
         const item = current;
         if (!item || button.disabled) return;
         const source = portraitSource(item);
         if (image.getAttribute('src') === source) return;
-        try { await prepareImage(source); if (current === item && !button.disabled) image.src = source; } catch {}
+        try { await prepareImage(source); if (version === resizeVersion && current === item && !button.disabled) image.src = source; } catch {}
       }, 200);
     });
     button.addEventListener('click', draw);

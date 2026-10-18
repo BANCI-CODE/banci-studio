@@ -12,7 +12,7 @@ for item in items:
  if not source.exists():continue
  with Image.open(source) as im:
   variants=[];digest=hashlib.sha256(source.read_bytes()).hexdigest()[:16]
-  for width in (480,800,1100):
+  for width in (360,480,640,800,1100):
    if width>=im.width:continue
    dest=out/f'{digest}-{width}.webp'
    if not dest.exists():
