@@ -24,6 +24,12 @@ async function injectMotion(dir) {
     if (!html.includes('/nav-system.js')) html = html.replace('</body>', '<script src="/nav-system.js" defer></script></body>');
     if (!html.includes('/language-system.js')) html = html.replace('</body>', '<script src="/language-system.js" defer></script></body>');
     if (!html.includes('/image-loader.js')) html = html.replace('</body>', '<script src="/image-loader.js" defer></script></body>');
+    html = html.replace(/<header\b([^>]*?)class="([^"]*)"([^>]*)>/g, (tag, before, classes, after) => {
+      if (!/(?:^|\s)(?:site-header|aku-nav|project-nav)(?:\s|$)/.test(classes)) return tag;
+      const names = new Set(classes.split(/\s+/));
+      names.add('site-header'); names.add('nav-system-shell');
+      return `<header${before}class="${[...names].join(' ')}"${after}>`;
+    });
     html = enhanceSeoAccessibility(html, file, "dist/client");
     html = await enhanceImageMarkup(html, "dist/client");
     await writeFile(file, html);

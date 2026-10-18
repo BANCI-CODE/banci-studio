@@ -36,9 +36,8 @@ dataPromise.then(data => {
       const titleHtml = (project.featuredTitleLines || [project.title])
         .map((line) => `<span>${escapeAttribute(line)}</span>`)
         .join("");
-      const imageLoading = index === 0
-        ? 'loading="eager" fetchpriority="high" decoding="async"'
-        : 'loading="lazy" decoding="async"';
+      // Featured cases follow the film hero; do not compete with its texture.
+      const imageLoading = 'loading="lazy" decoding="async"';
       const art = projectArtDirection(project);
 
       return `<article class="featured-case${index === 0 ? " featured-case--primary" : ""}" data-project="${escapeAttribute(project.slug)}">

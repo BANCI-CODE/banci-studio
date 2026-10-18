@@ -56,7 +56,7 @@
       focus.classList.remove('is-revealed');
       focus.classList.add('is-drawing');
       const motion = !matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const turn = new Promise(resolve => setTimeout(resolve, motion ? 320 : 0));
+      const turn = new Promise(resolve => setTimeout(resolve, current && motion ? 320 : 0));
       loading.hidden = false;
       loading.textContent = '正在抽取故事…';
       const item = nextItem();
@@ -75,10 +75,10 @@
         document.querySelector('#aku-daily-week').textContent = item.week ? `WEEK ${item.week}` : '';
         current = item;
         // Warm only the next known card, without changing random order or image quality.
-        if (bag.length && !navigator.connection?.saveData) {
+        if (bag.length && !navigator.connection?.saveData && (!navigator.connection || navigator.connection.effectiveType === '4g') && (!navigator.connection?.downlink || navigator.connection.downlink >= 5)) {
           const next=bag[bag.length-1];
           const warm=()=>prepareImage(next.portrait || next.detail || next.thumb).catch(()=>{warmedSource='';warmedPromise=null});
-          if ('requestIdleCallback' in window) requestIdleCallback(warm,{timeout:1200});else setTimeout(warm,250);
+          setTimeout(() => { if (document.visibilityState === 'visible' && current === item && !button.disabled) warm(); }, 4000);
         }
         loading.hidden = true;
         focus.classList.remove('is-drawing');

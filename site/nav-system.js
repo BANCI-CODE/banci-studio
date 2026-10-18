@@ -59,6 +59,8 @@ function normalizeLogo(header) {
     image.src = '/banci.svg';
   }
   image.alt = '';
+  image.width = 40;
+  image.height = 40;
 
   let wordmark = logo.querySelector('b');
   if (!wordmark) wordmark = document.createElement('b');
