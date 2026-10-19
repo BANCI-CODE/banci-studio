@@ -14,12 +14,22 @@
 .film-stage .film-fallback[hidden]{display:none}
 
 /* Layered collectible cards: the same silhouette on desktop and touch screens. */
-.film-main{grid-template-rows:auto minmax(0,1fr) 44px 28px;min-height:760px;gap:8px}
+.film-main{grid-template-rows:auto minmax(0,1fr) 52px;min-height:760px;gap:8px}
 .film-masthead h1{font-size:clamp(56px,7.5vw,124px)}
 .film-info{height:44px;min-height:44px;padding:0;width:var(--film-frame-width)}
 .film-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .film-copy:focus-within{clip-path:none;width:100%;height:auto;overflow:visible;bottom:48px;padding:12px;background:#f3f0e8;z-index:4}
-.film-controls{position:static;display:flex;justify-content:center;gap:12px}
+.film-controls{position:static;display:flex;justify-content:center;align-items:center;gap:2px;width:max-content;margin:auto;padding:4px;background:#e7e5df;border:1px solid #22221f0d;border-radius:16px}
 .film-controls button{width:44px;height:44px;min-height:44px}
 .film-stage .film-fallback{height:calc(var(--film-frame-width)*1.48);object-fit:contain;border-radius:0}
 @media(max-width:767px){.film-main{min-height:740px;padding-top:86px;gap:6px}.film-masthead h1{font-size:14.4vw}.film-info{min-height:44px;padding:0}.film-auto{margin-left:0}}
+
+/* A single quiet transport bar, with a distinct next-section action. */
+.film-info{height:52px;min-height:52px;width:min(100%,320px)}
+.film-controls button{border-radius:12px;color:inherit;transition:background .2s,transform .2s}
+.film-controls svg{width:20px;height:20px;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.7}
+.film-controls [data-dir="-1"]{order:0}.film-controls .film-auto{order:1}.film-controls [data-dir="1"]{order:2}
+.film-controls .film-next-button{order:3;display:flex;gap:6px;width:auto;height:32px;padding:0 12px;margin-left:6px;border-left:1px solid #22221f25;font-size:12px;white-space:nowrap}
+.film-controls .film-next-button svg{width:16px;height:16px}
+.film-controls button:active{transform:scale(.92)}
+.film-controls :focus-visible{outline:2px solid currentColor;outline-offset:2px}
