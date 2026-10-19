@@ -1,7 +1,7 @@
 (() => {
-  const STORAGE_KEY = 'banci-language';
+  const browserLanguage = () => /^zh(?:-|$)/i.test(navigator.languages?.[0] || navigator.language || 'zh') ? 'zh' : 'en';
   const validLanguage = value => value === 'en' ? 'en' : 'zh';
-  let language = validLanguage(localStorage.getItem(STORAGE_KEY) || document.documentElement.lang?.slice(0, 2));
+  let language = browserLanguage();
 
   const navCopy = {
     '/': ['首页', 'Home'],
@@ -140,29 +140,27 @@
     });
   }
 
-  function ensureSwitch() {
+  function ensurePortfolioLink() {
+    const icon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v4h14v-4"/></svg>';
+    const addLink = container => {
+      if (!container || container.querySelector('.portfolio-download')) return;
+      const link = document.createElement('a');
+      link.className = 'portfolio-download';
+      link.href = '/downloads/zhang-shiwei-2026-portfolio.pdf';
+      link.download = '张仕伟_2026设计作品集_Brand-Product-AI.pdf';
+      link.innerHTML = icon + '<span data-zh="下载作品集" data-en="Download portfolio">下载作品集</span>';
+      container.appendChild(link);
+    };
     document.querySelectorAll('.site-header').forEach(header => {
       let utility = header.querySelector('.nav-utility');
       if (!utility) {
         utility = document.createElement('div');
         utility.className = 'nav-utility';
-        const phase = header.querySelector(':scope > .phase');
-        if (phase) {
-          header.insertBefore(utility, phase);
-          utility.appendChild(phase);
-        } else header.appendChild(utility);
+        header.appendChild(utility);
       }
-      if (!utility.querySelector('.language-switch')) {
-        const control = document.createElement('div');
-        control.className = 'language-switch';
-        control.setAttribute('aria-label', 'Language / 语言');
-        const chinaFlag = '<span class="language-switch__flag" aria-hidden="true"><svg viewBox="0 0 14 10"><rect width="14" height="10" fill="#ee1c25"/><path fill="#ffde00" d="m3 1 .45 1.2 1.28.06-.99.8.34 1.24L3 3.58 1.92 4.3l.34-1.24-.99-.8 1.28-.06z"/><circle cx="5.7" cy="1.45" r=".32" fill="#ffde00"/><circle cx="6.55" cy="2.35" r=".3" fill="#ffde00"/><circle cx="6.45" cy="3.55" r=".3" fill="#ffde00"/><circle cx="5.55" cy="4.35" r=".3" fill="#ffde00"/></svg></span>';
-        const ukFlag = '<span class="language-switch__flag" aria-hidden="true"><svg viewBox="0 0 14 10"><rect width="14" height="10" fill="#012169"/><path d="M0 0 14 10M14 0 0 10" stroke="#fff" stroke-width="2.8"/><path d="M0 0 14 10M14 0 0 10" stroke="#c8102e" stroke-width="1"/><path d="M6 0h2v4h6v2H8v4H6V6H0V4h6z" fill="#fff"/><path d="M6.55 0h.9v4.45H14v1.1H7.45V10h-.9V5.55H0v-1.1h6.55z" fill="#c8102e"/></svg></span>';
-        control.innerHTML = `<button type="button" data-language="zh">${chinaFlag}ZH</button><span class="language-switch__divider" aria-hidden="true">/</span><button type="button" data-language="en">${ukFlag}EN</button>`;
-        utility.appendChild(control);
-        control.querySelectorAll('button').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language)));
-      }
+      addLink(utility);
     });
+    addLink(document.querySelector('.mobile-navigation__footer'));
   }
 
   function applyNav() {
@@ -222,14 +220,6 @@
     });
   }
 
-  function updateControls() {
-    document.querySelectorAll('.language-switch button').forEach(button => {
-      const active = button.dataset.language === language;
-      button.setAttribute('aria-pressed', String(active));
-      button.tabIndex = active ? -1 : 0;
-    });
-  }
-
   function markChineseCopy() {
     const containsCjk = /[\u3400-\u9fff\uf900-\ufaff]/;
     document.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,blockquote,figcaption,dt,dd').forEach(element => {
@@ -238,7 +228,7 @@
   }
 
   function applyLanguage() {
-    ensureSwitch();
+    ensurePortfolioLink();
     document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
     document.body.dataset.language = language;
     applyNav();
@@ -249,18 +239,17 @@
     if (page === 'lab') applyLabDynamic();
     if (titles[page]) document.title = titles[page][language === 'zh' ? 0 : 1];
     markChineseCopy();
-    updateControls();
   }
 
   function setLanguage(next) {
     const normalized = validLanguage(next);
     if (normalized === language) return;
     language = normalized;
-    localStorage.setItem(STORAGE_KEY, language);
     applyLanguage();
     window.dispatchEvent(new CustomEvent('banci:languagechange', { detail: { language } }));
   }
 
+  window.addEventListener('languagechange', () => setLanguage(browserLanguage()));
   window.BanciI18n = { get language() { return language; }, setLanguage, applyLanguage };
   let scheduled = false;
   const observer = new MutationObserver(() => {
