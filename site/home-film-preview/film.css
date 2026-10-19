@@ -12,3 +12,14 @@
 
 /* Keep the empty fallback out of layout while WebGL renders the cards. */
 .film-stage .film-fallback[hidden]{display:none}
+
+/* Layered collectible cards: the same silhouette on desktop and touch screens. */
+.film-main{grid-template-rows:auto minmax(0,1fr) 44px 28px;min-height:760px;gap:8px}
+.film-masthead h1{font-size:clamp(56px,7.5vw,124px)}
+.film-info{height:44px;min-height:44px;padding:0;width:var(--film-frame-width)}
+.film-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.film-copy:focus-within{clip-path:none;width:100%;height:auto;overflow:visible;bottom:48px;padding:12px;background:#f3f0e8;z-index:4}
+.film-controls{position:static;display:flex;justify-content:center;gap:12px}
+.film-controls button{width:44px;height:44px;min-height:44px}
+.film-stage .film-fallback{height:calc(var(--film-frame-width)*1.48);object-fit:contain;border-radius:0}
+@media(max-width:767px){.film-main{min-height:740px;padding-top:86px;gap:6px}.film-masthead h1{font-size:14.4vw}.film-info{min-height:44px;padding:0}.film-auto{margin-left:0}}
