@@ -37,7 +37,8 @@
 /* Keep the entire mobile composition inside Safari's visible viewport.
    The light continuation keeps the next dark section clear of browser chrome. */
 @media(max-width:767px){
- .film-main{height:100svh;height:100dvh;min-height:0;padding-top:86px;padding-bottom:max(40px,calc(env(safe-area-inset-bottom,0px) + 20px));margin-bottom:64px;gap:8px;background:#f3f0e8}
+ .film-main{height:100svh;height:100dvh;min-height:0;padding-top:86px;padding-bottom:max(40px,calc(env(safe-area-inset-bottom,0px) + 20px));--film-browser-buffer:112px;--film-browser-buffer:max(112px,calc(100lvh - 100dvh + 80px + env(safe-area-inset-bottom,0px)));position:relative;margin-bottom:var(--film-browser-buffer);gap:8px;background:#f3f0e8}
+ .film-main::after{content:"";position:absolute;top:100%;left:0;right:0;height:var(--film-browser-buffer);background:#f3f0e8;pointer-events:none}
  .film-info{height:52px;min-height:52px;align-self:end}
  .film-masthead h1{font-size:13.6vw;margin-top:10px}
 }
