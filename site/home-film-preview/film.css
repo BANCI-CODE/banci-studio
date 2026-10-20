@@ -47,3 +47,12 @@
  .film-masthead h1{font-size:11vw;margin-top:6px}
  .film-kicker{font-size:7px}
 }
+
+/* Inline vector dial: no bitmap, library, blur, or JavaScript animation loop. */
+.film-loading{z-index:2;color:#55554e}
+.film-loading-ring{display:block;width:clamp(64px,8vw,88px);height:auto;animation:film-loading-turn 1.4s linear infinite}
+.film-loading[hidden] .film-loading-ring,.film-loading.is-error .film-loading-ring{display:none;animation:none}
+.film-loading-error{max-width:240px;padding:12px;text-align:center;font-size:12px;line-height:1.6;background:#f3f0e8}
+.film-loading-error[hidden]{display:none}
+@keyframes film-loading-turn{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.film-loading-ring{animation:none}}
