@@ -63,3 +63,8 @@
 @keyframes film-tick-length{0%,100%{stroke-dasharray:13 48;opacity:.42}45%{stroke-dasharray:24 48;opacity:1}}
 @media(max-width:767px){.film-loading-dial{width:120px;height:120px}.film-loading-number{font-size:26px}}
 @media(prefers-reduced-motion:reduce){.film-loading-ring path{animation:none}}
+
+/* Extend the drawing surface above and below the layout box for elastic edges. */
+.film-stage{overflow:visible}
+.film-stage canvas{position:absolute;top:-120px;left:0;width:100%;height:calc(100% + 240px);pointer-events:none}
+.film-info{z-index:3}

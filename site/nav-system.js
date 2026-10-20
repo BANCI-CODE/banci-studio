@@ -306,21 +306,30 @@ document.querySelectorAll('.back-top').forEach(button=>{button.innerHTML='<svg a
 const hasChromiumLens=/Chrome|Chromium|Edg\//.test(navigator.userAgent)&&!(/iPhone|iPad|iPod/.test(navigator.userAgent)||navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 document.documentElement.classList.toggle('nav-native-glass',!hasChromiumLens);
 
-// Continue the preview artwork across a same-origin project navigation.
-(()=>{
+// Shared visual handoff: the destination dismisses it after its visible media is ready.
+window.BanciProjectTransition=(item)=>{
+ const veil=document.createElement('div');veil.className='project-handoff';veil.setAttribute('role','status');
+ const circle=document.createElement('img');circle.src=item.src;circle.alt='';circle.className='project-handoff__image';
+ const category=document.createElement('p');category.className='project-handoff__category';category.textContent=item.category||'SELECTED WORK';
+ const title=document.createElement('h2');title.textContent=item.title||'';
+ const description=document.createElement('p');description.className='project-handoff__description';description.textContent=item.description||'';
+ const track=document.createElement('div');track.className='project-handoff__track';track.setAttribute('aria-label','正在准备项目内容');track.innerHTML='<span></span>';
+ const panel=document.createElement('div');panel.className='project-handoff__panel';panel.append(circle,category,title,description,track);veil.append(panel);document.body.append(veil);
+ return {veil,finish:async()=>{veil.classList.add('is-ready');await new Promise(r=>setTimeout(r,180));if(!matchMedia('(prefers-reduced-motion: reduce)').matches)await veil.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-12px)'}],{duration:320,easing:'ease',fill:'forwards'}).finished;veil.remove();}};
+};
+(async()=>{
  let pending;try{pending=JSON.parse(sessionStorage.getItem('banci-film-arrival')||'null');sessionStorage.removeItem('banci-film-arrival');}catch{return;}
- if(!pending||Date.now()-pending.time>15000||location.pathname!==new URL(pending.url,location.origin).pathname)return;
- if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- const veil=document.createElement('div'),image=document.createElement('img');
- veil.style.cssText='position:fixed;inset:0;z-index:1000;background:#f3f0e8;pointer-events:none';
- image.src=pending.src;image.alt='';image.style.cssText=`position:absolute;left:${(innerWidth-pending.width)/2}px;top:${(innerHeight-pending.height)/2}px;width:${pending.width}px;height:${pending.height}px;object-fit:cover;border-radius:8px`;
- veil.append(image);document.body.append(veil);
- const hero=document.querySelector('main img:not([loading="lazy"])')||document.querySelector('main img');
- if(hero){hero.loading='eager';hero.fetchPriority='high';}
- const ready=hero?.decode?hero.decode().catch(()=>{}):Promise.resolve();
- Promise.race([ready,new Promise(resolve=>setTimeout(resolve,1400))]).then(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
-  const rect=hero?.getBoundingClientRect();
-  if(rect&&rect.width>20&&rect.height>20&&rect.top<innerHeight){image.animate([{left:image.style.left,top:image.style.top,width:image.style.width,height:image.style.height},{left:rect.left+'px',top:rect.top+'px',width:rect.width+'px',height:rect.height+'px'}],{duration:500,easing:'cubic-bezier(.22,.8,.18,1)',fill:'forwards'});}
-  veil.animate([{opacity:1},{opacity:0}],{duration:560,easing:'ease',fill:'forwards'}).finished.then(()=>veil.remove());
- })));
+ if(!pending||Date.now()-pending.time>60000||location.pathname!==new URL(pending.url,location.origin).pathname)return;
+ const transition=window.BanciProjectTransition(pending);
+ const prepare=async()=>{
+  if(document.readyState!=='complete')await new Promise(resolve=>addEventListener('load',resolve,{once:true}));
+  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  const images=[...document.querySelectorAll('main img')].filter(img=>{const r=img.getBoundingClientRect();return r.width>0&&r.bottom>0&&r.top<innerHeight});
+  await Promise.all(images.map(img=>{img.loading='eager';return img.decode?.().catch(()=>{})}));
+  await document.fonts.ready;
+ };
+ let timer;const timeout=new Promise(resolve=>{timer=setTimeout(()=>resolve(false),12000)});
+ const ready=await Promise.race([prepare().then(()=>true),timeout]);clearTimeout(timer);
+ if(ready)await transition.finish();
+ else{const button=document.createElement('button');button.textContent=document.documentElement.lang.startsWith('en')?'Continue to project':'先浏览项目';button.addEventListener('click',()=>transition.finish(),{once:true});transition.veil.querySelector('.project-handoff__panel').append(button);prepare().then(()=>{if(transition.veil.isConnected)transition.finish()});}
 })();

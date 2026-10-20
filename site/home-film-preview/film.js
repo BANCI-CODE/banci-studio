@@ -22,7 +22,7 @@ function setLoading(state,message=''){
  if(state==='ready'){
   if(loading.hidden)return;
   loaderProgress(100);
-  loaderClose=setTimeout(()=>{loading.hidden=true;cancelAnimationFrame(loaderFrame);loaderFrame=0;},320);
+  loaderClose=setTimeout(()=>{loading.hidden=true;cancelAnimationFrame(loaderFrame);loaderFrame=0;},500);
  }else{
   if(loading.hidden||failed){cancelAnimationFrame(loaderFrame);loaderFrame=0;loaderValue=0;loaderGoal=0;}
   loading.hidden=false;
@@ -81,32 +81,23 @@ function preload(){load(target);for(const offset of [-1,1,-2,2])load(target+offs
 function update(){const d=data[target];document.querySelector('#film-number').textContent=String(target+1).padStart(2,'0');document.querySelector('#film-category').textContent=d.category;const link=document.querySelector('#film-link');link.firstChild.textContent=d.title+' ';link.href=d.url;document.querySelector('#film-description').textContent=d.description;stage.setAttribute('aria-label',`${target+1} / ${data.length}：${d.title}。左右滑动切换，回车查看项目`);document.querySelectorAll('.film-ticks button').forEach((b,i)=>b.setAttribute('aria-pressed',i===target));document.querySelector('[data-dir="-1"]').disabled=target===0;document.querySelector('[data-dir="1"]').disabled=target===data.length-1;setLoading(cache.get(target)?.ready?'ready':cache.get(target)?.failed?'error':'loading',cache.get(target)?.failed?'图片暂未加载，请切换作品':'');if(!gl){fallback.hidden=!cache.get(target)?.ready;if(cache.get(target)?.surface)fallback.src=cache.get(target).surface.toDataURL();}preload();}
 function go(i,automatic=false){if(navigating)return;if(!automatic)manualUntil=performance.now()+8000;const next=Math.max(0,Math.min(data.length-1,i));if(next===target)return;target=next;if(cache.has(target))cache.get(target).entered=performance.now();if(reduce.matches){current=target;velocity=0;}update();request();}
 function draw(time){frame=0;const dt=Math.min(2,(time-last)/16.667||1);last=time;if(reduce.matches){current=target;velocity=0;}else if(drag?.locked){velocity=0;}else{velocity+=(target-current)*.065*dt;velocity*=Math.pow(.84,dt);current+=velocity*dt;if(Math.abs(target-current)<.0005&&Math.abs(velocity)<.0005){current=target;velocity=0;}}
-if(gl){gl.viewport(0,0,canvas.width,canvas.height);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(program);gl.uniform2f(locations.viewport,width,height);const indices=[Math.floor(current)-1,Math.floor(current),Math.floor(current)+1,Math.floor(current)+2].filter(i=>i>=0&&i<data.length).sort((a,b)=>Math.abs(b-current)-Math.abs(a-current));for(const i of indices){const e=cache.get(i);if(!e?.ready||!e.texture)continue;const distance=i-current,ratio=data[i].width/data[i].height;const size=frameSize(),frameRatio=size.ratio,h=size.h,w=size.w;const cx=width/2+distance*(w+size.gap);const tilt=reduce.matches?0:Math.max(-1,Math.min(1,distance))*.0872665;const drop=(Math.abs(Math.sin(tilt))*w+(Math.cos(tilt)-1)*h)/2;gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,e.texture);gl.uniform4f(locations.rect,cx,height/2+drop,w,h);gl.uniform2f(locations.planeSize,w,h);gl.uniform2f(locations.uvScale,1,1);gl.uniform1f(locations.bend,reduce.matches?0:Math.max(-w*.58,Math.min(w*.58,drag?.locked ? (drag.dx||0)*.95 : velocity*w*2.6)));gl.uniform1f(locations.tilt,tilt);gl.uniform1f(locations.opacity,Math.max(.35,1-Math.abs(distance)*.48));const age=Math.max(0,time-e.entered),slide=reduce.matches||i!==target?0:-w*.16*Math.exp(-age/270)*Math.cos(age/130);
+if(gl){gl.viewport(0,0,canvas.width,canvas.height);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(program);gl.uniform2f(locations.viewport,width,height+240);const indices=[Math.floor(current)-1,Math.floor(current),Math.floor(current)+1,Math.floor(current)+2].filter(i=>i>=0&&i<data.length).sort((a,b)=>Math.abs(b-current)-Math.abs(a-current));for(const i of indices){const e=cache.get(i);if(!e?.ready||!e.texture)continue;const distance=i-current,ratio=data[i].width/data[i].height;const size=frameSize(),frameRatio=size.ratio,h=size.h,w=size.w;const cx=width/2+distance*(w+size.gap);const tilt=reduce.matches?0:Math.max(-1,Math.min(1,distance))*.0872665;const drop=(Math.abs(Math.sin(tilt))*w+(Math.cos(tilt)-1)*h)/2;gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,e.texture);gl.uniform4f(locations.rect,cx,height/2+120+drop,w,h);gl.uniform2f(locations.planeSize,w,h);gl.uniform2f(locations.uvScale,1,1);gl.uniform1f(locations.bend,reduce.matches?0:Math.max(-w*.58,Math.min(w*.58,drag?.locked ? (drag.dx||0)*.95 : velocity*w*2.6)));gl.uniform1f(locations.tilt,tilt);gl.uniform1f(locations.opacity,Math.max(.35,1-Math.abs(distance)*.48));const age=Math.max(0,time-e.entered),slide=reduce.matches||i!==target?0:-w*.16*Math.exp(-age/270)*Math.cos(age/130);
  // Composite the two surfaces before applying carousel opacity once.
  gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,e.backTexture);
  gl.uniform1f(locations.slide,slide/h);gl.drawArrays(gl.TRIANGLES,0,count);
  gl.activeTexture(gl.TEXTURE0);}}
 if(!reduce.matches&&cache.get(target)?.ready&&time-cache.get(target).entered<1500)request();
 if(!drag?.locked&&(current!==target||Math.abs(velocity)>.0005))request();}
-function resize(){width=stage.clientWidth;height=stage.clientHeight;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);stage.closest('.film-main').style.setProperty('--film-frame-width',frameSize().w+'px');request();}
+function resize(){width=stage.clientWidth;height=stage.clientHeight;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round((height+240)*dpr);stage.closest('.film-main').style.setProperty('--film-frame-width',frameSize().w+'px');request();}
 try{setup();}catch(error){gl=null;canvas.hidden=true;setLoading('loading');console.warn(error);}
 fetch('/home-film-preview/data.json').then(r=>{if(!r.ok)throw Error('作品列表无法加载');return r.json();}).then(items=>{data=items;loaderProgress(25);const ticks=document.querySelector('.film-ticks');items.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${String(i+1).padStart(2,'0')} ${d.title}`);b.addEventListener('click',()=>go(i));ticks.append(b);});update();resize();}).catch(e=>{setLoading('error',document.documentElement.lang.startsWith('en')?'Unable to load artworks. Please refresh.':'作品暂时无法加载，请刷新重试');});
 
 async function openProject(){
  if(navigating||!data[target])return;
  navigating=true;paused=true;const d=data[target];
- if(reduce.matches){location.assign(d.url);return;}
- const r=stage.getBoundingClientRect(),size=frameSize(),ratio=1,h=size.w*.92,w=size.w*.92;
- const veil=document.createElement('div');veil.className='film-departure';
- const image=document.createElement('img');image.src=d.src;image.alt='';
- image.style.cssText=`left:${r.left+(r.width-w)/2}px;top:${r.top+(r.height-size.h)/2+size.w*.04}px;width:${w}px;height:${h}px;border-radius:22px;object-fit:cover`;
- veil.append(image);document.body.append(veil);canvas.style.opacity='0';
- try{await image.decode();}catch{}
- const targetW=Math.min(innerWidth*.94,innerHeight*1.3),targetH=Math.min(innerHeight*.86,targetW/ratio);
- const grow=image.animate([{left:image.style.left,top:image.style.top,width:w+'px',height:h+'px',borderRadius:'22px'},{left:(innerWidth-targetW)/2+'px',top:(innerHeight-targetH)/2+'px',width:targetW+'px',height:targetH+'px',borderRadius:'8px'}],{duration:620,easing:'cubic-bezier(.22,.8,.18,1)',fill:'forwards'});
- veil.animate([{backgroundColor:'rgba(243,240,232,0)'},{backgroundColor:'#f3f0e8'}],{duration:380,fill:'forwards'});
- await grow.finished;
- try{sessionStorage.setItem('banci-film-arrival',JSON.stringify({src:d.src,url:d.url,time:Date.now(),width:targetW,height:targetH}));}catch{}
+ try{sessionStorage.setItem('banci-film-arrival',JSON.stringify({...d,time:Date.now()}));}catch{}
+ window.BanciProjectTransition?.(d);
+ await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
  location.assign(d.url);
 }
 const autoButton=document.querySelector('.film-auto');
@@ -116,7 +107,7 @@ stage.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hovered=tru
 stage.addEventListener('pointerdown',()=>manualUntil=performance.now()+8000);
 setInterval(()=>{if(paused||hovered||!heroVisible||reduce.matches||document.hidden||drag||navigating||performance.now()<manualUntil||!data.length||!cache.get(target)?.ready)return;if(target===data.length-1)autoDirection=-1;if(target===0)autoDirection=1;go(target+autoDirection,true);},3600);
 document.querySelector('#film-link').addEventListener('click',e=>{if(e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();openProject();});
-addEventListener('pageshow',e=>{if(e.persisted){document.querySelector('.film-departure')?.remove();canvas.style.opacity='';navigating=false;paused=reduce.matches;syncAuto();request();}});
+addEventListener('pageshow',e=>{if(e.persisted){document.querySelector('.film-departure')?.remove();document.querySelector('.project-handoff')?.remove();canvas.style.opacity='';navigating=false;paused=reduce.matches;syncAuto();request();}});
 
 new ResizeObserver(resize).observe(stage);
 new IntersectionObserver(entries=>{heroVisible=entries[0].intersectionRatio>.55;},{threshold:[0,.55,1]}).observe(stage.closest('.film-main'));
