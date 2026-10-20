@@ -48,11 +48,18 @@
  .film-kicker{font-size:7px}
 }
 
-/* Inline vector dial: no bitmap, library, blur, or JavaScript animation loop. */
-.film-loading{z-index:2;color:#55554e}
-.film-loading-ring{display:block;width:clamp(64px,8vw,88px);height:auto;animation:film-loading-turn 1.4s linear infinite}
-.film-loading[hidden] .film-loading-ring,.film-loading.is-error .film-loading-ring{display:none;animation:none}
+/* Radial length wave; only the 48 tiny vector strokes animate during loading. */
+.film-loading{z-index:2;color:#343630}
+.film-loading-dial{position:relative;width:144px;height:144px}
+.film-loading-ring{display:block;width:100%;height:100%;overflow:visible}
+.film-loading-ring path{stroke:#acada5;stroke-dasharray:24 48;animation:film-tick-length 1.2s ease-in-out infinite;animation-delay:var(--tick-delay)}
+.film-loading-ring path.is-complete{stroke:#d96149}
+.film-loading-number{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:2px;font:400 30px/1 Arial,sans-serif;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+.film-loading-number span{font-size:18px;letter-spacing:0}
+.film-loading[hidden] path,.film-loading.is-error path{animation:none}
+.film-loading.is-error .film-loading-dial{display:none}
 .film-loading-error{max-width:240px;padding:12px;text-align:center;font-size:12px;line-height:1.6;background:#f3f0e8}
 .film-loading-error[hidden]{display:none}
-@keyframes film-loading-turn{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.film-loading-ring{animation:none}}
+@keyframes film-tick-length{0%,100%{stroke-dasharray:13 48;opacity:.42}45%{stroke-dasharray:24 48;opacity:1}}
+@media(max-width:767px){.film-loading-dial{width:120px;height:120px}.film-loading-number{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.film-loading-ring path{animation:none}}
