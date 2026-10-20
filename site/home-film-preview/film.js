@@ -7,7 +7,7 @@ function loaderProgress(value){
  if(loaderFrame)return;
  const step=()=>{loaderFrame=0;loaderValue=Math.min(loaderGoal,loaderValue+Math.max(1,(loaderGoal-loaderValue)*.18));
  const number=loading.querySelector('.film-loading-number');number.firstChild.nodeValue=Math.round(loaderValue);
- loading.querySelectorAll('.film-loading-ring path').forEach((tick,i)=>tick.classList.toggle('is-complete',i<48*loaderValue/100));
+ loading.querySelectorAll('.film-loading-ring path').forEach((tick,i)=>tick.classList.toggle('is-complete',i<24*loaderValue/100));
  if(loaderValue<loaderGoal)loaderFrame=requestAnimationFrame(step);
  };
  loaderFrame=requestAnimationFrame(step);

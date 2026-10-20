@@ -48,20 +48,20 @@
  .film-kicker{font-size:7px}
 }
 
-/* Radial length wave; only the 48 tiny vector strokes animate during loading. */
+/* Radial length wave; only the 24 vector strokes animate during loading. */
 .film-loading{z-index:2;color:#343630}
-.film-loading-dial{position:relative;width:144px;height:144px}
+.film-loading-dial{position:relative;width:160px;height:160px}
 .film-loading-ring{display:block;width:100%;height:100%;overflow:visible}
-.film-loading-ring path{stroke:#acada5;stroke-dasharray:24 48;animation:film-tick-length 1.2s ease-in-out infinite;animation-delay:var(--tick-delay)}
-.film-loading-ring path.is-complete{stroke:#d96149}
+.film-loading-ring path{stroke:#888980;stroke-dasharray:20 40;animation:film-tick-length 1.2s ease-in-out infinite;animation-delay:var(--tick-delay)}
+.film-loading-ring path.is-complete{stroke:#292b25}
 .film-loading-number{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:2px;font:400 30px/1 Arial,sans-serif;letter-spacing:-1px;font-variant-numeric:tabular-nums}
 .film-loading-number span{font-size:18px;letter-spacing:0}
 .film-loading[hidden] path,.film-loading.is-error path{animation:none}
 .film-loading.is-error .film-loading-dial{display:none}
 .film-loading-error{max-width:240px;padding:12px;text-align:center;font-size:12px;line-height:1.6;background:#f3f0e8}
 .film-loading-error[hidden]{display:none}
-@keyframes film-tick-length{0%,100%{stroke-dasharray:13 48;opacity:.42}45%{stroke-dasharray:24 48;opacity:1}}
-@media(max-width:767px){.film-loading-dial{width:120px;height:120px}.film-loading-number{font-size:26px}}
+@keyframes film-tick-length{0%,100%{stroke-dasharray:11 40;opacity:.65}45%{stroke-dasharray:20 40;opacity:1}}
+@media(max-width:767px){.film-loading-dial{width:144px;height:144px}.film-loading-number{font-size:26px}}
 @media(prefers-reduced-motion:reduce){.film-loading-ring path{animation:none}}
 
 /* Extend the drawing surface above and below the layout box for elastic edges. */
