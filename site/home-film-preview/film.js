@@ -10,35 +10,31 @@ function setLoading(state,message=''){
 }
 setLoading('loading');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'),cache=new Map();let data=[],target=0,current=0,velocity=0,frame=0,last=0,width=1,height=1,drag=null,wheelSum=0,wheelStamp=0,suppressClick=0,paused=false,hovered=false,manualUntil=0,autoDirection=1,heroVisible=true,navigating=false;
-let gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false});let program,locations,buffer,count;let liquidPull=0,liquidSpeed=0;
+let gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false});let program,locations,buffer,count;let pixelPull=0,pixelSpeed=0,entryStarted=-Infinity,entryDirection=-1;
 function shader(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
-function setup(){if(!gl)return;program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,`attribute vec2 a;uniform vec2 viewport;uniform vec4 rect;uniform float bend;uniform float tilt;varying vec2 uv;void main(){uv=a;vec2 p=rect.xy+(a-.5)*rect.zw;float pull=sin(a.y*3.14159265);p.x+=pull*bend*(.2+.8*a.x);p.y+=(a.y-.5)*sin(a.x*3.14159265)*abs(bend)*.94;
-// Opposing lobes pull apart while a narrow middle remains connected.
-p.x+=sin(a.y*6.2831853)*bend*.22;
-p.y+=sin(a.x*6.2831853)*sin(a.y*3.14159265)*abs(bend)*.18;vec2 local=p-rect.xy;float ct=cos(tilt),st=sin(tilt);p=rect.xy+vec2(local.x*ct-local.y*st,local.x*st+local.y*ct);gl_Position=vec4(p.x/viewport.x*2.-1.,1.-p.y/viewport.y*2.,0.,1.);}`));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,`precision mediump float;uniform sampler2D image;uniform sampler2D rearImage;uniform float slide;uniform float strain;uniform float opacity;uniform vec2 planeSize;uniform vec2 uvScale;varying vec2 uv;
-float liquidHole(vec2 p,vec2 center,vec2 radius,float wobble){
- vec2 q=(p-center)/max(radius,vec2(.0001));
- float angle=atan(q.y,q.x);
- float edge=length(q)+sin(angle*3.+wobble)*.075+cos(angle*2.-wobble)*.06;
- return smoothstep(.92,1.06,edge);
-}
-void main(){vec2 q=abs((uv-.5)*planeSize)-planeSize*.5+22.;float d=length(max(q,0.))+min(max(q.x,q.y),0.)-22.;float mask=1.-smoothstep(-.8,.8,d);vec2 frontUV=uv+vec2(0.,slide*.18);vec2 rearUV=uv-vec2(0.,slide);
+function setup(){if(!gl)return;program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,`attribute vec2 a;uniform vec2 viewport;uniform vec4 rect;uniform float bend;uniform float tilt;varying vec2 uv;void main(){uv=a;vec2 p=rect.xy+(a-.5)*rect.zw;// Keep the two halves firm; the central pixel columns form the pulled bridge.
+float seam=smoothstep(.36,.64,a.x);
+float leading=bend<0.?1.-seam:seam;
+p.x+=bend*leading;
+// A shallow arc follows the stretched pixel band without bending the rigid ends.
+float arc=smoothstep(.20,.40,a.x)*(1.-smoothstep(.60,.80,a.x));
+p.y+=sin(a.x*3.14159265)*abs(bend)*.065*arc;
+vec2 local=p-rect.xy;float ct=cos(tilt),st=sin(tilt);p=rect.xy+vec2(local.x*ct-local.y*st,local.x*st+local.y*ct);gl_Position=vec4(p.x/viewport.x*2.-1.,1.-p.y/viewport.y*2.,0.,1.);}`));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,`precision mediump float;uniform sampler2D image;uniform sampler2D rearImage;uniform float slide;uniform float strain;uniform float opacity;uniform vec2 planeSize;uniform vec2 uvScale;varying vec2 uv;
+void main(){vec2 q=abs((uv-.5)*planeSize)-planeSize*.5+22.;float d=length(max(q,0.))+min(max(q.x,q.y),0.)-22.;float mask=1.-smoothstep(-.8,.8,d);// Extend a narrow source column into a broad horizontal pixel band.
+// Outside the band each half keeps the original image in its natural order.
+float amount=smoothstep(.035,.40,abs(strain));
+float left=.35,right=.65;
+float sourceLeft=mix(left,.4985,amount),sourceRight=mix(right,.5015,amount);
+vec2 sampleUV=uv;
+if(uv.x<left)sampleUV.x=uv.x*sourceLeft/left;
+else if(uv.x>right)sampleUV.x=sourceRight+(uv.x-right)*(1.-sourceRight)/(1.-right);
+else sampleUV.x=mix(sourceLeft,sourceRight,(uv.x-left)/(right-left));
+vec2 frontUV=sampleUV+vec2(0.,slide*.18);vec2 rearUV=sampleUV-vec2(0.,slide);
 vec4 front=texture2D(image,frontUV);vec4 rear=texture2D(rearImage,rearUV);
 front.a*=step(0.,frontUV.y)*step(frontUV.y,1.);rear.a*=step(0.,rearUV.y)*step(rearUV.y,1.);
 float alpha=front.a+rear.a*(1.-front.a);
 vec3 color=(front.rgb*front.a+rear.rgb*rear.a*(1.-front.a))/max(alpha,.00001);
-// A pair of organic openings grows out of the stretched neck, then seals.
-float amount=smoothstep(.18,.68,abs(strain));
-vec2 liquidUV=uv;if(strain<0.)liquidUV.x=1.-liquidUV.x;
-float tear=1.;
-if(amount>.001){
- tear*=liquidHole(liquidUV,vec2(.64,.35),vec2(.185,.115)*amount,amount*2.);
- tear*=liquidHole(liquidUV,vec2(.77,.60),vec2(.235,.145)*amount,1.+amount*2.);
- // At maximum pull an opening reaches the edge and separates the soft lobes.
- float split=smoothstep(.62,1.,amount);
- tear*=liquidHole(liquidUV,vec2(1.04,.48),vec2(.25,.12)*split,2.);
-}
-gl_FragColor=vec4(color,alpha*opacity*mask*tear);}`));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('Unable to create image renderer');gl.useProgram(program);locations={a:gl.getAttribLocation(program,'a')};for(const n of['viewport','rect','bend','opacity','planeSize','uvScale','tilt','image','rearImage','slide','strain'])locations[n]=gl.getUniformLocation(program,n);const mesh=[];for(let y=0;y<20;y++)for(let x=0;x<32;x++){const x0=x/32,x1=(x+1)/32,y0=y/20,y1=(y+1)/20;mesh.push(x0,y0,x1,y0,x0,y1,x0,y1,x1,y0,x1,y1);}buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh),gl.STATIC_DRAW);count=mesh.length/2;gl.enableVertexAttribArray(locations.a);gl.vertexAttribPointer(locations.a,2,gl.FLOAT,false,0,0);gl.uniform1i(locations.image,0);gl.uniform1i(locations.rearImage,1);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);}
+gl_FragColor=vec4(color,alpha*opacity*mask);}`));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('Unable to create image renderer');gl.useProgram(program);locations={a:gl.getAttribLocation(program,'a')};for(const n of['viewport','rect','bend','opacity','planeSize','uvScale','tilt','image','rearImage','slide','strain'])locations[n]=gl.getUniformLocation(program,n);const mesh=[];for(let y=0;y<24;y++)for(let x=0;x<48;x++){const x0=x/48,x1=(x+1)/48,y0=y/24,y1=(y+1)/24;mesh.push(x0,y0,x1,y0,x0,y1,x0,y1,x1,y0,x1,y1);}buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh),gl.STATIC_DRAW);count=mesh.length/2;gl.enableVertexAttribArray(locations.a);gl.vertexAttribPointer(locations.a,2,gl.FLOAT,false,0,0);gl.uniform1i(locations.image,0);gl.uniform1i(locations.rearImage,1);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);}
 function frameSize(){const w=Math.min(height*.86/1.48,width*.76,420);return{w,h:w*1.48,ratio:1/1.48,gap:width<600?38:64};}
 // One shared card composition and proportion for every viewport.
 function artworkColor(im){
@@ -77,10 +73,10 @@ function cardSurface(im, item, index, layer='combined') {
 function request(){if(!frame)frame=requestAnimationFrame(draw);}
 function load(i){if(i<0||i>=data.length||cache.has(i))return;const entry={ready:false,texture:null},im=new Image();cache.set(i,entry);im.decoding='async';im.fetchPriority=i===target?'high':'low';im.onload=()=>{if(cache.get(i)!==entry)return;entry.surface=cardSurface(im,data[i],i);entry.entered=performance.now();if(gl){const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,entry.surface);entry.texture=t;
  const makeLayer=layer=>{const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,cardSurface(im,data[i],i,layer));return texture;};
- gl.deleteTexture(t);entry.texture=makeLayer('front');entry.backTexture=makeLayer('back');}entry.ready=true;if(i===target){performance.mark("film-texture-ready");setLoading('ready');if(!gl){fallback.src=entry.surface.toDataURL();fallback.hidden=false;}}request();};im.onerror=()=>{entry.failed=true;if(i===target){setLoading('error',document.documentElement.lang.startsWith('en')?'Image unavailable. Try another artwork.':'图片暂未加载，请切换作品');}};im.src=data[i].src;}
+ gl.deleteTexture(t);entry.texture=makeLayer('front');entry.backTexture=makeLayer('back');}entry.ready=true;if(i===target){entryStarted=performance.now();performance.mark("film-texture-ready");setLoading('ready');if(!gl){fallback.src=entry.surface.toDataURL();fallback.hidden=false;}}request();};im.onerror=()=>{entry.failed=true;if(i===target){setLoading('error',document.documentElement.lang.startsWith('en')?'Image unavailable. Try another artwork.':'图片暂未加载，请切换作品');}};im.src=data[i].src;}
 // Include the full viewport, tilted edges and the maximum elastic displacement.
 function visibleRange(center,padding=0){
- const size=frameSize(),reach=(width/2+size.w*1.5)/(size.w+size.gap);
+ const size=frameSize(),reach=(width/2+size.w*1.9)/(size.w+size.gap);
  return {first:Math.max(0,Math.floor(center-reach)-padding),last:Math.min(data.length-1,Math.ceil(center+reach)+padding)};
 }
 let preloadWindow='';
@@ -97,19 +93,24 @@ function preload(){
  for(const [i,e]of cache)if(!needed.has(i)){if(gl&&e.texture){gl.deleteTexture(e.texture);gl.deleteTexture(e.backTexture);}cache.delete(i);}
 }
 function update(){const d=data[target];document.querySelector('#film-number').textContent=String(target+1).padStart(2,'0');document.querySelector('#film-category').textContent=d.category;const link=document.querySelector('#film-link');link.firstChild.textContent=d.title+' ';link.href=d.url;document.querySelector('#film-description').textContent=d.description;stage.setAttribute('aria-label',`${target+1} / ${data.length}：${d.title}。左右滑动切换，回车查看项目`);document.querySelectorAll('.film-ticks button').forEach((b,i)=>b.setAttribute('aria-pressed',i===target));document.querySelector('[data-dir="-1"]').disabled=target===0;document.querySelector('[data-dir="1"]').disabled=target===data.length-1;setLoading(cache.get(target)?.ready?'ready':cache.get(target)?.failed?'error':'loading',cache.get(target)?.failed?'图片暂未加载，请切换作品':'');if(!gl){fallback.hidden=!cache.get(target)?.ready;if(cache.get(target)?.surface)fallback.src=cache.get(target).surface.toDataURL();}preload();}
-function go(i,automatic=false){if(navigating)return;if(!automatic)manualUntil=performance.now()+8000;const next=Math.max(0,Math.min(data.length-1,i));if(next===target)return;target=next;if(cache.has(target))cache.get(target).entered=performance.now();if(reduce.matches){current=target;velocity=0;}update();request();}
+function go(i,automatic=false){if(navigating)return;if(!automatic)manualUntil=performance.now()+8000;const next=Math.max(0,Math.min(data.length-1,i));if(next===target)return;entryDirection=-1;entryStarted=performance.now();target=next;if(cache.has(target))cache.get(target).entered=performance.now();if(reduce.matches){current=target;velocity=0;}update();request();}
 function draw(time){frame=0;const dt=Math.min(2,(time-last)/16.667||1);last=time;if(reduce.matches){current=target;velocity=0;}else if(drag?.locked){velocity=0;}else{velocity+=(target-current)*.065*dt;velocity*=Math.pow(.84,dt);current+=velocity*dt;if(Math.abs(target-current)<.0005&&Math.abs(velocity)<.0005){current=target;velocity=0;}}
-// A separate damped spring lets holes close gradually after finger release.
-const wantedPull=reduce.matches?0:Math.max(-.72,Math.min(.72,drag?.locked?(drag.dx||0)*.95/frameSize().w:velocity*2.6));
-if(reduce.matches){liquidPull=0;liquidSpeed=0;}else{liquidSpeed+=(wantedPull-liquidPull)*.14*dt;liquidSpeed*=Math.pow(.64,dt);liquidPull+=liquidSpeed*dt;if(Math.abs(wantedPull-liquidPull)<.0005&&Math.abs(liquidSpeed)<.0005){liquidPull=wantedPull;liquidSpeed=0;}}
+// A damped spring lets the trailing half catch up and restores normal pixel sampling.
+const entryAge=time-entryStarted;
+// Lead in, hold the full pixel extension, then let the trailing half catch up.
+let entryEnvelope=entryAge<90?Math.max(0,entryAge/90):entryAge<190?1:entryAge<560?1-(entryAge-190)/370:0;
+entryEnvelope=entryEnvelope*entryEnvelope*(3.-2.*entryEnvelope);
+const wantedPull=reduce.matches?0:Math.max(-1.05,Math.min(1.05,drag?.locked?-Math.abs(drag.dx||0)*1.25/frameSize().w:entryAge<560?entryDirection*.98*entryEnvelope:-Math.abs(velocity)*4.2));
+if(reduce.matches){pixelPull=0;pixelSpeed=0;}else{pixelSpeed+=(wantedPull-pixelPull)*.14*dt;pixelSpeed*=Math.pow(.64,dt);pixelPull+=pixelSpeed*dt;if(Math.abs(wantedPull-pixelPull)<.0005&&Math.abs(pixelSpeed)<.0005){pixelPull=wantedPull;pixelSpeed=0;}}
 preload();
-if(gl){gl.viewport(0,0,canvas.width,canvas.height);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(program);gl.uniform2f(locations.viewport,width,height+240);const range=visibleRange(current),indices=Array.from({length:Math.max(0,range.last-range.first+1)},(_,n)=>range.first+n).sort((a,b)=>Math.abs(b-current)-Math.abs(a-current));for(const i of indices){const e=cache.get(i);if(!e?.ready||!e.texture)continue;const distance=i-current,ratio=data[i].width/data[i].height;const size=frameSize(),depth=1-Math.min(1,Math.abs(distance))*.035,h=size.h*depth,w=size.w*depth;const cx=width/2+distance*(size.w+size.gap);const tilt=reduce.matches?0:Math.max(-1,Math.min(1,distance))*.0872665;const drop=(Math.abs(Math.sin(tilt))*w+(Math.cos(tilt)-1)*h)/2;gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,e.texture);gl.uniform4f(locations.rect,cx,height/2+120+drop,w,h);gl.uniform2f(locations.planeSize,w,h);gl.uniform2f(locations.uvScale,1,1);gl.uniform1f(locations.bend,liquidPull*w);gl.uniform1f(locations.strain,liquidPull);gl.uniform1f(locations.tilt,tilt);gl.uniform1f(locations.opacity,1);const age=Math.max(0,time-e.entered),slide=reduce.matches||i!==target?0:-w*.16*Math.exp(-age/270)*Math.cos(age/130);
+const enteringIndex=drag?.locked?Math.max(0,Math.min(data.length-1,Math.round(drag.start)+(drag.dx<0?1:-1))):target;
+if(gl){gl.viewport(0,0,canvas.width,canvas.height);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(program);gl.uniform2f(locations.viewport,width,height+240);const range=visibleRange(current),indices=Array.from({length:Math.max(0,range.last-range.first+1)},(_,n)=>range.first+n).sort((a,b)=>Math.abs(b-current)-Math.abs(a-current));for(const i of indices){const e=cache.get(i);if(!e?.ready||!e.texture)continue;const distance=i-current,ratio=data[i].width/data[i].height;const size=frameSize(),depth=1-Math.min(1,Math.abs(distance))*.035,h=size.h*depth,w=size.w*depth;const cx=width/2+distance*(size.w+size.gap);const tilt=reduce.matches?0:Math.max(-1,Math.min(1,distance))*.0872665;const drop=(Math.abs(Math.sin(tilt))*w+(Math.cos(tilt)-1)*h)/2;gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,e.texture);const cardPull=i===enteringIndex?pixelPull:0;gl.uniform4f(locations.rect,cx,height/2+120+drop,w,h);gl.uniform2f(locations.planeSize,w,h);gl.uniform2f(locations.uvScale,1,1);gl.uniform1f(locations.bend,cardPull*w);gl.uniform1f(locations.strain,cardPull);gl.uniform1f(locations.tilt,tilt);gl.uniform1f(locations.opacity,1);const age=Math.max(0,time-e.entered),slide=reduce.matches||i!==target?0:-w*.16*Math.exp(-age/270)*Math.cos(age/130);
  // Keep original colors opaque; depth comes from scale and tilt, not a pale backdrop blend.
  gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,e.backTexture);
  gl.uniform1f(locations.slide,slide/h);gl.drawArrays(gl.TRIANGLES,0,count);
  gl.activeTexture(gl.TEXTURE0);}}
 if(!reduce.matches&&cache.get(target)?.ready&&time-cache.get(target).entered<1500)request();
-if(Math.abs(wantedPull-liquidPull)>.0005||Math.abs(liquidSpeed)>.0005||!drag?.locked&&(current!==target||Math.abs(velocity)>.0005))request();}
+if(!reduce.matches&&entryAge<560||Math.abs(wantedPull-pixelPull)>.0005||Math.abs(pixelSpeed)>.0005||!drag?.locked&&(current!==target||Math.abs(velocity)>.0005))request();}
 function resize(){width=stage.clientWidth;height=stage.clientHeight;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round((height+240)*dpr);stage.closest('.film-main').style.setProperty('--film-frame-width',frameSize().w+'px');request();}
 try{setup();}catch(error){gl=null;canvas.hidden=true;setLoading('loading');console.warn(error);}
 fetch('/home-film-preview/data.json').then(r=>{if(!r.ok)throw Error('作品列表无法加载');return r.json();}).then(items=>{data=items;const ticks=document.querySelector('.film-ticks');items.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${String(i+1).padStart(2,'0')} ${d.title}`);b.addEventListener('click',()=>go(i));ticks.append(b);});update();resize();}).catch(e=>{setLoading('error',document.documentElement.lang.startsWith('en')?'Unable to load artworks. Please refresh.':'作品暂时无法加载，请刷新重试');});
