@@ -54,8 +54,13 @@ function cardSurface(im, item, index, layer='combined') {
  c.strokeStyle='#ffffff55';c.lineWidth=3;c.stroke();
  }
  if(layer!=='back'){
- box(4,4,992,1288,98);c.fillStyle='#30312f';c.fill();
- c.save();c.clip();const glow=c.createRadialGradient(500,1270,20,500,1150,530);glow.addColorStop(0,tone(.8));glow.addColorStop(.6,tone(.7,.9));glow.addColorStop(1,tone(.7,0));c.fillStyle=glow;c.fillRect(0,630,1000,680);c.restore();
+ box(4,4,992,1288,98);c.fillStyle='rgba(48,49,47,.92)';c.fill();
+ // A wide feathered rectangular light band; no circular spotlight or dark corners.
+ c.save();c.clip();const glow=c.createLinearGradient(0,850,0,1320);
+ glow.addColorStop(0,tone(.98,0));glow.addColorStop(.16,tone(.98,.16));
+ glow.addColorStop(.34,tone(.98,.80));glow.addColorStop(.72,tone(.94,.76));glow.addColorStop(1,tone(.90,.62));
+ c.fillStyle=glow;c.fillRect(0,850,1000,470);
+ const sheen=c.createLinearGradient(0,948,0,1160);sheen.addColorStop(0,'#ffffff16');sheen.addColorStop(1,'#ffffff00');c.fillStyle=sheen;c.fillRect(0,948,1000,230);c.restore();
  box(4,4,992,1288,98);c.strokeStyle='#ffffff32';c.lineWidth=4;c.stroke();
  c.save();box(40,40,920,920,62);c.clip();c.fillStyle='#e4dfd1';c.fill();
  const ratio=im.width/im.height;const sw=ratio>1?im.height:im.width,sh=sw;c.drawImage(im,(im.width-sw)/2,(im.height-sh)/2,sw,sh,40,40,920,920);c.restore();
@@ -67,6 +72,10 @@ function cardSurface(im, item, index, layer='combined') {
  c.fillStyle='#f5f5f2';c.font='600 34px Arial';c.textBaseline='middle';c.fillText(String(index+1).padStart(2,'0')+' / '+data.length,130,1368);
  c.font='30px Arial';c.textAlign='center';c.fillText('BANCI',500,1368);c.textAlign='left';
  c.strokeStyle='#fff2d7';c.lineWidth=5;c.beginPath();c.moveTo(818,1381);c.lineTo(852,1347);c.moveTo(818,1347);c.lineTo(852,1347);c.lineTo(852,1381);c.stroke();
+ // Two genuinely transparent semicircular ticket notches, including fallback.
+ c.save();c.globalCompositeOperation='destination-out';
+ for(const x of [80,920]){c.beginPath();c.arc(x,1368,22,0,Math.PI*2);c.fill();}
+ c.restore();
  }
  return surface;
 }
