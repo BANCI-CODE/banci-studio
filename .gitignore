@@ -46,3 +46,6 @@ next-env.d.ts
 /deploy-source/
 /banci-site.tar.gz
 /public/BANCI-Portfolio.pdf
+
+# Downloaded font sources (not published)
+/.cache/font-sources/

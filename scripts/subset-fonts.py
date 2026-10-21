@@ -1,5 +1,5 @@
 from pathlib import Path
-import sys, urllib.request, re, json, hashlib
+import urllib.request, re, hashlib
 # Requires: pip install fonttools brotli
 from fontTools.ttLib import TTFont
 from fontTools import subset
@@ -7,7 +7,7 @@ from fontTools.varLib.instancer import instantiateVariableFont
 
 root=Path(__file__).resolve().parents[1]
 out=root/'site/fonts'; out.mkdir(exist_ok=True)
-stage=root/'.cache/font-sources'; stage.mkdir(exist_ok=True)
+stage=root/'.cache/font-sources'; stage.mkdir(parents=True,exist_ok=True)
 def fetch(url, path):
     if not path.exists():
         path.write_bytes(urllib.request.urlopen(url,timeout=90).read())
@@ -24,11 +24,11 @@ def export(font, name, chars):
     tool=subset.Subsetter(options=opts); tool.populate(text=''.join(sorted(chars))); tool.subset(font)
     # Subsets are modified fonts: remove the OFL reserved family names.
     family='Banci Sans' if name.startswith('plex') else 'Banci Han'
+    weight=name.split('-')[-1].split('.')[0]
+    style={'400':'Regular','500':'Medium','600':'SemiBold','700':'Bold'}[weight]
+    names={1:family,2:style,3:family.replace(' ','')+'-'+style,4:family+' '+style,6:family.replace(' ','')+'-'+style,16:family,17:style}
     for record in font['name'].names:
-        if record.nameID in (1,2,3,4,6,16,17):
-            value=family.replace(' ','') if record.nameID==6 else family
-            if record.nameID in (2,17): value='Regular'
-            record.string=value.encode(record.getEncoding(),errors='replace')
+        if record.nameID in names: record.string=names[record.nameID].encode(record.getEncoding(),errors='replace')
     font.flavor='woff2'; path=stage/name; font.save(path)
     tag=hashlib.sha256(path.read_bytes()).hexdigest()[:10]
     target=out/(path.stem+'.'+tag+'.woff2'); target.write_bytes(path.read_bytes())
