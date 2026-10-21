@@ -131,7 +131,24 @@ if(gl){gl.viewport(0,0,canvas.width,canvas.height);gl.clearColor(0,0,0,0);gl.cle
  gl.activeTexture(gl.TEXTURE0);}}
 if(!reduce.matches&&cache.get(target)?.ready&&time-cache.get(target).entered<1500)request();
 if(!reduce.matches&&entryAge<560||Math.abs(wantedPull-pixelPull)>.0005||Math.abs(pixelSpeed)>.0005||!drag?.locked&&(current!==target||Math.abs(velocity)>.0005))request();}
-function resize(){width=stage.clientWidth;height=stage.clientHeight;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round((height+240)*dpr);stage.closest('.film-main').style.setProperty('--film-frame-width',frameSize().w+'px');request();}
+let resizeFrame=0;
+function resize(){
+ if(resizeFrame)return;
+ resizeFrame=requestAnimationFrame(time=>{
+  resizeFrame=0;
+  const nextWidth=Math.max(1,stage.clientWidth),nextHeight=Math.max(1,stage.clientHeight),dpr=Math.min(devicePixelRatio||1,2);
+  const pixelWidth=Math.round(nextWidth*dpr),pixelHeight=Math.round((nextHeight+240)*dpr);
+  if(nextWidth===width&&nextHeight===height&&canvas.width===pixelWidth&&canvas.height===pixelHeight)return;
+  width=nextWidth;height=nextHeight;
+  // Setting either attribute clears WebGL: change only when needed and redraw now.
+  if(canvas.width!==pixelWidth)canvas.width=pixelWidth;
+  if(canvas.height!==pixelHeight)canvas.height=pixelHeight;
+  const frameWidth=frameSize().w+'px',main=stage.closest('.film-main');
+  if(main.style.getPropertyValue('--film-frame-width')!==frameWidth)main.style.setProperty('--film-frame-width',frameWidth);
+  if(frame){cancelAnimationFrame(frame);frame=0;}
+  draw(time);
+ });
+}
 try{setup();}catch(error){gl=null;canvas.hidden=true;setLoading('loading');console.warn(error);}
 fetch('/home-film-preview/data.json').then(r=>{if(!r.ok)throw Error('作品列表无法加载');return r.json();}).then(items=>{data=items;const ticks=document.querySelector('.film-ticks');items.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${String(i+1).padStart(2,'0')} ${d.title}`);b.addEventListener('click',()=>go(i));ticks.append(b);});update();resize();}).catch(e=>{setLoading('error',document.documentElement.lang.startsWith('en')?'Unable to load artworks. Please refresh.':'作品暂时无法加载，请刷新重试');});
 
