@@ -28,6 +28,8 @@ async function injectSharedSystems(dir) {
     if (!html.includes('/nav-system.js')) html = html.replace('</body>', '<script src="/nav-system.js" defer></script></body>');
     if (!html.includes('/language-system.js')) html = html.replace('</body>', '<script src="/language-system.js" defer></script></body>');
     if (!html.includes('/image-loader.js')) html = html.replace('</body>', '<script src="/image-loader.js" defer></script></body>');
+    // Invalidate the old language switch CSS alongside the download control.
+    html = html.replace(/(\/language-system\.(?:js|css))(?:\?[^"']*)?(?=["'])/g, '$1?v=portfolio-control-20261021');
     // Version both sides of the project handoff, including legacy static pages.
     html = html.replace(/(\/(?:nav-system\.(?:js|css)|home-film-preview\/film\.(?:js|css)))(?:\?[^"']*)?(?=["'])/g, (_, asset) => asset + '?v=' + (asset.includes('/film.') ? 'card-color-20261021' : 'handoff-clear-20261020'));
     html = html.replace(/<header\b([^>]*?)class="([^"]*)"([^>]*)>/g, (tag, before, classes, after) => {
