@@ -1,0 +1,37 @@
+@font-face{font-family:"Banci Han";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/noto-sans-sc-400.5d4ab0087f.woff2") format("woff2");unicode-range:U+3000-9FFF,U+FF00-FFEF;}
+@font-face{font-family:"Banci Han";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/noto-sans-sc-600.13cbc44006.woff2") format("woff2");unicode-range:U+3000-9FFF,U+FF00-FFEF;}
+@font-face{font-family:"Banci Sans";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/plex-sans-400.a63ea92ee8.woff2") format("woff2");unicode-range:U+0020-00FF,U+2010-2030,U+2190-21FF;}
+@font-face{font-family:"Banci Sans";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/plex-sans-500.08f5c32a60.woff2") format("woff2");unicode-range:U+0020-00FF,U+2010-2030,U+2190-21FF;}
+@font-face{font-family:"Banci Sans";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/plex-sans-600.84aef2bfd7.woff2") format("woff2");unicode-range:U+0020-00FF,U+2010-2030,U+2190-21FF;}
+@font-face{font-family:"Banci Sans";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/plex-sans-700.a1e343c481.woff2") format("woff2");unicode-range:U+0020-00FF,U+2010-2030,U+2190-21FF;}
+/* Editorial pairing: compact Latin structure with calm, untracked CJK. */
+:root{
+ --banci-type:"Banci Sans","Banci Han","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+ --ds-font-body:var(--banci-type);
+ --ds-font-heading:var(--banci-type);
+}
+body,body.film-page{font-family:var(--banci-type)!important;font-synthesis:none}
+button,input,textarea,select{font-family:var(--banci-type)}
+.site-header nav,.nav-system__item,.mobile-navigation,.portfolio-download,
+.project-handoff__category,.project-handoff h2,.project-handoff__description{
+ font-family:var(--banci-type)!important;
+}
+.site-header nav,.nav-system__item{font-weight:600!important;letter-spacing:.045em!important}
+.portfolio-download{font-weight:500;letter-spacing:.015em}
+.mobile-navigation__links a{font-weight:600;letter-spacing:-.025em}
+.film-kicker{font-weight:500;letter-spacing:.07em}
+/* Retain the established compressed masthead and the BANCI logotype. */
+.film-masthead h1{font-family:Impact,"Arial Narrow",sans-serif}
+.site-header .logo b{font-family:Arial,Helvetica,sans-serif;font-weight:900}
+html[lang^="zh"] :is(h1,h2,h3,h4,h5,h6).is-cjk-copy{
+ letter-spacing:0!important;line-height:1.24!important;
+}
+html[lang^="zh"] :is(p,li,blockquote,figcaption,dt,dd).is-cjk-copy{
+ letter-spacing:.005em!important;line-height:1.72!important;
+}
+.work-page :is(h2,h3),.project-handoff h2{font-weight:600}
+.work-page :is(h2,h3){letter-spacing:-.025em}
+.work-page :is(small,time),.project-handoff__category{font-variant-numeric:tabular-nums}
+@media(max-width:680px){
+ html[lang^="zh"] :is(h1,h2,h3,h4,h5,h6).is-cjk-copy{letter-spacing:0!important;line-height:1.26!important}
+}

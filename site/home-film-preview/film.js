@@ -9,6 +9,14 @@ function setLoading(state,message=''){
  const error=loading.querySelector('.film-loading-error');error.hidden=!failed;error.textContent=message;
 }
 setLoading('loading');
+// Build each text texture only after the same two families used by the DOM are ready.
+const cardType='"Banci Sans","Banci Han","PingFang SC","Microsoft YaHei",sans-serif';
+const cardFonts=document.fonts?Promise.allSettled([
+ document.fonts.load('600 24px "Banci Sans"','BANCI'),
+ document.fonts.load('400 18px "Banci Sans"','BANCI'),
+ document.fonts.load('600 24px "Banci Han"','设计作品'),
+ document.fonts.load('400 18px "Banci Han"','设计作品')
+]):Promise.resolve();
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'),cache=new Map();let data=[],target=0,previousTarget=0,current=0,velocity=0,frame=0,last=0,width=1,height=1,drag=null,wheelSum=0,wheelStamp=0,suppressClick=0,paused=false,hovered=false,manualUntil=0,autoDirection=1,heroVisible=true,navigating=false;
 let gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:true});let program,locations,buffer,count;let pixelPull=0,pixelSpeed=0,entryStarted=-Infinity,entryDirection=-1;
 function shader(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
@@ -78,12 +86,12 @@ function cardSurface(im, item, index, layer='combined') {
  feather.addColorStop(0,`rgba(${edgeRGB},0)`);feather.addColorStop(.4,`rgba(${edgeRGB},.12)`);feather.addColorStop(1,`rgba(${edgeRGB},1)`);
  c.fillStyle=feather;c.fillRect(40,948,920,12);c.restore();
  function lines(text,y,font,size,maxLines,color){c.font=font;c.fillStyle=color;c.textBaseline='top';let line='',row=0;const chars=text.match(/[A-Za-z0-9]+|\s+|[^\x00-\x7F]|./gu)||[];for(let n=0;n<chars.length;n++){const next=line+chars[n];if(c.measureText(next).width>896&&line){if(row===maxLines-1){c.fillText(line.slice(0,-1)+'…',48,y+row*size);return row+1;}c.fillText(line,48,y+row*size);row++;line=chars[n].trimStart();}else line=next;}c.fillText(line,48,y+row*size);return row+1;}
- const titleRows=lines(item.title,1004,'600 60px Arial,"Microsoft YaHei",sans-serif',65,2,'#fff');
- lines(item.description,1004+titleRows*65+20,'40px Arial,"Microsoft YaHei",sans-serif',44,3,'#f5f5f2');
+ const titleRows=lines(item.title,1004,'600 60px '+cardType,65,2,'#fff');
+ lines(item.description,1004+titleRows*65+20,'400 40px '+cardType,44,3,'#f5f5f2');
  }
  if(layer!=='front'){
- c.fillStyle='#f5f5f2';c.font='600 34px Arial';c.textBaseline='middle';c.fillText(String(index+1).padStart(2,'0')+' / '+data.length,130,1368);
- c.font='30px Arial';c.textAlign='center';c.fillText('BANCI',500,1368);c.textAlign='left';
+ c.fillStyle='#f5f5f2';c.font='600 34px '+cardType;c.textBaseline='middle';c.fillText(String(index+1).padStart(2,'0')+' / '+data.length,130,1368);
+ c.font='400 30px '+cardType;c.textAlign='center';c.fillText('BANCI',500,1368);c.textAlign='left';
  c.strokeStyle='#fff2d7';c.lineWidth=5;c.beginPath();c.moveTo(818,1381);c.lineTo(852,1347);c.moveTo(818,1347);c.lineTo(852,1347);c.lineTo(852,1381);c.stroke();
  // Two genuinely transparent semicircular ticket notches, including fallback.
  c.save();c.globalCompositeOperation='destination-out';
@@ -93,7 +101,7 @@ function cardSurface(im, item, index, layer='combined') {
  return surface;
 }
 function request(){if(!frame)frame=requestAnimationFrame(draw);}
-function load(i){if(i<0||i>=data.length||cache.has(i))return;const entry={ready:false,texture:null},im=new Image();cache.set(i,entry);im.decoding='async';im.fetchPriority=i===target?'high':'low';im.onload=()=>{if(cache.get(i)!==entry)return;entry.surface=cardSurface(im,data[i],i);entry.entered=performance.now();if(gl){const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,entry.surface);entry.texture=t;
+function load(i){if(i<0||i>=data.length||cache.has(i))return;const entry={ready:false,texture:null},im=new Image();cache.set(i,entry);im.decoding='async';im.fetchPriority=i===target?'high':'low';im.onload=async()=>{await cardFonts;if(cache.get(i)!==entry)return;entry.surface=cardSurface(im,data[i],i);entry.entered=performance.now();if(gl){const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,entry.surface);entry.texture=t;
  const makeLayer=layer=>{const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,cardSurface(im,data[i],i,layer));return texture;};
  gl.deleteTexture(t);entry.texture=makeLayer('front');entry.backTexture=makeLayer('back');}entry.ready=true;if(i===target){entryStarted=performance.now();performance.mark("film-texture-ready");setLoading('ready');if(!gl){fallback.src=entry.surface.toDataURL();fallback.hidden=false;}}request();};im.onerror=()=>{entry.failed=true;if(i===target){setLoading('error',document.documentElement.lang.startsWith('en')?'Image unavailable. Try another artwork.':'图片暂未加载，请切换作品');}};im.src=data[i].src;}
 // Include the full viewport, tilted edges and the maximum elastic displacement.
