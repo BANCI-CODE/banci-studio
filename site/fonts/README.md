@@ -1,6 +1,5 @@
-# BANCI typography assets
+# Current font system
 
-IBM Plex Sans (400/500/600/700) and Noto Sans SC (400/600), SIL Open Font License.
-Sources: https://github.com/google/fonts/tree/main/ofl/ibmplexsans and https://github.com/google/fonts/tree/main/ofl/notosanssc
+See PORTFOLIO-FONTS.md for source evidence. Active CSS uses Bebas Neue, Alimama ShuHeiTi and Alibaba PuHuiTi. Earlier IBM Plex / Noto files are retained only for rollback.
 
-WOFF2 assets are self-hosted. Noto is subset to CJK characters appearing in site HTML/JS/JSON; missing/new characters fall back to PingFang SC / Microsoft YaHei. Re-run scripts/subset-fonts.py after adding copy. No runtime third-party font requests.
+Fonts are self-hosted WOFF2 with content hashes. PuHui contains the current site's Latin, Chinese and punctuation characters; new glyphs fall back to system fonts. Run scripts/subset-fonts.py with the installed PuHui font directory after adding content, review the generated subset, then update typography.css asset URLs. Font source files and font notices are preserved outside the published subset assets.

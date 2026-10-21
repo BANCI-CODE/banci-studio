@@ -10,12 +10,13 @@ function setLoading(state,message=''){
 }
 setLoading('loading');
 // Build each text texture only after the same two families used by the DOM are ready.
-const cardType='"Banci Sans","Banci Han","PingFang SC","Microsoft YaHei",sans-serif';
+const cardType='"Alibaba PuHuiTi","PingFang SC","Microsoft YaHei",sans-serif';
+const cardTitleType='"Bebas Neue","Alimama ShuHeiTi","Alibaba PuHuiTi",sans-serif';
 const cardFonts=document.fonts?Promise.allSettled([
- document.fonts.load('600 24px "Banci Sans"','BANCI'),
- document.fonts.load('400 18px "Banci Sans"','BANCI'),
- document.fonts.load('600 24px "Banci Han"','设计作品'),
- document.fonts.load('400 18px "Banci Han"','设计作品')
+ document.fonts.load('400 24px "Bebas Neue"','BANCI'),
+ document.fonts.load('700 24px "Alimama ShuHeiTi"','设计作品'),
+ document.fonts.load('400 18px "Alibaba PuHuiTi"','设计作品'),
+ document.fonts.load('500 18px "Alibaba PuHuiTi"','BANCI')
 ]):Promise.resolve();
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'),cache=new Map();let data=[],target=0,previousTarget=0,current=0,velocity=0,frame=0,last=0,width=1,height=1,drag=null,wheelSum=0,wheelStamp=0,suppressClick=0,paused=false,hovered=false,manualUntil=0,autoDirection=1,heroVisible=true,navigating=false;
 let gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:true});let program,locations,buffer,count;let pixelPull=0,pixelSpeed=0,entryStarted=-Infinity,entryDirection=-1;
@@ -85,13 +86,35 @@ function cardSurface(im, item, index, layer='combined') {
  const feather=c.createLinearGradient(0,948,0,960),edgeRGB=`${edgePixel[0]},${edgePixel[1]},${edgePixel[2]}`;
  feather.addColorStop(0,`rgba(${edgeRGB},0)`);feather.addColorStop(.4,`rgba(${edgeRGB},.12)`);feather.addColorStop(1,`rgba(${edgeRGB},1)`);
  c.fillStyle=feather;c.fillRect(40,948,920,12);c.restore();
- function lines(text,y,font,size,maxLines,color){c.font=font;c.fillStyle=color;c.textBaseline='top';let line='',row=0;const chars=text.match(/[A-Za-z0-9]+|\s+|[^\x00-\x7F]|./gu)||[];for(let n=0;n<chars.length;n++){const next=line+chars[n];if(c.measureText(next).width>896&&line){if(row===maxLines-1){c.fillText(line.slice(0,-1)+'…',48,y+row*size);return row+1;}c.fillText(line,48,y+row*size);row++;line=chars[n].trimStart();}else line=next;}c.fillText(line,48,y+row*size);return row+1;}
- const titleRows=lines(item.title,1004,'600 60px '+cardType,65,2,'#fff');
- lines(item.description,1004+titleRows*65+20,'400 40px '+cardType,44,3,'#f5f5f2');
+ // Wrap whole Latin words and CJK characters; balance descriptions without orphan tails.
+ function lines(text,y,font,leading,maxLines,color,balance=false){
+  c.font=font;c.fillStyle=color;c.textBaseline='top';
+  const tokens=String(text).match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*|\s+|[^\x00-\x7F]|./gu)||[];
+  const measure=t=>c.measureText(t).width,limit=896;
+  let rows=[],line='';
+  for(const token of tokens){
+   if(line&&measure(line+token)>limit){rows.push(line.trim());line=token.trimStart();}else line+=token;
+  }
+  if(line.trim())rows.push(line.trim());
+  if(balance&&rows.length===2){
+   let best=Infinity,pair=rows;
+   for(let split=1;split<tokens.length;split++){
+    const left=tokens.slice(0,split).join('').trim(),right=tokens.slice(split).join('').trim();
+    if(!left||!right||/^[，。！？、；：）》”’.,!?;:]/u.test(right))continue;
+    const lw=measure(left),rw=measure(right),score=Math.abs(lw-rw);
+    if(lw<=limit&&rw<=limit&&score<best){best=score;pair=[left,right];}
+   }rows=pair;
+  }
+  if(rows.length>maxLines){rows=rows.slice(0,maxLines);let tail=rows[maxLines-1];while(tail&&measure(tail+'…')>limit)tail=tail.slice(0,-1);rows[maxLines-1]=tail+'…';}
+  rows.forEach((row,i)=>c.fillText(row,48,y+i*leading));return rows.length;
+ }
+ const titleRows=lines(item.title,996,'400 76px '+cardTitleType,82,2,'#fff');
+ lines(item.description,996+titleRows*82+18,'400 38px '+cardType,50,2,'#f5f5f2',true);
+
  }
  if(layer!=='front'){
- c.fillStyle='#f5f5f2';c.font='600 34px '+cardType;c.textBaseline='middle';c.fillText(String(index+1).padStart(2,'0')+' / '+data.length,130,1368);
- c.font='400 30px '+cardType;c.textAlign='center';c.fillText('BANCI',500,1368);c.textAlign='left';
+ c.fillStyle='#f5f5f2';c.font='500 32px '+cardType;c.textBaseline='middle';c.fillText(String(index+1).padStart(2,'0')+' / '+data.length,130,1368);
+ c.font='500 32px '+cardType;c.textAlign='center';c.fillText('BANCI',500,1368);c.textAlign='left';
  c.strokeStyle='#fff2d7';c.lineWidth=5;c.beginPath();c.moveTo(818,1381);c.lineTo(852,1347);c.moveTo(818,1347);c.lineTo(852,1347);c.lineTo(852,1381);c.stroke();
  // Two genuinely transparent semicircular ticket notches, including fallback.
  c.save();c.globalCompositeOperation='destination-out';

@@ -1,18 +1,35 @@
-# Typography pairing — 2026-10-21
+# Portfolio typography system — 2026-10-21
 
-- Latin UI, headlines and captions: IBM Plex Sans 400/500/600/700, locally hosted as Banci Sans.
-- Chinese: Noto Sans SC 400/600, locally hosted as Banci Han; system fallback for newly added characters.
-- BANCI logotype, compressed homepage masthead and project-specific serif accents retained.
-- CJK heading tracking reduced from .065em to 0; paragraph tracking from .045em to .005em. Heading/body line heights 1.24/1.72.
-- Homepage canvas uses the same pairing and waits for its four font faces before text texture generation.
-- All HTML receives shared typography through both build targets. Content-hashed WOFF2, no runtime external font requests.
-- Modified fonts have distinct internal family and weight names. Original OFL licenses are included in site/fonts.
-- Full font payload about 484 KiB; CJK subsets include 1,474 CJK/punctuation characters from existing HTML, JS and JSON. No image assets or routes changed.
+## Confirmed direction
 
-## Maintenance
+The author confirmed Alibaba PuHuiTi for reading text. PSD text layer metadata in `06Contact/01-尾页感谢.psd` confirms BebasNeue for CONTACT / NEXT COLLABORATION, and AlimamaShuHeiTi-Bold for the main Chinese closing statement.
 
-With Python fonttools + brotli installed, run `python scripts/subset-fonts.py` after adding copy. It downloads official sources to .cache/font-sources, prints new hashed assets, and preserves current published files. Review and update typography.css URLs before building.
+- English display: Bebas Neue.
+- Chinese display: Alimama ShuHeiTi.
+- Body, captions, buttons and supporting UI: Alibaba PuHuiTi Regular / Medium.
+- BANCI logotype and compressed BANCI.STUDIO masthead retained.
 
-## Validation
+## Responsive hierarchy
 
-Local and GitHub builds pass. Chrome desktop 1440×1000 and mobile 390×844: homepage, Work and AIRSEEKERS render without horizontal overflow, missing font faces or JS exceptions. Homepage card loader completes. Real Safari/iPhone rendering has not been tested.
+| Role | Desktop | Mobile |
+| --- | --- | --- |
+| Page headline | 56–128 px | 44–76 px |
+| Section heading | 32–64 px | 30–42 px |
+| Project / item title | 23–34 px | 22–28 px |
+| Lead / subtitle | 19–26 px | 18 px |
+| Body | 16–18 px | 15 px |
+| Caption / metadata | 12–13 px | 12 px |
+
+Chinese display tracking is zero; Latin display tracking -0.01em; metadata +0.025–0.07em. Reading copy uses 1.75 line height; leads 1.6; headings 1.12 / CJK 1.22. Paragraphs use pretty wrapping, headings balance, and long reading blocks have a 38em maximum measure.
+
+Homepage canvas uses the same families: title 76/82 source units, description 38/50, a 2:1 font-size ratio. Both are limited to two lines; descriptions balance full words and CJK characters. Full descriptions remain in the DOM and project pages. Rear ticket labels use PuHui for clarity. Material, images, ordering and elastic movement are retained.
+
+## Fonts and loading
+
+Self-hosted, content-hashed WOFF2. Official ShuHei webfont is unchanged (about 663 KiB); PuHui subsets about 216/214 KiB and Bebas about 11 KiB. The earlier IBM/Noto assets remain for rollback but are unused. Canvas waits for required fonts before creating text textures. No font calls to third-party servers at runtime.
+
+The PDF is image-only; no editable text/font metadata could be read from it. Font evidence came from the matching editable PSD, with the author's correction for body type.
+
+## Verification
+
+Local and GitHub builds and JS syntax/diff checks pass. Chrome checks cover homepage, Work, About, Contact, Notes, Lab, AIRSEEKERS, MOVA, Baidu, Fantawild and AKU at desktop/mobile sizes, plus 320/768 width checks for primary pages. No horizontal overflow, font failures or JavaScript exceptions in 28 combinations. Contact heading was visually checked for orphan text; card wrapping is measured against all 22 current items. Safari/iPhone hardware remains untested. No production deployment.

@@ -1,37 +1,83 @@
-@font-face{font-family:"Banci Han";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/noto-sans-sc-400.a0fe4781e9.woff2") format("woff2");unicode-range:U+3000-9FFF,U+FF00-FFEF;}
-@font-face{font-family:"Banci Han";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/noto-sans-sc-600.722558a861.woff2") format("woff2");unicode-range:U+3000-9FFF,U+FF00-FFEF;}
-@font-face{font-family:"Banci Sans";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/plex-sans-400.7c3fd8d4b5.woff2") format("woff2");unicode-range:U+0020-00FF,U+2010-2030,U+2190-21FF;}
-@font-face{font-family:"Banci Sans";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/plex-sans-500.b613823a7f.woff2") format("woff2");unicode-range:U+0020-00FF,U+2010-2030,U+2190-21FF;}
-@font-face{font-family:"Banci Sans";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/plex-sans-600.4b10114501.woff2") format("woff2");unicode-range:U+0020-00FF,U+2010-2030,U+2190-21FF;}
-@font-face{font-family:"Banci Sans";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/plex-sans-700.2aa72d398d.woff2") format("woff2");unicode-range:U+0020-00FF,U+2010-2030,U+2190-21FF;}
-/* Editorial pairing: compact Latin structure with calm, untracked CJK. */
+@font-face{font-family:"Alibaba PuHuiTi";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/alibaba-puhuiti-400.1b908aa931.woff2") format("woff2");}
+@font-face{font-family:"Alibaba PuHuiTi";font-style:normal;font-weight:500 900;font-display:swap;src:url("/fonts/alibaba-puhuiti-500.b933def5e9.woff2") format("woff2");}
+@font-face{font-family:"Bebas Neue";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/bebas-neue.4827324906.woff2") format("woff2");unicode-range:U+0020-00FF,U+2010-2030,U+2190-21FF;}
+@font-face{font-family:"Alimama ShuHeiTi";font-style:normal;font-weight:400 900;font-display:swap;src:url("/fonts/alimama-shuheiti.fa4a258d17.woff2") format("woff2");unicode-range:U+3000-9FFF,U+FF00-FFEF;}
+/* Portfolio type roles. Bebas Neue + Alimama ShuHei for display; PuHui for reading. */
 :root{
- --banci-type:"Banci Sans","Banci Han","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
- --ds-font-body:var(--banci-type);
- --ds-font-heading:var(--banci-type);
+ --banci-type:"Alibaba PuHuiTi","PingFang SC","Microsoft YaHei",sans-serif;
+ --banci-heading:"Bebas Neue","Alimama ShuHeiTi","Alibaba PuHuiTi",sans-serif;
+ --text-page:clamp(56px,8vw,128px);
+ --text-section:clamp(32px,4.2vw,64px);
+ --text-item:clamp(23px,2.2vw,34px);
+ --text-lead:clamp(19px,1.8vw,26px);
+ --text-body:clamp(16px,1.15vw,18px);
+ --text-caption:clamp(12px,.9vw,13px);
+ --type-display:var(--text-page);--type-section:var(--text-section);
+ --type-project:var(--text-item);--type-lead:var(--text-lead);
+ --type-body:var(--text-body);--type-meta:var(--text-caption);--type-label:12px;
+ --ds-font-body:var(--banci-type);--ds-font-heading:var(--banci-heading);
+ --ds-display-xl:var(--text-page);--ds-display-l:var(--text-page);
+ --ds-h1:var(--text-page);--ds-h2:var(--text-section);--ds-h3:var(--text-item);--ds-h4:var(--text-item);
+ --ds-body-large:var(--text-lead);--ds-body:var(--text-body);--ds-body-small:var(--text-body);
+ --ds-caption:var(--text-caption);--ds-label:12px;
+ --ds-leading-heading:1.18;--ds-leading-body:1.75;--ds-tracking-heading:-.015em;
 }
-body,body.film-page{font-family:var(--banci-type)!important;font-synthesis:none}
+body,body.film-page{font-family:var(--banci-type)!important;font-size:var(--text-body);line-height:1.75;font-synthesis:none}
 button,input,textarea,select{font-family:var(--banci-type)}
-.site-header nav,.nav-system__item,.mobile-navigation,.portfolio-download,
-.project-handoff__category,.project-handoff h2,.project-handoff__description{
- font-family:var(--banci-type)!important;
-}
-.site-header nav,.nav-system__item{font-weight:600!important;letter-spacing:.045em!important}
-.portfolio-download{font-weight:500;letter-spacing:.015em}
-.mobile-navigation__links a{font-weight:600;letter-spacing:-.025em}
-.film-kicker{font-weight:500;letter-spacing:.07em}
-/* Retain the established compressed masthead and the BANCI logotype. */
-.film-masthead h1{font-family:Impact,"Arial Narrow",sans-serif}
+main :is(h1,h2,h3,h4){font-family:var(--banci-heading)!important;font-weight:400!important;letter-spacing:-.01em!important;text-wrap:balance;overflow-wrap:break-word}
+main h1:not(.film-masthead h1){font-size:var(--text-page)!important;line-height:1.05!important}
+main h2{font-size:var(--text-section)!important;line-height:1.12!important}
+main h3{font-size:var(--text-item)!important;line-height:1.2!important}
+main h4{font-size:var(--text-lead)!important;line-height:1.3!important}
+main p{font-size:var(--text-body)!important;line-height:1.75;letter-spacing:0;text-wrap:pretty;overflow-wrap:break-word}
+html[lang^="zh"] main :is(p,li,blockquote,figcaption,dt,dd).is-cjk-copy{letter-spacing:0!important;line-height:1.75!important}
+html[lang^="zh"] main :is(h1,h2,h3,h4).is-cjk-copy{letter-spacing:0!important;line-height:1.22!important}
+main :is(strong,b){font-weight:600}
+main :is(.eyebrow,.section-tag,.section-kicker,.air-kicker,.hero-label,.ap-kicker,
+ .case-lead>span,.case-facts small,.project-facts span,.gallery-head,.section-label,
+ .contact-section-label,.contact-direct a>span){font-family:var(--banci-type);font-size:var(--text-caption)!important;font-weight:500;line-height:1.5!important;letter-spacing:.07em!important}
+main :is(small,figcaption,time){font-size:var(--text-caption);line-height:1.5;letter-spacing:.025em}
+main :is(.case-text p,.case-reflection p,.ap-body,.home-about__body p,.practice-item__description,
+ .case-reading p,.decision-grid p,.impact-list p,.template-block p){font-size:var(--text-body)!important;line-height:1.75!important;max-width:38em;letter-spacing:0!important}
+main :is(.case-lead>p,.work-intro-subtitle,.contact-intro,.about-intro-copy>p,.ap-lead,
+ .featured-case__statement,.home-about__lead,.lab-hero>p,.ap-lead p){font-size:var(--text-lead)!important;line-height:1.6!important;max-width:30em;letter-spacing:0!important}
+/* A statement is a separate role from ordinary body copy. */
+main :is(.about-statement>p,.hero-statement__zh,.hero-statement__en,.ap-statement){font-family:var(--banci-heading);font-size:clamp(28px,3.3vw,48px)!important;line-height:1.35!important;letter-spacing:0!important;max-width:28em}
+main :is(.metric-grid strong,.metric strong,.case-stat strong){font-family:"Bebas Neue",var(--banci-type);font-size:clamp(44px,5vw,76px);font-weight:400;line-height:1.05;letter-spacing:0}
+main :is(h2,h3,h4)+p{margin-top:16px}
+main p+p{margin-top:1em}
+/* Keep the recognisable masthead and logo, rather than treating them as body copy. */
+.film-masthead h1{font-family:Impact,"Arial Narrow",sans-serif!important;font-weight:900!important;line-height:.95!important;letter-spacing:-.015em!important}
 .site-header .logo b{font-family:Arial,Helvetica,sans-serif;font-weight:900}
-html[lang^="zh"] :is(h1,h2,h3,h4,h5,h6).is-cjk-copy{
- letter-spacing:0!important;line-height:1.24!important;
+.site-header nav,.nav-system__item{font-family:var(--banci-heading)!important;font-size:18px!important;font-weight:400!important;line-height:1.2!important;letter-spacing:.045em!important}
+.portfolio-download,.mobile-navigation,.project-handoff__description{font-family:var(--banci-type)!important}
+.portfolio-download{font-size:12px;font-weight:500;letter-spacing:0}
+.mobile-navigation__links a{font-family:var(--banci-heading)!important;font-size:clamp(32px,8vw,44px);font-weight:400;line-height:1.2;letter-spacing:.015em}
+.project-handoff h2{font-family:var(--banci-heading)!important;font-size:clamp(26px,5vw,36px);font-weight:400;line-height:1.2}
+.project-handoff__category{font-family:var(--banci-type)!important;font-size:11px;letter-spacing:.08em}
+.project-handoff__description{font-size:14px;line-height:1.7;max-width:28em}
+.film-kicker{font-family:var(--banci-type);font-size:11px;font-weight:500;letter-spacing:.05em;line-height:1.4}
+.work-page :is(.ed-section-head p,.ed-feature-caption p,.ed-brand p,.ed-practice-links p,.ed-lab-intro p){font-size:var(--text-body)!important;line-height:1.7!important;max-width:34em;text-wrap:pretty}
+.work-page :is(.ed-employer span,.ed-employer p){font-size:var(--text-caption)!important;line-height:1.6!important;letter-spacing:0!important}
+.work-page .ed-lab-item strong{font-family:var(--banci-heading);font-size:var(--text-item);font-weight:400;line-height:1.25;letter-spacing:0}
+.work-page :is(.ed-feature-caption h3,.ed-brand h3){margin-block:10px 14px}
+.work-page :is(.ed-feature-caption small,.ed-brand>small){font-size:var(--text-caption);line-height:1.5;letter-spacing:.04em}
+.contact-direct strong{font-family:"Bebas Neue",var(--banci-type);font-size:clamp(28px,3vw,44px);font-weight:400;letter-spacing:.01em}
+@media(max-width:767px){
+ :root{--text-page:clamp(44px,11vw,76px);--text-section:clamp(30px,7.5vw,42px);--text-item:clamp(22px,5.5vw,28px);--text-lead:18px;--text-body:15px;--text-caption:12px}
+ main :is(h1,h2,h3,h4){max-width:100%}
+ main :is(.case-text p,.case-reflection p,.ap-body,.home-about__body p,.case-reading p){max-width:100%}
+ .work-page :is(.ed-feature-caption h3,.ed-brand h3){font-size:22px!important;line-height:1.2!important;overflow-wrap:break-word;margin-block:8px 10px}
+ .work-page :is(.ed-feature-caption p,.ed-brand p){font-size:14px!important;line-height:1.65!important}
+ .work-page :is(.ed-feature-caption small,.ed-brand>small){font-size:11px!important;letter-spacing:.025em}
+ .work-page .ed-employer h3{font-size:24px!important}
+ .film-kicker{font-size:9px;letter-spacing:.025em}
+ .contact-art figcaption{font-size:11px;letter-spacing:.02em;flex-wrap:wrap}
 }
-html[lang^="zh"] :is(p,li,blockquote,figcaption,dt,dd).is-cjk-copy{
- letter-spacing:.005em!important;line-height:1.72!important;
+@media(min-width:768px) and (max-width:1100px){
+ :root{--text-page:88px;--text-section:44px;--text-item:28px;--text-lead:22px;--text-body:16px}
 }
-.work-page :is(h2,h3),.project-handoff h2{font-weight:600}
-.work-page :is(h2,h3){letter-spacing:-.025em}
-.work-page :is(small,time),.project-handoff__category{font-variant-numeric:tabular-nums}
-@media(max-width:680px){
- html[lang^="zh"] :is(h1,h2,h3,h4,h5,h6).is-cjk-copy{letter-spacing:0!important;line-height:1.26!important}
-}
+
+/* CJK headings must not inherit Latin ch measures from the former font. */
+.contact-page-hero h1{width:100%;max-width:100%;text-wrap:balance}
+main :is(.ap-lead p,.contact-intro,.case-lead>p){text-wrap:pretty}
