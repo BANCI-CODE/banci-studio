@@ -1,32 +1,12 @@
 (()=>{'use strict';
 const stage=document.querySelector('.film-stage'),canvas=stage.querySelector('canvas'),loading=stage.querySelector('.film-loading'),fallback=stage.querySelector('.film-fallback');
-// Percentages represent completed loading stages, not estimated network bytes.
-let loaderFrame=0,loaderClose=0,loaderValue=0,loaderGoal=0;
-function loaderProgress(value){
- loaderGoal=value;
- if(loaderFrame)return;
- const step=()=>{loaderFrame=0;loaderValue=Math.min(loaderGoal,loaderValue+Math.max(1,(loaderGoal-loaderValue)*.18));
- const number=loading.querySelector('.film-loading-number');number.firstChild.nodeValue=Math.round(loaderValue);
- loading.querySelectorAll('.film-loading-ring path').forEach((tick,i)=>tick.classList.toggle('is-complete',i<24*loaderValue/100));
- if(loaderValue<loaderGoal)loaderFrame=requestAnimationFrame(step);
- };
- loaderFrame=requestAnimationFrame(step);
-}
+// Three SVG rings animate in CSS only while their loading status is visible.
 function setLoading(state,message=''){
- clearTimeout(loaderClose);
- const failed=state==='error',busy=state==='loading';
- stage.setAttribute('aria-busy',String(busy));
- loading.classList.toggle('is-error',failed);
+ const failed=state==='error';
+ loading.hidden=state==='ready';loading.classList.toggle('is-error',failed);
+ stage.setAttribute('aria-busy',String(state==='loading'));
  loading.setAttribute('aria-label',failed?message:(document.documentElement.lang.startsWith('en')?'Loading artwork':'正在载入作品'));
  const error=loading.querySelector('.film-loading-error');error.hidden=!failed;error.textContent=message;
- if(state==='ready'){
-  if(loading.hidden)return;
-  loaderProgress(100);
-  loaderClose=setTimeout(()=>{loading.hidden=true;cancelAnimationFrame(loaderFrame);loaderFrame=0;},500);
- }else{
-  if(loading.hidden||failed){cancelAnimationFrame(loaderFrame);loaderFrame=0;loaderValue=0;loaderGoal=0;}
-  loading.hidden=false;
- }
 }
 setLoading('loading');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'),cache=new Map();let data=[],target=0,current=0,velocity=0,frame=0,last=0,width=1,height=1,drag=null,wheelSum=0,wheelStamp=0,suppressClick=0,paused=false,hovered=false,manualUntil=0,autoDirection=1,heroVisible=true,navigating=false;
@@ -95,7 +75,7 @@ function cardSurface(im, item, index, layer='combined') {
  return surface;
 }
 function request(){if(!frame)frame=requestAnimationFrame(draw);}
-function load(i){if(i<0||i>=data.length||cache.has(i))return;const entry={ready:false,texture:null},im=new Image();cache.set(i,entry);im.decoding='async';im.fetchPriority=i===target?'high':'low';im.onload=()=>{if(cache.get(i)!==entry)return;if(i===target)loaderProgress(85);entry.surface=cardSurface(im,data[i],i);entry.entered=performance.now();if(gl){const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,entry.surface);entry.texture=t;
+function load(i){if(i<0||i>=data.length||cache.has(i))return;const entry={ready:false,texture:null},im=new Image();cache.set(i,entry);im.decoding='async';im.fetchPriority=i===target?'high':'low';im.onload=()=>{if(cache.get(i)!==entry)return;entry.surface=cardSurface(im,data[i],i);entry.entered=performance.now();if(gl){const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,entry.surface);entry.texture=t;
  const makeLayer=layer=>{const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,cardSurface(im,data[i],i,layer));return texture;};
  gl.deleteTexture(t);entry.texture=makeLayer('front');entry.backTexture=makeLayer('back');}entry.ready=true;if(i===target){performance.mark("film-texture-ready");setLoading('ready');if(!gl){fallback.src=entry.surface.toDataURL();fallback.hidden=false;}}request();};im.onerror=()=>{entry.failed=true;if(i===target){setLoading('error',document.documentElement.lang.startsWith('en')?'Image unavailable. Try another artwork.':'图片暂未加载，请切换作品');}};im.src=data[i].src;}
 // Include the full viewport, tilted edges and the maximum elastic displacement.
@@ -132,7 +112,7 @@ if(!reduce.matches&&cache.get(target)?.ready&&time-cache.get(target).entered<150
 if(Math.abs(wantedPull-liquidPull)>.0005||Math.abs(liquidSpeed)>.0005||!drag?.locked&&(current!==target||Math.abs(velocity)>.0005))request();}
 function resize(){width=stage.clientWidth;height=stage.clientHeight;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round((height+240)*dpr);stage.closest('.film-main').style.setProperty('--film-frame-width',frameSize().w+'px');request();}
 try{setup();}catch(error){gl=null;canvas.hidden=true;setLoading('loading');console.warn(error);}
-fetch('/home-film-preview/data.json').then(r=>{if(!r.ok)throw Error('作品列表无法加载');return r.json();}).then(items=>{data=items;loaderProgress(25);const ticks=document.querySelector('.film-ticks');items.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${String(i+1).padStart(2,'0')} ${d.title}`);b.addEventListener('click',()=>go(i));ticks.append(b);});update();resize();}).catch(e=>{setLoading('error',document.documentElement.lang.startsWith('en')?'Unable to load artworks. Please refresh.':'作品暂时无法加载，请刷新重试');});
+fetch('/home-film-preview/data.json').then(r=>{if(!r.ok)throw Error('作品列表无法加载');return r.json();}).then(items=>{data=items;const ticks=document.querySelector('.film-ticks');items.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${String(i+1).padStart(2,'0')} ${d.title}`);b.addEventListener('click',()=>go(i));ticks.append(b);});update();resize();}).catch(e=>{setLoading('error',document.documentElement.lang.startsWith('en')?'Unable to load artworks. Please refresh.':'作品暂时无法加载，请刷新重试');});
 
 async function openProject(){
  if(navigating||!data[target])return;

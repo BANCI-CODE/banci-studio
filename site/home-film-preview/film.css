@@ -48,21 +48,22 @@
  .film-kicker{font-size:7px}
 }
 
-/* Radial length wave; only the 24 vector strokes animate during loading. */
+/* Reference: concentric rings turn edge-on, separate, and return to alignment. */
 .film-loading{z-index:2;color:#343630}
-.film-loading-dial{position:relative;width:160px;height:160px}
-.film-loading-ring{display:block;width:100%;height:100%;overflow:visible}
-.film-loading-ring path{stroke:#888980;stroke-dasharray:20 40;animation:film-tick-length 1.2s ease-in-out infinite;animation-delay:var(--tick-delay)}
-.film-loading-ring path.is-complete{stroke:#292b25}
-.film-loading-number{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:2px;font:400 30px/1 Arial,sans-serif;letter-spacing:-1px;font-variant-numeric:tabular-nums}
-.film-loading-number span{font-size:18px;letter-spacing:0}
-.film-loading[hidden] path,.film-loading.is-error path{animation:none}
-.film-loading.is-error .film-loading-dial{display:none}
+.film-loading-orbits{position:relative;width:112px;height:112px;perspective:360px}
+.film-loading-orbit{position:absolute;inset:0;display:block;width:100%;height:100%;transform-origin:50% 50%;backface-visibility:visible;animation-duration:1.86s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.45,0,.55,1)}
+.film-loading-orbit--1{animation-name:film-orbit-outer}
+.film-loading-orbit--2{animation-name:film-orbit-middle}
+.film-loading-orbit--3{animation-name:film-orbit-inner}
+.film-loading[hidden] .film-loading-orbit,.film-loading.is-error .film-loading-orbit{animation:none}
+.film-loading.is-error .film-loading-orbits{display:none}
 .film-loading-error{max-width:240px;padding:12px;text-align:center;font-size:12px;line-height:1.6;background:#f3f0e8}
 .film-loading-error[hidden]{display:none}
-@keyframes film-tick-length{0%,100%{stroke-dasharray:11 40;opacity:.65}45%{stroke-dasharray:20 40;opacity:1}}
-@media(max-width:767px){.film-loading-dial{width:144px;height:144px}.film-loading-number{font-size:26px}}
-@media(prefers-reduced-motion:reduce){.film-loading-ring path{animation:none}}
+@keyframes film-orbit-outer{0%,100%{transform:translateX(0) rotateY(0deg)}25%{transform:translateX(-18px) rotateY(88deg)}50%{transform:translateX(0) rotateY(180deg)}75%{transform:translateX(18px) rotateY(272deg)}}
+@keyframes film-orbit-middle{0%,100%{transform:translateX(0) rotateY(0deg)}25%{transform:translateX(7px) rotateY(-35deg)}50%{transform:translateX(0) rotateY(-180deg)}75%{transform:translateX(-7px) rotateY(-325deg)}}
+@keyframes film-orbit-inner{0%,100%{transform:translateX(0) rotateY(0deg)}25%{transform:translateX(21px) rotateY(-55deg)}50%{transform:translateX(0) rotateY(-180deg)}75%{transform:translateX(-21px) rotateY(-305deg)}}
+@media(max-width:767px){.film-loading-orbits{width:96px;height:96px}}
+@media(prefers-reduced-motion:reduce){.film-loading-orbit{animation:none}}
 
 /* Extend the drawing surface above and below the layout box for elastic edges. */
 .film-stage{overflow:visible}
