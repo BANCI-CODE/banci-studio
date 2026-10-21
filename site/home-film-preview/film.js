@@ -11,6 +11,7 @@ function setLoading(state,message=''){
 setLoading('loading');
 // Build each text texture only after the same two families used by the DOM are ready.
 const cardType='"Alibaba PuHuiTi","PingFang SC","Microsoft YaHei",sans-serif';
+const cardWords=typeof Intl.Segmenter==='function'?new Intl.Segmenter('zh-CN',{granularity:'word'}):null;
 const cardTitleType='"Bebas Neue","Alimama ShuHeiTi","Alibaba PuHuiTi",sans-serif';
 const cardFonts=document.fonts?Promise.allSettled([
  document.fonts.load('400 24px "Bebas Neue"','BANCI'),
@@ -89,7 +90,7 @@ function cardSurface(im, item, index, layer='combined') {
  // Wrap whole Latin words and CJK characters; balance descriptions without orphan tails.
  function lines(text,y,font,leading,maxLines,color,balance=false){
   c.font=font;c.fillStyle=color;c.textBaseline='top';
-  const tokens=String(text).match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*|\s+|[^\x00-\x7F]|./gu)||[];
+  const tokens=cardWords?[...cardWords.segment(String(text))].map(part=>part.segment):String(text).match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*|\s+|[^\x00-\x7F]|./gu)||[];
   const measure=t=>c.measureText(t).width,limit=896;
   let rows=[],line='';
   for(const token of tokens){
@@ -101,14 +102,14 @@ function cardSurface(im, item, index, layer='combined') {
    for(let split=1;split<tokens.length;split++){
     const left=tokens.slice(0,split).join('').trim(),right=tokens.slice(split).join('').trim();
     if(!left||!right||/^[，。！？、；：）》”’.,!?;:]/u.test(right))continue;
-    const lw=measure(left),rw=measure(right),score=Math.abs(lw-rw);
+    const lw=measure(left),rw=measure(right),score=Math.abs(lw-rw)-(/[，。；！？：,;:]$/u.test(left)?limit*.12:0);
     if(lw<=limit&&rw<=limit&&score<best){best=score;pair=[left,right];}
    }rows=pair;
   }
   if(rows.length>maxLines){rows=rows.slice(0,maxLines);let tail=rows[maxLines-1];while(tail&&measure(tail+'…')>limit)tail=tail.slice(0,-1);rows[maxLines-1]=tail+'…';}
   rows.forEach((row,i)=>c.fillText(row,48,y+i*leading));return rows.length;
  }
- const titleRows=lines(item.title,996,'400 76px '+cardTitleType,82,2,'#fff');
+ const titleRows=lines(item.title,996,'400 76px '+cardTitleType,82,2,'#fff',true);
  lines(item.description,996+titleRows*82+18,'400 38px '+cardType,50,2,'#f5f5f2',true);
 
  }
