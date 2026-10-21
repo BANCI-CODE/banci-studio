@@ -50,20 +50,28 @@ function cardSurface(im, item, index, layer='combined') {
  const rgb=artworkColor(im),tone=(factor,alpha=1)=>`rgba(${rgb.map(v=>Math.round(v*factor)).join(',')},${alpha})`;
  // Artwork-derived color, shared by the independent front and sliding rear layers.
  if(layer!=='front'){
- box(80,1130,840,310,66);const back=c.createLinearGradient(0,1130,0,1440);back.addColorStop(0,tone(.65));back.addColorStop(1,tone(.85));c.fillStyle=back;c.fill();
- c.strokeStyle='#ffffff55';c.lineWidth=3;c.stroke();
+ box(80,1200,840,240,18);const back=c.createLinearGradient(0,1130,0,1440);back.addColorStop(0,tone(.65));back.addColorStop(1,tone(.85));c.fillStyle=back;c.fill();
  }
  if(layer!=='back'){
- box(4,4,992,1288,98);c.fillStyle='rgba(48,49,47,.92)';c.fill();
+ box(4,4,992,1288,98);c.fillStyle='#343531';c.fill();
  // A wide feathered rectangular light band; no circular spotlight or dark corners.
- c.save();c.clip();const glow=c.createLinearGradient(0,850,0,1320);
- glow.addColorStop(0,tone(.98,0));glow.addColorStop(.16,tone(.98,.16));
- glow.addColorStop(.34,tone(.98,.80));glow.addColorStop(.72,tone(.94,.76));glow.addColorStop(1,tone(.90,.62));
- c.fillStyle=glow;c.fillRect(0,850,1000,470);
- const sheen=c.createLinearGradient(0,948,0,1160);sheen.addColorStop(0,'#ffffff16');sheen.addColorStop(1,'#ffffff00');c.fillStyle=sheen;c.fillRect(0,948,1000,230);c.restore();
- box(4,4,992,1288,98);c.strokeStyle='#ffffff32';c.lineWidth=4;c.stroke();
+ c.save();c.clip();const glow=c.createLinearGradient(0,780,0,1320);
+ glow.addColorStop(0,tone(.98,0));glow.addColorStop(.20,tone(.98,.45));
+ glow.addColorStop(.34,tone(.98,.84));glow.addColorStop(.72,tone(.94,.80));glow.addColorStop(1,tone(.90,.68));
+ c.fillStyle=glow;c.fillRect(0,780,1000,540);
+ // Edge tint frames the wide light band without a shadow below the artwork.
+ const edgeTint=c.createLinearGradient(0,0,1000,0);
+ edgeTint.addColorStop(0,'#11140f66');edgeTint.addColorStop(.10,'#11140f2b');edgeTint.addColorStop(.28,'#11140f00');
+ edgeTint.addColorStop(.72,'#11140f00');edgeTint.addColorStop(.90,'#11140f2b');edgeTint.addColorStop(1,'#11140f66');
+ c.fillStyle=edgeTint;c.fillRect(0,0,1000,1292);
+ c.restore();
+ const edgePixel=c.getImageData(Math.round(500*scale),Math.round(960*scale),1,1).data;
  c.save();box(40,40,920,920,62);c.clip();c.fillStyle='#e4dfd1';c.fill();
- const ratio=im.width/im.height;const sw=ratio>1?im.height:im.width,sh=sw;c.drawImage(im,(im.width-sw)/2,(im.height-sh)/2,sw,sh,40,40,920,920);c.restore();
+ const ratio=im.width/im.height;const sw=ratio>1?im.height:im.width,sh=sw;c.drawImage(im,(im.width-sw)/2,(im.height-sh)/2,sw,sh,40,40,920,920);
+ // Feather just the last 12 artwork pixels into the actual material color.
+ const feather=c.createLinearGradient(0,948,0,960),edgeRGB=`${edgePixel[0]},${edgePixel[1]},${edgePixel[2]}`;
+ feather.addColorStop(0,`rgba(${edgeRGB},0)`);feather.addColorStop(.4,`rgba(${edgeRGB},.12)`);feather.addColorStop(1,`rgba(${edgeRGB},1)`);
+ c.fillStyle=feather;c.fillRect(40,948,920,12);c.restore();
  function lines(text,y,font,size,maxLines,color){c.font=font;c.fillStyle=color;c.textBaseline='top';let line='',row=0;const chars=text.match(/[A-Za-z0-9]+|\s+|[^\x00-\x7F]|./gu)||[];for(let n=0;n<chars.length;n++){const next=line+chars[n];if(c.measureText(next).width>896&&line){if(row===maxLines-1){c.fillText(line.slice(0,-1)+'…',48,y+row*size);return row+1;}c.fillText(line,48,y+row*size);row++;line=chars[n].trimStart();}else line=next;}c.fillText(line,48,y+row*size);return row+1;}
  const titleRows=lines(item.title,1004,'600 60px Arial,"Microsoft YaHei",sans-serif',65,2,'#fff');
  lines(item.description,1004+titleRows*65+20,'40px Arial,"Microsoft YaHei",sans-serif',44,3,'#f5f5f2');
@@ -74,7 +82,7 @@ function cardSurface(im, item, index, layer='combined') {
  c.strokeStyle='#fff2d7';c.lineWidth=5;c.beginPath();c.moveTo(818,1381);c.lineTo(852,1347);c.moveTo(818,1347);c.lineTo(852,1347);c.lineTo(852,1381);c.stroke();
  // Two genuinely transparent semicircular ticket notches, including fallback.
  c.save();c.globalCompositeOperation='destination-out';
- for(const x of [80,920]){c.beginPath();c.arc(x,1368,22,0,Math.PI*2);c.fill();}
+ for(const x of [80,920]){c.beginPath();c.arc(x,1368,18,0,Math.PI*2);c.fill();}
  c.restore();
  }
  return surface;
