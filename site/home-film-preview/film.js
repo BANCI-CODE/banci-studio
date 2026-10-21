@@ -10,7 +10,7 @@ function setLoading(state,message=''){
 }
 setLoading('loading');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'),cache=new Map();let data=[],target=0,current=0,velocity=0,frame=0,last=0,width=1,height=1,drag=null,wheelSum=0,wheelStamp=0,suppressClick=0,paused=false,hovered=false,manualUntil=0,autoDirection=1,heroVisible=true,navigating=false;
-let gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false});let program,locations,buffer,count;let pixelPull=0,pixelSpeed=0,entryStarted=-Infinity,entryDirection=-1;
+let gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:true});let program,locations,buffer,count;let pixelPull=0,pixelSpeed=0,entryStarted=-Infinity,entryDirection=-1;
 function shader(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
 function setup(){if(!gl)return;program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,`attribute vec2 a;uniform vec2 viewport;uniform vec4 rect;uniform float bend;uniform float tilt;varying vec2 uv;void main(){uv=a;vec2 p=rect.xy+(a-.5)*rect.zw;// Keep the two halves firm; the central pixel columns form the pulled bridge.
 float seam=smoothstep(.36,.64,a.x);
@@ -31,10 +31,13 @@ else if(uv.x>right)sampleUV.x=sourceRight+(uv.x-right)*(1.-sourceRight)/(1.-righ
 else sampleUV.x=mix(sourceLeft,sourceRight,(uv.x-left)/(right-left));
 vec2 frontUV=sampleUV+vec2(0.,slide*.18);vec2 rearUV=sampleUV-vec2(0.,slide);
 vec4 front=texture2D(image,frontUV);vec4 rear=texture2D(rearImage,rearUV);
-front.a*=step(0.,frontUV.y)*step(frontUV.y,1.);rear.a*=step(0.,rearUV.y)*step(rearUV.y,1.);
+front*=step(0.,frontUV.y)*step(frontUV.y,1.);rear*=step(0.,rearUV.y)*step(rearUV.y,1.);
+// Feather only the join over a few source pixels; keep both ticket cutouts crisp.
+front*=1.-smoothstep(1284./1480.,1292./1480.,frontUV.y);
 float alpha=front.a+rear.a*(1.-front.a);
-vec3 color=(front.rgb*front.a+rear.rgb*rear.a*(1.-front.a))/max(alpha,.00001);
-gl_FragColor=vec4(color,alpha*opacity*mask);}`));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('Unable to create image renderer');gl.useProgram(program);locations={a:gl.getAttribLocation(program,'a')};for(const n of['viewport','rect','bend','opacity','planeSize','uvScale','tilt','image','rearImage','slide','strain'])locations[n]=gl.getUniformLocation(program,n);const mesh=[];for(let y=0;y<24;y++)for(let x=0;x<48;x++){const x0=x/48,x1=(x+1)/48,y0=y/24,y1=(y+1)/24;mesh.push(x0,y0,x1,y0,x0,y1,x0,y1,x1,y0,x1,y1);}buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh),gl.STATIC_DRAW);count=mesh.length/2;gl.enableVertexAttribArray(locations.a);gl.vertexAttribPointer(locations.a,2,gl.FLOAT,false,0,0);gl.uniform1i(locations.image,0);gl.uniform1i(locations.rearImage,1);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);}
+// Premultiplied sampling avoids dark fringes from transparent texture pixels.
+vec3 color=front.rgb+rear.rgb*(1.-front.a);
+gl_FragColor=vec4(color,alpha)*(opacity*mask);}`));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('Unable to create image renderer');gl.useProgram(program);locations={a:gl.getAttribLocation(program,'a')};for(const n of['viewport','rect','bend','opacity','planeSize','uvScale','tilt','image','rearImage','slide','strain'])locations[n]=gl.getUniformLocation(program,n);const mesh=[];for(let y=0;y<24;y++)for(let x=0;x<48;x++){const x0=x/48,x1=(x+1)/48,y0=y/24,y1=(y+1)/24;mesh.push(x0,y0,x1,y0,x0,y1,x0,y1,x1,y0,x1,y1);}buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh),gl.STATIC_DRAW);count=mesh.length/2;gl.enableVertexAttribArray(locations.a);gl.vertexAttribPointer(locations.a,2,gl.FLOAT,false,0,0);gl.uniform1i(locations.image,0);gl.uniform1i(locations.rearImage,1);gl.enable(gl.BLEND);gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);}
 function frameSize(){const w=Math.min(height*.86/1.48,width*.76,420);return{w,h:w*1.48,ratio:1/1.48,gap:width<600?38:64};}
 // One shared card composition and proportion for every viewport.
 function artworkColor(im){
