@@ -110,7 +110,7 @@ function cardSurface(im, item, index, layer='combined') {
   rows.forEach((row,i)=>c.fillText(row,48,y+i*leading));return rows.length;
  }
  const titleRows=lines(item.title,996,'400 76px '+cardTitleType,82,2,'#fff',true);
- lines(item.description,996+titleRows*82+18,'400 38px '+cardType,50,2,'#f5f5f2',true);
+ lines(item.description,996+titleRows*82+18,'400 38px '+cardType,50,2,'rgba(245,245,242,.75)',true);
 
  }
  if(layer!=='front'){

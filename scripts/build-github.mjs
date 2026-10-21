@@ -32,7 +32,7 @@ async function injectSharedSystems(dir) {
     html = html.replace(/(\/language-system\.(?:js|css))(?:\?[^"']*)?(?=["'])/g, '$1?v=portfolio-control-20261021');
     html = html.replace(/(\/design-system\.css)(?:\?[^"']*)?(?=["'])/g, '$1?v=nav-contrast-20261021');
     // Version both sides of the project handoff, including legacy static pages.
-    html = html.replace(/(\/(?:nav-system\.(?:js|css)|home-film-preview\/film\.(?:js|css)))(?:\?[^"']*)?(?=["'])/g, (_, asset) => asset + '?v=' + (asset.includes('/film.') ? 'portfolio-scale-r3-20261021' : 'nav-contrast-20261021'));
+    html = html.replace(/(\/(?:nav-system\.(?:js|css)|home-film-preview\/film\.(?:js|css)))(?:\?[^"']*)?(?=["'])/g, (_, asset) => asset + '?v=' + (asset.includes('/film.') ? 'card-copy-75-20261021' : 'nav-contrast-20261021'));
     html = html.replace(/<header\b([^>]*?)class="([^"]*)"([^>]*)>/g, (tag, before, classes, after) => {
       if (!/(?:^|\s)(?:site-header|aku-nav|project-nav)(?:\s|$)/.test(classes)) return tag;
       const names = new Set(classes.split(/\s+/));
@@ -40,7 +40,7 @@ async function injectSharedSystems(dir) {
       return `<header${before}class="${[...names].join(' ')}"${after}>`;
     });
     // Shared typography follows page styles so mixed-script copy stays consistent.
-    if (!html.includes('/typography.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/typography.css?v=portfolio-scale-r3-20261021"></head>');
+    if (!html.includes('/typography.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/typography.css?v=card-copy-75-20261021"></head>');
     html = enhanceSeoAccessibility(html, file, "github-dist");
     html = await enhanceImageMarkup(html, "github-dist");
     await writeFile(file, html);
