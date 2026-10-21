@@ -281,7 +281,9 @@ if(!document.getElementById('nav-acrylic-defs')){
  const resolve=()=>{queued=false;document.querySelectorAll('.nav-system-shell').forEach(h=>{
  const rect=h.getBoundingClientRect(),y=Math.max(0,Math.min(innerHeight-1,rect.top+rect.height/2));
  const tones=[.2,.5,.8].map(f=>{
- const el=document.elementsFromPoint(innerWidth*f,y).find(e=>!h.contains(e)&&!e.closest('.mobile-navigation')&&e!==document.documentElement);
+ const el=document.elementsFromPoint(innerWidth*f,y).find(e=>!h.contains(e)&&!e.closest('.mobile-navigation,.project-handoff,.film-departure')&&e!==document.documentElement);
+ const section=el?.closest('[data-header-tone]');
+ if(section)return section.dataset.headerTone;
  let node=el;
  while(node){
  if(node.dataset?.headerTone)return node.dataset.headerTone;
@@ -297,7 +299,7 @@ if(!document.getElementById('nav-acrylic-defs')){
  })};
  const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(resolve)}};
  document.querySelectorAll('.nav-system-shell').forEach(h=>new MutationObserver(schedule).observe(h,{attributes:true,attributeFilter:['data-tone','class'],subtree:true}));
- resolve();addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});
+ resolve();addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});addEventListener('pageshow',schedule);addEventListener('banci:handoff-complete',schedule);
 }
 
 document.querySelectorAll('.back-top').forEach(button=>{button.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>';button.setAttribute('aria-label','返回顶部')});
@@ -315,7 +317,7 @@ window.BanciProjectTransition=(item)=>{
  const description=document.createElement('p');description.className='project-handoff__description';description.textContent=item.description||'';
  const track=document.createElement('div');track.className='project-handoff__track';track.setAttribute('aria-label','正在准备项目内容');track.innerHTML='<span></span>';
  const panel=document.createElement('div');panel.className='project-handoff__panel';panel.append(circle,category,title,description,track);veil.append(panel);document.body.append(veil);
- return {veil,finish:async()=>{veil.classList.add('is-ready');await new Promise(r=>setTimeout(r,180));if(!matchMedia('(prefers-reduced-motion: reduce)').matches)await veil.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-12px)'}],{duration:320,easing:'ease',fill:'forwards'}).finished;veil.remove();}};
+ return {veil,finish:async()=>{veil.classList.add('is-ready');await new Promise(r=>setTimeout(r,180));if(!matchMedia('(prefers-reduced-motion: reduce)').matches)await veil.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-12px)'}],{duration:320,easing:'ease',fill:'forwards'}).finished;veil.remove();window.dispatchEvent(new Event('banci:handoff-complete'));}};
 };
 (async()=>{
  let pending;try{pending=JSON.parse(sessionStorage.getItem('banci-film-arrival')||'null');sessionStorage.removeItem('banci-film-arrival');}catch{return;}
