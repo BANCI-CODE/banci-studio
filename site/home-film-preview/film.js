@@ -193,7 +193,9 @@ function resize(){
  });
 }
 try{setup();}catch(error){gl=null;canvas.hidden=true;setLoading('loading');console.warn(error);}
-fetch('/home-film-preview/data.json').then(r=>{if(!r.ok)throw Error('作品列表无法加载');return r.json();}).then(items=>{data=items;const ticks=document.querySelector('.film-ticks');items.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${String(i+1).padStart(2,'0')} ${d.title}`);b.addEventListener('click',()=>go(i));ticks.append(b);});update();resize();}).catch(e=>{setLoading('error',document.documentElement.lang.startsWith('en')?'Unable to load artworks. Please refresh.':'作品暂时无法加载，请刷新重试');});
+// Pair this small mutable manifest with its renderer; never reuse an old neutral palette.
+const filmDataVersion=new URL(document.currentScript?.src||'/home-film-preview/film.js',location.href).searchParams.get('v')||'palette-ticket-sync-20261022';
+fetch('/home-film-preview/data.json?v='+encodeURIComponent(filmDataVersion),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('作品列表无法加载');return r.json();}).then(items=>{data=items;const ticks=document.querySelector('.film-ticks');items.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${String(i+1).padStart(2,'0')} ${d.title}`);b.addEventListener('click',()=>go(i));ticks.append(b);});update();resize();}).catch(e=>{setLoading('error',document.documentElement.lang.startsWith('en')?'Unable to load artworks. Please refresh.':'作品暂时无法加载，请刷新重试');});
 
 async function openProject(){
  if(navigating||!data[target])return;
