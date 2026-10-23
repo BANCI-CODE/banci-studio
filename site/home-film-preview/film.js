@@ -248,7 +248,11 @@ document.querySelector('#film-link').addEventListener('click',e=>{if(e.button||e
 addEventListener('pageshow',e=>{if(e.persisted){document.querySelector('.film-departure')?.remove();document.querySelector('.project-handoff')?.remove();canvas.style.opacity='';navigating=false;paused=reduce.matches;syncAuto();request();}});
 
 new ResizeObserver(resize).observe(stage);
-new IntersectionObserver(entries=>{heroVisible=entries[0].intersectionRatio>.55;if(heroVisible)request();else if(mistTimer){clearTimeout(mistTimer);mistTimer=0;}},{threshold:[0,.55,1]}).observe(stage.closest('.film-main'));
+// Sticky panels remain geometrically visible even when a later chapter covers them.
+let heroInViewport=true,heroUncovered=true;
+function syncHeroVisibility(){heroVisible=heroInViewport&&heroUncovered;if(heroVisible)request();else if(mistTimer){clearTimeout(mistTimer);mistTimer=0;}}
+new IntersectionObserver(entries=>{heroInViewport=entries[0].intersectionRatio>.55;syncHeroVisibility();},{threshold:[0,.55,1]}).observe(stage.closest('.film-main'));
+addEventListener('banci:home-stack-visibility',e=>{heroUncovered=e.detail.visible;syncHeroVisibility();});
 stage.addEventListener('wheel',e=>{if(!data.length||(!e.shiftKey&&Math.abs(e.deltaY)>=Math.abs(e.deltaX)))return;const delta=e.shiftKey?e.deltaY:e.deltaX;const now=performance.now();if((target===0&&delta<0)||(target===data.length-1&&delta>0))return;e.preventDefault();if(now-wheelStamp<550)return;wheelSum+=delta*(e.deltaMode===1?16:1);if(Math.abs(wheelSum)>45){go(target+Math.sign(wheelSum));wheelSum=0;wheelStamp=now;}},{passive:false});
 stage.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;drag={x:e.clientX,y:e.clientY,start:current,dx:0,locked:false};stage.setPointerCapture(e.pointerId);});
 stage.addEventListener('pointermove',e=>{if(!drag||!data.length)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(!drag.locked&&Math.abs(dx)>8&&Math.abs(dx)>Math.abs(dy))drag.locked=true;if(!drag.locked)return;drag.dx=dx;const size=frameSize();const next=drag.start-dx/(size.w+size.gap)*.85;current=Math.max(-.3,Math.min(data.length-1+.3,next));request();});
