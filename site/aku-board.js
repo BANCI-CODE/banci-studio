@@ -131,15 +131,14 @@
 
   function positionPreview(dot) {
     if (!dot) return;
-    if(coarseOrMobile.matches && !lockedDay){preview.classList.remove('is-visible');return;}
     const stageRect=stage.getBoundingClientRect(), dotRect=dot.getBoundingClientRect();
     const w=preview.offsetWidth,h=preview.offsetHeight;
     const dx=dotRect.left-stageRect.left+dotRect.width/2;
     const dy=dotRect.top-stageRect.top+dotRect.height/2;
     const x=Math.max(0,Math.min(stageRect.width-w,dx-w/2));
-    const above=dotRect.top-h-18>70;
+    const above=dotRect.top-h-42>80;
     preview.style.setProperty('--preview-x',x+'px');
-    preview.style.setProperty('--preview-y',(above?dy-h-18:dy+18)+'px');
+    preview.style.setProperty('--preview-y',(above?dy-h-42:dy+42)+'px');
     preview.style.setProperty('--pointer-x',(dx-x)+'px');
     preview.dataset.pointer=above?'bottom':'top';
     preview.classList.add('is-visible');

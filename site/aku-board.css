@@ -537,15 +537,17 @@ body.aku-board-page{--aku-columns:21;background:var(--aku-bg)}
 
 
 
-/* Anchored rectangle: the triangle stays aligned with the selected day. */
+/* Compact reference callout: rounded shoulder, large marker and small matrix dot. */
 body.aku-board-page .evolution-board__stage{grid-template-columns:1fr}
-body.aku-board-page .evolution-board__stage>.aku-preview{position:absolute;display:block;left:0;top:0;width:min(220px,64vw);max-width:none;margin:0;opacity:0;pointer-events:none;overflow:visible;transform:translate(var(--preview-x),var(--preview-y));z-index:30;border:1px solid #d9ded3;border-radius:8px;box-shadow:0 8px 24px #0005}
+body.aku-board-page .evolution-board__stage>.aku-preview{position:absolute;display:block;left:0;top:0;width:clamp(132px,34vw,176px);max-width:none;margin:0;opacity:0;pointer-events:none;overflow:visible;transform:translate(var(--preview-x),var(--preview-y));z-index:30;border:4px solid #777a75;border-radius:15px;background:#e3e4e0;box-shadow:none}
 body.aku-board-page .evolution-board__stage>.aku-preview.is-visible{opacity:1;pointer-events:auto}
-body.aku-board-page .aku-preview__image-wrap{border-radius:7px 7px 0 0;overflow:hidden;aspect-ratio:1}
-body.aku-board-page .aku-preview__content{border-top:1px solid #1b241b24;padding:12px}
-body.aku-board-page .aku-preview h2{font-size:20px}
-body.aku-board-page .aku-preview__controls{border-radius:0 0 7px 7px;overflow:hidden}
+body.aku-board-page .aku-preview__image-wrap{display:block;aspect-ratio:1;border-radius:10px;overflow:hidden}
+body.aku-board-page .aku-preview__image-wrap img{width:100%;height:100%;object-fit:cover}
+body.aku-board-page .aku-preview__content,body.aku-board-page .aku-preview__controls{display:none!important}
 body.aku-board-page .aku-preview::before{display:none!important}
-body.aku-board-page .aku-preview::after{content:"";display:block;position:absolute;left:var(--pointer-x,50%);width:28px!important;height:16px!important;transform:translateX(-50%);background:#eef0ea!important;z-index:1}
-body.aku-board-page .aku-preview[data-pointer="bottom"]::after{top:auto!important;bottom:-15px!important;clip-path:polygon(0 0,100% 0,50% 100%)!important}
-body.aku-board-page .aku-preview[data-pointer="top"]::after{top:-15px!important;bottom:auto!important;clip-path:polygon(50% 0,100% 100%,0 100%)!important;background:#f3f1eb!important}
+body.aku-board-page .aku-preview::after{content:"";display:block;position:absolute;left:var(--pointer-x,50%);width:64px!important;height:38px!important;transform:translateX(-50%);background:transparent!important;clip-path:none!important;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 38'%3E%3Cpath fill='%23e3e4e0' d='M0 0H64C55 0 51 9 45 16L40 22Q32 32 24 22L19 16C13 9 9 0 0 0Z'/%3E%3Ccircle cx='32' cy='13' r='8' fill='%2362b454'/%3E%3C/svg%3E")!important;background-size:100% 100%!important}
+body.aku-board-page .aku-preview[data-pointer="bottom"]::after{top:auto!important;bottom:-38px!important}
+body.aku-board-page .aku-preview[data-pointer="top"]::after{top:-38px!important;bottom:auto!important;transform:translateX(-50%) rotate(180deg)}
+body.aku-board-page .aku-dot--current::before{background:#dfe3dc;transform:none;box-shadow:none;opacity:.85}
+body.aku-board-page .aku-dot.is-active::before{background:#62b454;transform:none;box-shadow:none;opacity:1}
+body.aku-board-page .aku-dot.is-active:hover::before{transform:none;box-shadow:none}
