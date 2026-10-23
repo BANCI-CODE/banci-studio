@@ -133,14 +133,21 @@
     if (!dot) return;
     const stageRect=stage.getBoundingClientRect(), dotRect=dot.getBoundingClientRect();
     const w=preview.offsetWidth,h=preview.offsetHeight;
-    const dx=dotRect.left-stageRect.left+dotRect.width/2;
-    const dy=dotRect.top-stageRect.top+dotRect.height/2;
-    const x=Math.max(0,Math.min(stageRect.width-w,dx-w/2));
-    const above=dotRect.top-h-42>80;
+    const dx=dotRect.left-stageRect.left-stage.clientLeft+dotRect.width/2;
+    const dy=dotRect.top-stageRect.top-stage.clientTop+dotRect.height/2;
+    const gap=42;
+    let x=dx-w/2,y,side;
+    // Never slide the pointer along the frame. Edge dots use a centred side callout.
+    if(x<0){x=dx+gap;y=dy-h/2;side='left';}
+    else if(x+w>stage.clientWidth){x=dx-w-gap;y=dy-h/2;side='right';}
+    else {
+      const above=dotRect.top-h-gap>80;
+      y=above?dy-h-gap:dy+gap;side=above?'bottom':'top';
+    }
     preview.style.setProperty('--preview-x',x+'px');
-    preview.style.setProperty('--preview-y',(above?dy-h-42:dy+42)+'px');
-    preview.style.setProperty('--pointer-x',(dx-x)+'px');
-    preview.dataset.pointer=above?'bottom':'top';
+    preview.style.setProperty('--preview-y',y+'px');
+    preview.style.setProperty('--pointer-x','50%');
+    preview.dataset.pointer=side;
     preview.classList.add('is-visible');
   }
 

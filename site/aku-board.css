@@ -551,3 +551,7 @@ body.aku-board-page .aku-preview[data-pointer="top"]::after{top:-38px!important;
 body.aku-board-page .aku-dot--current::before{background:#dfe3dc;transform:none;box-shadow:none;opacity:.85}
 body.aku-board-page .aku-dot.is-active::before{background:#62b454;transform:none;box-shadow:none;opacity:1}
 body.aku-board-page .aku-dot.is-active:hover::before{transform:none;box-shadow:none}
+
+/* Every connector is centred on its frame edge, including edge-of-grid callouts. */
+body.aku-board-page .aku-preview[data-pointer="left"]::after{left:-19px;top:50%!important;bottom:auto!important;transform:translate(-50%,-50%) rotate(90deg)}
+body.aku-board-page .aku-preview[data-pointer="right"]::after{left:calc(100% + 19px);top:50%!important;bottom:auto!important;transform:translate(-50%,-50%) rotate(-90deg)}
