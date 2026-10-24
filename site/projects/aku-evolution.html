@@ -6,8 +6,8 @@
   <meta name="description" content="AKU Evolution Board — 365 天视觉创作计划，每个点对应一天的作品。">
   <title>Evolution Board — AKU World</title>
   <link rel="icon" href="/banci.svg">
-  <link rel="stylesheet" href="/aku-board.css?v=center-pin-20261023">
-<link rel="stylesheet" href="/nav-system.css?v=75"><link rel="stylesheet" href="/language-system.css"><link rel="stylesheet" href="/responsive-system.css"><link rel="stylesheet" href="/design-system.css?v=90"><link rel="preload" href="/content/aku/aku-config.json?v=perf3" as="fetch" crossorigin><link rel="stylesheet" href="/system/tokens.css?v=1"><link rel="stylesheet" href="/aku-formats/formats.css?v=1"></head>
+  <link rel="stylesheet" href="/aku-board.css?v=day-map-20261024">
+<link rel="stylesheet" href="/nav-system.css?v=75"><link rel="stylesheet" href="/language-system.css"><link rel="stylesheet" href="/responsive-system.css"><link rel="stylesheet" href="/design-system.css?v=90"><link rel="preload" href="/content/aku/aku-config.json?v=day-map-20261024" as="fetch" crossorigin><link rel="stylesheet" href="/system/tokens.css?v=1"><link rel="stylesheet" href="/aku-formats/formats.css?v=1"></head>
 <body class="aku-board-page">
   <header class="site-header" data-tone="dark">
     <a class="logo" href="/" aria-label="BANCI home"><img src="/banci.svg" alt=""><b>BANCI</b></a>
@@ -24,6 +24,7 @@
       </div>
       <div class="evolution-board__stage" id="aku-board-stage">
         <article class="aku-preview" id="aku-preview" aria-live="polite" aria-atomic="true">
+          <span class="aku-preview__number">DAY 213</span>
           <div class="aku-preview__image-wrap">
             <img id="aku-preview-image" alt="" decoding="async" loading="lazy" hidden>
             <div class="aku-preview__placeholder" id="aku-preview-placeholder"><span>AKU DAILY</span><strong>载入中</strong></div>
@@ -37,8 +38,9 @@
             <button type="button" data-step="1" aria-label="下一张作品"><span>NEXT</span> →</button>
           </div>
         </article>
-        <div class="aku-matrix-wrap"><img class="aku-board-character" src="/aku-board/character.png" alt="" aria-hidden="true" width="400" height="1135"><div class="aku-matrix" id="aku-matrix" role="grid" aria-label="AKU 365 天作品点阵"></div></div>
+        <div class="aku-matrix-wrap"><div class="aku-matrix" id="aku-matrix" role="grid" aria-label="AKU 365 天作品点阵"></div></div>
       </div>
+      <div class="aku-board-selection"><img class="aku-board-character" src="/aku-board/character.png" alt="" aria-hidden="true" width="400" height="1135"><p>当前绿点 <strong id="aku-selected-day" aria-live="polite">DAY 213</strong></p></div>
       <footer class="evolution-board__footer">
         <div class="aku-legend" aria-label="点阵图例"><span><i class="is-done"></i>已完成</span><span><i class="is-current"></i>当前</span><span><i class="is-upcoming"></i>未开始</span></div>
         <p><span class="desktop-instruction">HOVER TO PREVIEW · CLICK TO LOCK · ESC TO RESET</span><span class="mobile-instruction">点击圆点，查看当天作品</span></p>
@@ -46,8 +48,8 @@
     </section>
   </main>
   <noscript><p class="aku-noscript">请启用 JavaScript 以浏览 AKU 365 天作品点阵。</p></noscript>
-  <script src="/aku-data.js?v=perf4-20261018"></script>
-  <script src="/aku-board.js?v=center-pin-20261023"></script>
+  <script src="/aku-data.js?v=day-map-20261024"></script>
+  <script src="/aku-board.js?v=day-map-20261024"></script>
 <script src="/nav-system.js?v=perf-20261017" defer></script></body>
 </html>
 

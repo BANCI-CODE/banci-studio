@@ -49,7 +49,7 @@
       button.className = `aku-dot aku-dot--${status}`;
       button.dataset.day = String(day);
       button.setAttribute('role', 'gridcell');
-      button.setAttribute('aria-label', `Day ${day} — ${item.title}${isUpcoming ? '，未开始' : ''}`);
+      button.setAttribute('aria-label', `Day ${day} — ${item.squareTitle || item.title}${isUpcoming ? '，未开始' : ''}`);
 
       if (isUpcoming) {
         button.disabled = true;
@@ -83,18 +83,23 @@
     activeDay = day;
     updateActiveState(day);
     previewDay.textContent = `DAY ${padDay(day)}`;
-    previewTitle.textContent = item.title;
+    previewTitle.textContent = item.squareTitle || item.title;
     previewMeta.textContent = `WEEK ${item.week} / ${isCurrent ? 'CURRENT WORK' : 'DAILY WORK'}`;
     previewLock.textContent = lockedDay ? 'LOCKED' : isCurrent ? 'CURRENT' : 'PREVIEW';
 
-    const previewSrc = item.square || item.detail || item.thumb || '';
+    const previewSrc = item.square || '';
+    document.querySelector('#aku-selected-day').textContent = `DAY ${padDay(day)}`;
+    preview.querySelector('.aku-preview__number').textContent = `DAY ${padDay(day)}`;
     if (previewSrc) {
-      previewImage.alt = `Day ${day} ${item.title}`;
+      previewImage.alt = `Day ${day} ${item.squareTitle || item.title}`;
       if (previewImage.getAttribute('src') === previewSrc) {
         previewImage.hidden = false;
         previewPlaceholder.hidden = true;
         queueAdjacentPreload(day);
       } else {
+        previewImage.hidden = true;
+        previewPlaceholder.hidden = false;
+        previewPlaceholder.querySelector('strong').textContent = '载入中';
         const preload = new Image();
         preload.decoding = 'async';
         preload.onload = () => {
@@ -114,6 +119,7 @@
     } else {
       previewImage.hidden = true;
       previewPlaceholder.hidden = false;
+      previewPlaceholder.querySelector('strong').textContent = '正方形作品待补充';
     }
 
     preview.querySelector('[data-step="-1"]').disabled = day <= 1;

@@ -1,0 +1,1099 @@
+{
+  "missing": [
+    85,
+    100,
+    113,
+    119,
+    130,
+    155,
+    163,
+    170,
+    171,
+    172,
+    173
+  ],
+  "duplicates": [
+    {
+      "day": 4,
+      "selected": "AKU贴纸-周1-04-今天去遛狗.png",
+      "candidates": [
+        "AKU贴纸-周1-04-今天去遛狗.png",
+        "AKU贴纸-周1-04-今天去遛狗2.png"
+      ]
+    },
+    {
+      "day": 87,
+      "selected": "AKU贴纸-周13-87-今天赚外快.png",
+      "candidates": [
+        "AKU贴纸-周13-87-今天赚外快.png",
+        "AKU贴纸-周13-87-今天爱发明.png"
+      ]
+    },
+    {
+      "day": 103,
+      "selected": "AKU贴纸-周15-103-赶时间.png",
+      "candidates": [
+        "AKU贴纸-周15-103-赶时间.png",
+        "AKU贴纸-周15-103-爱发电.png"
+      ]
+    },
+    {
+      "day": 114,
+      "selected": "AKU贴纸-周17-114-情绪化.png",
+      "candidates": [
+        "AKU贴纸-周17-114-情绪化.png",
+        "AKU贴纸-周17-114-卡路里.png",
+        "AKU贴纸-周17-114-去漂流.png"
+      ]
+    },
+    {
+      "day": 135,
+      "selected": "AKU正方形贴纸-20周-135-运动会01.png",
+      "candidates": [
+        "AKU正方形贴纸-20周-135-运动会01.png",
+        "AKU正方形贴纸-19周-135-艺术家.png"
+      ]
+    },
+    {
+      "day": 162,
+      "selected": "AKU正方形贴纸-24周-162-许愿星.png",
+      "candidates": [
+        "AKU正方形贴纸-24周-162-许愿星.png",
+        "AKU正方形贴纸-23周-162-苦骑士.png"
+      ]
+    }
+  ],
+  "changed": [
+    27,
+    42,
+    48,
+    64,
+    66,
+    77,
+    98,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    137,
+    153,
+    169,
+    175,
+    181,
+    200
+  ],
+  "mapping": [
+    {
+      "day": 1,
+      "source": "AKU贴纸-周1-01-今天去买菜.png",
+      "sha256": "5cd3d6b8c6c1ed5c252267ca30dd06153f04634fbd1882ce0b5b08653b07d972"
+    },
+    {
+      "day": 2,
+      "source": "AKU贴纸-周1-02-今天很害怕.png",
+      "sha256": "6d07a82811ad3f5f7a54f9647381194d1585be78d22d0a5785ab2ef08fcd10e3"
+    },
+    {
+      "day": 3,
+      "source": "AKU贴纸-周1-03-今天在打坐.png",
+      "sha256": "5f24f753cdb4e6c7bc6b227872857d89f0863bac63a0892789f82b891129619f"
+    },
+    {
+      "day": 4,
+      "source": "AKU贴纸-周1-04-今天去遛狗.png",
+      "sha256": "212c4811387004db1129c401b0eb4409abba65435883f097f59945c84447b116"
+    },
+    {
+      "day": 5,
+      "source": "AKU贴纸-周1-05-今天收垃圾.png",
+      "sha256": "cf9fbd1a20f89652cab2d9d16e9c05160295e267cd17b1be784bffa92ace5383"
+    },
+    {
+      "day": 6,
+      "source": "AKU贴纸-周1-06-今天在学习.png",
+      "sha256": "70daa2337f8057648f4550a826364cebe5ae8e90fbbae4101d06afb220f3b148"
+    },
+    {
+      "day": 7,
+      "source": "AKU贴纸-周1-07-今天在片场.png",
+      "sha256": "b661d33f8171cf55b4f96faeaded29e0d93817e3aeb7b67f7795d62dcebe53c4"
+    },
+    {
+      "day": 8,
+      "source": "AKU贴纸-周2-08-今天送外卖.png",
+      "sha256": "ed6f8e313bb8ad4d5b263ebc4b0265b49f129159b571775b383c783b13eefe2a"
+    },
+    {
+      "day": 9,
+      "source": "AKU贴纸-周2-09-今天在解说.png",
+      "sha256": "64120e4720052d4d1121d1caf4898a7cf9abef6fa427bfe555d1f10664367fb8"
+    },
+    {
+      "day": 10,
+      "source": "AKU贴纸-周2-10-今天画漫画.png",
+      "sha256": "24fc785e3b00d9499d26f96ca25db30d8aaa2a3b6dd29c6f8a61cead81eeb2dc"
+    },
+    {
+      "day": 11,
+      "source": "AKU贴纸-周2-11-今天爬爬山.png",
+      "sha256": "672dc76aab3daabda921e9b691811405273a47d4b1484e2edf9b20e4d6362e8f"
+    },
+    {
+      "day": 12,
+      "source": "AKU贴纸-周2-12-今天看相片.png",
+      "sha256": "5c715aecc90cda84332270750437699290f501520d36057ac927086a0db56b89"
+    },
+    {
+      "day": 13,
+      "source": "AKU贴纸-周2-13-今天画什么.png",
+      "sha256": "7195f6dad7848e4a65309d14ee737263032c088a81866cfb0b0c671bbfff509d"
+    },
+    {
+      "day": 14,
+      "source": "AKU贴纸-周2-14-今天跑出租.png",
+      "sha256": "cc1eba53c688d81301afc6f01c1bed165ff0a98fa831c6eaf564e89c286cdf87"
+    },
+    {
+      "day": 15,
+      "source": "AKU贴纸-周3-15-今天接飞盘.png",
+      "sha256": "89f242f875914be7fe94ac1c56dab3ee1458857f3d23e1544102e2e1304b8228"
+    },
+    {
+      "day": 16,
+      "source": "AKU贴纸-周3-16-今天挤地铁.png",
+      "sha256": "458b73ba95d5fbb2cf8e4fd3f76457448e1536abbc238be29376ba1f08c0f1e9"
+    },
+    {
+      "day": 17,
+      "source": "AKU贴纸-周3-17-今天在躺平.png",
+      "sha256": "f9d480250d387aa8fabe0b90c1546628bbc713efc92389bf9aeaa0343513d797"
+    },
+    {
+      "day": 18,
+      "source": "AKU贴纸-周3-18-今天在带队.png",
+      "sha256": "0133ecfa0354e363a3b6de6b6af6b6daa79d68b4ce96fe799a4974076ad3579d"
+    },
+    {
+      "day": 19,
+      "source": "AKU贴纸-周3-19-今天翻冰箱.png",
+      "sha256": "f07a5da549aa816aade9a18f5ef89779cdfe2121a45f94e1c1714b6c66853930"
+    },
+    {
+      "day": 20,
+      "source": "AKU贴纸-周3-20-今天去涂鸦.png",
+      "sha256": "fe347da61cfd5a8b170ecd95042b7e961787475d64c58ef54f4c4340f39d4574"
+    },
+    {
+      "day": 21,
+      "source": "AKU贴纸-周3-21-今天追日落.png",
+      "sha256": "18a7ca2c5c4fc30d4133321effd74eb1b0ac165caa60a515115a15d4cb97e5db"
+    },
+    {
+      "day": 22,
+      "source": "AKU贴纸-周4-22-今天学射箭.png",
+      "sha256": "7cdd8a3c1122dc8be9acc07b3db4d04cb53e073e733fbc783743d593d3df2697"
+    },
+    {
+      "day": 23,
+      "source": "AKU贴纸-周4-23-今天睡不着.png",
+      "sha256": "277e8ba0f50cc8aaad72e7583a9ffcffda55db420c187efcf915e26fcfbc72e5"
+    },
+    {
+      "day": 24,
+      "source": "AKU贴纸-周4-24-今天在读信.png",
+      "sha256": "60ad71646a3f5ce4cf4bb30a9356c8bb324f0310d776a2248aedad34e7c83ed7"
+    },
+    {
+      "day": 25,
+      "source": "AKU贴纸-周4-25-今天陪朋友.png",
+      "sha256": "e024e5b3912cdd02ef65884d836add7907e36820b61cdc21452645f1ec106d22"
+    },
+    {
+      "day": 26,
+      "source": "AKU贴纸-周4-26-今天在拥抱.png",
+      "sha256": "548d3e422ff746e96dcd017c45b028196a5cc62b4aa8427fb4b18064354878dd"
+    },
+    {
+      "day": 27,
+      "source": "AKU贴纸-周4-27-今天遇阿和.png",
+      "sha256": "90292969f735c56166ce84b6087a85c3ba04385e9aba7f1a27aa21af64d7928f"
+    },
+    {
+      "day": 28,
+      "source": "AKU贴纸-周4-28-今天搭便车.png",
+      "sha256": "4e5c6c7f76c20dab92469ade5ba64f184c12c99917ca9e89766daf42739d27f5"
+    },
+    {
+      "day": 29,
+      "source": "AKU贴纸-周5-29-今天等结局.png",
+      "sha256": "67ef6ad4cbb3b5aa4379225611c925ee360d994c6e3302322ec7ba1411b9a125"
+    },
+    {
+      "day": 30,
+      "source": "AKU贴纸-周5-30-今天夜啤酒.png",
+      "sha256": "0cd55c4475736287f2e37d4f0be67a12fd4e19f2fef71673e49cf74405b5344f"
+    },
+    {
+      "day": 31,
+      "source": "AKU贴纸-周5-31-今天去超市.png",
+      "sha256": "98d0a7e6d8434a3d910643031af93f96eb6c7fc5a76e9184ed5d22c18b92bd71"
+    },
+    {
+      "day": 32,
+      "source": "AKU贴纸-周5-32-今天吃披萨.png",
+      "sha256": "8679cd269aecf33fac78f128557493f6abb76412a6a41d3a6c8f18c86f8178c5"
+    },
+    {
+      "day": 33,
+      "source": "AKU贴纸-周5-33-今天看画展.png",
+      "sha256": "4295a7959667e396fb91b1ca47ba61735a49b04c7e838dee4bec0f561c2d3885"
+    },
+    {
+      "day": 34,
+      "source": "AKU贴纸-周5-34-今天去搬画.png",
+      "sha256": "7b2931499b3531bdb8170ecde86f992069404ae7d2bf0315d889db934fff8a1e"
+    },
+    {
+      "day": 35,
+      "source": "AKU贴纸-周5-35-今天晒太阳.png",
+      "sha256": "0d5b2f8735df329806945b85fec1ddce9c6680092cfb2055a088d7b8687ced01"
+    },
+    {
+      "day": 36,
+      "source": "AKU贴纸-周6-36-今天坐地铁.png",
+      "sha256": "2db4fba704034d24a5b274e87114d86bfcce5cfbd739ceb00baaa6acb4d307b3"
+    },
+    {
+      "day": 37,
+      "source": "AKU贴纸-周6-37-今天摔一跤.png",
+      "sha256": "5d26bf595364ceaeaa152524763dd4cf98990c4511131ff3a9c3871b486a5e56"
+    },
+    {
+      "day": 38,
+      "source": "AKU贴纸-周6-38-今天在卖花.png",
+      "sha256": "584a2970adbb9dd43db67b7312964eba391ac70292579a6aa8f6b74383c09d45"
+    },
+    {
+      "day": 39,
+      "source": "AKU贴纸-周6-39-今天倒栽葱.png",
+      "sha256": "95768383738af325d7a1b1997460d4f1941643ead94bca82dfbd33af9c8fea3a"
+    },
+    {
+      "day": 40,
+      "source": "AKU贴纸-周6-40-今天买咖啡.png",
+      "sha256": "ae9e2cfcc69ef5bd7e85a247bd392eacb59f3cdf080595d4222aff4db6413157"
+    },
+    {
+      "day": 41,
+      "source": "AKU贴纸-周6-41-今天在运花.png",
+      "sha256": "cf7cc16752eb9dfea7f1c645f4b23e0ca0bf548c05e84cc306717a119a22dfd7"
+    },
+    {
+      "day": 42,
+      "source": "AKU贴纸-周6-42-阿河看报纸.png",
+      "sha256": "d8399a924475fb901b3a98e4861f71ec838d1b623ecda866f359364abb3dd3b3"
+    },
+    {
+      "day": 43,
+      "source": "AKU贴纸-周7-43-今天吃碗面.png",
+      "sha256": "14fa7a86960d0646db437547001359bdd590469beacd21238863d9efe7b00d7d"
+    },
+    {
+      "day": 44,
+      "source": "AKU贴纸-周7-44-今天回收站.png",
+      "sha256": "ef343aa0ebff2f66ae55e4ec32b7aa51fe382ea7f525f3c62d8b28dd8f590482"
+    },
+    {
+      "day": 45,
+      "source": "AKU贴纸-周7-45-今天爬架子.png",
+      "sha256": "7bf0f80786305f24bc0951f4ec323e1006edebe74c9a47f19241d2560630b7aa"
+    },
+    {
+      "day": 46,
+      "source": "AKU贴纸-周7-46-今天等救援.png",
+      "sha256": "c42450b69c3e3ad4ebf28ada912ab3af5d852145cbb97fd1eee97c177ddc98af"
+    },
+    {
+      "day": 47,
+      "source": "AKU贴纸-周7-47-今天去挖坑.png",
+      "sha256": "8ef0fa5b623f4324943ff217482ba3809f6dac70c09bda090e5a164cbe0dc3aa"
+    },
+    {
+      "day": 48,
+      "source": "AKU贴纸-周7-48-今天数鸭子.png",
+      "sha256": "8f59bea7f0962b4373e0c36b3aca491d9edf55c5e48516d2e0cea720caf10f4e"
+    },
+    {
+      "day": 49,
+      "source": "AKU贴纸-周7-49-今天看闲书.png",
+      "sha256": "18879727cebafe3274de291f2f8a93bf5368389b368c8e05a1c8c6c4bdf89cc6"
+    },
+    {
+      "day": 50,
+      "source": "AKU贴纸-周8-50-今天做手账.png",
+      "sha256": "6ec46304b22d0667f90707883f65ae2462269ea3e40484d5b1e51d9e63a2cef9"
+    },
+    {
+      "day": 51,
+      "source": "AKU贴纸-周8-51-今天赶高铁.png",
+      "sha256": "b625708d5dcfd5d183f4df8e28c85296f11c8e366cfd3454fc46ab2ede063e17"
+    },
+    {
+      "day": 52,
+      "source": "AKU贴纸-周8-52-今天丢气球.png",
+      "sha256": "dcededf81542dde8ae812745012a3680b6497da6456e0f014b143b8d6f028e6c"
+    },
+    {
+      "day": 53,
+      "source": "AKU贴纸-周8-53-今天组聚会.png",
+      "sha256": "17621f87a152d9df8a973416b9a9a5c2b662fc2a3d43977197ccf5ea61513413"
+    },
+    {
+      "day": 54,
+      "source": "AKU贴纸-周8-54-今天呆在家.png",
+      "sha256": "c4ea13dcea73f739bf526716ad93afb576279cd1af51214ab074c18a4f786ad3"
+    },
+    {
+      "day": 55,
+      "source": "AKU贴纸-周8-55-今天在自拍.png",
+      "sha256": "065a96ac821f9f1a1d76c83cf7387a24b931e3a676685ad180190cbfa874acd8"
+    },
+    {
+      "day": 56,
+      "source": "AKU贴纸-周8-56-今天递纸条.png",
+      "sha256": "b416923424c40465ffcd0e4d89fedaaa3c21e065e86ee9bbf47fca0b0072e2fe"
+    },
+    {
+      "day": 57,
+      "source": "AKU贴纸-周9-57-今天迎着风.png",
+      "sha256": "28eac901e79457e35f0b97152be99ebea7ef269c8099baa68df6d58a0f8a9943"
+    },
+    {
+      "day": 58,
+      "source": "AKU贴纸-周9-58-今天骑摇椅.png",
+      "sha256": "d743d4f1d05ed7b1d74b268336547d80b65aa941699ebeb3db4dab0c317042f9"
+    },
+    {
+      "day": 59,
+      "source": "AKU贴纸-周9-59-今天滑滑梯.png",
+      "sha256": "575deabb8fb8bf9f000c52f96b91878a062257276406d73d50c6dc45d44f9fc3"
+    },
+    {
+      "day": 60,
+      "source": "AKU贴纸-周9-60-今天荡秋千.png",
+      "sha256": "e6722938976cedd7a97901bb903e6ae14e931d2307d09140ac471d86c840eaa7"
+    },
+    {
+      "day": 61,
+      "source": "AKU贴纸-周9-61-今天在路口.png",
+      "sha256": "4815522ffa7fd5038e0b852f7fe32e164c24cbff3ae497c4d2ff43c1335e7cdb"
+    },
+    {
+      "day": 62,
+      "source": "AKU贴纸-周9-62-今天拜码头.png",
+      "sha256": "90a33bf1a1223bc45f9f2364ce3e25b04725d272121462d96562b7f4e6bd53ee"
+    },
+    {
+      "day": 63,
+      "source": "AKU贴纸-周9-63-今天舞龙头.png",
+      "sha256": "a814310844dc6485a2db6faff9c5f1a548c317721ba2108c1121d0e25ba41ebc"
+    },
+    {
+      "day": 64,
+      "source": "AKU贴纸-周10-64-今天在画室.png",
+      "sha256": "c93179f7c12c663a74a2693128a7767cc671c6cbc87da4adaf651f9b63ca891d"
+    },
+    {
+      "day": 65,
+      "source": "AKU贴纸-周10-65-今天下围棋.png",
+      "sha256": "45ac60fb1ebd4543b831271f4635b216f9696485c99efb7d19358070e6dea931"
+    },
+    {
+      "day": 66,
+      "source": "AKU贴纸-周10-66-今天去郊游.png",
+      "sha256": "832693f0794d30d43af4ad95ac3aa51903bd4338f3e6376890b652c87bd36805"
+    },
+    {
+      "day": 67,
+      "source": "AKU贴纸-周10-67-今天去开工.png",
+      "sha256": "171bd337bd3d7581171772562570595b07e736d324abb3c525abb1936b2e6008"
+    },
+    {
+      "day": 68,
+      "source": "AKU贴纸-周10-68-今天查信件.png",
+      "sha256": "12696a3705aef80b9c8053fe8fcd95a1728f99ddd060d058481f11277040b591"
+    },
+    {
+      "day": 69,
+      "source": "AKU贴纸-周10-69-今天发布会.png",
+      "sha256": "91f478fa5f9256ce40208ca9cda1c11470c3a6cef2c2c32525f17cf6f3adf3d8"
+    },
+    {
+      "day": 70,
+      "source": "AKU贴纸-周10-70-今天学击剑.png",
+      "sha256": "004d89aaee7d30127b084d235e11dbe62d7a86f5643b880155499a7c42fb9502"
+    },
+    {
+      "day": 71,
+      "source": "AKU贴纸-周11-71-今天去祈祷.png",
+      "sha256": "30275b903a8788d350cf9ba294b6c2f2c36ba361c8579c56c5a640fd45b72d3f"
+    },
+    {
+      "day": 72,
+      "source": "AKU贴纸-周11-72-今天做模特.png",
+      "sha256": "caabff68924e08cb2f0e84f433959f5538c86e63a43c84d04428d2dfa72cc1b6"
+    },
+    {
+      "day": 73,
+      "source": "AKU贴纸-周11-73-今天学吉他.png",
+      "sha256": "3fdf0d14ef7d3d543ad0316b6f0508ca3eecab70673fbca7aef7e27d37dfe49c"
+    },
+    {
+      "day": 74,
+      "source": "AKU贴纸-周11-74-今天骑摩托.png",
+      "sha256": "b178b53516ce8ea8a3f4e05870901a293b2d9aac7dbe849dd93c345d80c39de2"
+    },
+    {
+      "day": 75,
+      "source": "AKU贴纸-周11-75-今天苦师傅.png",
+      "sha256": "70aae3257983a85488136334f313b92a2182b228ac8bea1f1c6d3206e3d7e417"
+    },
+    {
+      "day": 76,
+      "source": "AKU贴纸-周11-76-今天搬沙发.png",
+      "sha256": "4ad1216f54c1c71290fa192b82fb64a545d76da5802f9cc796a19a04a3e79688"
+    },
+    {
+      "day": 77,
+      "source": "AKU贴纸-周11-77-今天人力车.png",
+      "sha256": "2ba3ea9b7c43990e999d0819ddd24676456872ff2b16e9c8c7122fae48a9bb1b"
+    },
+    {
+      "day": 78,
+      "source": "AKU贴纸-周12-78-今天头很大.png",
+      "sha256": "41e94803eeec0807a9102471301d27afb261f0a57a189b226c15dbd85c99af50"
+    },
+    {
+      "day": 79,
+      "source": "AKU贴纸-周12-79-今天去爬树.png",
+      "sha256": "35fb031d935be11aa76384cea72b7fb2f940f896d2411ecc643bc44475e5c495"
+    },
+    {
+      "day": 80,
+      "source": "AKU贴纸-周12-80-今天人力车.png",
+      "sha256": "5bc62ef49cdf3037c6a1cc063ab2763fec3af772a73f46f9c95b8255f6d3760b"
+    },
+    {
+      "day": 81,
+      "source": "AKU贴纸-周12-81-今天当模范.png",
+      "sha256": "55cb16599f50763ddb7d208fd4b826920f1bea349adc029ff3cfe52a63926980"
+    },
+    {
+      "day": 82,
+      "source": "AKU贴纸-周12-82-今天梦游镜.png",
+      "sha256": "e8033a4f71df867f86f7112e41745d66b08bf0bf6daa13ef1caf313b8e764afc"
+    },
+    {
+      "day": 83,
+      "source": "AKU贴纸-周12-83-今天翘脚脚.png",
+      "sha256": "195213d5edebfc0c96e70e4604d896c29b5ffefdb2d7a2eb3da2cf02530c1fff"
+    },
+    {
+      "day": 84,
+      "source": "AKU贴纸-周12-84-今天麦当当.png",
+      "sha256": "9fbe78dc990e086bbcf0a909a23e0dd78296f1a75e4968534f1d72472672b5fa"
+    },
+    {
+      "day": 86,
+      "source": "AKU贴纸-周13-86-今天脚踏车.png",
+      "sha256": "92741526ea3b04ead9b4fe2346647cc3ac849c9566816e96219561c8ec10bdeb"
+    },
+    {
+      "day": 87,
+      "source": "AKU贴纸-周13-87-今天赚外快.png",
+      "sha256": "e48de457e5ae4bdf02e01d962ed3df011f5a7aa3ee2cfd5b6d9fef3f9aa8eb34"
+    },
+    {
+      "day": 88,
+      "source": "AKU贴纸-周13-88-今天卡丁车.png",
+      "sha256": "80924ac6ee99b262f22f708f18c6dc7302b2b7e5a1c3578f363c1f993b7727dd"
+    },
+    {
+      "day": 89,
+      "source": "AKU贴纸-周13-89-今天自助餐.png",
+      "sha256": "83f7601f7ac737a537701fedaa16c5f456e7eb7771fa1938631d79403d2bb3bd"
+    },
+    {
+      "day": 90,
+      "source": "AKU贴纸-周13-90-今天单坐着.png",
+      "sha256": "314958d589c96f26675eb7a9f18923140d36ef3321dcebf1de7faeb045f30b72"
+    },
+    {
+      "day": 91,
+      "source": "AKU贴纸-周13-91-今天出个门.png",
+      "sha256": "d7e3d2ecfae5f1438af8f21e050bd7b2218076f31f8930b30b91353e8f037471"
+    },
+    {
+      "day": 92,
+      "source": "AKU贴纸-周14-92-今天去郊游.png",
+      "sha256": "e4f67f26d36ea00b3c6a0f47097fc601da10396e3d74828b5af9c937f2804983"
+    },
+    {
+      "day": 93,
+      "source": "AKU贴纸-周14-93-今天很优雅.png",
+      "sha256": "2e2a4972804d36bd7341074b65cc3f92d8fa2ca50797609047d4277ef0e7e6bd"
+    },
+    {
+      "day": 94,
+      "source": "AKU贴纸-周14-94-超自信.png",
+      "sha256": "be798c3de9338bc05177162f325bce7c3e8404edac08aa32e1cb008752ae4661"
+    },
+    {
+      "day": 95,
+      "source": "AKU贴纸-周14-95-独轮车.png",
+      "sha256": "33adf23ca54ffa4f72200bca61a6f2d0461680891622b2212586ea9b9c6a9e4c"
+    },
+    {
+      "day": 96,
+      "source": "AKU贴纸-周14-96-收快递.png",
+      "sha256": "c1cde608cf6eea46116d5476b3ec0ea5a2744bf75863887d220f147f1ebd9f35"
+    },
+    {
+      "day": 97,
+      "source": "AKU贴纸-周14-97-过肩摔.png",
+      "sha256": "5ac394675090ece1d4e39407d0fd39da15684d1c4d89fa40ed0b5c8f0d334454"
+    },
+    {
+      "day": 98,
+      "source": "AKU贴纸-周14-98-红灯停.png",
+      "sha256": "d90afc0a49df9d5115e7aac5ebb9ec2cb93435dc11977e2fc8d5e8f0c102eb85"
+    },
+    {
+      "day": 99,
+      "source": "AKU贴纸-周15-99-冲突点.png",
+      "sha256": "62d1306e1e9d5cc17a73b444a9f0b8ad9f76c982be755889a6f7b58d52e02143"
+    },
+    {
+      "day": 101,
+      "source": "AKU贴纸-周15-101-要起早.png",
+      "sha256": "97369421f25837f82e7362075b43543865297a1689abbcc2aa69a6e558f18e54"
+    },
+    {
+      "day": 102,
+      "source": "AKU贴纸-周15-102-跨过去.png",
+      "sha256": "95b185be214c9a7bacd96fec0e87b45be5ce555012c04335938dfb265875aa1a"
+    },
+    {
+      "day": 103,
+      "source": "AKU贴纸-周15-103-赶时间.png",
+      "sha256": "24d3749260995031b7a16edcbbac1adc4f7610d0fb2f010f69a15cdeba42af23"
+    },
+    {
+      "day": 104,
+      "source": "AKU贴纸-周15-104-植物学.png",
+      "sha256": "10fc9a205aabdfd99c4eb25ea60a47d0a512d2a6d557840fe8085eef4ecd1357"
+    },
+    {
+      "day": 105,
+      "source": "AKU贴纸-周15-105-做游戏.png",
+      "sha256": "58d498300957de82e2cbcbc358025b3129f7efdef442c1a2f4c1b52abc9d240d"
+    },
+    {
+      "day": 106,
+      "source": "AKU贴纸-周16-106-羽毛球.png",
+      "sha256": "180ac0ec4cc2a47db2cfae86f517d6974d5939195491fba38f1d50916a329975"
+    },
+    {
+      "day": 107,
+      "source": "AKU贴纸-周16-107-换生活.png",
+      "sha256": "11cff4bd7a1b80da524e3960ed92a6af669965d4c60aabb6d1caef752d6aa473"
+    },
+    {
+      "day": 108,
+      "source": "AKU贴纸-周16-108-吃什么.png",
+      "sha256": "4c1e2e85bdd9e4e5de565a8c9190fbeb5a0677750e4edefebe47721d777b8e2b"
+    },
+    {
+      "day": 109,
+      "source": "AKU贴纸-周16-109-钓鱼佬.png",
+      "sha256": "4b493d6452b28697fe25aecea4dd0c0ebe776970a2b91a7bc0957fd19491e107"
+    },
+    {
+      "day": 110,
+      "source": "AKU贴纸-周16-110-研究生.png",
+      "sha256": "925a45fac4dabda92eda4eb692896a3c2ddef06354ab145ae1858fd512a42724"
+    },
+    {
+      "day": 111,
+      "source": "AKU贴纸-周16-111-晾衣服.png",
+      "sha256": "964d36a51a675ebcec11c5834fcd3aed5995a1daa5c664c90c211d3860648a1e"
+    },
+    {
+      "day": 112,
+      "source": "AKU贴纸-周16-112-再就业.png",
+      "sha256": "8c7aa6ede7a431366fb0f5ef99bb19401d3fc59f2f7c52a2b8253800ed0e438c"
+    },
+    {
+      "day": 114,
+      "source": "AKU贴纸-周17-114-情绪化.png",
+      "sha256": "25bfa7d62a9196dbd87fe610295fba7bbbf99356dbfee7704b673db54c3b407b"
+    },
+    {
+      "day": 115,
+      "source": "AKU贴纸-周17-115-大讲堂.png",
+      "sha256": "3f903031f9afd81453948c9c2e5ba953516bfed33e4ffb7434a4bc3e839b57ff"
+    },
+    {
+      "day": 116,
+      "source": "AKU贴纸-周17-116-跳绳子2.png",
+      "sha256": "e15a4fa28d3452b422c2175f730804958a55fa8275b77f28440075940e37d72f"
+    },
+    {
+      "day": 117,
+      "source": "AKU贴纸-周17-117-需浇花.png",
+      "sha256": "56ffe0f45ca6c02cb77e4d329b28b78ea82a053dda6a8d1338d3debafbef7d8e"
+    },
+    {
+      "day": 118,
+      "source": "AKU贴纸-周17-118-新玩具.png",
+      "sha256": "a4910302740e12fb481f2fe5cc56cf57245e83af4facd959f040add935ca4275"
+    },
+    {
+      "day": 120,
+      "source": "AKU正方形贴纸-18周-120-塔罗牌.png",
+      "sha256": "2c20b8bf01238065723b97792cad0fc4dc1ab45ef085b47cc63476c67e5eac18"
+    },
+    {
+      "day": 121,
+      "source": "AKU正方形贴纸-18周-121-一人食.png",
+      "sha256": "4d0b38192d960b0c33d8d2e49ca6daeb40979ed283fdbc39f8e0cc44415ad8e2"
+    },
+    {
+      "day": 122,
+      "source": "AKU正方形贴纸-18周-122-便利店.png",
+      "sha256": "6c6e996ebb06650b04c69d6cc3cd38a02d32f302f2e27b9235adf1e544af6c46"
+    },
+    {
+      "day": 123,
+      "source": "AKU正方形贴纸-18周-123-失业生.png",
+      "sha256": "8cc88ab20f05188938b0acd34a31ed434b98eb5b3892e99dddde12b6c174aeca"
+    },
+    {
+      "day": 124,
+      "source": "AKU正方形贴纸-18周-124-天鹅湖.png",
+      "sha256": "bf680aff8885c7e731d99fa13766d99106ec989b772511140f6c3cd6a44f59f4"
+    },
+    {
+      "day": 125,
+      "source": "AKU正方形贴纸-18周-125-修理工.png",
+      "sha256": "20cb00e530f21a587feea7ff060441d5e731b3116278953f3cdbd04c0faeaf44"
+    },
+    {
+      "day": 126,
+      "source": "AKU正方形贴纸-18周-126-摘星辰.png",
+      "sha256": "de8d37c52fb13459fb7afef32685f9912e4fc2ea8a16165b3b4ab4086b21f8d9"
+    },
+    {
+      "day": 127,
+      "source": "AKU正方形贴纸-19周-127-异空间.png",
+      "sha256": "ffc375e95760838d8def9940409b5db7ecff345a080b368c47006794d44c1593"
+    },
+    {
+      "day": 128,
+      "source": "AKU正方形贴纸-19周-128-唱片店.png",
+      "sha256": "5991c9f905b701ffe93305098490b5317a4428130c3394a5f3699896121bc387"
+    },
+    {
+      "day": 129,
+      "source": "AKU正方形贴纸-19周-129-找秘密.png",
+      "sha256": "f0bf7e0c876891239d18fdbbd3dffcf460826090f1e8cb2f4b982e9d0ad3a062"
+    },
+    {
+      "day": 131,
+      "source": "AKU正方形贴纸-19周-131绕圈圈.png",
+      "sha256": "0eb5bd117f419c4be9c9f76c51c384f5eb6c9e12b56c99f0b6cd8c94c28c08b5"
+    },
+    {
+      "day": 132,
+      "source": "AKU正方形贴纸-19周-132-打印店.png",
+      "sha256": "78743f644834f059a4ed499cc8c1d97a185813fa3de5450a5630f7c27a0a90e7"
+    },
+    {
+      "day": 133,
+      "source": "AKU正方形贴纸-19周-133-油漆工.png",
+      "sha256": "824fe9e029c269b9f1ede65bd536952adeb71eb2ed56fa41a584c2ec484ad2aa"
+    },
+    {
+      "day": 134,
+      "source": "AKU正方形贴纸-20周-134-摇摇车.png",
+      "sha256": "0ee01e87e6bd65b28500f40f050e687bd4b562c631388a6542e20caf318fd251"
+    },
+    {
+      "day": 135,
+      "source": "AKU正方形贴纸-20周-135-运动会01.png",
+      "sha256": "e1ca893cad48583ec4cda725c79c622e9b7d078a4c41dd463e3b952f236fbc40"
+    },
+    {
+      "day": 136,
+      "source": "AKU正方形贴纸-20周-136-学游泳.png",
+      "sha256": "8f534c92c8b0dab71d79c3d89036daec97455b08845eb1a688cdc9139489c2d8"
+    },
+    {
+      "day": 137,
+      "source": "AKU正方形贴纸-20周-137-进度条.png",
+      "sha256": "8d63859d4b3f337c9a29be1cf1389f9f8a6878f367c4a1bfb9dbd294cc1c1fdd"
+    },
+    {
+      "day": 138,
+      "source": "AKU正方形贴纸-20周-138-挑战者.png",
+      "sha256": "1d27e3d4c40aacc355ad33b1c5386886cc0668d412960d257d6005944d404221"
+    },
+    {
+      "day": 139,
+      "source": "AKU正方形贴纸-20周-139-新生活.png",
+      "sha256": "b3e03f9a4a54f7b335d50b19f19baecd344d3529993968895dcb342dafeb036d"
+    },
+    {
+      "day": 140,
+      "source": "AKU正方形贴纸-20周-140-荒诞夜.png",
+      "sha256": "9ed1b15957cb5172efcdb677321c924535557bd2fafb5b4d66e4ccf9ecd51f68"
+    },
+    {
+      "day": 141,
+      "source": "AKU正方形贴纸-21周-141-鱼档口-人.png",
+      "sha256": "20fb07bb70e98b7dc5f63ce4eabed63b7ee584ce9d184d6ae71470d6169de956"
+    },
+    {
+      "day": 142,
+      "source": "AKU正方形贴纸-21周-142-许愿歌.png",
+      "sha256": "7c8aa6e7ebb1a4607ac3317526355ad83ad9d2736d54c98da642cc30fe4ef63b"
+    },
+    {
+      "day": 143,
+      "source": "AKU正方形贴纸-21周-143-少年游.png",
+      "sha256": "8bc023fd966dd4d0c87ab80c036234dea7a23ff5213db4f8dfbdcdffc0813e29"
+    },
+    {
+      "day": 144,
+      "source": "AKU正方形贴纸-21周-144-找拼图.png",
+      "sha256": "2a699f1c53de16877a7a64f2f5e7d3c37919fd5319395d4547cf7f51b8c414c6"
+    },
+    {
+      "day": 145,
+      "source": "AKU正方形贴纸-21周-145-早咖啡.png",
+      "sha256": "0ac11e8282e9e180ec7f1f2c9cb03a9a74c2264cc175eebb9e4764b7a1689679"
+    },
+    {
+      "day": 146,
+      "source": "AKU正方形贴纸-21周-146-脑暴图.png",
+      "sha256": "c97c57fd3f56a566227077a557d9f1e3115e36ed75bb5a66ca46d84aa2f18b3d"
+    },
+    {
+      "day": 147,
+      "source": "AKU正方形贴纸-21周-147-新专辑.png",
+      "sha256": "6cb7ec507052d074e1a42956863413d74aeff4b24a32a21666da6eea39be9876"
+    },
+    {
+      "day": 148,
+      "source": "AKU正方形贴纸-22周-148-飞天摔.png",
+      "sha256": "a4187b48845a23b59412def6580a5cbbea3867349e27feaf0329f65834c847d1"
+    },
+    {
+      "day": 149,
+      "source": "AKU正方形贴纸-22周-149-员工餐.png",
+      "sha256": "d4ab1d01ef4dfdbd99129e8fff0616bb7ffb084ab8b290daec098448b42173d2"
+    },
+    {
+      "day": 150,
+      "source": "AKU正方形贴纸-22周-150-七月份.png",
+      "sha256": "6a845e73c6b220e1b7fb929f7410c293e6115dc77c9df2e445f1d0c31b071423"
+    },
+    {
+      "day": 151,
+      "source": "AKU正方形贴纸-22周-151-做游戏.png",
+      "sha256": "90686d0f9f1f0a7c80700fc51875a8b6510efd6850235c0f084e7ac88fdb4694"
+    },
+    {
+      "day": 152,
+      "source": "AKU正方形贴纸-22周-152-成为鱼.png",
+      "sha256": "b5c77cea6a9fd7cc2395250650ffd61567f481bf0e553e17f5d5ceede5dbf19a"
+    },
+    {
+      "day": 153,
+      "source": "AKU正方形贴纸-22周-153-快递员.png",
+      "sha256": "325b374e8dbcbc74537381d1022992ce565f565d4bad484d9dbcb866180f687c"
+    },
+    {
+      "day": 154,
+      "source": "AKU正方形贴纸-22周-154-飞行家2.png",
+      "sha256": "3922bdbc4cf8a22e1771e161cddf4118092cc466020ae7f0db7f5e480145ca4c"
+    },
+    {
+      "day": 156,
+      "source": "AKU正方形贴纸-23周-156拿金牌2.png",
+      "sha256": "2b1daa9a99a910738a890cba69193986ad7ecc0b119f375e56a7a658e456e37f"
+    },
+    {
+      "day": 157,
+      "source": "AKU正方形贴纸-23周-157-向阳花.png",
+      "sha256": "fb2d7c57bda5b1b3b86ed51d051a4d4e01f946c095fec5a28c69d1299ab72564"
+    },
+    {
+      "day": 158,
+      "source": "AKU正方形贴纸-23周-158-动物园.png",
+      "sha256": "6bce71e146ae4ab16852da36fd48a7bf30473c536dc61bddce530f7f0f596032"
+    },
+    {
+      "day": 159,
+      "source": "AKU正方形贴纸-23周-159-竹蜻蜓.png",
+      "sha256": "d599b05fb1ba91ccdf21a45589ad3e4acc6e32f8cb92eff3ec4f656d97fdee49"
+    },
+    {
+      "day": 160,
+      "source": "AKU正方形贴纸-23周-160-求知欲.png",
+      "sha256": "41430d320035eb03901dadd7526ad0a7ca62c1d821032fd03f8c2598ee6a18e7"
+    },
+    {
+      "day": 161,
+      "source": "AKU正方形贴纸-23周-161-过夏天.png",
+      "sha256": "d475d7ed5861d3923159ff02f016d5dffde05759ae740420435b9aa7a84c3d8c"
+    },
+    {
+      "day": 162,
+      "source": "AKU正方形贴纸-24周-162-许愿星.png",
+      "sha256": "2a7dd9671c03b1f939be2fa4d80399ce56b521a39adc6d3474ebc1c96e24c3e4"
+    },
+    {
+      "day": 164,
+      "source": "AKU正方形贴纸-24周-164-酒保姆.png",
+      "sha256": "4b03af9a2ddd8ee5dfdbe2fa014013b22b0e7b593995d3bba9788865c95a9727"
+    },
+    {
+      "day": 165,
+      "source": "AKU正方形贴纸-24周-165-塞纳河.png",
+      "sha256": "c086c629a20815e30f3d09ecfdaf3d7fd78df685f8e8e62992860b882cb45c94"
+    },
+    {
+      "day": 166,
+      "source": "AKU正方形贴纸-24周-166找底片.png",
+      "sha256": "c9daa17da19e137ff5ef660e0bb4afb1c8a7eb189f55ba48a412c28dc2430ba4"
+    },
+    {
+      "day": 167,
+      "source": "AKU正方形贴纸-24周-167-泳池底.png",
+      "sha256": "e2f8e19517e0e21e3711e5813da4408e66c6e1ae51bc634e1bdd7de7e4266fa8"
+    },
+    {
+      "day": 168,
+      "source": "AKU正方形贴纸-24周-168-爱自己.png",
+      "sha256": "e5aa0b7b7f50df119b406a32d6bfa217558d762d84e9ff947a51dff2f67b9db2"
+    },
+    {
+      "day": 169,
+      "source": "AKU正方形贴纸-24周-169-小书迷.png",
+      "sha256": "3225102f829c5846a84dc605f1cf84b763fb33efe12cdf865b59342f8c5d0e45"
+    },
+    {
+      "day": 174,
+      "source": "AKU正方形贴纸-25周-174-工具人.png",
+      "sha256": "095ec1d2889faf6f50333849657c0995b7385cb404699a39daca25aa95994a43"
+    },
+    {
+      "day": 175,
+      "source": "AKU正方形贴纸-25周-175-小红书.png",
+      "sha256": "6ba5a85e3a60607d4dfe79f7b8c7cca8881a09783b732f204c4c2e77821146d7"
+    },
+    {
+      "day": 176,
+      "source": "AKU正方形贴纸-26周-176-情景剧.png",
+      "sha256": "86308f6ec78d9f357bab56a8ae39be7bd0225efec2ad4acb801b67c10669567d"
+    },
+    {
+      "day": 177,
+      "source": "AKU正方形贴纸-26周-177-无热单.png",
+      "sha256": "92ded68596a2297f4aa0aa14f01ab8199d3eb5e838e9670ea9761be6e53979f2"
+    },
+    {
+      "day": 178,
+      "source": "AKU正方形贴纸-26周-178-爱碎了.png",
+      "sha256": "994b756a4e0f802daa53e6c632a37c8d905bbe6d29bcd76aa73797ee3759fb50"
+    },
+    {
+      "day": 179,
+      "source": "AKU正方形贴纸-26周-179-旧手机.png",
+      "sha256": "a330b3ff72a990597438f53bd3330eff25b7c3655c225ca4e2a46b238f925653"
+    },
+    {
+      "day": 180,
+      "source": "AKU正方形贴纸-26周-180-别买了.png",
+      "sha256": "c76e13289d07c1e2d81e70c6fefdcc5047807bb4171eac52f3ef4bff881db9b2"
+    },
+    {
+      "day": 181,
+      "source": "AKU正方形贴纸-26周-181-网球手.png",
+      "sha256": "9c996d883e30be628c0c5aaf609d9f43be849aa8fe6d1134f9cc38781bdb55ae"
+    },
+    {
+      "day": 182,
+      "source": "AKU正方形贴纸-26周-182-再联络.png",
+      "sha256": "151e5048d3cfafda05040900af6af3d2aa7600484e41edb67ab43db79df563c8"
+    },
+    {
+      "day": 183,
+      "source": "AKU正方形贴纸-26周-183-拳击手.png",
+      "sha256": "a6249eee9986634b26f2abdfd349e4857e1a86a0198596ccd0cd7bd7f4c27d62"
+    },
+    {
+      "day": 184,
+      "source": "AKU正方形贴纸-27周-184-沙发王.png",
+      "sha256": "9f09a82df45b3b5fd36db829f2ef9ec689fa260510eef469d2bcf68967d62efa"
+    },
+    {
+      "day": 185,
+      "source": "AKU正方形贴纸-27周-185-望远镜.png",
+      "sha256": "7bece694f804d92d9f900cada7a0629a4ab83824675f6079048921b2cb28317f"
+    },
+    {
+      "day": 186,
+      "source": "AKU正方形贴纸-27周-186-电风扇.png",
+      "sha256": "37af1132fab72d03ce33f064166f8869be10ad9c9603227bc9892aa3343f495a"
+    },
+    {
+      "day": 187,
+      "source": "AKU正方形贴纸-27周-187-明信片.png",
+      "sha256": "0ea1a11669d334ff06cfb50606012285e64e1c8602fc8b012e9fde869a7ba80e"
+    },
+    {
+      "day": 188,
+      "source": "AKU正方形贴纸-27周-188-求什么.png",
+      "sha256": "87bc0c0bde183c23193501f344d9b4ea1db46aa2c15ab68aebe31344e4b11acc"
+    },
+    {
+      "day": 189,
+      "source": "AKU正方形贴纸-27周-189-勿久坐.png",
+      "sha256": "92ef2b7fd54196829562f3cc1d66923161c20d7d07233829aad69cdfc13d1b1c"
+    },
+    {
+      "day": 190,
+      "source": "AKU正方形贴纸-28周-190-心理学.png",
+      "sha256": "f14fffe843c67329702f0d6316ba11523aebda873abc9a1cf3ddbc7f9477af97"
+    },
+    {
+      "day": 191,
+      "source": "AKU正方形贴纸-28周-191-让一让.png",
+      "sha256": "caf9d8cca5ca0f777a793e47ebe46f4c3992838a68c928124cb9d22f58540400"
+    },
+    {
+      "day": 192,
+      "source": "AKU正方形贴纸-28周-192-反内卷.png",
+      "sha256": "c6e10ab8ef4ac19fc4f5533c81bd3ebe46ff99b6547284df08766b40b8acce5f"
+    },
+    {
+      "day": 193,
+      "source": "AKU正方形贴纸-28周-193-还能喝.png",
+      "sha256": "20cd5d29b85c310287ecb15479501149507bada6566fe819e05f22f1050527e4"
+    },
+    {
+      "day": 194,
+      "source": "AKU正方形贴纸-28周-194-要防晒.png",
+      "sha256": "07f328ac2c129e8c6872c78cdc762275796112b0055cb5668a0717c303c10f4c"
+    },
+    {
+      "day": 195,
+      "source": "AKU正方形贴纸-28周-195-超远投.png",
+      "sha256": "f7613f71dc5200b722f31f3c4f67377c6fa1755375f319d8b84ca920df1ab702"
+    },
+    {
+      "day": 196,
+      "source": "AKU正方形贴纸-28周-196-无接触.png",
+      "sha256": "94e7b20a5f68593ae78e47a2cc0c9e802a1c16bb842a1d2b4fe8160293ebf98c"
+    },
+    {
+      "day": 197,
+      "source": "AKU正方形贴纸-29周-197-卖菠萝.png",
+      "sha256": "d9e86b6e9d4df42ab357c8a6953af1273f399d0396347396e9001d06a4455c87"
+    },
+    {
+      "day": 198,
+      "source": "AKU正方形贴纸-29周-198-烧树根.png",
+      "sha256": "f8527c3e52b8fb7b8deae399e5ab08b28cdb2f5e08afcc9966429a3ccfc06227"
+    },
+    {
+      "day": 199,
+      "source": "AKU正方形贴纸-29周-199-会送礼.png",
+      "sha256": "aa83cfb0cf6a0d3086e6963e3c23bc93d54ca27678229d00f4391f24f82d8010"
+    },
+    {
+      "day": 200,
+      "source": "AKU正方形贴纸-29周-200-再挖掘.png",
+      "sha256": "fabc8b6bcfbd638a807bfa90a3619c3721a5a07cb22c179932094be6482f007e"
+    },
+    {
+      "day": 201,
+      "source": "AKU正方形贴纸-29周-201-赶鸭子.png",
+      "sha256": "97ba470e3fcc2c309bb17652589aeb82a30075275d8c313b0ff56c3d496d872b"
+    },
+    {
+      "day": 202,
+      "source": "AKU正方形贴纸-29周-202-早高峰.png",
+      "sha256": "84c732c31e5d33e189782e37626a4cd923f2786ee92b674e1cb1dcd4bbfe3c08"
+    },
+    {
+      "day": 203,
+      "source": "AKU正方形贴纸-29周-203-鲷鱼烧02.png",
+      "sha256": "45a0b7bb48075d5f9efcf7c1ea96460333c4f0c03bde927dac790120a87e38a6"
+    },
+    {
+      "day": 204,
+      "source": "AKU正方形贴纸-30周-204-各有时.png",
+      "sha256": "18218a7b0165000b862c59b9ecf46071a94b2b2ddcd19f7da2da0f9520b2be4b"
+    },
+    {
+      "day": 205,
+      "source": "AKU正方形贴纸-30周-205-面对面.png",
+      "sha256": "63f95cea5696a31366e144af9be4385a8590332dbe59a0a1d62eff8a6f224043"
+    },
+    {
+      "day": 206,
+      "source": "AKU正方形贴纸-30周-206-绩优生.png",
+      "sha256": "70ec11c1af1d1f564f45d63310f4f005c3acd57d3860ff147d5621ac5e992c0c"
+    },
+    {
+      "day": 207,
+      "source": "AKU正方形贴纸-30周-207-纽扣熊.png",
+      "sha256": "786ba1d3e043314dda2172ff33fe832140df07d2bfaacd503260c77988fb87c0"
+    },
+    {
+      "day": 208,
+      "source": "AKU正方形贴纸-30周-208-凭什么.png",
+      "sha256": "9cc1fc72a0480b767d915325dd1c50b061c294f85e846a6ad5586c43b6d0d219"
+    },
+    {
+      "day": 209,
+      "source": "AKU正方形贴纸-30周-209-收气运.png",
+      "sha256": "dcc4a54a22147b10cb79cc743bf2058d3e63f14ab405206577ade9f38f363338"
+    },
+    {
+      "day": 210,
+      "source": "AKU正方形贴纸-30周-210-茧房里.png",
+      "sha256": "afad29b5f87748e3ef2f96ff459d7bf870f1b5cc0c63818dc6d1b6af6d930bfc"
+    },
+    {
+      "day": 211,
+      "source": "AKU正方形贴纸-31周-211-探寻者.png",
+      "sha256": "3793ace3a296c21f6389ef664aa4333c18b8817cad914739f9d889cb19fbb4a8"
+    },
+    {
+      "day": 212,
+      "source": "AKU正方形贴纸-31周-212-一人播.png",
+      "sha256": "ee1455ee6fef92c93febacb3eb67f4b4725a244e49bf2db01f2304e5d7718346"
+    },
+    {
+      "day": 213,
+      "source": "AKU正方形贴纸-31周-213-嘻哈兔.png",
+      "sha256": "dd42ffa73ba8acc4dd344d46e5a461db2138e93273aee0ab57adf7070f986763"
+    }
+  ]
+}
