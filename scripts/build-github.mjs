@@ -29,10 +29,10 @@ async function injectSharedSystems(dir) {
     if (!html.includes('/language-system.js')) html = html.replace('</body>', '<script src="/language-system.js" defer></script></body>');
     if (!html.includes('/image-loader.js')) html = html.replace('</body>', '<script src="/image-loader.js" defer></script></body>');
     // Invalidate the old language switch CSS alongside the download control.
-    html = html.replace(/(\/language-system\.(?:js|css))(?:\?[^"']*)?(?=["'])/g, '$1?v=portfolio-control-20261021');
-    html = html.replace(/(\/design-system\.css)(?:\?[^"']*)?(?=["'])/g, '$1?v=nav-contrast-20261021');
+    html = html.replace(/(\/language-system\.(?:js|css))(?:\?[^"']*)?(?=["'])/g, '$1?v=nav-brand-20261024');
+    html = html.replace(/(\/design-system\.css)(?:\?[^"']*)?(?=["'])/g, '$1?v=nav-brand-20261024');
     // Version both sides of the project handoff, including legacy static pages.
-    html = html.replace(/(\/(?:nav-system\.(?:js|css)|home-film-preview\/film\.(?:js|css)))(?:\?[^"']*)?(?=["'])/g, (_, asset) => asset + '?v=' + (asset.includes('/film.') ? 'stack-20261023' : 'nav-contrast-20261021'));
+    html = html.replace(/(\/(?:nav-system\.(?:js|css)|home-film-preview\/film\.(?:js|css)))(?:\?[^"']*)?(?=["'])/g, (_, asset) => asset + '?v=' + (asset.includes('/film.') ? 'native-scroll-20261024' : 'touch-focus-20261024'));
     html = html.replace(/<header\b([^>]*?)class="([^"]*)"([^>]*)>/g, (tag, before, classes, after) => {
       if (!/(?:^|\s)(?:site-header|aku-nav|project-nav)(?:\s|$)/.test(classes)) return tag;
       const names = new Set(classes.split(/\s+/));
@@ -40,7 +40,7 @@ async function injectSharedSystems(dir) {
       return `<header${before}class="${[...names].join(' ')}"${after}>`;
     });
     // Shared typography follows page styles so mixed-script copy stays consistent.
-    if (!html.includes('/typography.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/typography.css?v=water-shadow-20261022"></head>');
+    if (!html.includes('/typography.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/typography.css?v=nav-anton-20261024"></head>');
     html = enhanceSeoAccessibility(html, file, "github-dist");
     html = await enhanceImageMarkup(html, "github-dist");
     await writeFile(file, html);

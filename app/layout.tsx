@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "BANCI! — Brand × Product × AI",
-  description: "张仕伟的品牌、产品与智能体验设计作品集。",
+  description: "张仕炜的品牌、产品与智能体验设计作品集。",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

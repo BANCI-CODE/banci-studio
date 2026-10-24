@@ -514,3 +514,12 @@
 .project-handoff button{font:inherit;margin-top:20px;padding:10px 16px;border:1px solid #aaa;background:none;border-radius:8px;cursor:pointer}
 @keyframes handoff-travel{0%{transform:translateX(-110%) scaleX(.6)}50%{transform:translateX(80%) scaleX(1.3)}100%{transform:translateX(280%) scaleX(.6)}}
 @media(prefers-reduced-motion:reduce){.project-handoff__track span{animation:none;width:50%}}
+
+/* Pointer feedback ends with the press; keyboard focus remains visible and inset. */
+@media(max-width:860px){
+ .mobile-navigation[data-input="pointer"] a:focus{outline:none!important;box-shadow:none!important}
+ .site-header.nav-system-shell .mobile-nav-toggle[data-input="pointer"]:focus{outline:none!important}
+ .mobile-navigation a{-webkit-tap-highlight-color:transparent}
+ .mobile-navigation[data-input="pointer"] a:active{background:rgba(16,16,16,.055)}
+ .mobile-navigation[data-input="keyboard"] a:focus-visible{outline:2px solid var(--nav-accent,#f2552c);outline-offset:-2px;border-radius:4px}
+}

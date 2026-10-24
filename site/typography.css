@@ -81,3 +81,12 @@ main p+p{margin-top:1em}
 /* CJK headings must not inherit Latin ch measures from the former font. */
 .contact-page-hero h1{width:100%;max-width:100%;text-wrap:balance}
 main :is(.ap-lead p,.contact-intro,.case-lead>p){text-wrap:pretty}
+
+/* Navigation follows the BANCI wordmark instead of the condensed display face. */
+.site-header.nav-system-shell .logo b,.site-header.nav-system-shell .nav-system__item,.site-header.nav-system-shell .nav-system__item span,.mobile-navigation .mobile-navigation__title{font-family:Arial,Helvetica,sans-serif!important;font-weight:800!important}
+.site-header.nav-system-shell .nav-system__item{font-size:14px!important;letter-spacing:.015em!important}
+.mobile-navigation .mobile-navigation__title{letter-spacing:-.035em!important}
+
+@font-face{font-family:"Anton";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/anton-regular.ttf") format("truetype")}
+.site-header.nav-system-shell .nav-system__item,.site-header.nav-system-shell .nav-system__item span,.mobile-navigation .mobile-navigation__title{font-family:"Anton",Arial,sans-serif!important;font-weight:400!important;letter-spacing:.035em!important}
+.site-header.nav-system-shell .nav-system__item{font-size:16px!important}

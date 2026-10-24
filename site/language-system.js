@@ -26,7 +26,7 @@
       ['.home-about .section-kicker span:last-child', '关于我 / 系统思考', 'ABOUT / SYSTEM THINKING'],
       ['.home-about h2', '<span>从视觉表达，</span><span>到产品体验。</span>', '<span>From visual expression</span><span>to product experience.</span>', true],
       ['.home-about .about-copy p', '<small>从视觉执行到产品定义</small>我的设计经历从内容视觉开始，逐渐扩展到品牌体系、产品体验与智能硬件。我擅长把复杂的信息、技术与商业目标，转化为用户能够理解的体验。', '<small>FROM VISUAL EXECUTION TO PRODUCT DEFINITION</small>My practice grew from content and visual design into brand systems, product experience and intelligent hardware. I turn complex information, technology and business goals into experiences people can understand.', true],
-      ['.home-about .glass-button', '了解张仕伟 <span>→</span>', 'ABOUT ZHANG SHIWEI <span>→</span>', true],
+      ['.home-about .glass-button', '了解张仕炜 <span>→</span>', 'ABOUT ZHANG SHIWEI <span>→</span>', true],
       ['.contact-strip .section-kicker span:last-child', '多多联系 / 一起合作', "CONTACT / LET'S COLLABORATE"],
       ['.contact-strip h2', '一起创造<br>下一步。', 'Let’s make<br>what comes next.', true],
       ['.contact-details-link', '查看联系详情 →', 'VIEW CONTACT DETAILS →']
@@ -147,8 +147,10 @@
       const link = document.createElement('a');
       link.className = 'portfolio-download';
       link.href = '/downloads/zhang-shiwei-2026-portfolio.pdf';
-      link.download = '张仕伟_2026设计作品集_Brand-Product-AI.pdf';
-      link.innerHTML = icon + '<span data-zh="下载作品集" data-en="Download portfolio">下载作品集</span>';
+      link.download = '张仕炜_2026设计作品集_Brand-Product-AI.pdf';
+      link.setAttribute('aria-label', '下载设计作品集 PDF / Download Design Portfolio');
+      link.title = '设计作品集 · PDF / Design Portfolio';
+      link.innerHTML = icon + '<span data-zh="设计作品集 · PDF" data-en="Design Portfolio · PDF">设计作品集 · PDF</span>';
       container.appendChild(link);
     };
     document.querySelectorAll('.site-header').forEach(header => {

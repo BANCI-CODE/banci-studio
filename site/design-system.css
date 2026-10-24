@@ -310,3 +310,19 @@ html:not(.nav-native-glass) body .site-header.nav-system-shell[data-nav-contrast
  html:root body .site-header.nav-system-shell{background:#f3f0e8!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
  html:root body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:#171717!important}
 }
+
+/* One native glass layer on touch layouts: visible backdrop colour without SVG displacement. */
+@media(max-width:860px){
+ html:root body .site-header.nav-system-shell{
+  background:rgba(248,247,243,.2)!important;
+  -webkit-backdrop-filter:blur(9px) saturate(155%)!important;backdrop-filter:blur(9px) saturate(155%)!important;
+  border-color:rgba(255,255,255,.48)!important;
+  box-shadow:inset 0 1px 0 #ffffffa0,inset 0 -1px 0 #ffffff30,0 4px 14px -8px #00000026!important;
+ }
+ html:root body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:rgba(20,24,26,.27)!important;border-color:#ffffff40!important}
+ html:root body.nav-open .site-header.nav-system-shell{background:rgba(248,247,243,.85)!important}
+}
+@media(max-width:860px) and (prefers-reduced-transparency:reduce){
+ html:root body .site-header.nav-system-shell{background:#f3f0e8!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+ html:root body .site-header.nav-system-shell[data-nav-contrast="dark"]{background:#171717!important}
+}

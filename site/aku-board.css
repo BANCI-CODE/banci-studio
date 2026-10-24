@@ -563,3 +563,5 @@ body.aku-board-page .aku-board-selection p{margin:0 0 6px;color:#858b83;font-siz
 body.aku-board-page .aku-board-selection strong{display:block;color:#78b860;font-size:20px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
 body.aku-board-page .aku-preview__number{position:absolute;top:8px;left:8px;z-index:2;padding:4px 7px;border-radius:4px;background:#101310e8;color:#a3d48d;font:600 11px/1.3 sans-serif;letter-spacing:.05em;pointer-events:none}
 @media(max-width:760px){body.aku-board-page .aku-board-selection{min-height:90px;margin-top:20px}body.aku-board-page .aku-board-selection .aku-board-character{width:32px}}
+
+body.aku-board-page .aku-preview__image-wrap img[hidden]{display:none!important}

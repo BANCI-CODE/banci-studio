@@ -160,9 +160,11 @@ function setupMobileNavigation() {
   const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
   let isOpen = false;
 
-  function openMenu() {
+  function openMenu({ keyboard = false } = {}) {
     if (isOpen || !mobileQuery.matches) return;
     isOpen = true;
+    overlay.dataset.input = keyboard ? 'keyboard' : 'pointer';
+    toggle.dataset.input = overlay.dataset.input;
     overlay.inert = false;
     overlay.setAttribute('aria-hidden', 'false');
     overlay.classList.add('is-open');
@@ -172,7 +174,7 @@ function setupMobileNavigation() {
     toggle.setAttribute('aria-label', 'Close mobile navigation');
     // Wait for the visibility change to commit, including reduced-motion mode.
     requestAnimationFrame(() => requestAnimationFrame(() => {
-      if (isOpen) overlay.querySelector('a[href]')?.focus({ preventScroll: true });
+      if (isOpen && keyboard && overlay.dataset.input === 'keyboard') overlay.querySelector('a[href]')?.focus({ preventScroll: true });
     }));
   }
 
@@ -192,12 +194,25 @@ function setupMobileNavigation() {
     if (restoreFocus && document.contains(toggle)) toggle.focus();
   }
 
-  toggle.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+  toggle.addEventListener('click', event => {
+    const keyboard = event.detail === 0;
+    if (isOpen) closeMenu({ restoreFocus: keyboard });
+    else openMenu({ keyboard });
+  });
+  // Touch/pointer input must not inherit Safari's persistent keyboard focus ring.
+  document.addEventListener('pointerdown', () => {
+    overlay.dataset.input = 'pointer';
+    toggle.dataset.input = 'pointer';
+  }, { passive: true });
   overlay.addEventListener('click', event => {
     if (event.target.closest('a[href]')) closeMenu({ restoreFocus: false });
   });
 
   document.addEventListener('keydown', event => {
+    if (event.key === 'Tab' || event.key.startsWith('Arrow')) {
+      overlay.dataset.input = 'keyboard';
+      toggle.dataset.input = 'keyboard';
+    }
     if (!isOpen) return;
     if (event.key === 'Escape') {
       event.preventDefault();

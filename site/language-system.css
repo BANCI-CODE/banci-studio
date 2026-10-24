@@ -44,3 +44,13 @@ html[lang^="zh"] :is(p, li, blockquote, figcaption, dt, dd).is-cjk-copy {
 }
 
 @media (prefers-reduced-motion: reduce){.portfolio-download{transition:none}}
+
+@media(min-width:861px){
+ .site-header.nav-system-shell .nav-utility{display:flex!important;min-width:44px}
+ .site-header .portfolio-download{width:44px;height:44px;border-radius:10px}
+ .site-header .portfolio-download>span{display:none}
+ .site-header .portfolio-download svg{width:21px;height:21px;max-width:21px;max-height:21px;flex-basis:21px}
+ .site-header .portfolio-download:hover{background:rgba(127,127,127,.08);opacity:1}
+}
+.mobile-navigation__footer{flex-wrap:wrap}
+.mobile-navigation__footer .portfolio-download{flex-basis:100%;justify-content:flex-start;min-height:48px}
