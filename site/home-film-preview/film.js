@@ -15,10 +15,16 @@ const cardWords=typeof Intl.Segmenter==='function'?new Intl.Segmenter('zh-CN',{g
 const cardTitleType='"Bebas Neue","Alimama ShuHeiTi","Alibaba PuHuiTi",sans-serif';
 const cardFonts=document.fonts?Promise.allSettled([
  document.fonts.load('400 24px "Bebas Neue"','BANCI'),
- document.fonts.load('700 24px "Alimama ShuHeiTi"','设计作品'),
  document.fonts.load('400 18px "Alibaba PuHuiTi"','设计作品'),
  document.fonts.load('500 18px "Alibaba PuHuiTi"','BANCI')
 ]):Promise.resolve();
+let chineseTitleFonts;
+function fontsForCard(item){
+ if(!document.fonts||!/[\u3400-\u9fff]/.test(item.title))return cardFonts;
+ chineseTitleFonts ||= document.fonts.load('700 24px "Alimama ShuHeiTi"','设计作品').catch(()=>[]);
+ return Promise.all([cardFonts,chineseTitleFonts]);
+}
+const mobileRendering=matchMedia('(max-width:760px)');
 let mistTimer=0;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'),cache=new Map();let data=[],target=0,previousTarget=0,current=0,velocity=0,frame=0,last=0,width=1,height=1,drag=null,wheelSum=0,wheelStamp=0,suppressClick=0,paused=false,hovered=false,manualUntil=0,autoDirection=1,heroVisible=true,navigating=false;
 let gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:true});let program,locations,buffer,count;let pixelPull=0,pixelSpeed=0,entryStarted=-Infinity,entryDirection=-1;
@@ -78,7 +84,7 @@ function artworkColor(im){
 }
 function cardSurface(im, item, index, layer='combined') {
  const surface=document.createElement('canvas'),inkOnly=layer==='ink';
- surface.width=inkOnly?512:Math.round(Math.min(1600,Math.max(1024,frameSize().w*(devicePixelRatio||1))));surface.height=Math.round(surface.width*1.48);
+ surface.width=inkOnly?512:Math.round(Math.min(mobileRendering.matches?1024:1600,Math.max(mobileRendering.matches?640:1024,frameSize().w*Math.min(devicePixelRatio||1,mobileRendering.matches?2:3))));surface.height=Math.round(surface.width*1.48);
  const c=surface.getContext('2d'),scale=surface.width/1000;c.scale(scale,scale);
  const box=(x,y,w,h,r)=>{c.beginPath();c.roundRect(x,y,w,h,r);};
  if(inkOnly){c.fillStyle='#000';c.fillRect(0,0,1000,1480);}
@@ -147,9 +153,24 @@ function cardSurface(im, item, index, layer='combined') {
  return surface;
 }
 function request(){if(!frame)frame=requestAnimationFrame(draw);}
-function load(i){if(i<0||i>=data.length||cache.has(i))return;const entry={ready:false,texture:null},im=new Image();cache.set(i,entry);im.decoding='async';im.fetchPriority=i===target?'high':'low';im.onload=async()=>{await cardFonts;if(cache.get(i)!==entry)return;entry.surface=cardSurface(im,data[i],i);entry.entered=performance.now();if(gl){const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,entry.surface);entry.texture=t;
- const makeLayer=layer=>{const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);const format=layer==='ink'?gl.LUMINANCE:gl.RGBA;gl.texImage2D(gl.TEXTURE_2D,0,format,format,gl.UNSIGNED_BYTE,cardSurface(im,data[i],i,layer));return texture;};
- gl.deleteTexture(t);entry.texture=makeLayer('front');entry.backTexture=makeLayer('back');entry.inkTexture=makeLayer('ink');}entry.ready=true;if(i===target){entryStarted=performance.now();performance.mark("film-texture-ready");setLoading('ready');if(!gl){fallback.src=entry.surface.toDataURL();fallback.hidden=false;}}request();};im.onerror=()=>{entry.failed=true;if(i===target){setLoading('error',document.documentElement.lang.startsWith('en')?'Image unavailable. Try another artwork.':'图片暂未加载，请切换作品');}};im.src=data[i].src;}
+function load(i){
+ if(i<0||i>=data.length||cache.has(i))return;
+ const entry={ready:false,texture:null},im=new Image();cache.set(i,entry);
+ im.decoding='async';im.fetchPriority=i===target?'high':'low';
+ im.onload=async()=>{
+  await fontsForCard(data[i]);if(cache.get(i)!==entry)return;
+  entry.image=im;entry.entered=performance.now();
+  if(gl){
+   const makeLayer=layer=>{const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);const format=layer==='ink'?gl.LUMINANCE:gl.RGBA;gl.texImage2D(gl.TEXTURE_2D,0,format,format,gl.UNSIGNED_BYTE,cardSurface(im,data[i],i,layer));return texture;};
+   entry.texture=makeLayer('front');entry.backTexture=makeLayer('back');entry.inkTexture=makeLayer('ink');
+  }else entry.surface=cardSurface(im,data[i],i);
+  entry.ready=true;
+  if(i===target){entryStarted=performance.now();performance.mark('film-texture-ready');setLoading('ready');if(!gl){fallback.src=entry.surface.toDataURL();fallback.hidden=false;}}
+  request();
+ };
+ im.onerror=()=>{entry.failed=true;if(i===target)setLoading('error',document.documentElement.lang.startsWith('en')?'Image unavailable. Try another artwork.':'图片暂未加载，请切换作品');};
+ im.src=data[i].src;
+}
 // Include the full viewport, tilted edges and the maximum elastic displacement.
 function visibleRange(center,padding=0){
  const size=frameSize(),reach=(width/2+size.w*1.9)/(size.w+size.gap);
@@ -158,7 +179,10 @@ function visibleRange(center,padding=0){
 let preloadWindow='';
 function preload(){
  if(!data.length)return;
- const now=visibleRange(current,1),destination=visibleRange(target,1);
+ load(target);
+ if(mobileRendering.matches&&!cache.get(target)?.ready)return;
+ const padding=mobileRendering.matches?0:1;
+ const now=visibleRange(current,padding),destination=visibleRange(target,padding);
  const key=[now.first,now.last,destination.first,destination.last].join(':');
  if(key===preloadWindow)return;
  preloadWindow=key;
@@ -228,7 +252,7 @@ function resize(){
 try{setup();}catch(error){gl=null;canvas.hidden=true;setLoading('loading');console.warn(error);}
 // Pair this small mutable manifest with its renderer; never reuse an old neutral palette.
 const filmDataVersion=new URL(document.currentScript?.src||'/home-film-preview/film.js',location.href).searchParams.get('v')||'water-shadow-20261022';
-fetch('/home-film-preview/data.json?v='+encodeURIComponent(filmDataVersion),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('作品列表无法加载');return r.json();}).then(items=>{data=items;const ticks=document.querySelector('.film-ticks');items.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${String(i+1).padStart(2,'0')} ${d.title}`);b.addEventListener('click',()=>go(i));ticks.append(b);});update();resize();}).catch(e=>{setLoading('error',document.documentElement.lang.startsWith('en')?'Unable to load artworks. Please refresh.':'作品暂时无法加载，请刷新重试');});
+fetch('/home-film-preview/data.json?v='+encodeURIComponent(filmDataVersion)).then(r=>{if(!r.ok)throw Error('作品列表无法加载');return r.json();}).then(items=>{data=items;const ticks=document.querySelector('.film-ticks');items.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${String(i+1).padStart(2,'0')} ${d.title}`);b.addEventListener('click',()=>go(i));ticks.append(b);});update();resize();}).catch(e=>{setLoading('error',document.documentElement.lang.startsWith('en')?'Unable to load artworks. Please refresh.':'作品暂时无法加载，请刷新重试');});
 
 async function openProject(){
  if(navigating||!data[target])return;
@@ -255,5 +279,5 @@ stage.addEventListener('pointermove',e=>{if(!drag||!data.length)return;const dx=
 stage.addEventListener('pointerup',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag=null;request();if(Math.abs(dx)>35&&Math.abs(dx)>Math.abs(dy)*.8){go(target-Math.sign(dx));suppressClick=performance.now()+400;}else if(Math.max(Math.abs(dx),Math.abs(dy))<16&&performance.now()>suppressClick&&data[target]){const x=e.clientX-stage.getBoundingClientRect().left,size=frameSize();if(x<(width-size.w)/2-size.gap/2)go(target-1);else if(x>(width+size.w)/2+size.gap/2)go(target+1);else openProject();}});stage.addEventListener('pointercancel',()=>{drag=null;request();});
 stage.addEventListener('keydown',e=>{if(['ArrowDown','ArrowRight','ArrowUp','ArrowLeft','Home','End','Enter'].includes(e.key)){e.preventDefault();if(e.key==='Enter'){if(data[target])openProject();}else if(e.key==='Home')go(0);else if(e.key==='End')go(data.length-1);else go(target+(['ArrowDown','ArrowRight'].includes(e.key)?1:-1));}});
 document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>go(target+Number(b.dataset.dir))));reduce.addEventListener('change',()=>request());
-canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fallback.src=cache.get(target)?.surface?.toDataURL()||data[target]?.src||'';fallback.hidden=false;canvas.hidden=true;});
+canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();const entry=cache.get(target);if(entry?.image&&!entry.surface)entry.surface=cardSurface(entry.image,data[target],target);fallback.src=entry?.surface?.toDataURL()||data[target]?.src||'';fallback.hidden=false;canvas.hidden=true;});
 })();

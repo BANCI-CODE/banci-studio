@@ -69,3 +69,15 @@
 .film-stage{overflow:visible}
 .film-stage canvas{position:absolute;top:-120px;left:0;width:100%;height:calc(100% + 240px);pointer-events:none}
 .film-info{z-index:3}
+
+/* Local SVG energy ring: no video download and no minimum loading delay. */
+.film-energy{width:136px;height:136px;contain:layout style;pointer-events:none}
+.film-energy svg{display:block;width:100%;height:100%;overflow:visible}
+.film-energy__rotation{transform-origin:80px 80px;animation:film-energy-turn 4.8s linear infinite}
+.film-energy__breath{transform-origin:80px 80px;animation:film-energy-pulse 2.4s ease-in-out infinite alternate}
+.film-loading[hidden] .film-energy__rotation,.film-loading[hidden] .film-energy__breath,.film-loading.is-error .film-energy__rotation,.film-loading.is-error .film-energy__breath{animation:none}
+.film-loading.is-error .film-energy{display:none}
+@keyframes film-energy-turn{to{transform:rotate(360deg)}}
+@keyframes film-energy-pulse{from{opacity:.45;transform:rotate(-12deg) scale(.94)}to{opacity:1;transform:rotate(12deg) scale(1.03)}}
+@media(max-width:767px){.film-energy{width:112px;height:112px}}
+@media(prefers-reduced-motion:reduce){.film-energy__rotation,.film-energy__breath{animation:none}}
