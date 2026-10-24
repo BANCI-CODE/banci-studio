@@ -40,7 +40,7 @@ async function injectSharedSystems(dir) {
       return `<header${before}class="${[...names].join(' ')}"${after}>`;
     });
     // Shared typography follows page styles so mixed-script copy stays consistent.
-    if (!html.includes('/typography.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/typography.css?v=nav-anton-20261024"></head>');
+    if (!html.includes('/typography.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/typography.css?v=nav-tone-20261025"></head>');
     html = enhanceSeoAccessibility(html, file, "github-dist");
     html = await enhanceImageMarkup(html, "github-dist");
     await writeFile(file, html);

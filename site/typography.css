@@ -90,3 +90,25 @@ main :is(.ap-lead p,.contact-intro,.case-lead>p){text-wrap:pretty}
 @font-face{font-family:"Anton";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/anton-regular.ttf") format("truetype")}
 .site-header.nav-system-shell .nav-system__item,.site-header.nav-system-shell .nav-system__item span,.mobile-navigation .mobile-navigation__title{font-family:"Anton",Arial,sans-serif!important;font-weight:400!important;letter-spacing:.035em!important}
 .site-header.nav-system-shell .nav-system__item{font-size:16px!important}
+
+/* Refined Anton navigation: quiet idle labels and a stable optical baseline. */
+html body .site-header.nav-system-shell .nav-system{gap:clamp(30px,3vw,46px)!important}
+html body .site-header.nav-system-shell .nav-system__item,
+html body .site-header.nav-system-shell[data-nav-contrast] .nav-system__item{
+ font-size:14px!important;line-height:1!important;letter-spacing:.055em!important;
+ opacity:.62!important;transform:none!important;transition:opacity 180ms ease!important;
+}
+html body .site-header.nav-system-shell .nav-system__item span{letter-spacing:inherit!important}
+html body .site-header.nav-system-shell .nav-system__item[aria-current="page"],
+html body .site-header.nav-system-shell .nav-system__item:focus-visible{opacity:.94!important;transform:none!important}
+html body .site-header.nav-system-shell .nav-system__item::after{
+ width:4px!important;height:4px!important;right:-10px!important;top:50%!important;
+ transform:translateY(-50%)!important;transition:opacity 180ms ease!important;
+}
+@media(hover:hover) and (pointer:fine){html body .site-header.nav-system-shell .nav-system__item:hover{opacity:.94!important;transform:none!important}}
+html body .mobile-navigation.is-open .mobile-navigation__primary-item{opacity:.66;transition:opacity 180ms ease,transform 300ms ease}
+html body .mobile-navigation.is-open .mobile-navigation__primary-item[aria-current="page"],
+html body .mobile-navigation.is-open .mobile-navigation__primary-item:focus-visible{opacity:1}
+html body .mobile-navigation .mobile-navigation__title{letter-spacing:.025em!important;line-height:1.1}
+html body .mobile-navigation__primary-item[aria-current="page"]::after{width:4px;height:4px;right:6px}
+@media(prefers-reduced-motion:reduce){html body .site-header.nav-system-shell .nav-system__item,html body .site-header.nav-system-shell .nav-system__item::after,html body .mobile-navigation.is-open .mobile-navigation__primary-item{transition:none!important}}
