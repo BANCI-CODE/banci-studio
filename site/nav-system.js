@@ -252,7 +252,7 @@ window.BanciNavigation = { primaryNavItems, disciplineNavItems };
 
 
 // Rounded lens displacement: neutral centre, smooth refraction at the perimeter.
-if(!document.getElementById('nav-acrylic-defs')){
+if(!matchMedia('(max-width:860px)').matches&&!document.getElementById('nav-acrylic-defs')){
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.id='nav-acrylic-defs';svg.setAttribute('aria-hidden','true');svg.style.cssText='position:fixed;width:0;height:0;pointer-events:none';
  svg.innerHTML='<defs><filter id="nav-acrylic" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage result="lens" preserveAspectRatio="none"/><feDisplacementMap in="SourceGraphic" in2="lens" scale="78" xChannelSelector="R" yChannelSelector="G" result="redRay"/><feColorMatrix in="redRay" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red"/><feDisplacementMap in="SourceGraphic" in2="lens" scale="70" xChannelSelector="R" yChannelSelector="G" result="greenRay"/><feColorMatrix in="greenRay" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green"/><feDisplacementMap in="SourceGraphic" in2="lens" scale="58" xChannelSelector="R" yChannelSelector="G" result="blueRay"/><feColorMatrix in="blueRay" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="blue"/><feComposite in="red" in2="green" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="warm"/><feComposite in="warm" in2="blue" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="spectrum"/><feGaussianBlur in="spectrum" stdDeviation="0.25 0.35"/></filter></defs>';document.body.append(svg);
  const header=document.querySelector('.nav-system-shell');
@@ -285,6 +285,8 @@ if(!document.getElementById('nav-acrylic-defs')){
    frame=energy>.2&&!reduce.matches?requestAnimationFrame(settle):0;
  };
  addEventListener('scroll',()=>{
+   if(!filter||matchMedia('(max-width:860px)').matches)return;
+   if(!filter||matchMedia('(max-width:860px)').matches)return;
    const now=scrollY;energy=Math.min(90,energy+Math.abs(now-previous));previous=now;
    if(!frame)frame=requestAnimationFrame(settle);
  },{passive:true});

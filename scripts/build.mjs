@@ -30,7 +30,7 @@ async function injectMotion(dir) {
     html = html.replace(/(\/language-system\.(?:js|css))(?:\?[^"']*)?(?=["'])/g, '$1?v=nav-brand-20261024');
     html = html.replace(/(\/design-system\.css)(?:\?[^"']*)?(?=["'])/g, '$1?v=nav-brand-20261024');
     // Version both sides of the project handoff, including legacy static pages.
-    html = html.replace(/(\/(?:nav-system\.(?:js|css)|home-film-preview\/film\.(?:js|css)))(?:\?[^"']*)?(?=["'])/g, (_, asset) => asset + '?v=' + (asset.includes('/film.') ? 'energy-loader-20261025' : 'touch-focus-20261024'));
+    html = html.replace(/(\/(?:nav-system\.(?:js|css)|home-film-preview\/film\.(?:js|css)))(?:\?[^"']*)?(?=["'])/g, (_, asset) => asset + '?v=' + (asset.includes('/film.') ? 'energy-loader-20261025' : 'liquid-mobile-20261025'));
     html = html.replace(/<header\b([^>]*?)class="([^"]*)"([^>]*)>/g, (tag, before, classes, after) => {
       if (!/(?:^|\s)(?:site-header|aku-nav|project-nav)(?:\s|$)/.test(classes)) return tag;
       const names = new Set(classes.split(/\s+/));
@@ -38,7 +38,7 @@ async function injectMotion(dir) {
       return `<header${before}class="${[...names].join(' ')}"${after}>`;
     });
     // Shared typography follows page styles so mixed-script copy stays consistent.
-    if (!html.includes('/typography.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/typography.css?v=nav-tone-20261025"></head>');
+    if (!html.includes('/typography.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/typography.css?v=nav-colour-20261025"></head>');
     html = enhanceSeoAccessibility(html, file, "dist/client");
     html = await enhanceImageMarkup(html, "dist/client");
     await writeFile(file, html);
