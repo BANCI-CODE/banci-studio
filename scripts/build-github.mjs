@@ -30,7 +30,7 @@ async function injectSharedSystems(dir) {
     if (!html.includes('/image-loader.js')) html = html.replace('</body>', '<script src="/image-loader.js" defer></script></body>');
     // Invalidate the old language switch CSS alongside the download control.
     html = html.replace(/(\/language-system\.(?:js|css))(?:\?[^"']*)?(?=["'])/g, '$1?v=nav-brand-20261024');
-    html = html.replace(/(\/design-system\.css)(?:\?[^"']*)?(?=["'])/g, '$1?v=nav-brand-20261024');
+    html = html.replace(/(\/design-system\.css)(?:\?[^"']*)?(?=["'])/g, '$1?v=frosted-nav-20261025');
     // Version both sides of the project handoff, including legacy static pages.
     html = html.replace(/(\/(?:nav-system\.(?:js|css)|home-film-preview\/film\.(?:js|css)))(?:\?[^"']*)?(?=["'])/g, (_, asset) => asset + '?v=' + (asset.includes('/film.') ? 'energy-loader-20261025' : 'liquid-mobile-20261025'));
     html = html.replace(/<header\b([^>]*?)class="([^"]*)"([^>]*)>/g, (tag, before, classes, after) => {
