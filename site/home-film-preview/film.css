@@ -70,14 +70,34 @@
 .film-stage canvas{position:absolute;top:-120px;left:0;width:100%;height:calc(100% + 240px);pointer-events:none}
 .film-info{z-index:3}
 
-/* Local SVG energy ring: no video download and no minimum loading delay. */
-.film-energy{width:136px;height:136px;contain:layout style;pointer-events:none}
+/* Ivory light-drop loader: local vector, no video and no artificial waiting. */
+.film-loading{background:#f3f0e8}
+.film-energy{width:144px;height:170px;position:relative;perspective:480px;contain:layout style;pointer-events:none}
+.film-energy__disc{width:144px;height:144px;transform-style:preserve-3d;animation:ivory-ring-turn 3.6s cubic-bezier(.45,0,.25,1) infinite}
 .film-energy svg{display:block;width:100%;height:100%;overflow:visible}
-.film-energy__rotation{transform-origin:80px 80px;animation:film-energy-turn 4.8s linear infinite}
-.film-energy__breath{transform-origin:80px 80px;animation:film-energy-pulse 2.4s ease-in-out infinite alternate}
-.film-loading[hidden] .film-energy__rotation,.film-loading[hidden] .film-energy__breath,.film-loading.is-error .film-energy__rotation,.film-loading.is-error .film-energy__breath{animation:none}
+.film-energy__drop{transform-origin:80px 80px;animation:ivory-drop 3.6s ease-in-out infinite}
+.film-energy__merge{transform-origin:80px 130px;animation:ivory-merge 3.6s ease-in-out infinite;opacity:0}
+.film-energy__reflection{position:absolute;left:39px;bottom:4px;width:66px;height:9px;background:radial-gradient(ellipse,#929ac32b,transparent 70%);filter:blur(3px);animation:ivory-reflection 3.6s ease-in-out infinite}
+@keyframes ivory-ring-turn{0%,12%{transform:rotateZ(0) rotateY(0)}38%{transform:rotateZ(-32deg) rotateY(88deg)}62%{transform:rotateZ(0) rotateY(180deg)}80%,100%{transform:rotateZ(0) rotateY(180deg)}}
+@keyframes ivory-drop{0%,16%{transform:translateY(0) scale(1);opacity:1}38%{transform:translateY(0) scale(.75);opacity:1}58%{transform:translateY(0) scale(1);opacity:1}72%{transform:translateY(36px) scale(.7,1.15);opacity:1}77%{transform:translateY(45px) scale(.3,.4);opacity:0}82%{transform:translateY(0) scale(.2);opacity:0}94%,100%{transform:translateY(0) scale(1);opacity:1}}
+@keyframes ivory-merge{0%,66%{opacity:0;transform:scale(.2)}74%{opacity:.85;transform:scale(1,1.4)}82%{opacity:.3;transform:scale(1.8,.5)}92%,100%{opacity:0;transform:scale(2,.1)}}
+@keyframes ivory-reflection{0%,12%,62%,100%{transform:scaleX(1);opacity:.65}38%{transform:scaleX(.35);opacity:.25}76%{transform:scaleX(1.12);opacity:.8}}
+.film-loading[hidden] .film-energy *,.film-loading.is-error .film-energy *{animation:none}
 .film-loading.is-error .film-energy{display:none}
-@keyframes film-energy-turn{to{transform:rotate(360deg)}}
-@keyframes film-energy-pulse{from{opacity:.45;transform:rotate(-12deg) scale(.94)}to{opacity:1;transform:rotate(12deg) scale(1.03)}}
-@media(max-width:767px){.film-energy{width:112px;height:112px}}
-@media(prefers-reduced-motion:reduce){.film-energy__rotation,.film-energy__breath{animation:none}}
+@media(max-width:767px){.film-energy{width:120px;height:144px}.film-energy__disc{width:120px;height:120px}.film-energy__reflection{left:30px;width:60px}}
+@media(prefers-reduced-motion:reduce){.film-energy *{animation:none!important}.film-energy__merge{display:none}}
+
+/* A single left-to-right screen wake-up; characters retain their layout space. */
+.film-masthead-reveal > span{opacity:1}
+@media(prefers-reduced-motion:no-preference){
+ .film-masthead-reveal > span{animation:film-character-on 680ms linear var(--char-delay,0ms) 1 both}
+}
+@keyframes film-character-on{
+ 0%{opacity:0}
+ 18%{opacity:.12}
+ 38%{opacity:.55}
+ 52%{opacity:.42}
+ 72%{opacity:.84}
+ 100%{opacity:1}
+}
+@media print{.film-masthead-reveal > span{animation:none!important;opacity:1!important}}

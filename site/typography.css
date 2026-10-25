@@ -123,6 +123,6 @@ html body .site-header.nav-system-shell[data-nav-contrast] .nav-system__item spa
 html body .site-header.nav-system-shell .nav-system__item:is([aria-current="page"],:focus-visible),
 html body .site-header.nav-system-shell[data-nav-contrast] .nav-system__item:is([aria-current="page"],:focus-visible){color:var(--nav-label-active)!important;opacity:1!important}
 @media(hover:hover) and (pointer:fine){html body .site-header.nav-system-shell .nav-system__item:hover,html body .site-header.nav-system-shell[data-nav-contrast] .nav-system__item:hover{color:var(--nav-label-active)!important;opacity:1!important}}
-html body .mobile-navigation.is-open .mobile-navigation__primary-item{color:#535353;opacity:1;transition:color 180ms ease,transform 300ms ease}
-html body .mobile-navigation.is-open .mobile-navigation__primary-item:is([aria-current="page"],:focus-visible,:active){color:#171717}
+html body .mobile-navigation.is-open .mobile-navigation__primary-item{color:#121212;opacity:1;transition:color 180ms ease,transform 300ms ease}
+html body .mobile-navigation.is-open .mobile-navigation__primary-item:is([aria-current="page"],:focus-visible,:active){color:#121212}
 @media(prefers-reduced-motion:reduce){html body .site-header.nav-system-shell[data-nav-contrast] .nav-system__item,html body .mobile-navigation.is-open .mobile-navigation__primary-item{transition:none!important}}
