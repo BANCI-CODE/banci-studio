@@ -1,9 +1,22 @@
 (()=>{'use strict';
 const stage=document.querySelector('.film-stage'),canvas=stage.querySelector('canvas'),loading=stage.querySelector('.film-loading'),fallback=stage.querySelector('.film-fallback');
-// Three SVG rings animate in CSS only while their loading status is visible.
+// Only the first reveal has a short minimum; cached card changes remain immediate.
+const loaderStarted=performance.now();
+const loaderPreview=new URLSearchParams(location.search).get('loading-preview')==='1';
+const loaderMinimum=matchMedia('(prefers-reduced-motion:reduce)').matches?0:(loaderPreview?4000:1100);
+let loaderFirstReveal=true,loaderTimer=0,loaderState='loading';
 function setLoading(state,message=''){
+ loaderState=state;clearTimeout(loaderTimer);
  const failed=state==='error';
- loading.hidden=state==='ready';loading.classList.toggle('is-error',failed);
+ const remaining=loaderFirstReveal?Math.max(0,loaderMinimum-(performance.now()-loaderStarted)):0;
+ if(state==='ready'&&remaining>0){
+  loading.hidden=false;
+  loaderTimer=setTimeout(()=>{if(loaderState==='ready'){loaderFirstReveal=false;loading.hidden=true;}},remaining);
+ }else{
+  loading.hidden=state==='ready';
+  if(state==='ready'||failed)loaderFirstReveal=false;
+ }
+ loading.classList.toggle('is-error',failed);
  stage.setAttribute('aria-busy',String(state==='loading'));
  loading.setAttribute('aria-label',failed?message:(document.documentElement.lang.startsWith('en')?'Loading artwork':'正在载入作品'));
  const error=loading.querySelector('.film-loading-error');error.hidden=!failed;error.textContent=message;
