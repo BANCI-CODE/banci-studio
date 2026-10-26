@@ -89,17 +89,12 @@
 @media(max-width:767px){.aku-loader{transform:scale(.88)}}
 @media(prefers-reduced-motion:reduce){.aku-loader *{animation:none!important}.aku-loader__dots i{opacity:.5}}
 
-/* A single left-to-right screen wake-up; characters retain their layout space. */
+/* Always-readable title; a quiet wave only during idle card intervals. */
+.film-masthead-reveal{--title-wave:#c3c0b8}
 .film-masthead-reveal > span{opacity:1}
 @media(prefers-reduced-motion:no-preference){
- .film-masthead-reveal > span{animation:film-character-on 680ms linear var(--char-delay,0ms) 1 both}
+ .film-masthead-reveal.is-ambient > span{animation:film-character-wave 750ms ease-in-out var(--char-delay,0ms) 1 both}
 }
-@keyframes film-character-on{
- 0%{opacity:0}
- 18%{opacity:.12}
- 38%{opacity:.55}
- 52%{opacity:.42}
- 72%{opacity:.84}
- 100%{opacity:1}
-}
+@keyframes film-character-wave{0%,100%{color:inherit}50%{color:var(--title-wave)}}
+@media(max-width:767px){.film-masthead-reveal{--title-wave:#cdcac3}}
 @media print{.film-masthead-reveal > span{animation:none!important;opacity:1!important}}

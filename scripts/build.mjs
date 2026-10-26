@@ -30,7 +30,7 @@ async function injectMotion(dir) {
     html = html.replace(/(\/language-system\.(?:js|css))(?:\?[^"']*)?(?=["'])/g, '$1?v=nav-brand-20261024');
     html = html.replace(/(\/design-system\.css)(?:\?[^"']*)?(?=["'])/g, '$1?v=frosted-nav-20261025');
     // Version both sides of the project handoff, including legacy static pages.
-    html = html.replace(/(\/(?:nav-system\.(?:js|css)|home-film-preview\/film\.(?:js|css)))(?:\?[^"']*)?(?=["'])/g, (_, asset) => asset + '?v=' + (asset.includes('/film.') ? 'aku-loader-20261026' : 'liquid-mobile-20261025'));
+    html = html.replace(/(\/(?:nav-system\.(?:js|css)|home-film-preview\/film\.(?:js|css)))(?:\?[^"']*)?(?=["'])/g, (_, asset) => asset + '?v=' + (asset.includes('/film.') ? 'ambient-title-20261026' : 'liquid-mobile-20261025'));
     html = html.replace(/<header\b([^>]*?)class="([^"]*)"([^>]*)>/g, (tag, before, classes, after) => {
       if (!/(?:^|\s)(?:site-header|aku-nav|project-nav)(?:\s|$)/.test(classes)) return tag;
       const names = new Set(classes.split(/\s+/));

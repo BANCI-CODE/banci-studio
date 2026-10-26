@@ -40,6 +40,20 @@ function fontsForCard(item){
 const mobileRendering=matchMedia('(max-width:760px)');
 let mistTimer=0;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'),cache=new Map();let data=[],target=0,previousTarget=0,current=0,velocity=0,frame=0,last=0,width=1,height=1,drag=null,wheelSum=0,wheelStamp=0,suppressClick=0,paused=false,hovered=false,manualUntil=0,autoDirection=1,heroVisible=true,navigating=false;
+// Sparse title wave yields immediately to the project interaction.
+const ambientTitle=document.querySelector('.film-masthead-reveal');
+let titleNext=performance.now()+10000,titleEnd=0;
+ambientTitle?.querySelectorAll('span').forEach((letter,i)=>letter.style.setProperty('--char-delay',`${i*65}ms`));
+function stopTitleWave(){ambientTitle?.classList.remove('is-ambient');titleEnd=0;}
+stage.addEventListener('pointerdown',()=>{stopTitleWave();titleNext=performance.now()+10000;});
+document.addEventListener('visibilitychange',()=>{stopTitleWave();titleNext=performance.now()+10000;});
+reduce.addEventListener('change',stopTitleWave);
+setInterval(()=>{
+ const now=performance.now();
+ if(!ambientTitle||reduce.matches||document.hidden||!heroVisible||drag||navigating||!loading.hidden||Math.abs(current-target)>.01||now-entryStarted<1400){stopTitleWave();return;}
+ if(titleEnd&&now>=titleEnd)stopTitleWave();
+ if(!titleEnd&&now>=titleNext){ambientTitle.classList.add('is-ambient');titleEnd=now+1450;titleNext=now+10000;}
+},250);
 let gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:true});let program,locations,buffer,count;let pixelPull=0,pixelSpeed=0,entryStarted=-Infinity,entryDirection=-1;
 function shader(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
 function setup(){if(!gl)return;program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,`attribute vec2 a;uniform vec2 viewport;uniform vec4 rect;uniform float bend;uniform float tilt;varying vec2 uv;void main(){uv=a;vec2 p=rect.xy+(a-.5)*rect.zw;// Keep the two halves firm; the central pixel columns form the pulled bridge.
@@ -212,7 +226,7 @@ function ticketOffset(age,w){
  const t=Math.max(0,Math.min(1,(age-180)/740));
  return -w*.25*Math.pow(1-t,3)+w*.022*Math.sin(Math.PI*t)*t;
 }
-function go(i,automatic=false){if(navigating)return;if(!automatic)manualUntil=performance.now()+8000;const next=Math.max(0,Math.min(data.length-1,i));if(next===target)return;entryDirection=-1;entryStarted=performance.now();previousTarget=target;target=next;if(cache.has(target))cache.get(target).entered=performance.now();if(reduce.matches){current=target;velocity=0;}update();request();}
+function go(i,automatic=false){if(navigating)return;stopTitleWave();if(!automatic)manualUntil=performance.now()+8000;const next=Math.max(0,Math.min(data.length-1,i));if(next===target)return;entryDirection=-1;entryStarted=performance.now();previousTarget=target;target=next;if(cache.has(target))cache.get(target).entered=performance.now();if(reduce.matches){current=target;velocity=0;}update();request();}
 function draw(time){frame=0;const dt=Math.min(2,(time-last)/16.667||1);last=time;if(reduce.matches){current=target;velocity=0;}else if(drag?.locked){velocity=0;}else{velocity+=(target-current)*.072*dt;velocity*=Math.pow(.72,dt);current+=velocity*dt;if(Math.abs(target-current)<.0005&&Math.abs(velocity)<.0005){current=target;velocity=0;}}
 // A damped spring lets the trailing half catch up and restores normal pixel sampling.
 const entryAge=time-entryStarted;
