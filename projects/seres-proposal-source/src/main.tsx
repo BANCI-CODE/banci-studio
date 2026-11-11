@@ -6,7 +6,7 @@ import allReferences from './all-references.json';
 
 const chapters = [ ['cover','Cover','项目封面'], ['understanding','Project Understanding','产品与传播策略'], ['pillars','Three Creative Pillars','三大视觉方向'], ['language','Visual Language','视觉语言规范'], ['application','Campaign Application','传播应用'], ['conclusion','Creative Conclusion','创意总结'] ];
 const assets = {
-  cover: ['cover-space.svg','留给真实产品的生活空间与光影意向，不代表产品外观'],
+  cover: ['research/all/01-01.webp','用户提供的人形机器人视觉参考，非赛力斯机器狗产品'],
   fashion: ['research/02-06.jpg','人物与金属机器人同框的时尚影像参考，非赛力斯产品'],
   avant: ['research/03-01.webp','白色概念装置的陌生化形态与空间关系参考，非赛力斯产品'],
   quality: ['research/04-08.jpg','金属部件拆解与细节光影参考，非赛力斯产品结构'],
@@ -14,15 +14,15 @@ const assets = {
 } as const;
 function Visual({asset, className='', label=true}: {asset:keyof typeof assets;className?:string;label?:boolean}) {
  const [failed,setFailed] = useState(false);
- return <figure className={`visual ${asset !== 'life' && asset !== 'cover' ? 'research-visual' : ''} ${className}`}>
+ return <figure className={`visual ${asset !== 'life' ? 'research-visual' : ''} ${className}`}>
   {!failed ? <img src={`${import.meta.env.BASE_URL}references/${assets[asset][0]}`} alt={assets[asset][1]} loading={asset==='cover'?'eager':'lazy'} onError={()=>setFailed(true)}/> : <div className="image-fallback"><span>IMAGE STUDY</span><p>视觉资料待补充</p></div>}
-  {(label || asset !== 'life') && <figcaption><span>VISUAL STUDY / {asset.toUpperCase()}</span><span>{asset === 'life' || asset === 'cover' ? '空间意向 · 非产品实拍' : '第三方视觉参考 · 非赛力斯产品'}</span></figcaption>}
+  {(label || asset !== 'life') && <figcaption><span>VISUAL STUDY / {asset.toUpperCase()}</span><span>{asset === 'life' ? '空间意向 · 非产品实拍' : '第三方视觉参考 · 非赛力斯产品'}</span></figcaption>}
  </figure>;
 }
 function ReferenceBoard({group,title}: {group:string;title:string}) {
  return <div className="reference-board reveal"><div className="reference-board-heading"><h4>{title}</h4><span className="eyebrow">CURATED REFERENCES / 参考研究</span></div><div className="reference-grid">{research.filter(item=>item.group===group).map(item=><figure key={item.id}><a href={`${import.meta.env.BASE_URL}references/research/${item.file}`} target="_blank" rel="noreferrer" aria-label={`查看原图：${item.title}`}><img src={`${import.meta.env.BASE_URL}references/research/${item.file}`} alt={item.title+'，第三方参考，非赛力斯产品'} loading="lazy" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src=`${import.meta.env.BASE_URL}references/cover-space.svg`}}/><span className="reference-open">查看原图 ↗</span></a><figcaption><span>{item.id} / {item.title}</span><p>{item.note}</p></figcaption></figure>)}</div><p className="footnote">用户提供的第三方参考素材，仅用于讨论视觉方向；图中品牌、人物、设计及产品不属于本提案的原创资产，不代表赛力斯产品。</p></div>
 }
-function FullImageArchive(){return <div className="full-image-archive reveal"><div className="reference-board-heading"><h4>Complete Visual Research / 全部 70 张素材</h4><span className="eyebrow">06 GROUPS / 原始素材完整陈列</span></div><p className="archive-intro">以下按原始目录陈列全部图片，包含一张重复文件。主视觉仍为经过策划的方向示意；这些图像只用于内部创意研究，不代表赛力斯产品或本提案原创作品。</p>{['封面','时尚感','先锋感','品质感','机器狗品类研究','视觉系统'].map(group=><section className="archive-group" key={group}><h5>{group}<span>{allReferences.filter(x=>x.group===group).length} IMAGES</span></h5><div className="archive-image-grid">{allReferences.filter(x=>x.group===group).map(item=><a href={`${import.meta.env.BASE_URL}references/research/all/${item.file}`} target="_blank" rel="noreferrer" key={item.id} aria-label={`查看${group}原图 ${item.id}`}><img src={`${import.meta.env.BASE_URL}references/research/all/${item.file}`} alt={`${group}视觉研究 ${item.id}，第三方参考，非赛力斯产品`} loading="lazy"/><span>{item.id} / {item.source}</span></a>)}</div></section>)}</div>}
+function FullImageArchive(){return <div className="full-image-archive reveal"><div className="reference-board-heading"><h4>Complete Visual Research / 全部 70 张素材</h4><span className="eyebrow">06 GROUPS / 原始素材完整陈列</span></div><p className="archive-intro">以下按原始目录陈列全部图片，包含一张重复文件。主视觉仍为经过策划的方向示意；这些图像只用于内部创意研究，不代表赛力斯产品或本提案原创作品。</p>{['封面','时尚感','先锋感','品质感','机器狗品类研究','视觉系统'].map((group,index)=><section className="archive-group" key={group}><h5>{group}<span>{allReferences.filter(x=>x.id.startsWith(String(index+1).padStart(2,'0')+'-')).length} IMAGES</span></h5><div className="archive-image-grid">{allReferences.filter(x=>x.id.startsWith(String(index+1).padStart(2,'0')+'-')).map(item=><a href={`${import.meta.env.BASE_URL}references/research/all/${item.file}`} target="_blank" rel="noreferrer" key={item.id} aria-label={`查看${group}原图 ${item.id}`}><img src={`${import.meta.env.BASE_URL}references/research/all/${item.file}`} alt={`${group}视觉研究 ${item.id}，第三方参考，非赛力斯产品`} loading="lazy"/><span>{item.id} / {item.source}</span></a>)}</div></section>)}</div>}
 function SectionHead({n,en,cn}: {n:string;en:string;cn:string}) { return <div className="section-head"><span className="eyebrow">CHAPTER {n} / 06</span><div><h2>{en}</h2><p>{cn}</p></div><span className="head-mark" aria-hidden="true">↗</span></div>; }
 function App(){
  const [active,setActive]=useState('cover'); const [menu,setMenu]=useState(false);
@@ -44,7 +44,7 @@ function App(){
     {import.meta.env.BASE_URL !== '/' && <a className="archive-return" href="/">← BANCI / 返回私人作品档案</a>}
     <div className="cover-kicker"><span>NEW PERSPECTIVES ON EVERYDAY LIFE</span><span>CREATIVE PROPOSAL / 2026</span></div>
     <h1>BEYOND<br/><span className="second-line">THE MACHINE<span className="period">.</span></span></h1>
-    <div className="cover-bottom grid"><div className="cover-intro"><span className="eyebrow">赛力斯消费级机器狗 / 新品上市</span><h2>超越机器的<br/>生活表达</h2><p>让科技进入生活的审美，<br/>让未来成为可以感知的日常。</p><a className="text-link" href="#understanding">探索视觉方向 <span aria-hidden="true">↓</span></a></div><div className="cover-art"><Visual asset="cover"/><span className="image-note">生活先发生，科技再进入。</span></div></div>
+    <div className="cover-bottom grid"><div className="cover-intro"><span className="eyebrow">赛力斯消费级机器狗 / 新品上市</span><h2>超越机器的<br/>生活表达</h2><p>让科技进入生活的审美，<br/>让未来成为可以感知的日常。</p><a className="text-link" href="#understanding">探索视觉方向 <span aria-hidden="true">↓</span></a></div><div className="cover-art"><Visual asset="cover"/><span className="image-note">第三方封面参考 · 非赛力斯机器狗产品</span></div></div>
     <div className="cover-footer"><span>EDITORIAL FASHION × PREMIUM CONSUMER ELECTRONICS × INDUSTRIAL PRECISION</span><span>01 — 06</span></div>
    </section>
    <section id="understanding" className="section">
