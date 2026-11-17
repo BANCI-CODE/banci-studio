@@ -19,6 +19,8 @@ async function injectSharedSystems(dir) {
     const file = path.join(dir, entry.name);
     if (entry.isDirectory()) await injectSharedSystems(file);
     if (!entry.isFile() || !entry.name.endsWith(".html")) continue;
+    // Standalone TRON case study owns its typography and navigation.
+    if (file.replaceAll("\\", "/").endsWith("/project/tron-app/index.html")) continue;
 
     let html = await readFile(file, "utf8");
     if (!html.includes('/nav-system.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/nav-system.css"></head>');
